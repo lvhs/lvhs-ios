@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FontAwesomeKit/FAKFontAwesome.h>
 
 @interface LHViewController : UITableViewController <UITableViewDelegate>
 
