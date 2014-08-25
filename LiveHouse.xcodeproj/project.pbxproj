@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C1A4FFCCE439EA49FEF2B /* libPods.a */; };
+		27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED519AAA725002740D1 /* Foundation.framework */; };
+		27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED719AAA725002740D1 /* CoreGraphics.framework */; };
+		27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED919AAA725002740D1 /* UIKit.framework */; };
+		27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEEDE19AAA725002740D1 /* InfoPlist.strings */; };
+		27EFEEE219AAA725002740D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFEEE119AAA725002740D1 /* main.m */; };
+		27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFEEE519AAA725002740D1 /* LHAppDelegate.m */; };
+		27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEEE719AAA725002740D1 /* Main.storyboard */; };
+		27EFEEEC19AAA725002740D1 /* LHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFEEEB19AAA725002740D1 /* LHViewController.m */; };
+		27EFEEEE19AAA725002740D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEEED19AAA725002740D1 /* Images.xcassets */; };
+		27EFEEF519AAA725002740D1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEEF419AAA725002740D1 /* XCTest.framework */; };
+		27EFEEF619AAA725002740D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED519AAA725002740D1 /* Foundation.framework */; };
+		27EFEEF719AAA725002740D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED919AAA725002740D1 /* UIKit.framework */; };
+		27EFEEFF19AAA725002740D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEEFD19AAA725002740D1 /* InfoPlist.strings */; };
+		27EFEF0119AAA725002740D1 /* LiveHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFEF0019AAA725002740D1 /* LiveHouseTests.m */; };
+		27EFEF0B19AAB76F002740D1 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEF0A19AAB76F002740D1 /* background.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27EFEEF819AAA725002740D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27EFEECA19AAA725002740D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27EFEED119AAA725002740D1;
+			remoteInfo = LiveHouse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27EFEED219AAA725002740D1 /* LiveHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27EFEED519AAA725002740D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		27EFEED719AAA725002740D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		27EFEED919AAA725002740D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		27EFEEDD19AAA725002740D1 /* LiveHouse-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiveHouse-Info.plist"; sourceTree = "<group>"; };
+		27EFEEDF19AAA725002740D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27EFEEE119AAA725002740D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27EFEEE319AAA725002740D1 /* LiveHouse-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiveHouse-Prefix.pch"; sourceTree = "<group>"; };
+		27EFEEE419AAA725002740D1 /* LHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHAppDelegate.h; sourceTree = "<group>"; };
+		27EFEEE519AAA725002740D1 /* LHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHAppDelegate.m; sourceTree = "<group>"; };
+		27EFEEE819AAA725002740D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27EFEEEA19AAA725002740D1 /* LHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHViewController.h; sourceTree = "<group>"; };
+		27EFEEEB19AAA725002740D1 /* LHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHViewController.m; sourceTree = "<group>"; };
+		27EFEEED19AAA725002740D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		27EFEEF319AAA725002740D1 /* LiveHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27EFEEF419AAA725002740D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27EFEEFC19AAA725002740D1 /* LiveHouseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiveHouseTests-Info.plist"; sourceTree = "<group>"; };
+		27EFEEFE19AAA725002740D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27EFEF0019AAA725002740D1 /* LiveHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveHouseTests.m; sourceTree = "<group>"; };
+		27EFEF0A19AAB76F002740D1 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		402C1A4FFCCE439EA49FEF2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF7AC150655455A87C840F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27EFEECF19AAA725002740D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */,
+				27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */,
+				27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */,
+				2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27EFEEF019AAA725002740D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27EFEEF519AAA725002740D1 /* XCTest.framework in Frameworks */,
+				27EFEEF719AAA725002740D1 /* UIKit.framework in Frameworks */,
+				27EFEEF619AAA725002740D1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27EFEEC919AAA725002740D1 = {
+			isa = PBXGroup;
+			children = (
+				27EFEEDB19AAA725002740D1 /* LiveHouse */,
+				27EFEEFA19AAA725002740D1 /* LiveHouseTests */,
+				27EFEED419AAA725002740D1 /* Frameworks */,
+				27EFEED319AAA725002740D1 /* Products */,
+				6BF7AC150655455A87C840F3 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		27EFEED319AAA725002740D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEED219AAA725002740D1 /* LiveHouse.app */,
+				27EFEEF319AAA725002740D1 /* LiveHouseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27EFEED419AAA725002740D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEED519AAA725002740D1 /* Foundation.framework */,
+				27EFEED719AAA725002740D1 /* CoreGraphics.framework */,
+				27EFEED919AAA725002740D1 /* UIKit.framework */,
+				27EFEEF419AAA725002740D1 /* XCTest.framework */,
+				402C1A4FFCCE439EA49FEF2B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27EFEEDB19AAA725002740D1 /* LiveHouse */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEEE419AAA725002740D1 /* LHAppDelegate.h */,
+				27EFEEE519AAA725002740D1 /* LHAppDelegate.m */,
+				27EFEEE719AAA725002740D1 /* Main.storyboard */,
+				27EFEEEA19AAA725002740D1 /* LHViewController.h */,
+				27EFEEEB19AAA725002740D1 /* LHViewController.m */,
+				27EFEF0A19AAB76F002740D1 /* background.png */,
+				27EFEEED19AAA725002740D1 /* Images.xcassets */,
+				27EFEEDC19AAA725002740D1 /* Supporting Files */,
+			);
+			path = LiveHouse;
+			sourceTree = "<group>";
+		};
+		27EFEEDC19AAA725002740D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEEDD19AAA725002740D1 /* LiveHouse-Info.plist */,
+				27EFEEDE19AAA725002740D1 /* InfoPlist.strings */,
+				27EFEEE119AAA725002740D1 /* main.m */,
+				27EFEEE319AAA725002740D1 /* LiveHouse-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27EFEEFA19AAA725002740D1 /* LiveHouseTests */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEF0019AAA725002740D1 /* LiveHouseTests.m */,
+				27EFEEFB19AAA725002740D1 /* Supporting Files */,
+			);
+			path = LiveHouseTests;
+			sourceTree = "<group>";
+		};
+		27EFEEFB19AAA725002740D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEEFC19AAA725002740D1 /* LiveHouseTests-Info.plist */,
+				27EFEEFD19AAA725002740D1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27EFEED119AAA725002740D1 /* LiveHouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27EFEF0419AAA725002740D1 /* Build configuration list for PBXNativeTarget "LiveHouse" */;
+			buildPhases = (
+				B74C45C0B6554DF3A6F61E25 /* Check Pods Manifest.lock */,
+				27EFEECE19AAA725002740D1 /* Sources */,
+				27EFEECF19AAA725002740D1 /* Frameworks */,
+				27EFEED019AAA725002740D1 /* Resources */,
+				FB86A517D2814B45AD506D79 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveHouse;
+			productName = LiveHouse;
+			productReference = 27EFEED219AAA725002740D1 /* LiveHouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		27EFEEF219AAA725002740D1 /* LiveHouseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27EFEF0719AAA725002740D1 /* Build configuration list for PBXNativeTarget "LiveHouseTests" */;
+			buildPhases = (
+				27EFEEEF19AAA725002740D1 /* Sources */,
+				27EFEEF019AAA725002740D1 /* Frameworks */,
+				27EFEEF119AAA725002740D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27EFEEF919AAA725002740D1 /* PBXTargetDependency */,
+			);
+			name = LiveHouseTests;
+			productName = LiveHouseTests;
+			productReference = 27EFEEF319AAA725002740D1 /* LiveHouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27EFEECA19AAA725002740D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LH;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "LIVEHOUSE inc.";
+				TargetAttributes = {
+					27EFEEF219AAA725002740D1 = {
+						TestTargetID = 27EFEED119AAA725002740D1;
+					};
+				};
+			};
+			buildConfigurationList = 27EFEECD19AAA725002740D1 /* Build configuration list for PBXProject "LiveHouse" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27EFEEC919AAA725002740D1;
+			productRefGroup = 27EFEED319AAA725002740D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27EFEED119AAA725002740D1 /* LiveHouse */,
+				27EFEEF219AAA725002740D1 /* LiveHouseTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27EFEED019AAA725002740D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27EFEEEE19AAA725002740D1 /* Images.xcassets in Resources */,
+				27EFEF0B19AAB76F002740D1 /* background.png in Resources */,
+				27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */,
+				27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27EFEEF119AAA725002740D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27EFEEFF19AAA725002740D1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B74C45C0B6554DF3A6F61E25 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB86A517D2814B45AD506D79 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27EFEECE19AAA725002740D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
+				27EFEEE219AAA725002740D1 /* main.m in Sources */,
+				27EFEEEC19AAA725002740D1 /* LHViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27EFEEEF19AAA725002740D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27EFEF0119AAA725002740D1 /* LiveHouseTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27EFEEF919AAA725002740D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27EFEED119AAA725002740D1 /* LiveHouse */;
+			targetProxy = 27EFEEF819AAA725002740D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27EFEEDE19AAA725002740D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27EFEEDF19AAA725002740D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		27EFEEE719AAA725002740D1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27EFEEE819AAA725002740D1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		27EFEEFD19AAA725002740D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27EFEEFE19AAA725002740D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27EFEF0219AAA725002740D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		27EFEF0319AAA725002740D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27EFEF0519AAA725002740D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BF7AC150655455A87C840F3 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		27EFEF0619AAA725002740D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BF7AC150655455A87C840F3 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		27EFEF0819AAA725002740D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LiveHouse.app/LiveHouse";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LiveHouseTests/LiveHouseTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		27EFEF0919AAA725002740D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LiveHouse.app/LiveHouse";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				INFOPLIST_FILE = "LiveHouseTests/LiveHouseTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27EFEECD19AAA725002740D1 /* Build configuration list for PBXProject "LiveHouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27EFEF0219AAA725002740D1 /* Debug */,
+				27EFEF0319AAA725002740D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27EFEF0419AAA725002740D1 /* Build configuration list for PBXNativeTarget "LiveHouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27EFEF0519AAA725002740D1 /* Debug */,
+				27EFEF0619AAA725002740D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27EFEF0719AAA725002740D1 /* Build configuration list for PBXNativeTarget "LiveHouseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27EFEF0819AAA725002740D1 /* Debug */,
+				27EFEF0919AAA725002740D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27EFEECA19AAA725002740D1 /* Project object */;
+}
