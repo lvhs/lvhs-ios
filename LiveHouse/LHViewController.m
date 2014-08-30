@@ -37,7 +37,7 @@
     
     FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
     [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-    UIBarButtonItem *menuBtn = [[UIBarButtonItem alloc] initWithImage:[menuIcon imageWithSize:CGSizeMake(15, 15)] style:UIBarButtonItemStylePlain target:self action:nil];
+    UIBarButtonItem *menuBtn = [[UIBarButtonItem alloc] initWithImage:[menuIcon imageWithSize:CGSizeMake(15, 15)] style:UIBarButtonItemStylePlain target:self action:@selector(showMenu)];
     self.navigationItem.leftBarButtonItem = menuBtn;
     
     // set logo image
@@ -46,6 +46,12 @@
     logoView.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationItem.titleView = logoView;
     
+    self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menu_view"];
+    self.menuViewController.delegate = self;
+    UIView* menuView = self.menuViewController.view;
+    menuView.frame = self.view.bounds;
+    [self.view addSubview:menuView];
+//    [self.view bringSubviewToFront:menuView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,9 +98,41 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        [self performSegueWithIdentifier:@"showArtist" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"showInfo" sender:self];
+    }
+}
+
 - (void) showAgreementView {
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    [defaults setBool:YES forKey:@"agreement"];
+}
+
+- (void)didSelectSetting
+{
+    
+}
+
+- (void) didSettingViewClosed
+{
+    
+}
+
+- (void) didMenuToggledVisible:(BOOL)visible
+{
+    
+}
+
+- (void) showMenu {
+    if (self.menuViewController.view.hidden) {
+        self.menuViewController.view.hidden = NO;
+    } else {
+        self.menuViewController.view.hidden = YES;
+    }
 }
 
 @end

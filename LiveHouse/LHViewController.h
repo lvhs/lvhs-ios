@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
+#import "LHSlideViewController.h"
 
-@interface LHViewController : UITableViewController <UITableViewDelegate>
+@interface LHViewController : UITableViewController <UITableViewDelegate, LHSlideViewControllerDelegate>
+
+@property (nonatomic) LHSlideViewController* menuViewController;
 
 @end

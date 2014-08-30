@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C1A4FFCCE439EA49FEF2B /* libPods.a */; };
+		27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849319B1E2FB00DA13B1 /* overlay.png */; };
+		27EC849719B1E78100DA13B1 /* LHSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EC849619B1E78100DA13B1 /* LHSlideViewController.m */; };
+		27EC849919B1F3B100DA13B1 /* myfirststory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849819B1F3B100DA13B1 /* myfirststory.jpg */; };
 		27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED519AAA725002740D1 /* Foundation.framework */; };
 		27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED719AAA725002740D1 /* CoreGraphics.framework */; };
 		27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED919AAA725002740D1 /* UIKit.framework */; };
@@ -36,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
+		27EC849519B1E78100DA13B1 /* LHSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSlideViewController.h; sourceTree = "<group>"; };
+		27EC849619B1E78100DA13B1 /* LHSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSlideViewController.m; sourceTree = "<group>"; };
+		27EC849819B1F3B100DA13B1 /* myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = myfirststory.jpg; sourceTree = "<group>"; };
 		27EFEED219AAA725002740D1 /* LiveHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EFEED519AAA725002740D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EFEED719AAA725002740D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,8 +133,12 @@
 				27EFEEEA19AAA725002740D1 /* LHViewController.h */,
 				27EFEEEB19AAA725002740D1 /* LHViewController.m */,
 				27EFEF0A19AAB76F002740D1 /* background.png */,
+				27EC849319B1E2FB00DA13B1 /* overlay.png */,
+				27EC849819B1F3B100DA13B1 /* myfirststory.jpg */,
 				27EFEEED19AAA725002740D1 /* Images.xcassets */,
 				27EFEEDC19AAA725002740D1 /* Supporting Files */,
+				27EC849519B1E78100DA13B1 /* LHSlideViewController.h */,
+				27EC849619B1E78100DA13B1 /* LHSlideViewController.m */,
 			);
 			path = LiveHouse;
 			sourceTree = "<group>";
@@ -243,7 +254,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */,
 				27EFEEEE19AAA725002740D1 /* Images.xcassets in Resources */,
+				27EC849919B1F3B100DA13B1 /* myfirststory.jpg in Resources */,
 				27EFEF0B19AAB76F002740D1 /* background.png in Resources */,
 				27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */,
 				27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */,
@@ -300,6 +313,7 @@
 			files = (
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,
+				27EC849719B1E78100DA13B1 /* LHSlideViewController.m in Sources */,
 				27EFEEEC19AAA725002740D1 /* LHViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
