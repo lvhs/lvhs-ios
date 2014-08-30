@@ -24,7 +24,9 @@
     // 初回起動時
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults boolForKey:@"agreement"]) {
-        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"規約" message:@"あとでやる" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        [alertView show];
+        [defaults setBool:YES forKey:@"agreement"];
     }
     
     // set background image
@@ -56,6 +58,34 @@
 {
     return 2;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return @"Artist";
+    } else {
+        return @"LiveInfo";
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    NSLog(@"%ld", [indexPath section]);
+    if ([indexPath section] == 0) {
+        cell.textLabel.text = @"Artist...";
+    } else {
+        cell.textLabel.text = @"News...";
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+}
+
 
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {

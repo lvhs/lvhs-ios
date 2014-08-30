@@ -211,6 +211,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "LIVEHOUSE inc.";
 				TargetAttributes = {
+					27EFEED119AAA725002740D1 = {
+						DevelopmentTeam = B7N22X49QP;
+					};
 					27EFEEF219AAA725002740D1 = {
 						TestTargetID = 27EFEED119AAA725002740D1;
 					};
@@ -423,10 +426,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9e8cc2eb-bacc-4629-a670-32582fd72609";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -437,10 +444,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9e8cc2eb-bacc-4629-a670-32582fd72609";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

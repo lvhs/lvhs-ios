@@ -41,6 +41,7 @@ install_resource()
       ;;
   esac
 }
+install_resource "CrittercismSDK/CrittercismSDK/dsym_upload.sh"
 install_resource "FontAwesomeKit/FontAwesomeKit/FontAwesome.otf"
 install_resource "FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf"
 install_resource "FontAwesomeKit/FontAwesomeKit/ionicons.ttf"
