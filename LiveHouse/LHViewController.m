@@ -21,37 +21,37 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // 初回起動時
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:@"agreement"]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"規約" message:@"あとでやる" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [alertView show];
-        [defaults setBool:YES forKey:@"agreement"];
-    }
-    
-    // set background image
-    UIImage* image = [UIImage imageNamed:@"background.png"];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-    [self.view addSubview:imageView];
-    [self.tableView setBackgroundView:imageView];
-    
-    FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
-    [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-    UIBarButtonItem *menuBtn = [[UIBarButtonItem alloc] initWithImage:[menuIcon imageWithSize:CGSizeMake(15, 15)] style:UIBarButtonItemStylePlain target:self action:@selector(showMenu)];
-    self.navigationItem.leftBarButtonItem = menuBtn;
-    
-    // set logo image
-    UIImage* logo = [UIImage imageNamed:@"Logo"];
-    UIImageView* logoView = [[UIImageView alloc] initWithImage:logo];
-    logoView.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = logoView;
-    
-    self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menu_view"];
-    self.menuViewController.delegate = self;
-    UIView* menuView = self.menuViewController.view;
-    menuView.frame = self.view.bounds;
-    [self.view addSubview:menuView];
-//    [self.view bringSubviewToFront:menuView];
+//    // 初回起動時
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if (![defaults boolForKey:@"agreement"]) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"規約" message:@"あとでやる" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+//        [alertView show];
+//        [defaults setBool:YES forKey:@"agreement"];
+//    }
+//    
+//    // set background image
+//    UIImage* image = [UIImage imageNamed:@"background.png"];
+//    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+//    [self.view addSubview:imageView];
+//    [self.tableView setBackgroundView:imageView];
+//    
+//    FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
+//    [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+//    UIBarButtonItem *menuBtn = [[UIBarButtonItem alloc] initWithImage:[menuIcon imageWithSize:CGSizeMake(15, 15)] style:UIBarButtonItemStylePlain target:self action:@selector(showMenu)];
+//    self.navigationItem.leftBarButtonItem = menuBtn;
+//    
+//    // set logo image
+//    UIImage* logo = [UIImage imageNamed:@"Logo"];
+//    UIImageView* logoView = [[UIImageView alloc] initWithImage:logo];
+//    logoView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.navigationItem.titleView = logoView;
+//    
+//    self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menu_view"];
+//    self.menuViewController.delegate = self;
+//    UIView* menuView = self.menuViewController.view;
+//    menuView.frame = self.view.bounds;
+//    [self.view addSubview:menuView];
+////    [self.view bringSubviewToFront:menuView];
 }
 
 - (void)didReceiveMemoryWarning

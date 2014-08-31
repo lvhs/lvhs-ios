@@ -11,6 +11,8 @@
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
+		278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */; };
+		278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C1FB219B3006C000F9B58 /* AudioToolbox.framework */; };
 		27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849319B1E2FB00DA13B1 /* overlay.png */; };
 		27EC849719B1E78100DA13B1 /* LHSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EC849619B1E78100DA13B1 /* LHSlideViewController.m */; };
 		27EC849919B1F3B100DA13B1 /* myfirststory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849819B1F3B100DA13B1 /* myfirststory.jpg */; };
@@ -49,10 +51,14 @@
 		278C1F1519B2E1EE000F9B58 /* LHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHConfig.h; sourceTree = "<group>"; };
 		278C1F1619B2E1EE000F9B58 /* LHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHConfig.m; sourceTree = "<group>"; };
 		278C1F1819B2E3C4000F9B58 /* LHConsts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHConsts.h; sourceTree = "<group>"; };
-		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
+		278C1FAE19B2FCB1000F9B58 /* LHRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHRootViewController.h; sourceTree = "<group>"; };
+		278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHRootViewController.m; sourceTree = "<group>"; };
+		278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LiveHouse.entitlements; sourceTree = "<group>"; };
+		278C1FB219B3006C000F9B58 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overlay.png; path = LiveHouse/overlay.png; sourceTree = "<group>"; };
 		27EC849519B1E78100DA13B1 /* LHSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSlideViewController.h; sourceTree = "<group>"; };
 		27EC849619B1E78100DA13B1 /* LHSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSlideViewController.m; sourceTree = "<group>"; };
-		27EC849819B1F3B100DA13B1 /* myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = myfirststory.jpg; sourceTree = "<group>"; };
+		27EC849819B1F3B100DA13B1 /* myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = myfirststory.jpg; path = LiveHouse/myfirststory.jpg; sourceTree = "<group>"; };
 		27EFEED219AAA725002740D1 /* LiveHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EFEED519AAA725002740D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EFEED719AAA725002740D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,13 +72,13 @@
 		27EFEEE819AAA725002740D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27EFEEEA19AAA725002740D1 /* LHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHViewController.h; sourceTree = "<group>"; };
 		27EFEEEB19AAA725002740D1 /* LHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LHViewController.m; sourceTree = "<group>"; };
-		27EFEEED19AAA725002740D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		27EFEEED19AAA725002740D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LiveHouse/Images.xcassets; sourceTree = "<group>"; };
 		27EFEEF319AAA725002740D1 /* LiveHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EFEEF419AAA725002740D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		27EFEEFC19AAA725002740D1 /* LiveHouseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiveHouseTests-Info.plist"; sourceTree = "<group>"; };
 		27EFEEFE19AAA725002740D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27EFEF0019AAA725002740D1 /* LiveHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveHouseTests.m; sourceTree = "<group>"; };
-		27EFEF0A19AAB76F002740D1 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		27EFEF0A19AAB76F002740D1 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = LiveHouse/background.png; sourceTree = "<group>"; };
 		402C1A4FFCCE439EA49FEF2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF7AC150655455A87C840F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +90,7 @@
 			files = (
 				27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */,
 				27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */,
+				278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */,
 				27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */,
 				2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */,
 			);
@@ -123,9 +130,50 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		278C1FAA19B2F11D000F9B58 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEEEA19AAA725002740D1 /* LHViewController.h */,
+				27EFEEEB19AAA725002740D1 /* LHViewController.m */,
+				27EC849519B1E78100DA13B1 /* LHSlideViewController.h */,
+				27EC849619B1E78100DA13B1 /* LHSlideViewController.m */,
+				278C1FAE19B2FCB1000F9B58 /* LHRootViewController.h */,
+				278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		278C1FAB19B2F135000F9B58 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEEE719AAA725002740D1 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		278C1FAC19B2F8CF000F9B58 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				278C1FAD19B2F8F6000F9B58 /* images */,
+				27EFEEED19AAA725002740D1 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		278C1FAD19B2F8F6000F9B58 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				27EFEF0A19AAB76F002740D1 /* background.png */,
+				27EC849319B1E2FB00DA13B1 /* overlay.png */,
+				27EC849819B1F3B100DA13B1 /* myfirststory.jpg */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		27EFEEC919AAA725002740D1 = {
 			isa = PBXGroup;
 			children = (
+				278C1FAC19B2F8CF000F9B58 /* Resources */,
 				27EFEEDB19AAA725002740D1 /* LiveHouse */,
 				27EFEEFA19AAA725002740D1 /* LiveHouseTests */,
 				27EFEED419AAA725002740D1 /* Frameworks */,
@@ -146,6 +194,7 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				278C1FB219B3006C000F9B58 /* AudioToolbox.framework */,
 				27EFEED519AAA725002740D1 /* Foundation.framework */,
 				27EFEED719AAA725002740D1 /* CoreGraphics.framework */,
 				27EFEED919AAA725002740D1 /* UIKit.framework */,
@@ -158,20 +207,14 @@
 		27EFEEDB19AAA725002740D1 /* LiveHouse */ = {
 			isa = PBXGroup;
 			children = (
-				278C1F1019B2DE62000F9B58 /* Common */,
-				278C1F0619B2D5F1000F9B58 /* Extensions */,
+				278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */,
 				27EFEEE419AAA725002740D1 /* LHAppDelegate.h */,
 				27EFEEE519AAA725002740D1 /* LHAppDelegate.m */,
-				27EFEEE719AAA725002740D1 /* Main.storyboard */,
-				27EFEEEA19AAA725002740D1 /* LHViewController.h */,
-				27EFEEEB19AAA725002740D1 /* LHViewController.m */,
-				27EFEF0A19AAB76F002740D1 /* background.png */,
-				27EC849319B1E2FB00DA13B1 /* overlay.png */,
-				27EC849819B1F3B100DA13B1 /* myfirststory.jpg */,
-				27EFEEED19AAA725002740D1 /* Images.xcassets */,
+				278C1F1019B2DE62000F9B58 /* Common */,
+				278C1F0619B2D5F1000F9B58 /* Extensions */,
+				278C1FAA19B2F11D000F9B58 /* Controllers */,
+				278C1FAB19B2F135000F9B58 /* Views */,
 				27EFEEDC19AAA725002740D1 /* Supporting Files */,
-				27EC849519B1E78100DA13B1 /* LHSlideViewController.h */,
-				27EC849619B1E78100DA13B1 /* LHSlideViewController.m */,
 			);
 			path = LiveHouse;
 			sourceTree = "<group>";
@@ -344,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */,
 				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,
@@ -476,14 +520,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9e8cc2eb-bacc-4629-a670-32582fd72609";
+				PROVISIONING_PROFILE = "9cbe1c3b-fc66-461a-b92c-677c485cac35";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -494,14 +540,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9e8cc2eb-bacc-4629-a670-32582fd72609";
+				PROVISIONING_PROFILE = "9cbe1c3b-fc66-461a-b92c-677c485cac35";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
