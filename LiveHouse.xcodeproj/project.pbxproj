@@ -11,6 +11,7 @@
 		2718AC0719B303DA002DDEA4 /* jacket.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0619B303DA002DDEA4 /* jacket.jpg */; };
 		2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0919B30400002DDEA4 /* 01.aiff */; };
 		2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0A19B30400002DDEA4 /* 02.aiff */; };
+		2718AC1019B31BDC002DDEA4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0F19B31BDC002DDEA4 /* info.png */; };
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
@@ -48,6 +49,7 @@
 		2718AC0619B303DA002DDEA4 /* jacket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jacket.jpg; sourceTree = "<group>"; };
 		2718AC0919B30400002DDEA4 /* 01.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 01.aiff; sourceTree = "<group>"; };
 		2718AC0A19B30400002DDEA4 /* 02.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 02.aiff; sourceTree = "<group>"; };
+		2718AC0F19B31BDC002DDEA4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
 		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
 		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				27EC849319B1E2FB00DA13B1 /* overlay.png */,
 				27EC849819B1F3B100DA13B1 /* myfirststory.jpg */,
 				2718AC0619B303DA002DDEA4 /* jacket.jpg */,
+				2718AC0F19B31BDC002DDEA4 /* info.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2718AC0719B303DA002DDEA4 /* jacket.jpg in Resources */,
+				2718AC1019B31BDC002DDEA4 /* info.png in Resources */,
 				27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */,
 				27EFEEEE19AAA725002740D1 /* Images.xcassets in Resources */,
 				2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */,
