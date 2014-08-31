@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C1A4FFCCE439EA49FEF2B /* libPods.a */; };
+		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
+		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
+		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
 		27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849319B1E2FB00DA13B1 /* overlay.png */; };
 		27EC849719B1E78100DA13B1 /* LHSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EC849619B1E78100DA13B1 /* LHSlideViewController.m */; };
 		27EC849919B1F3B100DA13B1 /* myfirststory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849819B1F3B100DA13B1 /* myfirststory.jpg */; };
@@ -39,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
+		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
+		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
+		278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHBaseConfig.m; sourceTree = "<group>"; };
+		278C1F1519B2E1EE000F9B58 /* LHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHConfig.h; sourceTree = "<group>"; };
+		278C1F1619B2E1EE000F9B58 /* LHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHConfig.m; sourceTree = "<group>"; };
+		278C1F1819B2E3C4000F9B58 /* LHConsts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHConsts.h; sourceTree = "<group>"; };
 		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
 		27EC849519B1E78100DA13B1 /* LHSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSlideViewController.h; sourceTree = "<group>"; };
 		27EC849619B1E78100DA13B1 /* LHSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSlideViewController.m; sourceTree = "<group>"; };
@@ -92,6 +102,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		278C1F0619B2D5F1000F9B58 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */,
+				278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		278C1F1019B2DE62000F9B58 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */,
+				278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */,
+				278C1F1519B2E1EE000F9B58 /* LHConfig.h */,
+				278C1F1619B2E1EE000F9B58 /* LHConfig.m */,
+				278C1F1819B2E3C4000F9B58 /* LHConsts.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		27EFEEC919AAA725002740D1 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +158,8 @@
 		27EFEEDB19AAA725002740D1 /* LiveHouse */ = {
 			isa = PBXGroup;
 			children = (
+				278C1F1019B2DE62000F9B58 /* Common */,
+				278C1F0619B2D5F1000F9B58 /* Extensions */,
 				27EFEEE419AAA725002740D1 /* LHAppDelegate.h */,
 				27EFEEE519AAA725002740D1 /* LHAppDelegate.m */,
 				27EFEEE719AAA725002740D1 /* Main.storyboard */,
@@ -311,9 +344,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,
+				278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */,
 				27EC849719B1E78100DA13B1 /* LHSlideViewController.m in Sources */,
+				278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */,
 				27EFEEEC19AAA725002740D1 /* LHViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
