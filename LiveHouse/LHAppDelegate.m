@@ -17,7 +17,7 @@
     
     //AFで通信中は自動的にインジケータ回す
 //    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 							

@@ -7,8 +7,12 @@
 //
 
 #import "LHRootViewController.h"
+#import <FontAwesomeKit/FAKFontAwesome.h>
 
 @interface LHRootViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *overLay;
+@property (weak, nonatomic) IBOutlet UIView *menuView;
 
 @end
 
@@ -27,12 +31,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // メニューアイコン
+    FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
+    [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    _menuBtn.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
+    [_menuBtn setAction:@selector(toggleMenu)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)toggleMenu {
+    _menuView.hidden = !_menuView.hidden;
+    _overLay.hidden = !_overLay.hidden;
 }
 
 /*
