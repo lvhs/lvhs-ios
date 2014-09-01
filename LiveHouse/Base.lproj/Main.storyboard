@@ -39,20 +39,36 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myfirststory.jpg" id="aCF-df-qG1">
-                                        <rect key="frame" x="7" y="52" width="150" height="150"/>
+                                        <rect key="frame" x="8" y="44" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="j58-ST-wRI" appends="YES" id="qqD-t1-Nc8"/>
+                                        </connections>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myfirststory.jpg" id="ti6-ci-Jrd">
                                         <rect key="frame" x="165" y="52" width="150" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Bly-5G-xUd" appends="YES" id="UTc-uf-Cax"/>
+                                        </connections>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myfirststory.jpg" id="CJO-oK-q1j">
                                         <rect key="frame" x="7" y="210" width="150" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="RnM-83-dzA" appends="YES" id="JtM-j0-3Bx"/>
+                                        </connections>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myfirststory.jpg" id="ZEg-cD-3yC">
                                         <rect key="frame" x="165" y="135" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YsN-fO-YPl" appends="YES" id="gMz-Vd-kpg"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyFirstStory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jp7-JN-Ps7">
                                         <rect key="frame" x="14" y="181" width="136" height="21"/>
@@ -85,6 +101,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.png" id="oN4-6i-Rko">
                                         <rect key="frame" x="0.0" y="300" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UV9-v2-H4C">
                                         <rect key="frame" x="7" y="340" width="308" height="200"/>
@@ -108,6 +125,7 @@
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlay.png" id="qTs-2Z-hTS" userLabel="Overlay Image">
                                         <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                     </imageView>
                                     <view hidden="YES" contentMode="scaleToFill" id="78U-4U-Xm6">
                                         <rect key="frame" x="0.0" y="44" width="160" height="274"/>
@@ -118,20 +136,32 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rMX-iH-bpP">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menu_cell" textLabel="m0j-tD-I0P" style="IBUITableViewCellStyleDefault" id="rMX-iH-bpP">
                                                         <rect key="frame" x="0.0" y="22" width="160" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rMX-iH-bpP" id="az4-Qg-sUT">
                                                             <rect key="frame" x="0.0" y="0.0" width="160" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="お知らせ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m0j-tD-I0P">
+                                                                    <rect key="frame" x="15" y="0.0" width="130" height="43"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <gestureRecognizers/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <sections/>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
@@ -142,19 +172,455 @@
                         <outlet property="menuBtn" destination="484-OD-dYe" id="jIR-XU-DcC"/>
                         <outlet property="menuView" destination="78U-4U-Xm6" id="UzY-zT-Ig6"/>
                         <outlet property="overLay" destination="qTs-2Z-hTS" id="Omw-1U-CmR"/>
+                        <outlet property="tableView" destination="3Xo-mq-BXj" id="uo2-B5-RrQ"/>
+                        <segue destination="TEg-3w-F1a" kind="modal" identifier="goArtist" modalTransitionStyle="crossDissolve" id="V76-cA-niX"/>
+                        <segue destination="RHS-tu-t1e" kind="modal" identifier="goInfo" modalTransitionStyle="crossDissolve" id="Bnl-P2-B8Q"/>
+                        <segue destination="XSf-SJ-tPm" kind="modal" identifier="goArtistList" modalTransitionStyle="crossDissolve" id="02a-vP-xgg"/>
+                        <segue destination="E8c-Gp-g97" kind="modal" identifier="goPlaylist" modalTransitionStyle="crossDissolve" id="pag-ba-fX7"/>
+                        <segue destination="ZIE-nP-fAa" kind="modal" identifier="goShare" modalTransitionStyle="crossDissolve" id="50e-a1-t0W"/>
+                        <segue destination="Fci-23-3u4" kind="modal" identifier="goSetting" modalTransitionStyle="crossDissolve" id="FPC-Gg-VJg"/>
+                        <segue destination="dfp-Ge-k2X" kind="modal" identifier="goReview" modalTransitionStyle="crossDissolve" id="mLP-C5-tbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Un-oL-cS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="j58-ST-wRI">
+                    <connections>
+                        <action selector="goArtist:" destination="gZM-Zg-G0Z" id="8x0-Dj-uCM"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Bly-5G-xUd">
+                    <connections>
+                        <action selector="goArtist:" destination="gZM-Zg-G0Z" id="i67-Nm-C7l"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="RnM-83-dzA">
+                    <connections>
+                        <action selector="goArtist:" destination="gZM-Zg-G0Z" id="UiW-wp-ZWk"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YsN-fO-YPl">
+                    <connections>
+                        <action selector="goArtist:" destination="gZM-Zg-G0Z" id="HYn-ER-CkY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-830" y="136"/>
+            <point key="canvasLocation" x="-830" y="-151"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="g8d-2m-S2h">
+            <objects>
+                <viewController id="RHS-tu-t1e" customClass="LHInfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eGc-r7-g59">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="r8M-x3-o4f" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="7aR-gf-Q6J">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Info" id="S3h-Re-vIQ">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="38U-uN-guX">
+                                            <connections>
+                                                <action selector="back:" destination="RHS-tu-t1e" id="ter-es-PdY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6bP-5K-MQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-830" y="812"/>
+        </scene>
+        <!--Share View Controller-->
+        <scene sceneID="l4a-bO-fRb">
+            <objects>
+                <viewController id="ZIE-nP-fAa" customClass="LHShareViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RFt-kb-wi1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="Fux-JG-btj" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="8ft-hC-JND">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Share" id="oby-pL-X8X">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="mZv-sU-8lh">
+                                            <connections>
+                                                <action selector="back:" destination="ZIE-nP-fAa" id="FNI-KP-Z6c"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lto-8P-g2F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-822" y="1632"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="KAG-I6-Ktu">
+            <objects>
+                <viewController id="Fci-23-3u4" customClass="LHSettingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dV4-Ev-JYb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="3Jo-Fl-6KE" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="TZO-It-UAy">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Setting" id="QYN-AJ-9aP">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="lTN-Fy-TGw">
+                                            <connections>
+                                                <action selector="back:" destination="Fci-23-3u4" id="MnW-y8-e7I"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Iv-74-8JK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-324" y="1632"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="CyH-7p-MZV">
+            <objects>
+                <viewController id="dfp-Ge-k2X" customClass="LHReviewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Eq-SS-oBq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="yNW-5X-M1J" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="2Vr-A9-U4s">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Review" id="uAo-bf-pvF">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="YIi-mA-dbP">
+                                            <connections>
+                                                <action selector="back:" destination="dfp-Ge-k2X" id="JFm-0h-ftb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbj-Gy-JCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168" y="1632"/>
+        </scene>
+        <!--Artist List View Controller-->
+        <scene sceneID="utZ-op-JAE">
+            <objects>
+                <viewController id="XSf-SJ-tPm" customClass="LHArtistListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="46Z-YB-gxf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="SdZ-X2-95e" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="04I-5c-lmh">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Artist" id="J8r-V2-h2y">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="cCs-0b-VnF">
+                                            <connections>
+                                                <action selector="back:" destination="XSf-SJ-tPm" id="iUN-rb-nMt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Eg-zL-JW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-324" y="822"/>
+        </scene>
+        <!--Playlist View Controller-->
+        <scene sceneID="EXW-J9-hYg">
+            <objects>
+                <viewController id="E8c-Gp-g97" customClass="LHPlaylistViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GfC-1n-fSF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="Kcd-Sx-OE8" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="Jnn-el-Eaz">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Playlist" id="Www-4U-0TB">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="320-7K-RwT">
+                                            <connections>
+                                                <action selector="back:" destination="E8c-Gp-g97" id="vdw-Ze-Ohv"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="518-z8-jwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="163" y="822"/>
+        </scene>
+        <!--Artist View Controller-->
+        <scene sceneID="CdA-I4-a4U">
+            <objects>
+                <viewController id="TEg-3w-F1a" customClass="LHArtistViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ctR-ui-GZd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8a7-vn-kIM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="tED-w1-4hf" userLabel="Background Image">
+                                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="WGC-GK-D5a">
+                                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="MyFirstStory" id="zpL-aG-VcC">
+                                                <barButtonItem key="leftBarButtonItem" title="Back" id="4hd-GL-ocK">
+                                                    <connections>
+                                                        <action selector="back:" destination="TEg-3w-F1a" id="fR8-j5-fvo"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myfirststory.jpg" id="neN-pj-Sz7">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="206"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-title.png" id="Veu-9d-3wp">
+                                        <rect key="frame" x="0.0" y="297" width="320" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view alpha="0.29999999999999999" contentMode="scaleToFill" id="VET-hO-X1d">
+                                        <rect key="frame" x="0.0" y="337" width="320" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="tAD-lN-8MM">
+                                        <rect key="frame" x="0.0" y="337" width="320" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sJm-qH-HYP">
+                                                <rect key="frame" x="241" y="17" width="59" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="play-icon.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="play:" destination="TEg-3w-F1a" eventType="touchUpInside" id="0Zp-gf-bcJ"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket.jpg" id="s9K-mr-2JC">
+                                                <rect key="frame" x="20" y="8" width="48" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ip-eW-vUG">
+                                                <rect key="frame" x="87" y="10" width="20" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="official-title.png" id="LT6-gA-YdM">
+                                        <rect key="frame" x="0.0" y="415" width="320" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="eqN-j8-8sN">
+                                        <rect key="frame" x="0.0" y="455" width="320" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="NlN-JG-orB">
+                                        <rect key="frame" x="0.0" y="455" width="320" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ybl-DT-J43">
+                                                <rect key="frame" x="84" y="17" width="153" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="http://myfirststory.net/">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goOfficial:" destination="TEg-3w-F1a" eventType="touchUpInside" id="KbT-Wy-w3u"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="1O6-er-6ro" kind="modal" identifier="goPlayer" modalTransitionStyle="crossDissolve" id="oTq-Pd-jJJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mrd-ZF-e3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-324" y="-151"/>
+        </scene>
+        <!--Player Controller-->
+        <scene sceneID="OF2-gI-gdU">
+            <objects>
+                <viewController id="1O6-er-6ro" customClass="LHPlayerController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1GY-RU-xLF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="uTn-1a-4fM" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="146-JJ-XSR">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="01" id="zfn-ZW-T0S">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="0iZ-ez-PE8">
+                                            <connections>
+                                                <action selector="back:" destination="1O6-er-6ro" id="Qth-cc-FPk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket.jpg" id="oFz-r4-pw1">
+                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="o1Q-P8-1a7">
+                                <rect key="frame" x="0.0" y="444" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pUk-3e-l9d">
+                                        <rect key="frame" x="20" y="15" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="play-button.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="cPM-Kd-135">
+                                        <rect key="frame" x="60" y="15" width="242" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBb-Fw-7Zg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="-151"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="228" height="90"/>
         <image name="background.png" width="640" height="1136"/>
         <image name="info.png" width="640" height="44"/>
+        <image name="jacket.jpg" width="1280" height="1264"/>
+        <image name="music-title.png" width="640" height="44"/>
         <image name="myfirststory.jpg" width="1280" height="853"/>
+        <image name="official-title.png" width="640" height="44"/>
         <image name="overlay.png" width="640" height="1136"/>
+        <image name="play-button.png" width="42" height="46"/>
+        <image name="play-icon.png" width="87" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

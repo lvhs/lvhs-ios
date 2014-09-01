@@ -12,6 +12,19 @@
 		2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0919B30400002DDEA4 /* 01.aiff */; };
 		2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0A19B30400002DDEA4 /* 02.aiff */; };
 		2718AC1019B31BDC002DDEA4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0F19B31BDC002DDEA4 /* info.png */; };
+		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
+		273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E219B3EE060000C83E /* LHInfoViewController.m */; };
+		273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E519B3EE180000C83E /* LHArtistListViewController.m */; };
+		273C28E919B3EE240000C83E /* LHPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E819B3EE240000C83E /* LHPlaylistViewController.m */; };
+		273C28EC19B3EE370000C83E /* LHShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EB19B3EE370000C83E /* LHShareViewController.m */; };
+		273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EE19B3EE440000C83E /* LHSettingViewController.m */; };
+		273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28F119B3EE510000C83E /* LHReviewViewController.m */; };
+		273C28F419B3F2500000C83E /* music-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F319B3F2500000C83E /* music-title.png */; };
+		273C28F619B3F2830000C83E /* video-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F519B3F2830000C83E /* video-title.png */; };
+		273C28F819B3F3760000C83E /* play-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F719B3F3760000C83E /* play-icon.png */; };
+		273C28FA19B3F9030000C83E /* official-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F919B3F9030000C83E /* official-title.png */; };
+		273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28FC19B3FCE40000C83E /* LHPlayerController.m */; };
+		273C28FF19B3FEA70000C83E /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28FE19B3FEA70000C83E /* play-button.png */; };
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
@@ -50,6 +63,27 @@
 		2718AC0919B30400002DDEA4 /* 01.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 01.aiff; sourceTree = "<group>"; };
 		2718AC0A19B30400002DDEA4 /* 02.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 02.aiff; sourceTree = "<group>"; };
 		2718AC0F19B31BDC002DDEA4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
+		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
+		273C28E119B3EE060000C83E /* LHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHInfoViewController.h; sourceTree = "<group>"; };
+		273C28E219B3EE060000C83E /* LHInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHInfoViewController.m; sourceTree = "<group>"; };
+		273C28E419B3EE180000C83E /* LHArtistListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistListViewController.h; sourceTree = "<group>"; };
+		273C28E519B3EE180000C83E /* LHArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistListViewController.m; sourceTree = "<group>"; };
+		273C28E719B3EE240000C83E /* LHPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHPlaylistViewController.h; sourceTree = "<group>"; };
+		273C28E819B3EE240000C83E /* LHPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHPlaylistViewController.m; sourceTree = "<group>"; };
+		273C28EA19B3EE370000C83E /* LHShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHShareViewController.h; sourceTree = "<group>"; };
+		273C28EB19B3EE370000C83E /* LHShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHShareViewController.m; sourceTree = "<group>"; };
+		273C28ED19B3EE440000C83E /* LHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSettingViewController.h; sourceTree = "<group>"; };
+		273C28EE19B3EE440000C83E /* LHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSettingViewController.m; sourceTree = "<group>"; };
+		273C28F019B3EE510000C83E /* LHReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHReviewViewController.h; sourceTree = "<group>"; };
+		273C28F119B3EE510000C83E /* LHReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHReviewViewController.m; sourceTree = "<group>"; };
+		273C28F319B3F2500000C83E /* music-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-title.png"; sourceTree = "<group>"; };
+		273C28F519B3F2830000C83E /* video-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-title.png"; sourceTree = "<group>"; };
+		273C28F719B3F3760000C83E /* play-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-icon.png"; sourceTree = "<group>"; };
+		273C28F919B3F9030000C83E /* official-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "official-title.png"; sourceTree = "<group>"; };
+		273C28FB19B3FCE40000C83E /* LHPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHPlayerController.h; sourceTree = "<group>"; };
+		273C28FC19B3FCE40000C83E /* LHPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHPlayerController.m; sourceTree = "<group>"; };
+		273C28FE19B3FEA70000C83E /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
 		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
 		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
@@ -146,6 +180,22 @@
 			children = (
 				278C1FAE19B2FCB1000F9B58 /* LHRootViewController.h */,
 				278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */,
+				273C28DE19B3E6120000C83E /* LHArtistViewController.h */,
+				273C28DF19B3E6120000C83E /* LHArtistViewController.m */,
+				273C28E119B3EE060000C83E /* LHInfoViewController.h */,
+				273C28E219B3EE060000C83E /* LHInfoViewController.m */,
+				273C28E419B3EE180000C83E /* LHArtistListViewController.h */,
+				273C28E519B3EE180000C83E /* LHArtistListViewController.m */,
+				273C28E719B3EE240000C83E /* LHPlaylistViewController.h */,
+				273C28E819B3EE240000C83E /* LHPlaylistViewController.m */,
+				273C28EA19B3EE370000C83E /* LHShareViewController.h */,
+				273C28EB19B3EE370000C83E /* LHShareViewController.m */,
+				273C28ED19B3EE440000C83E /* LHSettingViewController.h */,
+				273C28EE19B3EE440000C83E /* LHSettingViewController.m */,
+				273C28F019B3EE510000C83E /* LHReviewViewController.h */,
+				273C28F119B3EE510000C83E /* LHReviewViewController.m */,
+				273C28FB19B3FCE40000C83E /* LHPlayerController.h */,
+				273C28FC19B3FCE40000C83E /* LHPlayerController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +226,11 @@
 				27EC849819B1F3B100DA13B1 /* myfirststory.jpg */,
 				2718AC0619B303DA002DDEA4 /* jacket.jpg */,
 				2718AC0F19B31BDC002DDEA4 /* info.png */,
+				273C28F319B3F2500000C83E /* music-title.png */,
+				273C28F519B3F2830000C83E /* video-title.png */,
+				273C28F719B3F3760000C83E /* play-icon.png */,
+				273C28F919B3F9030000C83E /* official-title.png */,
+				273C28FE19B3FEA70000C83E /* play-button.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -340,6 +395,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273C28FF19B3FEA70000C83E /* play-button.png in Resources */,
+				273C28F619B3F2830000C83E /* video-title.png in Resources */,
 				2718AC0719B303DA002DDEA4 /* jacket.jpg in Resources */,
 				2718AC1019B31BDC002DDEA4 /* info.png in Resources */,
 				27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */,
@@ -347,6 +404,9 @@
 				2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */,
 				27EC849919B1F3B100DA13B1 /* myfirststory.jpg in Resources */,
 				2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */,
+				273C28F819B3F3760000C83E /* play-icon.png in Resources */,
+				273C28FA19B3F9030000C83E /* official-title.png in Resources */,
+				273C28F419B3F2500000C83E /* music-title.png in Resources */,
 				27EFEF0B19AAB76F002740D1 /* background.png in Resources */,
 				27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */,
 				27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */,
@@ -401,12 +461,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */,
 				278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */,
+				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,
+				273C28EC19B3EE370000C83E /* LHShareViewController.m in Sources */,
+				273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */,
 				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
+				273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,
 				278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */,
+				273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */,
 				278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */,
+				273C28E919B3EE240000C83E /* LHPlaylistViewController.m in Sources */,
+				273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +602,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
@@ -554,7 +622,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";

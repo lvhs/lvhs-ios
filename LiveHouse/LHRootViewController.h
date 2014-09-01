@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LHRootViewController : UIViewController
+@interface LHRootViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

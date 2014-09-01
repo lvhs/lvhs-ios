@@ -9,6 +9,13 @@
 #import "LHAppDelegate.h"
 #import <AFNetworkActivityIndicatorManager.h>
 
+void uncaughtExceptionHandler(NSException *exception) {
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+    // Internal error reporting
+}
+
+
 @implementation LHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,6 +25,7 @@
     //AFで通信中は自動的にインジケータ回す
 //    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     return YES;
 }
 							
