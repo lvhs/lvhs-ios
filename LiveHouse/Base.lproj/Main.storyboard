@@ -593,6 +593,9 @@
                                         <state key="normal" backgroundImage="play-button.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="playAudioPressed:" destination="1O6-er-6ro" eventType="touchUpInside" id="4dJ-JD-LJO"/>
+                                        </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="cPM-Kd-135">
                                         <rect key="frame" x="60" y="15" width="242" height="31"/>
@@ -604,6 +607,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="currentTimeSlider" destination="cPM-Kd-135" id="w6I-Pz-ouN"/>
+                        <outlet property="playButton" destination="pUk-3e-l9d" id="qTr-lc-9Ca"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBb-Fw-7Zg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

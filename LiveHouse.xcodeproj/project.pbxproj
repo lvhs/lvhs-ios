@@ -25,6 +25,8 @@
 		273C28FA19B3F9030000C83E /* official-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F919B3F9030000C83E /* official-title.png */; };
 		273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28FC19B3FCE40000C83E /* LHPlayerController.m */; };
 		273C28FF19B3FEA70000C83E /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28FE19B3FEA70000C83E /* play-button.png */; };
+		273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273C290019B3FF7A0000C83E /* AVFoundation.framework */; };
+		273C290519B3FFF20000C83E /* LHAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C290419B3FFF20000C83E /* LHAudioPlayer.m */; };
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
@@ -84,6 +86,9 @@
 		273C28FB19B3FCE40000C83E /* LHPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHPlayerController.h; sourceTree = "<group>"; };
 		273C28FC19B3FCE40000C83E /* LHPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHPlayerController.m; sourceTree = "<group>"; };
 		273C28FE19B3FEA70000C83E /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
+		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
+		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
 		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
 		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
 		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */,
 				27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */,
 				27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */,
 				278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */,
@@ -152,6 +158,15 @@
 				2718AC0A19B30400002DDEA4 /* 02.aiff */,
 			);
 			name = music;
+			sourceTree = "<group>";
+		};
+		273C290219B3FFE20000C83E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				273C290319B3FFF20000C83E /* LHAudioPlayer.h */,
+				273C290419B3FFF20000C83E /* LHAudioPlayer.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		278C1F0619B2D5F1000F9B58 /* Extensions */ = {
@@ -259,6 +274,7 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				273C290019B3FF7A0000C83E /* AVFoundation.framework */,
 				278C1FB219B3006C000F9B58 /* AudioToolbox.framework */,
 				27EFEED519AAA725002740D1 /* Foundation.framework */,
 				27EFEED719AAA725002740D1 /* CoreGraphics.framework */,
@@ -272,6 +288,7 @@
 		27EFEEDB19AAA725002740D1 /* LiveHouse */ = {
 			isa = PBXGroup;
 			children = (
+				273C290219B3FFE20000C83E /* Models */,
 				278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */,
 				27EFEEE419AAA725002740D1 /* LHAppDelegate.h */,
 				27EFEEE519AAA725002740D1 /* LHAppDelegate.m */,
@@ -471,6 +488,7 @@
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,
 				278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */,
+				273C290519B3FFF20000C83E /* LHAudioPlayer.m in Sources */,
 				273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */,
 				278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */,
 				273C28E919B3EE240000C83E /* LHPlaylistViewController.m in Sources */,

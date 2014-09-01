@@ -7,18 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LHAudioPlayer.h"
 
 @interface LHPlayerController : UIViewController
 
-//@property (nonatomic, retain) AVAudioPlayer *audioPlayer;
-//
-//// Public methods
-//- (void)initPlayer:(NSString*) audioFile fileExtension:(NSString*)fileExtension;
-//- (void)playAudio;
-//- (void)pauseAudio;
-//- (void)setCurrentAudioTime:(float)value;
-//- (float)getAudioDuration;
-//- (NSString*)timeFormat:(float)value;
-//- (NSTimeInterval)getCurrentAudioTime;
+@property (nonatomic, strong) LHAudioPlayer *audioPlayer;
+
+@property (weak, nonatomic) IBOutlet UISlider *currentTimeSlider;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UILabel *duration;
+@property (weak, nonatomic) IBOutlet UILabel *timeElapsed;
+
+@property BOOL isPaused;
+@property BOOL scrubbing;
+
+@property NSTimer *timer;
 
 @end
