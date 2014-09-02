@@ -473,34 +473,71 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-title.png" id="Veu-9d-3wp">
-                                        <rect key="frame" x="0.0" y="297" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="273" width="320" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-title.png" id="Mce-3f-JaM">
+                                        <rect key="frame" x="0.0" y="371" width="320" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view alpha="0.29999999999999999" contentMode="scaleToFill" id="VET-hO-X1d">
-                                        <rect key="frame" x="0.0" y="337" width="320" height="63"/>
+                                        <rect key="frame" x="0.0" y="310" width="320" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="tAD-lN-8MM">
-                                        <rect key="frame" x="0.0" y="337" width="320" height="63"/>
+                                        <rect key="frame" x="0.0" y="308" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sJm-qH-HYP">
-                                                <rect key="frame" x="241" y="17" width="59" height="29"/>
+                                                <rect key="frame" x="241" y="16" width="59" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="play-icon.png">
+                                                <state key="normal" backgroundImage="play-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="play:" destination="TEg-3w-F1a" eventType="touchUpInside" id="0Zp-gf-bcJ"/>
+                                                    <action selector="playMusic:" destination="TEg-3w-F1a" eventType="touchUpInside" id="3hX-mn-O7a"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket.jpg" id="s9K-mr-2JC">
-                                                <rect key="frame" x="20" y="8" width="48" height="48"/>
+                                                <rect key="frame" x="20" y="7" width="48" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ip-eW-vUG">
-                                                <rect key="frame" x="87" y="10" width="20" height="21"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="music-01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ip-eW-vUG">
+                                                <rect key="frame" x="87" y="7" width="72" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="3Vr-hr-Dc4">
+                                        <rect key="frame" x="0.0" y="409" width="320" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="3Ih-jg-9W7">
+                                        <rect key="frame" x="0.0" y="405" width="320" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a2F-X2-aPP">
+                                                <rect key="frame" x="241" y="18" width="59" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" backgroundImage="play-icon.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="playMovie:" destination="TEg-3w-F1a" eventType="touchUpInside" id="92n-aq-SrM"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jacket.jpg" id="uG1-sz-Cag">
+                                                <rect key="frame" x="20" y="9" width="48" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="movie-01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qlu-Zo-RY4">
+                                                <rect key="frame" x="87" y="9" width="72" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -510,16 +547,16 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="official-title.png" id="LT6-gA-YdM">
-                                        <rect key="frame" x="0.0" y="415" width="320" height="32"/>
+                                        <rect key="frame" x="0.0" y="472" width="320" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view alpha="0.30000001192092896" contentMode="scaleToFill" id="eqN-j8-8sN">
-                                        <rect key="frame" x="0.0" y="455" width="320" height="63"/>
+                                        <rect key="frame" x="0.0" y="505" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="NlN-JG-orB">
-                                        <rect key="frame" x="0.0" y="455" width="320" height="63"/>
+                                        <rect key="frame" x="0.0" y="505" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ybl-DT-J43">
@@ -543,11 +580,89 @@
                     </view>
                     <connections>
                         <segue destination="1O6-er-6ro" kind="modal" identifier="goPlayer" modalTransitionStyle="crossDissolve" id="oTq-Pd-jJJ"/>
+                        <segue destination="BrV-4v-bh2" kind="modal" identifier="goMovie" modalTransitionStyle="crossDissolve" id="nWK-pW-Aii"/>
+                        <segue destination="NKy-Xw-OxD" kind="modal" identifier="goCPI" modalTransitionStyle="crossDissolve" id="KHa-bI-VGU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrd-ZF-e3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-324" y="-151"/>
+        </scene>
+        <!--CPI View Controller-->
+        <scene sceneID="ENK-eE-a30">
+            <objects>
+                <viewController id="NKy-Xw-OxD" userLabel="CPI View Controller" customClass="LHCPIViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iKa-CI-uG7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="vSS-Y2-3dM" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="RxF-SF-j58">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Apps" id="3eE-s1-f3x">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Gba-gQ-9J6">
+                                            <connections>
+                                                <action selector="back:" destination="NKy-Xw-OxD" id="S1v-9Q-gFh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0r-69-o16" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-324" y="-845"/>
+        </scene>
+        <!--Movie View Controller-->
+        <scene sceneID="oFI-B6-Kg3">
+            <objects>
+                <viewController id="BrV-4v-bh2" customClass="LHMovieViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="veh-C9-MQB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="qZf-KF-bcD" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="7Eb-e2-55I">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Movie" id="ej7-Tq-kaA">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="DSm-VY-4OA">
+                                            <connections>
+                                                <action selector="back:" destination="BrV-4v-bh2" id="lHI-g1-jxQ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1WV-N5-tq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="-845"/>
         </scene>
         <!--Player Controller-->
         <scene sceneID="OF2-gI-gdU">
@@ -570,7 +685,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="01" id="zfn-ZW-T0S">
+                                    <navigationItem title="Music" id="zfn-ZW-T0S">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="0iZ-ez-PE8">
                                             <connections>
                                                 <action selector="back:" destination="1O6-er-6ro" id="Qth-cc-FPk"/>
@@ -628,6 +743,7 @@
         <image name="overlay.png" width="640" height="1136"/>
         <image name="play-button.png" width="42" height="46"/>
         <image name="play-icon.png" width="87" height="50"/>
+        <image name="video-title.png" width="640" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -11,7 +11,8 @@
 @interface LHArtistViewController ()
 - (IBAction)back:(id)sender;
 - (IBAction)goOfficial:(id)sender;
-- (IBAction)play:(id)sender;
+- (IBAction)playMusic:(id)sender;
+- (IBAction)playMovie:(id)sender;
 
 @end
 
@@ -58,8 +59,12 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://myfirststory.net"]];
 }
 
-- (IBAction)play:(id)sender {
+- (IBAction)playMusic:(id)sender {
     [self performSegueWithIdentifier:@"goPlayer" sender:self];
+}
+
+- (IBAction)playMovie:(id)sender {
+    [self performSegueWithIdentifier:@"goMovie" sender:self];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
