@@ -15,3 +15,4 @@ pod 'CrittercismSDK'
 pod 'MTStatusBarOverlay'
 pod 'CocoaLumberjack'
 pod 'SSZipArchive'
+pod "Realm"

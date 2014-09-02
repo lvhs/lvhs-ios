@@ -160,6 +160,9 @@ PODS:
   - mockingbird-toolbox/ThreadsafeCache (0.9.4):
     - mockingbird-toolbox/Common
   - MTStatusBarOverlay (0.9.1)
+  - Realm (0.84.0):
+    - Realm/Headers
+  - Realm/Headers (0.84.0)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
@@ -180,6 +183,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - mockingbird-toolbox
   - MTStatusBarOverlay
+  - Realm
   - SDWebImage
   - SSZipArchive
   - SVProgressHUD
@@ -198,6 +202,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   mockingbird-toolbox: ea21ff0efc73719864edc0f82c06886b73872ac6
   MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
+  Realm: 097412d7bcbba45ad5037add12e0395136070d88
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SSZipArchive: 6dc0ea3fe4b55574bee23c9f01d7c0f8437d59ef
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
