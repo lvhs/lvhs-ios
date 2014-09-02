@@ -650,12 +650,33 @@
                                     <navigationItem title="Movie" id="ej7-Tq-kaA">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="DSm-VY-4OA">
                                             <connections>
-                                                <action selector="back:" destination="BrV-4v-bh2" id="lHI-g1-jxQ"/>
+                                                <action selector="back:" destination="BrV-4v-bh2" id="KzY-6M-zMi"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" id="e4q-n1-I2f">
+                                <rect key="frame" x="0.0" y="438" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gob-SR-AOb">
+                                        <rect key="frame" x="20" y="15" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" backgroundImage="play-button.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="togglePlayer:" destination="BrV-4v-bh2" eventType="touchUpInside" id="evn-ck-Ri7"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="eEw-aV-zEi">
+                                        <rect key="frame" x="60" y="15" width="242" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     </view>

@@ -30,7 +30,8 @@
 		2786956919B61DF60086137A /* LHMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956819B61DF60086137A /* LHMovieViewController.m */; };
 		2786956C19B61E040086137A /* LHCPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956B19B61E040086137A /* LHCPIViewController.m */; };
 		2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786956D19B626250086137A /* MediaPlayer.framework */; };
-		2786957119B62D840086137A /* LHMovidePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786957019B62D840086137A /* LHMovidePlayer.m */; };
+		2786957119B62D840086137A /* LHMoviePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786957019B62D840086137A /* LHMoviePlayerView.m */; };
+		2786957319B6870D0086137A /* 01.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2786956519B618250086137A /* 01.mp4 */; };
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
@@ -93,14 +94,14 @@
 		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
 		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
-		2786956519B618250086137A /* pv01.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = pv01.mp4; sourceTree = "<group>"; };
+		2786956519B618250086137A /* 01.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.mp4; sourceTree = "<group>"; };
 		2786956719B61DF60086137A /* LHMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMovieViewController.h; sourceTree = "<group>"; };
 		2786956819B61DF60086137A /* LHMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMovieViewController.m; sourceTree = "<group>"; };
 		2786956A19B61E040086137A /* LHCPIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCPIViewController.h; sourceTree = "<group>"; };
 		2786956B19B61E040086137A /* LHCPIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHCPIViewController.m; sourceTree = "<group>"; };
 		2786956D19B626250086137A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		2786956F19B62D840086137A /* LHMovidePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMovidePlayer.h; sourceTree = "<group>"; };
-		2786957019B62D840086137A /* LHMovidePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMovidePlayer.m; sourceTree = "<group>"; };
+		2786956F19B62D840086137A /* LHMoviePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMoviePlayerView.h; sourceTree = "<group>"; };
+		2786957019B62D840086137A /* LHMoviePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMoviePlayerView.m; sourceTree = "<group>"; };
 		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
 		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
 		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
@@ -178,8 +179,8 @@
 			children = (
 				273C290319B3FFF20000C83E /* LHAudioPlayer.h */,
 				273C290419B3FFF20000C83E /* LHAudioPlayer.m */,
-				2786956F19B62D840086137A /* LHMovidePlayer.h */,
-				2786957019B62D840086137A /* LHMovidePlayer.m */,
+				2786956F19B62D840086137A /* LHMoviePlayerView.h */,
+				2786957019B62D840086137A /* LHMoviePlayerView.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -187,7 +188,7 @@
 		2786956419B617EF0086137A /* movie */ = {
 			isa = PBXGroup;
 			children = (
-				2786956519B618250086137A /* pv01.mp4 */,
+				2786956519B618250086137A /* 01.mp4 */,
 			);
 			name = movie;
 			sourceTree = "<group>";
@@ -253,8 +254,8 @@
 		278C1FAC19B2F8CF000F9B58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2786956419B617EF0086137A /* movie */,
 				2718AC0819B303E8002DDEA4 /* music */,
+				2786956419B617EF0086137A /* movie */,
 				278C1FAD19B2F8F6000F9B58 /* images */,
 				27EFEEED19AAA725002740D1 /* Images.xcassets */,
 			);
@@ -455,6 +456,7 @@
 				273C28F419B3F2500000C83E /* music-title.png in Resources */,
 				27EFEF0B19AAB76F002740D1 /* background.png in Resources */,
 				27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */,
+				2786957319B6870D0086137A /* 01.mp4 in Resources */,
 				27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,7 +513,7 @@
 				278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */,
 				2786956C19B61E040086137A /* LHCPIViewController.m in Sources */,
 				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,
-				2786957119B62D840086137A /* LHMovidePlayer.m in Sources */,
+				2786957119B62D840086137A /* LHMoviePlayerView.m in Sources */,
 				273C28EC19B3EE370000C83E /* LHShareViewController.m in Sources */,
 				273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */,
 				2786956919B61DF60086137A /* LHMovieViewController.m in Sources */,

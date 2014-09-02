@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LHMovidePlayer : UIView
+@interface LHMoviePlayerView : UIView
 
 @end

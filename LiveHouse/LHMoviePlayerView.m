@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
-#import "LHMovidePlayer.h"
+#import "LHMoviePlayerView.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface LHMovidePlayer ()
+@interface LHMoviePlayerView ()
 
 @end
 
-@implementation LHMovidePlayer
+@implementation LHMoviePlayerView
 
 /*
 #pragma mark - Navigation
