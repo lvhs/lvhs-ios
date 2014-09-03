@@ -1,20 +1,19 @@
 //
-//  LHCPIViewController.m
+//  LHCPIDetailViewController.m
 //  LiveHouse
 //
 //  Created by Masayuki Uehara on 9/3/14.
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
-#import "LHCPIViewController.h"
+#import "LHCPIDetailViewController.h"
 
-@interface LHCPIViewController ()
-- (IBAction)back:(id)sender;
-- (IBAction)goCPIDetail:(id)sender;
+@interface LHCPIDetailViewController ()
+- (IBAction)purchase:(id)sender;
 
 @end
 
-@implementation LHCPIViewController
+@implementation LHCPIDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,12 +47,11 @@
 }
 */
 
-- (IBAction)back:(id)sender {
+- (IBAction)purchase:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"purchased"];
+    [defaults synchronize];
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)goCPIDetail:(id)sender {
-    [self performSegueWithIdentifier:@"goCPIDetail" sender:self];
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self performSegueWithIdentifier:@"returnArtist" sender:self];
 }
 @end

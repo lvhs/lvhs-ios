@@ -32,6 +32,10 @@
 		2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786956D19B626250086137A /* MediaPlayer.framework */; };
 		2786957119B62D840086137A /* LHMoviePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786957019B62D840086137A /* LHMoviePlayerView.m */; };
 		2786957319B6870D0086137A /* 01.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2786956519B618250086137A /* 01.mp4 */; };
+		2786957619B68D220086137A /* cpi01.png in Resources */ = {isa = PBXBuildFile; fileRef = 2786957419B68D220086137A /* cpi01.png */; };
+		2786957719B68D220086137A /* cpi02.png in Resources */ = {isa = PBXBuildFile; fileRef = 2786957519B68D220086137A /* cpi02.png */; };
+		2786957919B68DBC0086137A /* cpi-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2786957819B68DBC0086137A /* cpi-title.png */; };
+		2786957C19B68FF60086137A /* LHCPIDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786957B19B68FF60086137A /* LHCPIDetailViewController.m */; };
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
@@ -102,6 +106,11 @@
 		2786956D19B626250086137A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2786956F19B62D840086137A /* LHMoviePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMoviePlayerView.h; sourceTree = "<group>"; };
 		2786957019B62D840086137A /* LHMoviePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMoviePlayerView.m; sourceTree = "<group>"; };
+		2786957419B68D220086137A /* cpi01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpi01.png; sourceTree = "<group>"; };
+		2786957519B68D220086137A /* cpi02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpi02.png; sourceTree = "<group>"; };
+		2786957819B68DBC0086137A /* cpi-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cpi-title.png"; sourceTree = "<group>"; };
+		2786957A19B68FF60086137A /* LHCPIDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCPIDetailViewController.h; sourceTree = "<group>"; };
+		2786957B19B68FF60086137A /* LHCPIDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHCPIDetailViewController.m; sourceTree = "<group>"; };
 		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
 		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
 		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
@@ -239,6 +248,8 @@
 				2786956819B61DF60086137A /* LHMovieViewController.m */,
 				2786956A19B61E040086137A /* LHCPIViewController.h */,
 				2786956B19B61E040086137A /* LHCPIViewController.m */,
+				2786957A19B68FF60086137A /* LHCPIDetailViewController.h */,
+				2786957B19B68FF60086137A /* LHCPIDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +286,9 @@
 				273C28F719B3F3760000C83E /* play-icon.png */,
 				273C28F919B3F9030000C83E /* official-title.png */,
 				273C28FE19B3FEA70000C83E /* play-button.png */,
+				2786957419B68D220086137A /* cpi01.png */,
+				2786957519B68D220086137A /* cpi02.png */,
+				2786957819B68DBC0086137A /* cpi-title.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -442,6 +456,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2786957719B68D220086137A /* cpi02.png in Resources */,
+				2786957919B68DBC0086137A /* cpi-title.png in Resources */,
 				273C28FF19B3FEA70000C83E /* play-button.png in Resources */,
 				273C28F619B3F2830000C83E /* video-title.png in Resources */,
 				2718AC0719B303DA002DDEA4 /* jacket.jpg in Resources */,
@@ -451,6 +467,7 @@
 				2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */,
 				27EC849919B1F3B100DA13B1 /* myfirststory.jpg in Resources */,
 				2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */,
+				2786957619B68D220086137A /* cpi01.png in Resources */,
 				273C28F819B3F3760000C83E /* play-icon.png in Resources */,
 				273C28FA19B3F9030000C83E /* official-title.png in Resources */,
 				273C28F419B3F2500000C83E /* music-title.png in Resources */,
@@ -514,6 +531,7 @@
 				2786956C19B61E040086137A /* LHCPIViewController.m in Sources */,
 				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,
 				2786957119B62D840086137A /* LHMoviePlayerView.m in Sources */,
+				2786957C19B68FF60086137A /* LHCPIDetailViewController.m in Sources */,
 				273C28EC19B3EE370000C83E /* LHShareViewController.m in Sources */,
 				273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */,
 				2786956919B61DF60086137A /* LHMovieViewController.m in Sources */,

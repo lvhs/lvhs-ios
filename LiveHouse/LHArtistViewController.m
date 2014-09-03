@@ -7,6 +7,7 @@
 //
 
 #import "LHArtistViewController.h"
+#import "UIActionSheet+Blocks.h"
 
 @interface LHArtistViewController ()
 - (IBAction)back:(id)sender;
@@ -60,11 +61,41 @@
 }
 
 - (IBAction)playMusic:(id)sender {
-    [self performSegueWithIdentifier:@"goPlayer" sender:self];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"purchased"]) {
+        [defaults setBool:NO forKey:@"purchased"];
+        [defaults synchronize];
+        [self performSegueWithIdentifier:@"goPlayer" sender:self];
+    } else {
+        [UIActionSheet showInView:self.view
+                        withTitle:@"CPI"
+                cancelButtonTitle:@"キャンセル"
+           destructiveButtonTitle:nil
+                otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
+                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                             NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
+                             [self performSegueWithIdentifier:@"goCPI" sender:self];
+                         }];
+    }
 }
 
 - (IBAction)playMovie:(id)sender {
-    [self performSegueWithIdentifier:@"goMovie" sender:self];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"purchased"]) {
+        [defaults setBool:NO forKey:@"purchased"];
+        [defaults synchronize];
+        [self performSegueWithIdentifier:@"goMovie" sender:self];
+    } else {
+        [UIActionSheet showInView:self.view
+                        withTitle:@"CPI"
+                cancelButtonTitle:@"キャンセル"
+           destructiveButtonTitle:nil
+                otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
+                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                             NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
+                             [self performSegueWithIdentifier:@"goCPI" sender:self];
+                         }];
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

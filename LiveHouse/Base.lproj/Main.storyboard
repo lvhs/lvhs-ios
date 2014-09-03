@@ -581,12 +581,48 @@
                     <connections>
                         <segue destination="1O6-er-6ro" kind="modal" identifier="goPlayer" modalTransitionStyle="crossDissolve" id="oTq-Pd-jJJ"/>
                         <segue destination="BrV-4v-bh2" kind="modal" identifier="goMovie" modalTransitionStyle="crossDissolve" id="nWK-pW-Aii"/>
-                        <segue destination="NKy-Xw-OxD" kind="modal" identifier="goCPI" modalTransitionStyle="crossDissolve" id="KHa-bI-VGU"/>
+                        <segue destination="NKy-Xw-OxD" kind="modal" identifier="goCPI" modalTransitionStyle="coverVertical" id="KHa-bI-VGU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrd-ZF-e3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-324" y="-151"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="eAv-wX-IlV">
+            <objects>
+                <viewController id="hdX-2V-0SB" customClass="LHCPIDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qjr-W1-GLS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="さんぷる" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c0O-75-Yre">
+                                <rect key="frame" x="59" y="95" width="203" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DK4-Qd-10l">
+                                <rect key="frame" x="53" y="356" width="215" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="アプリをDLしたらアプリに戻る">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="purchase:" destination="hdX-2V-0SB" eventType="touchUpInside" id="QyF-sw-H7c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="TEg-3w-F1a" kind="modal" identifier="returnArtist" modalTransitionStyle="flipHorizontal" id="agr-cA-6JL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezy-4U-A9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-822" y="-845"/>
         </scene>
         <!--CPI View Controller-->
         <scene sceneID="ENK-eE-a30">
@@ -609,7 +645,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Apps" id="3eE-s1-f3x">
+                                    <navigationItem title="無料でGET" id="3eE-s1-f3x">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Gba-gQ-9J6">
                                             <connections>
                                                 <action selector="back:" destination="NKy-Xw-OxD" id="S1v-9Q-gFh"/>
@@ -618,9 +654,36 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sId-uQ-Boe">
+                                <rect key="frame" x="0.0" y="177" width="320" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="cpi01.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goCPIDetail:" destination="NKy-Xw-OxD" eventType="touchUpInside" id="vpC-s0-myp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n6e-Nr-2tb">
+                                <rect key="frame" x="0.0" y="274" width="320" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="cpi02.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goCPIDetail:" destination="NKy-Xw-OxD" eventType="touchUpInside" id="xN9-zh-2h0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cpi-title.png" id="MQ9-aT-JoL">
+                                <rect key="frame" x="0.0" y="79" width="320" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="hdX-2V-0SB" kind="modal" identifier="goCPIDetail" modalTransitionStyle="coverVertical" id="uOk-3r-JmP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0r-69-o16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -756,6 +819,9 @@
     <resources>
         <image name="Logo" width="228" height="90"/>
         <image name="background.png" width="640" height="1136"/>
+        <image name="cpi-title.png" width="580" height="120"/>
+        <image name="cpi01.png" width="580" height="162"/>
+        <image name="cpi02.png" width="580" height="159"/>
         <image name="info.png" width="640" height="44"/>
         <image name="jacket.jpg" width="1280" height="1264"/>
         <image name="music-title.png" width="640" height="44"/>
@@ -771,4 +837,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="agr-cA-6JL"/>
+    </inferredMetricsTieBreakers>
 </document>
