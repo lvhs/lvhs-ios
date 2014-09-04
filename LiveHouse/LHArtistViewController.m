@@ -8,6 +8,7 @@
 
 #import "LHArtistViewController.h"
 #import "UIActionSheet+Blocks.h"
+#import "UIAlertView+Blocks.h"
 
 @interface LHArtistViewController ()
 - (IBAction)back:(id)sender;
@@ -73,8 +74,35 @@
            destructiveButtonTitle:nil
                 otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                             NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
-                             [self performSegueWithIdentifier:@"goCPI" sender:self];
+                             if (buttonIndex == 0) {
+                                 [self performSegueWithIdentifier:@"goCPI" sender:self];
+                             } else if (buttonIndex == 1) {
+                                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
+                                                                              message:@"I promise I won’t steal your password"
+                                                                             delegate:self
+                                                                    cancelButtonTitle:@"Cancel"
+                                                                    otherButtonTitles:@"OK", nil];
+                                 
+                                 av.alertViewStyle = UIAlertViewStyleSecureTextInput;
+                                 
+                                 av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                     if (buttonIndex == alertView.firstOtherButtonIndex) {
+                                         NSLog(@"Password: %@", [[alertView textFieldAtIndex:0] text]);
+                                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                         [defaults setBool:YES forKey:@"purchased"];
+                                         [defaults synchronize];
+                                     } else if (buttonIndex == alertView.cancelButtonIndex) {
+                                         NSLog(@"Cancelled.");
+                                     }
+                                 };
+                                 
+                                 av.shouldEnableFirstOtherButtonBlock = ^BOOL(UIAlertView *alertView) {
+                                     return ([[[alertView textFieldAtIndex:0] text] length] > 0);
+                                 };
+                                 
+                                 [av show];
+                             }
+
                          }];
     }
 }
@@ -92,8 +120,34 @@
            destructiveButtonTitle:nil
                 otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                             NSLog(@"Chose %@", [actionSheet buttonTitleAtIndex:buttonIndex]);
-                             [self performSegueWithIdentifier:@"goCPI" sender:self];
+                             if (buttonIndex == 0) {
+                                 [self performSegueWithIdentifier:@"goCPI" sender:self];
+                             } else if (buttonIndex == 1) {
+                                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
+                                                                              message:@"I promise I won’t steal your password"
+                                                                             delegate:self
+                                                                    cancelButtonTitle:@"Cancel"
+                                                                    otherButtonTitles:@"OK", nil];
+                                 
+                                 av.alertViewStyle = UIAlertViewStyleSecureTextInput;
+                                 
+                                 av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                     if (buttonIndex == alertView.firstOtherButtonIndex) {
+                                         NSLog(@"Password: %@", [[alertView textFieldAtIndex:0] text]);
+                                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                         [defaults setBool:YES forKey:@"purchased"];
+                                         [defaults synchronize];
+                                     } else if (buttonIndex == alertView.cancelButtonIndex) {
+                                         NSLog(@"Cancelled.");
+                                     }
+                                 };
+                                 
+                                 av.shouldEnableFirstOtherButtonBlock = ^BOOL(UIAlertView *alertView) {
+                                     return ([[[alertView textFieldAtIndex:0] text] length] > 0);
+                                 };
+                                 
+                                 [av show];
+                             }
                          }];
     }
 }

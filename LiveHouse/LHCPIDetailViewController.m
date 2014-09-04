@@ -51,7 +51,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"purchased"];
     [defaults synchronize];
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    [self performSegueWithIdentifier:@"returnArtist" sender:self];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"returnArtist" sender:self];
 }
 @end
