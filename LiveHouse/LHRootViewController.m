@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)goArtist:(id)sender;
+- (IBAction)toggleMenu:(id)sender;
 
 @end
 
@@ -39,7 +40,7 @@
     FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
     [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
     _menuBtn.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
-    [_menuBtn setAction:@selector(toggleMenu)];
+    [_menuBtn setAction:@selector(toggleMenu:)];
     
     // メニュー
     [_tableView setDelegate:self];
@@ -52,7 +53,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)toggleMenu {
+- (IBAction)toggleMenu:(id)sender {
+    NSLog(@"toggled!");
     _menuView.hidden = !_menuView.hidden;
     _overLay.hidden = !_overLay.hidden;
 }

@@ -126,10 +126,13 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTs-2Z-hTS" userLabel="Overlay Image">
+                                    <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTs-2Z-hTS" userLabel="Overlay Image">
                                         <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="rRg-Vb-nDk" appends="YES" id="T5l-T0-X8D"/>
+                                        </connections>
                                     </imageView>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78U-4U-Xm6">
                                         <rect key="frame" x="0.0" y="44" width="160" height="274"/>
@@ -204,6 +207,11 @@
                 <tapGestureRecognizer id="YsN-fO-YPl">
                     <connections>
                         <action selector="goArtist:" destination="gZM-Zg-G0Z" id="HYn-ER-CkY"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="rRg-Vb-nDk" userLabel="Overlay Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="toggleMenu:" destination="gZM-Zg-G0Z" id="c7f-ta-Ftm"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
