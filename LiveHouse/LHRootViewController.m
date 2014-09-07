@@ -136,7 +136,7 @@ numberOfRowsInSection:(NSInteger)section {
         [self performSegueWithIdentifier:@"goPlaylist" sender:self];
     }
     else if (sender.view.tag == 3) {
-        NSString *sharedText = @"LiveHouseをShare";
+        NSString *sharedText = @"LiveHouseをShareする";
         NSURL *url = [NSURL URLWithString:@"http://lvhs.jp"];
         NSArray *activityItems = @[sharedText, url];
         UIActivity *activity = [[UIActivity alloc] init];
