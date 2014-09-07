@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LHRootViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+- (IBAction)backToRootViewControler:(UIStoryboardSegue *)segue;
 @end

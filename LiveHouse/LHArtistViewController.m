@@ -11,7 +11,6 @@
 #import "UIAlertView+Blocks.h"
 
 @interface LHArtistViewController ()
-- (IBAction)back:(id)sender;
 - (IBAction)goOfficial:(id)sender;
 - (IBAction)playMusic:(id)sender;
 - (IBAction)playMovie:(id)sender;
@@ -51,10 +50,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (IBAction)goOfficial:(id)sender {
 //    [[UIApplication sharedApplication] openURL:request.URL];

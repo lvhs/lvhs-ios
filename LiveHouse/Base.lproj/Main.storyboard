@@ -463,7 +463,7 @@
                                             <navigationItem title="MyFirstStory" id="zpL-aG-VcC">
                                                 <barButtonItem key="leftBarButtonItem" title="Back" id="4hd-GL-ocK">
                                                     <connections>
-                                                        <action selector="back:" destination="TEg-3w-F1a" id="fR8-j5-fvo"/>
+                                                        <segue destination="16q-BQ-hPr" kind="unwind" unwindAction="backToRootViewControler:" id="Ib7-9L-fQP"/>
                                                     </connections>
                                                 </barButtonItem>
                                             </navigationItem>
@@ -590,6 +590,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrd-ZF-e3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="16q-BQ-hPr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-324" y="-151"/>
         </scene>
@@ -864,6 +865,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="agr-cA-6JL"/>
+        <segue reference="V76-cA-niX"/>
     </inferredMetricsTieBreakers>
 </document>
