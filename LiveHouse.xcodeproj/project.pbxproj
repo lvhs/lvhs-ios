@@ -119,8 +119,8 @@
 		278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHRootViewController.m; sourceTree = "<group>"; };
 		278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LiveHouse.entitlements; sourceTree = "<group>"; };
 		278C1FB219B3006C000F9B58 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overlay.png; path = LiveHouse/overlay.png; sourceTree = "<group>"; };
-		27EC849819B1F3B100DA13B1 /* myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = myfirststory.jpg; path = LiveHouse/myfirststory.jpg; sourceTree = "<group>"; };
+		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
+		27EC849819B1F3B100DA13B1 /* myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = myfirststory.jpg; sourceTree = "<group>"; };
 		27EFEED219AAA725002740D1 /* LiveHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EFEED519AAA725002740D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EFEED719AAA725002740D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,7 +138,7 @@
 		27EFEEFC19AAA725002740D1 /* LiveHouseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LiveHouseTests-Info.plist"; sourceTree = "<group>"; };
 		27EFEEFE19AAA725002740D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27EFEF0019AAA725002740D1 /* LiveHouseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveHouseTests.m; sourceTree = "<group>"; };
-		27EFEF0A19AAB76F002740D1 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = LiveHouse/background.png; sourceTree = "<group>"; };
+		27EFEF0A19AAB76F002740D1 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		402C1A4FFCCE439EA49FEF2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF7AC150655455A87C840F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,7 +177,7 @@
 				2718AC0919B30400002DDEA4 /* 01.aiff */,
 				2718AC0A19B30400002DDEA4 /* 02.aiff */,
 			);
-			name = music;
+			path = music;
 			sourceTree = "<group>";
 		};
 		273C290219B3FFE20000C83E /* Models */ = {
@@ -191,12 +191,12 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		2786956419B617EF0086137A /* movie */ = {
+		2786956419B617EF0086137A /* video */ = {
 			isa = PBXGroup;
 			children = (
 				2786956519B618250086137A /* 01.mp4 */,
 			);
-			name = movie;
+			path = video;
 			sourceTree = "<group>";
 		};
 		278C1F0619B2D5F1000F9B58 /* Extensions */ = {
@@ -261,14 +261,13 @@
 			isa = PBXGroup;
 			children = (
 				2718AC0819B303E8002DDEA4 /* music */,
-				2786956419B617EF0086137A /* movie */,
-				278C1FAD19B2F8F6000F9B58 /* images */,
-				27EFEEED19AAA725002740D1 /* Images.xcassets */,
+				2786956419B617EF0086137A /* video */,
+				278C1FAD19B2F8F6000F9B58 /* image */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		278C1FAD19B2F8F6000F9B58 /* images */ = {
+		278C1FAD19B2F8F6000F9B58 /* image */ = {
 			isa = PBXGroup;
 			children = (
 				27EFEF0A19AAB76F002740D1 /* background.png */,
@@ -285,13 +284,13 @@
 				2786957519B68D220086137A /* cpi02.png */,
 				2786957819B68DBC0086137A /* cpi-title.png */,
 			);
-			name = images;
+			path = image;
 			sourceTree = "<group>";
 		};
 		27EFEEC919AAA725002740D1 = {
 			isa = PBXGroup;
 			children = (
-				278C1FAC19B2F8CF000F9B58 /* Resources */,
+				27EFEEED19AAA725002740D1 /* Images.xcassets */,
 				27EFEEDB19AAA725002740D1 /* LiveHouse */,
 				27EFEEFA19AAA725002740D1 /* LiveHouseTests */,
 				27EFEED419AAA725002740D1 /* Frameworks */,
@@ -327,6 +326,7 @@
 		27EFEEDB19AAA725002740D1 /* LiveHouse */ = {
 			isa = PBXGroup;
 			children = (
+				278C1FAC19B2F8CF000F9B58 /* Resources */,
 				273C290219B3FFE20000C83E /* Models */,
 				278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */,
 				27EFEEE419AAA725002740D1 /* LHAppDelegate.h */,
