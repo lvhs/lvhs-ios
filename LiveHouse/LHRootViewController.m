@@ -136,7 +136,14 @@ numberOfRowsInSection:(NSInteger)section {
         [self performSegueWithIdentifier:@"goPlaylist" sender:self];
     }
     else if (sender.view.tag == 3) {
-        [self performSegueWithIdentifier:@"goShare" sender:self];
+        NSString *sharedText = @"LiveHouseをShare";
+        NSURL *url = [NSURL URLWithString:@"http://lvhs.jp"];
+        NSArray *activityItems = @[sharedText, url];
+        UIActivity *activity = [[UIActivity alloc] init];
+        NSArray *appActivities = @[activity];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                 applicationActivities:appActivities];
+        [self presentViewController:activityVC animated:YES completion:nil];
     }
     else if (sender.view.tag == 4) {
         [self performSegueWithIdentifier:@"goSetting" sender:self];

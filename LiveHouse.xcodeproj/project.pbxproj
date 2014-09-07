@@ -16,7 +16,6 @@
 		273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E219B3EE060000C83E /* LHInfoViewController.m */; };
 		273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E519B3EE180000C83E /* LHArtistListViewController.m */; };
 		273C28E919B3EE240000C83E /* LHPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E819B3EE240000C83E /* LHPlaylistViewController.m */; };
-		273C28EC19B3EE370000C83E /* LHShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EB19B3EE370000C83E /* LHShareViewController.m */; };
 		273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EE19B3EE440000C83E /* LHSettingViewController.m */; };
 		273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28F119B3EE510000C83E /* LHReviewViewController.m */; };
 		273C28F419B3F2500000C83E /* music-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F319B3F2500000C83E /* music-title.png */; };
@@ -82,8 +81,6 @@
 		273C28E519B3EE180000C83E /* LHArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistListViewController.m; sourceTree = "<group>"; };
 		273C28E719B3EE240000C83E /* LHPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHPlaylistViewController.h; sourceTree = "<group>"; };
 		273C28E819B3EE240000C83E /* LHPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHPlaylistViewController.m; sourceTree = "<group>"; };
-		273C28EA19B3EE370000C83E /* LHShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHShareViewController.h; sourceTree = "<group>"; };
-		273C28EB19B3EE370000C83E /* LHShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHShareViewController.m; sourceTree = "<group>"; };
 		273C28ED19B3EE440000C83E /* LHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSettingViewController.h; sourceTree = "<group>"; };
 		273C28EE19B3EE440000C83E /* LHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSettingViewController.m; sourceTree = "<group>"; };
 		273C28F019B3EE510000C83E /* LHReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHReviewViewController.h; sourceTree = "<group>"; };
@@ -236,8 +233,6 @@
 				273C28E519B3EE180000C83E /* LHArtistListViewController.m */,
 				273C28E719B3EE240000C83E /* LHPlaylistViewController.h */,
 				273C28E819B3EE240000C83E /* LHPlaylistViewController.m */,
-				273C28EA19B3EE370000C83E /* LHShareViewController.h */,
-				273C28EB19B3EE370000C83E /* LHShareViewController.m */,
 				273C28ED19B3EE440000C83E /* LHSettingViewController.h */,
 				273C28EE19B3EE440000C83E /* LHSettingViewController.m */,
 				273C28F019B3EE510000C83E /* LHReviewViewController.h */,
@@ -532,7 +527,6 @@
 				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,
 				2786957119B62D840086137A /* LHMoviePlayerView.m in Sources */,
 				2786957C19B68FF60086137A /* LHCPIDetailViewController.m in Sources */,
-				273C28EC19B3EE370000C83E /* LHShareViewController.m in Sources */,
 				273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */,
 				2786956919B61DF60086137A /* LHMovieViewController.m in Sources */,
 				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
