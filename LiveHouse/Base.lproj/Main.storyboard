@@ -43,35 +43,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myfirststory.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aCF-df-qG1">
-                                        <rect key="frame" x="8" y="51" width="150" height="150"/>
+                                        <rect key="frame" x="8" y="55" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="j58-ST-wRI" appends="YES" id="qqD-t1-Nc8"/>
-                                        </connections>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loth.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ti6-ci-Jrd">
-                                        <rect key="frame" x="165" y="52" width="150" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Bly-5G-xUd" appends="YES" id="UTc-uf-Cax"/>
-                                        </connections>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wrongcity.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="CJO-oK-q1j">
-                                        <rect key="frame" x="7" y="208" width="150" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="RnM-83-dzA" appends="YES" id="JtM-j0-3Bx"/>
-                                        </connections>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swankydank.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-cD-3yC">
-                                        <rect key="frame" x="165" y="135" width="150" height="150"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="YsN-fO-YPl" appends="YES" id="gMz-Vd-kpg"/>
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyFirstStory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-JN-Ps7">
@@ -81,51 +57,73 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LOTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcD-G1-BWt">
-                                        <rect key="frame" x="172" y="106" width="136" height="21"/>
+                                    <imageView clipsSubviews="YES" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="anotherstory.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ti6-ci-Jrd">
+                                        <rect key="frame" x="165" y="55" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Bly-5G-xUd" appends="YES" id="UTc-uf-Cax"/>
+                                        </connections>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AnotherStory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcD-G1-BWt">
+                                        <rect key="frame" x="172" y="181" width="136" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" tag="2" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wrongcity.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="CJO-oK-q1j">
+                                        <rect key="frame" x="8" y="215" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="RnM-83-dzA" appends="YES" id="JtM-j0-3Bx"/>
+                                        </connections>
+                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wrong City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQ2-p3-61Y">
-                                        <rect key="frame" x="14" y="263" width="136" height="21"/>
+                                        <rect key="frame" x="14" y="342" width="136" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swankydank.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZEg-cD-3yC">
+                                        <rect key="frame" x="165" y="215" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YsN-fO-YPl" appends="YES" id="gMz-Vd-kpg"/>
+                                        </connections>
+                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swanky Dank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHf-8e-DXv">
-                                        <rect key="frame" x="172" y="263" width="136" height="21"/>
+                                        <rect key="frame" x="172" y="340" width="136" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info.png" translatesAutoresizingMaskIntoConstraints="NO" id="oN4-6i-Rko">
-                                        <rect key="frame" x="0.0" y="300" width="320" height="38"/>
+                                    <imageView clipsSubviews="YES" tag="4" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loth.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1IX-4T-wce">
+                                        <rect key="frame" x="8" y="378" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="bkX-ro-aGw" appends="YES" id="bnq-1R-Uwd"/>
+                                        </connections>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LOTH" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eus-xG-ZXo">
+                                        <rect key="frame" x="14" y="504" width="136" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="oM1-Fd-cpL">
+                                        <rect key="frame" x="165" y="378" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UV9-v2-H4C">
-                                        <rect key="frame" x="7" y="340" width="308" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NLt-Vz-r8E">
-                                                <rect key="frame" x="0.0" y="22" width="308" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NLt-Vz-r8E" id="JYZ-u7-NmB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </tableViewCellContentView>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
                                     <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTs-2Z-hTS" userLabel="Overlay Image">
                                         <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -207,6 +205,11 @@
                 <tapGestureRecognizer id="YsN-fO-YPl">
                     <connections>
                         <action selector="goArtist:" destination="gZM-Zg-G0Z" id="HYn-ER-CkY"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bkX-ro-aGw">
+                    <connections>
+                        <action selector="goArtist:" destination="gZM-Zg-G0Z" id="Dfp-6W-zxN"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="rRg-Vb-nDk" userLabel="Overlay Tap Gesture Recognizer">
@@ -469,7 +472,7 @@
                                             </navigationItem>
                                         </items>
                                     </navigationBar>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myfirststory.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="neN-pj-Sz7">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myfirststory.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="neN-pj-Sz7">
                                         <rect key="frame" x="0.0" y="64" width="320" height="206"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -584,6 +587,8 @@
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="jacket" destination="neN-pj-Sz7" id="Zp3-po-Cup"/>
+                        <outlet property="navItem" destination="zpL-aG-VcC" id="EMI-eh-bjT"/>
                         <segue destination="1O6-er-6ro" kind="modal" identifier="goPlayer" modalTransitionStyle="crossDissolve" id="oTq-Pd-jJJ"/>
                         <segue destination="BrV-4v-bh2" kind="modal" identifier="goMovie" modalTransitionStyle="crossDissolve" id="nWK-pW-Aii"/>
                         <segue destination="NKy-Xw-OxD" kind="modal" identifier="goCPI" modalTransitionStyle="coverVertical" id="KHa-bI-VGU"/>
@@ -843,11 +848,11 @@
         <image name="01-myfirststory.jpg" width="1280" height="1264"/>
         <image name="02-myfirststory.jpg" width="960" height="960"/>
         <image name="Logo" width="228" height="90"/>
+        <image name="anotherstory.jpg" width="1280" height="853"/>
         <image name="background.png" width="640" height="1136"/>
         <image name="cpi-title.png" width="580" height="120"/>
         <image name="cpi01.png" width="580" height="162"/>
         <image name="cpi02.png" width="580" height="159"/>
-        <image name="info.png" width="640" height="44"/>
         <image name="loth.jpg" width="2880" height="1920"/>
         <image name="music-title.png" width="640" height="44"/>
         <image name="myfirststory.jpg" width="1280" height="853"/>

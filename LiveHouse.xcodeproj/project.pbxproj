@@ -20,6 +20,7 @@
 		2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0919B30400002DDEA4 /* 01.aiff */; };
 		2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0A19B30400002DDEA4 /* 02.aiff */; };
 		2718AC1019B31BDC002DDEA4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0F19B31BDC002DDEA4 /* info.png */; };
+		271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 271FAC5C19BE0B5A00138174 /* anotherstory.jpg */; };
 		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
 		273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E219B3EE060000C83E /* LHInfoViewController.m */; };
 		273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E519B3EE180000C83E /* LHArtistListViewController.m */; };
@@ -88,6 +89,7 @@
 		2718AC0919B30400002DDEA4 /* 01.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 01.aiff; sourceTree = "<group>"; };
 		2718AC0A19B30400002DDEA4 /* 02.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 02.aiff; sourceTree = "<group>"; };
 		2718AC0F19B31BDC002DDEA4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		271FAC5C19BE0B5A00138174 /* anotherstory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = anotherstory.jpg; path = artist/anotherstory.jpg; sourceTree = "<group>"; };
 		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
 		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
 		273C28E119B3EE060000C83E /* LHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHInfoViewController.h; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				27130E7419BCB71B00970DA7 /* myfirststory.jpg */,
 				27130E7519BCB71B00970DA7 /* swankydank.jpg */,
 				27130E7619BCB71B00970DA7 /* wrongcity.jpg */,
+				271FAC5C19BE0B5A00138174 /* anotherstory.jpg */,
 			);
 			name = artist;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */,
 				27130E7A19BCB71B00970DA7 /* wrongcity.jpg in Resources */,
 				27EFEEEE19AAA725002740D1 /* Images.xcassets in Resources */,
+				271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */,
 				27130E7C19BCB74100970DA7 /* 01-anotherstory.jpg in Resources */,
 				27130E7719BCB71B00970DA7 /* loth.jpg in Resources */,
 				2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */,

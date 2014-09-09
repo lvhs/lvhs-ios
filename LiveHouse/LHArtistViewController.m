@@ -14,6 +14,8 @@
 - (IBAction)goOfficial:(id)sender;
 - (IBAction)playMusic:(id)sender;
 - (IBAction)playMovie:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *jacket;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @end
 
@@ -32,6 +34,37 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger artistId = [defaults integerForKey:@"artistId"];
+    switch (artistId) {
+        case 1: {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"anotherstory" ofType:@"jpg"];
+            _jacket.image = [[UIImage alloc] initWithContentsOfFile:path];
+            _navItem.title = @"AnotherStory";
+            break;
+        }
+        case 2: {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"wrongcity" ofType:@"jpg"];
+            _jacket.image = [[UIImage alloc] initWithContentsOfFile:path];
+            _navItem.title = @"Wrong City";
+            break;
+        }
+        case 3: {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"swankydank" ofType:@"jpg"];
+            _jacket.image = [[UIImage alloc] initWithContentsOfFile:path];
+            _navItem.title = @"Swanky Dank";
+            break;
+        }
+        case 4: {
+            NSString *path = [[NSBundle mainBundle] pathForResource:@"loth" ofType:@"jpg"];
+            _jacket.image = [[UIImage alloc] initWithContentsOfFile:path];
+            _navItem.title = @"LOTH";
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning

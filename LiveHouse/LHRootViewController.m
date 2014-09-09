@@ -7,6 +7,7 @@
 //
 
 #import "LHRootViewController.h"
+#import "LHArtistViewController.h"
 #import <FontAwesomeKit/FAKFontAwesome.h>
 
 @interface LHRootViewController ()
@@ -117,11 +118,12 @@ numberOfRowsInSection:(NSInteger)section {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     [self performSegueWithIdentifier:@"goArtist" sender:self];
 }
 
-- (IBAction)goArtist:(id)sender {
+- (IBAction)goArtist:(UITapGestureRecognizer *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:sender.view.tag forKey:@"artistId"];
     [self performSegueWithIdentifier:@"goArtist" sender:self];
 }
 
