@@ -10,6 +10,7 @@
 #import "LHMoviePlayerView.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
+#import <XCDYouTubeKit/XCDYouTubeKit.h>
 
 @class AVPlayer;
 
@@ -20,7 +21,8 @@
     BOOL isPlaying;
 }
 
-@property (strong, nonatomic) MPMoviePlayerController *player;
+//@property (strong, nonatomic) MPMoviePlayerController *player;
+@property (weak, nonatomic) IBOutlet UIView *screen;
 - (IBAction)back:(id)sender;
 - (IBAction)togglePlayer:(id)sender;
 
@@ -40,9 +42,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger artistId = [defaults integerForKey:@"artistId"];
+    
+    if (artistId == 1) {
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"6-XjbdSAkOI"];
+        [videoPlayerViewController presentInView:_screen];
+        [videoPlayerViewController.moviePlayer play];
+        return;
+    }
+    else if (artistId == 2) {
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"v6kwUZQN7mU"];
+        [videoPlayerViewController presentInView:_screen];
+        [videoPlayerViewController.moviePlayer play];
+        return;
+    }
+    else if (artistId == 3) {
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"0Hv9_0uMnoo"];
+        [videoPlayerViewController presentInView:_screen];
+        [videoPlayerViewController.moviePlayer play];
+        return;
+    }
+    
     // Do any additional setup after loading the view.
     NSString *path = [[NSBundle mainBundle] pathForResource:@"01" ofType:@"mp4"];
     NSURL *url = [NSURL fileURLWithPath:path];
+    
     
     //プレイヤーを設定
     float playerHeight = self.view.frame.size.height-(self.view.frame.size.height/2);

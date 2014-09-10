@@ -16,3 +16,4 @@ pod 'MTStatusBarOverlay'
 pod 'CocoaLumberjack'
 pod 'SSZipArchive'
 pod "Realm"
+pod "XCDYouTubeKit"

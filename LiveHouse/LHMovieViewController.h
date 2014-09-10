@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LHMovieViewController : UIViewController
+@interface LHMovieViewController : UIViewController <UIWebViewDelegate>
 
 @end

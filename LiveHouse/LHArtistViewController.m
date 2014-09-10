@@ -10,7 +10,9 @@
 #import "UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks.h"
 
-@interface LHArtistViewController ()
+@interface LHArtistViewController () {
+    NSInteger artistId;
+}
 - (IBAction)goOfficial:(id)sender;
 - (IBAction)playMusic:(id)sender;
 - (IBAction)playMovie:(id)sender;
@@ -36,7 +38,7 @@
     // Do any additional setup after loading the view.
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger artistId = [defaults integerForKey:@"artistId"];
+    artistId = [defaults integerForKey:@"artistId"];
     switch (artistId) {
         case 1: {
             NSString *path = [[NSBundle mainBundle] pathForResource:@"anotherstory" ofType:@"jpg"];
@@ -137,7 +139,7 @@
 
 - (IBAction)playMovie:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"purchased"]) {
+    if ([defaults boolForKey:@"purchased"] || artistId == 1 || artistId == 2 || artistId == 3) {
         [defaults setBool:NO forKey:@"purchased"];
         [defaults synchronize];
         [self performSegueWithIdentifier:@"goMovie" sender:self];
