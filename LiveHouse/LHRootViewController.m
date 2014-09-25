@@ -73,7 +73,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 3;
 }
 
 -(UITableViewCell *)tableView:
@@ -84,9 +84,6 @@ numberOfRowsInSection:(NSInteger)section {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     NSArray *items = @[
-                       @"お知らせ",
-                       @"アーティスト一覧",
-                       @"プレイリスト",
                        @"友達紹介",
                        @"設定・問い合わせ",
                        @"レビュー"
