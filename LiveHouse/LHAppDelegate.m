@@ -8,6 +8,7 @@
 
 #import "LHAppDelegate.h"
 #import <AFNetworkActivityIndicatorManager.h>
+#import <Repro/ReproInsight.h>
 
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"CRASH: %@", exception);
@@ -24,8 +25,14 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     //AFで通信中は自動的にインジケータ回す
 //    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    // Repro
+    [ReproInsight setupWithToken:@"bb0feda5-f142-46ec-b1b9-62387f7bc03b"];
+    
     return YES;
 }
 							

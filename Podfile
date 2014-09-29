@@ -1,3 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 pod 'UITextFieldWithLimit'
 pod 'AFNetworking'
 pod 'MagicalRecord'
@@ -17,3 +19,20 @@ pod 'CocoaLumberjack'
 pod 'SSZipArchive'
 pod 'Realm'
 pod 'XCDYouTubeKit'
+
+# UI/UX
+pod "Repro" # https://repro.io/
+
+# replacement for UITableViewController & UICollectionViewController
+# pod "SlackTextViewController" https://github.com/slackhq/SlackTextViewController
+
+post_install do | installer |
+  require 'fileutils'
+  FileUtils.cp_r(
+    'Pods/Target Support Files/Pods/Pods-acknowledgements.plist',
+    'LiveHouse/Settings.bundle/Acknowledgements.plist',
+    :remove_destination => true
+  )
+end
+
+# vim: ft=ruby :

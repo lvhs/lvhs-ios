@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.3.1):
+  - AFNetworking (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.3.1):
+  - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.3.1):
+  - AFNetworking/NSURLSession (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.3.1)
-  - AFNetworking/Security (2.3.1)
-  - AFNetworking/Serialization (2.3.1)
-  - AFNetworking/UIKit (2.3.1):
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Base64 (1.0.1)
@@ -30,28 +30,28 @@ PODS:
   - CocoaLumberjack/Core (2.0.0-beta)
   - CocoaLumberjack/Extensions (2.0.0-beta):
     - CocoaLumberjack/Core
-  - CrittercismSDK (4.3.4)
-  - FontAwesomeKit (2.1.7):
+  - CrittercismSDK (4.3.7)
+  - FontAwesomeKit (2.1.8):
     - FontAwesomeKit/Core
     - FontAwesomeKit/FontAwesome
     - FontAwesomeKit/FoundationIcons
     - FontAwesomeKit/IonIcons
     - FontAwesomeKit/Zocial
-  - FontAwesomeKit/Core (2.1.7)
-  - FontAwesomeKit/FontAwesome (2.1.7):
+  - FontAwesomeKit/Core (2.1.8)
+  - FontAwesomeKit/FontAwesome (2.1.8):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/FoundationIcons (2.1.7):
+  - FontAwesomeKit/FoundationIcons (2.1.8):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/IonIcons (2.1.7):
+  - FontAwesomeKit/IonIcons (2.1.8):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/Zocial (2.1.7):
+  - FontAwesomeKit/Zocial (2.1.8):
     - FontAwesomeKit/Core
   - HexColors (2.2.1)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9)
-  - mockingbird-toolbox (0.9.4):
+  - mockingbird-toolbox (0.9.7):
     - mockingbird-toolbox/Assert
     - mockingbird-toolbox/BatteryMonitor
     - mockingbird-toolbox/BitmapPixelPlane
@@ -83,90 +83,94 @@ PODS:
     - mockingbird-toolbox/Singleton
     - mockingbird-toolbox/SnapshotImage-UIView
     - mockingbird-toolbox/StringFunctions
+    - mockingbird-toolbox/StringSizing-UIFont
     - mockingbird-toolbox/ThreadLocalStorage
     - mockingbird-toolbox/ThreadsafeCache
-  - mockingbird-toolbox/Assert (0.9.4)
-  - mockingbird-toolbox/BatteryMonitor (0.9.4):
+  - mockingbird-toolbox/Assert (0.9.7)
+  - mockingbird-toolbox/BatteryMonitor (0.9.7):
     - mockingbird-toolbox/Events
     - mockingbird-toolbox/ServiceManager
-  - mockingbird-toolbox/BitmapPixelPlane (0.9.4):
+  - mockingbird-toolbox/BitmapPixelPlane (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/ColorTools (0.9.4)
-  - mockingbird-toolbox/Common (0.9.4):
+  - mockingbird-toolbox/ColorTools (0.9.7)
+  - mockingbird-toolbox/Common (0.9.7):
     - mockingbird-toolbox/Assert
     - mockingbird-toolbox/Debug
     - mockingbird-toolbox/Runtime
-  - mockingbird-toolbox/Debug (0.9.4)
-  - mockingbird-toolbox/Events (0.9.4):
+  - mockingbird-toolbox/Debug (0.9.7)
+  - mockingbird-toolbox/Events (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/FieldListFormatter (0.9.4):
+  - mockingbird-toolbox/FieldListFormatter (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/FilesystemCache (0.9.4):
+  - mockingbird-toolbox/FilesystemCache (0.9.7):
     - mockingbird-toolbox/FilesystemOperations
     - mockingbird-toolbox/MessageDigest-NSString
     - mockingbird-toolbox/ThreadsafeCache
-  - mockingbird-toolbox/FilesystemOperations (0.9.4):
+  - mockingbird-toolbox/FilesystemOperations (0.9.7):
     - mockingbird-toolbox/OperationQueue
     - mockingbird-toolbox/Singleton
-  - mockingbird-toolbox/FormattedDescriptionObject (0.9.4):
+  - mockingbird-toolbox/FormattedDescriptionObject (0.9.7):
     - mockingbird-toolbox/FieldListFormatter
-  - mockingbird-toolbox/ImageScaling-UIImage (0.9.4):
+  - mockingbird-toolbox/ImageScaling-UIImage (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/Indentation-NSString (0.9.4):
+  - mockingbird-toolbox/Indentation-NSString (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/MBToolbox-NSError (0.9.4):
+  - mockingbird-toolbox/MBToolbox-NSError (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/MBToolbox-UIColor (0.9.4):
+  - mockingbird-toolbox/MBToolbox-UIColor (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/MessageDigest (0.9.4):
+  - mockingbird-toolbox/MessageDigest (0.9.7):
     - mockingbird-toolbox/MBToolbox-NSError
-  - mockingbird-toolbox/MessageDigest-Extensions (0.9.4):
+  - mockingbird-toolbox/MessageDigest-Extensions (0.9.7):
     - mockingbird-toolbox/MessageDigest-NSData
     - mockingbird-toolbox/MessageDigest-NSString
-  - mockingbird-toolbox/MessageDigest-NSData (0.9.4):
+  - mockingbird-toolbox/MessageDigest-NSData (0.9.7):
     - mockingbird-toolbox/MessageDigest
-  - mockingbird-toolbox/MessageDigest-NSString (0.9.4):
+  - mockingbird-toolbox/MessageDigest-NSString (0.9.7):
     - mockingbird-toolbox/MessageDigest
-  - mockingbird-toolbox/Module (0.9.4):
+  - mockingbird-toolbox/Module (0.9.7):
     - mockingbird-toolbox/Indentation-NSString
     - mockingbird-toolbox/Singleton
     - mockingbird-toolbox/ThreadLocalStorage
-  - mockingbird-toolbox/NetworkIndicator (0.9.4):
+  - mockingbird-toolbox/NetworkIndicator (0.9.7):
     - mockingbird-toolbox/Events
     - mockingbird-toolbox/Singleton
-  - mockingbird-toolbox/NetworkMonitor (0.9.4):
+  - mockingbird-toolbox/NetworkMonitor (0.9.7):
     - mockingbird-toolbox/Events
     - mockingbird-toolbox/ServiceManager
-  - mockingbird-toolbox/OperationQueue (0.9.4):
+  - mockingbird-toolbox/OperationQueue (0.9.7):
     - mockingbird-toolbox/MBToolbox-NSError
-  - mockingbird-toolbox/Regex-NSString (0.9.4):
+  - mockingbird-toolbox/Regex-NSString (0.9.7):
     - mockingbird-toolbox/RegexCache
-  - mockingbird-toolbox/RegexCache (0.9.4):
+  - mockingbird-toolbox/RegexCache (0.9.7):
     - mockingbird-toolbox/Singleton
     - mockingbird-toolbox/ThreadsafeCache
-  - mockingbird-toolbox/RoundedRectTools (0.9.4):
+  - mockingbird-toolbox/RoundedRectTools (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/Runtime (0.9.4)
-  - mockingbird-toolbox/ServiceManager (0.9.4):
+  - mockingbird-toolbox/Runtime (0.9.7)
+  - mockingbird-toolbox/ServiceManager (0.9.7):
     - mockingbird-toolbox/Singleton
-  - mockingbird-toolbox/Singleton (0.9.4):
+  - mockingbird-toolbox/Singleton (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/SnapshotImage-UIView (0.9.4):
+  - mockingbird-toolbox/SnapshotImage-UIView (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/StringFunctions (0.9.4):
+  - mockingbird-toolbox/StringFunctions (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/ThreadLocalStorage (0.9.4):
+  - mockingbird-toolbox/StringSizing-UIFont (0.9.7):
     - mockingbird-toolbox/Common
-  - mockingbird-toolbox/ThreadsafeCache (0.9.4):
+  - mockingbird-toolbox/ThreadLocalStorage (0.9.7):
+    - mockingbird-toolbox/Common
+  - mockingbird-toolbox/ThreadsafeCache (0.9.7):
     - mockingbird-toolbox/Common
   - MTStatusBarOverlay (0.9.1)
-  - Realm (0.84.0):
+  - Realm (0.85.0):
     - Realm/Headers
-  - Realm/Headers (0.84.0)
+  - Realm/Headers (0.85.0)
+  - Repro (0.2.8)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
-  - SSZipArchive (0.3.1)
+  - SSZipArchive (0.3.2)
   - SVProgressHUD (1.0)
   - UIActionSheet+Blocks (0.8.1)
   - UIAlertView+Blocks (0.8.1)
@@ -185,6 +189,7 @@ DEPENDENCIES:
   - mockingbird-toolbox
   - MTStatusBarOverlay
   - Realm
+  - Repro
   - SDWebImage
   - SSZipArchive
   - SVProgressHUD
@@ -194,23 +199,24 @@ DEPENDENCIES:
   - XCDYouTubeKit
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Base64: c6d74f31f150543b246a07e180ba813c88e59311
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
-  CrittercismSDK: d32f9f730158e3e646c445b752d7851710a1fed2
-  FontAwesomeKit: af6eef70d23986349284d2feb4e959459621587d
+  CrittercismSDK: 4da8d0e407fb1ef29eef98678c1f90be4943b85e
+  FontAwesomeKit: a2edea3111dab107b4cc43b85881b404eb063385
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  mockingbird-toolbox: ea21ff0efc73719864edc0f82c06886b73872ac6
+  mockingbird-toolbox: d73d0f853d1cd4281acedea17284af30c1e08511
   MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
-  Realm: 097412d7bcbba45ad5037add12e0395136070d88
+  Realm: 01c074b534be68b55ba4228a3b16cf41da7af14d
+  Repro: 4c19428a976db98dfb5209dbff65657fc18bc390
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SSZipArchive: 6dc0ea3fe4b55574bee23c9f01d7c0f8437d59ef
+  SSZipArchive: 11299a4e89821bd4085b12f25edaa85853e0051c
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   UITextFieldWithLimit: 73fc6d57d64b0e7913c6190199d9864bb9f52969
   XCDYouTubeKit: 65d5f5b9fe4e731327ab61ecc253b8e70e5d5a4d
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.1
