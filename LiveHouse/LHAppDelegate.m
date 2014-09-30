@@ -9,6 +9,7 @@
 #import "LHAppDelegate.h"
 #import <AFNetworkActivityIndicatorManager.h>
 #import <Repro/ReproInsight.h>
+#import "GAI.h"
 
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"CRASH: %@", exception);
@@ -29,6 +30,18 @@ void uncaughtExceptionHandler(NSException *exception) {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+//    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+//    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-55278022-1"];
     
     // Repro
     [ReproInsight setupWithToken:@"bb0feda5-f142-46ec-b1b9-62387f7bc03b"];
