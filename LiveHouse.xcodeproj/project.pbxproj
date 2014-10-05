@@ -21,6 +21,12 @@
 		2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0A19B30400002DDEA4 /* 02.aiff */; };
 		2718AC1019B31BDC002DDEA4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0F19B31BDC002DDEA4 /* info.png */; };
 		271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 271FAC5C19BE0B5A00138174 /* anotherstory.jpg */; };
+		273194D919E1051200A31748 /* LHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194D819E1051200A31748 /* LHUtils.m */; };
+		273194E719E1128F00A31748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E419E1128F00A31748 /* Parse.framework */; };
+		273194E819E1128F00A31748 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E519E1128F00A31748 /* ParseFacebookUtils.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		273194EA19E1153B00A31748 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E919E1153B00A31748 /* Social.framework */; };
+		273194EC19E1155100A31748 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194EB19E1155100A31748 /* Accounts.framework */; };
+		273194EE19E1164C00A31748 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194ED19E1164C00A31748 /* FacebookSDK.framework */; };
 		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
 		273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E219B3EE060000C83E /* LHInfoViewController.m */; };
 		273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E519B3EE180000C83E /* LHArtistListViewController.m */; };
@@ -96,6 +102,13 @@
 		2718AC0A19B30400002DDEA4 /* 02.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 02.aiff; sourceTree = "<group>"; };
 		2718AC0F19B31BDC002DDEA4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		271FAC5C19BE0B5A00138174 /* anotherstory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = anotherstory.jpg; path = artist/anotherstory.jpg; sourceTree = "<group>"; };
+		273194D819E1051200A31748 /* LHUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHUtils.m; sourceTree = "<group>"; };
+		273194DA19E1053900A31748 /* LHUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHUtils.h; sourceTree = "<group>"; };
+		273194E419E1128F00A31748 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		273194E519E1128F00A31748 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		273194E919E1153B00A31748 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		273194EB19E1155100A31748 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		273194ED19E1164C00A31748 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
 		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
 		273C28E119B3EE060000C83E /* LHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHInfoViewController.h; sourceTree = "<group>"; };
@@ -187,6 +200,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273194EE19E1164C00A31748 /* FacebookSDK.framework in Frameworks */,
+				273194EC19E1155100A31748 /* Accounts.framework in Frameworks */,
+				273194EA19E1153B00A31748 /* Social.framework in Frameworks */,
 				27CE2D1D19DA2E120015D47F /* libsqlite3.0.dylib in Frameworks */,
 				27CE2D1B19DA2DCE0015D47F /* libz.dylib in Frameworks */,
 				27CE2D1919DA2D980015D47F /* SystemConfiguration.framework in Frameworks */,
@@ -194,8 +210,10 @@
 				2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */,
 				273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */,
 				27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */,
+				273194E819E1128F00A31748 /* ParseFacebookUtils.framework in Frameworks */,
 				27CE2D1519DA2CF50015D47F /* libGoogleAnalyticsServices.a in Frameworks */,
 				27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */,
+				273194E719E1128F00A31748 /* Parse.framework in Frameworks */,
 				278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */,
 				27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */,
 				2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */,
@@ -298,6 +316,15 @@
 			path = music;
 			sourceTree = "<group>";
 		};
+		273194E219E1128F00A31748 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				273194E419E1128F00A31748 /* Parse.framework */,
+				273194E519E1128F00A31748 /* ParseFacebookUtils.framework */,
+			);
+			path = Parse;
+			sourceTree = "<group>";
+		};
 		273C290219B3FFE20000C83E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +356,8 @@
 		278C1F1019B2DE62000F9B58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				273194DA19E1053900A31748 /* LHUtils.h */,
+				273194D819E1051200A31748 /* LHUtils.m */,
 				278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */,
 				278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */,
 				278C1F1519B2E1EE000F9B58 /* LHConfig.h */,
@@ -407,6 +436,7 @@
 		27CE2D0619DA2CF50015D47F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				273194E219E1128F00A31748 /* Parse */,
 				27CE2D0719DA2CF50015D47F /* GoogleAnalytics */,
 			);
 			path = Vendors;
@@ -471,6 +501,9 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				273194ED19E1164C00A31748 /* FacebookSDK.framework */,
+				273194EB19E1155100A31748 /* Accounts.framework */,
+				273194E919E1153B00A31748 /* Social.framework */,
 				27CE2D1C19DA2E120015D47F /* libsqlite3.0.dylib */,
 				27CE2D1A19DA2DCE0015D47F /* libz.dylib */,
 				27CE2D1819DA2D980015D47F /* SystemConfiguration.framework */,
@@ -705,6 +738,7 @@
 				2786956919B61DF60086137A /* LHMovieViewController.m in Sources */,
 				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
 				273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */,
+				273194D919E1051200A31748 /* LHUtils.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,
 				278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */,
@@ -839,8 +873,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/Parse",
+					/Users/uehara.masayuki/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
@@ -863,8 +902,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/Parse",
+					/Users/uehara.masayuki/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
