@@ -27,6 +27,10 @@ pod "Repro" # https://repro.io/
 # pod "SlackTextViewController" https://github.com/slackhq/SlackTextViewController
 
 # pod 'GLDTween', '~> 1.0' # https://github.com/theguildjp/GLDTween/
+
+# https://github.com/azu/LupinusHTTP
+# pod "LupinusHTTP"
+
 post_install do | installer |
   require 'fileutils'
   FileUtils.cp_r(
