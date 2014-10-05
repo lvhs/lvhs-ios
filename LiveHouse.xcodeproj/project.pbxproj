@@ -159,7 +159,7 @@
 		27CE2D1A19DA2DCE0015D47F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		27CE2D1C19DA2E120015D47F /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overlay.png; path = common/overlay.png; sourceTree = "<group>"; };
-		27EFEED219AAA725002740D1 /* LiveHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27EFEED219AAA725002740D1 /* livehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = livehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EFEED519AAA725002740D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27EFEED719AAA725002740D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		27EFEED919AAA725002740D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -462,7 +462,7 @@
 		27EFEED319AAA725002740D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27EFEED219AAA725002740D1 /* LiveHouse.app */,
+				27EFEED219AAA725002740D1 /* livehouse.app */,
 				27EFEEF319AAA725002740D1 /* LiveHouseTests.xctest */,
 			);
 			name = Products;
@@ -553,7 +553,7 @@
 			);
 			name = LiveHouse;
 			productName = LiveHouse;
-			productReference = 27EFEED219AAA725002740D1 /* LiveHouse.app */;
+			productReference = 27EFEED219AAA725002740D1 /* livehouse.app */;
 			productType = "com.apple.product-type.application";
 		};
 		27EFEEF219AAA725002740D1 /* LiveHouseTests */ = {
@@ -850,7 +850,7 @@
 					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = livehouse;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -873,7 +873,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = livehouse;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};

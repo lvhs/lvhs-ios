@@ -26,6 +26,7 @@ pod "Repro" # https://repro.io/
 # replacement for UITableViewController & UICollectionViewController
 # pod "SlackTextViewController" https://github.com/slackhq/SlackTextViewController
 
+# pod 'GLDTween', '~> 1.0' # https://github.com/theguildjp/GLDTween/
 post_install do | installer |
   require 'fileutils'
   FileUtils.cp_r(
