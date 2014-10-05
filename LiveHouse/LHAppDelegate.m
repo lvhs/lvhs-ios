@@ -48,6 +48,9 @@ void uncaughtExceptionHandler(NSException *exception) {
     // Repro
     [ReproInsight setupWithToken:@"bb0feda5-f142-46ec-b1b9-62387f7bc03b"];
     
+    [Parse setApplicationId:@"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k"
+                  clientKey:@"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi"];
+    
     // Register for Push Notitications, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
