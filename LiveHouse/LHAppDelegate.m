@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
+#import "LHConsts.h"
 #import "LHAppDelegate.h"
 #import <AFNetworkActivityIndicatorManager.h>
 #import <Parse/Parse.h>
@@ -43,13 +44,17 @@ void uncaughtExceptionHandler(NSException *exception) {
 //    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     
     // Initialize tracker. Replace with your tracking ID.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-55278022-1"];
+//    [[GAI sharedInstance] trackerWithTrackingId:@"UA-55278022-1"];
+    [[GAI sharedInstance] trackerWithTrackingId:LH_GAI_TRACKING_ID];
     
     // Repro
-    [ReproInsight setupWithToken:@"bb0feda5-f142-46ec-b1b9-62387f7bc03b"];
+//    [ReproInsight setupWithToken:@"bb0feda5-f142-46ec-b1b9-62387f7bc03b"];
+    [ReproInsight setupWithToken:LH_REPRO_TOKEN];
     
-    [Parse setApplicationId:@"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k"
-                  clientKey:@"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi"];
+    [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
+                  clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
+//    [Parse setApplicationId:@"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k"
+//                  clientKey:@"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi"];
     
     // Register for Push Notitications, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {

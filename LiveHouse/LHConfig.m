@@ -18,13 +18,15 @@
 - (LHBaseConfigItem*)productionConfig {
     return [[LHBaseConfigItem alloc]
             initWithName:LH_ENV_PRO
-            withDict:@
-            {
-            LH_CONFIG_KEY_API_BASE_URL: @"https://jsonrpc.mangabox.me",
-            LH_CONFIG_KEY_WEB_BASE_URL: @"https://www.mangabox.me",
-            LH_CONFIG_KEY_INDIES_BASE_URL: @"https://indies.mangabox.me",
-            LH_CONFIG_KEY_RESOURCE_BASE_URL: @"https://image-a.mangabox.me",
-            LH_CONFIG_KEY_COOKIE_DOMAIN: @".mangabox.me",
+            withDict:@{
+                LH_CONFIG_KEY_API_BASE_URL:          @"http://jsonrpc.lvhs.jp",
+                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://www.lvhs.jp",
+                LH_CONFIG_KEY_INDIES_BASE_URL:       @"http://indies.lvhs.jp",
+                LH_CONFIG_KEY_RESOURCE_BASE_URL:     @"http://image-a.lvhs.jp",
+                LH_CONFIG_KEY_COOKIE_DOMAIN:         @".lvsh.jp",
+                
+                LH_CONFIG_KEY_PARSE_APPLICATION_KEY: @"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k",
+                LH_CONFIG_KEY_PARSE_CLIENT_KEY:      @"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi",
             }];
 }
 

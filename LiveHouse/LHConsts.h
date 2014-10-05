@@ -8,8 +8,8 @@
 
 #import "LHConfig.h"
 
-#ifndef MangaJapan_LHConsts_h
-#define MangaJapan_LHConsts_h
+#ifndef LiveHouse_LHConsts_h
+#define LiveHouse_LHConsts_h
 
 ////////////////
 //接続先サーバー
@@ -18,6 +18,16 @@
 #define LH_INDIES_BASE_URL ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_INDIES_BASE_URL])
 #define LH_RESOURCE_BASE_URL ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_RESOURCE_BASE_URL])
 #define LH_COOKIE_DOMAIN ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_COOKIE_DOMAIN])
+
+// Parse
+#define LH_PARSE_APPLICATION_ID ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_PARSE_APPLICATION_KEY])
+#define LH_PARSE_CLIENT_ID ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY])
+
+// Google Analytics
+#define LH_GAI_TRACKING_ID (@"UA-55278022-1")
+
+// Repro
+#define LH_REPRO_TOKEN (@"bb0feda5-f142-46ec-b1b9-62387f7bc03b")
 
 ////////////////
 //開発用

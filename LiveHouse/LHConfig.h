@@ -25,6 +25,9 @@
 #define LH_CONFIG_KEY_INDIES_BASE_URL (@"web.indies.url")
 #define LH_CONFIG_KEY_RESOURCE_BASE_URL (@"resource.base.url")
 
+#define LH_CONFIG_KEY_PARSE_APPLICATION_KEY (@"parse.application.key")
+#define LH_CONFIG_KEY_PARSE_CLIENT_KEY      (@"parse.client.key")
+
 @interface LHConfig : LHBaseConfig
 
 + (LHConfig*)sharedInstance;
