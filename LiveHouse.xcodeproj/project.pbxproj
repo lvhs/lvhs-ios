@@ -27,6 +27,7 @@
 		273194EA19E1153B00A31748 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E919E1153B00A31748 /* Social.framework */; };
 		273194EC19E1155100A31748 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194EB19E1155100A31748 /* Accounts.framework */; };
 		273194EE19E1164C00A31748 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194ED19E1164C00A31748 /* FacebookSDK.framework */; };
+		273194F419E1AECA00A31748 /* LHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194F319E1AECA00A31748 /* LHHomeViewController.m */; };
 		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
 		273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E219B3EE060000C83E /* LHInfoViewController.m */; };
 		273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E519B3EE180000C83E /* LHArtistListViewController.m */; };
@@ -109,6 +110,8 @@
 		273194E919E1153B00A31748 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		273194EB19E1155100A31748 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		273194ED19E1164C00A31748 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		273194F219E1AECA00A31748 /* LHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHHomeViewController.h; sourceTree = "<group>"; };
+		273194F319E1AECA00A31748 /* LHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHHomeViewController.m; sourceTree = "<group>"; };
 		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
 		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
 		273C28E119B3EE060000C83E /* LHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHInfoViewController.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				2786956B19B61E040086137A /* LHCPIViewController.m */,
 				2786957A19B68FF60086137A /* LHCPIDetailViewController.h */,
 				2786957B19B68FF60086137A /* LHCPIDetailViewController.m */,
+				273194F219E1AECA00A31748 /* LHHomeViewController.h */,
+				273194F319E1AECA00A31748 /* LHHomeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */,
 				2786956919B61DF60086137A /* LHMovieViewController.m in Sources */,
 				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
+				273194F419E1AECA00A31748 /* LHHomeViewController.m in Sources */,
 				273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */,
 				273194D919E1051200A31748 /* LHUtils.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
