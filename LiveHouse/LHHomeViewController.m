@@ -9,6 +9,8 @@
 #import "LHHomeViewController.h"
 
 @interface LHHomeViewController () <UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+- (IBAction)goHome:(id)sender;
 
 @end
 
@@ -18,9 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIWebView *wv = [[UIWebView alloc] init];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goHome:)];
+    UIWebView *wv = _webView;
+    [wv addGestureRecognizer:tapGesture];
     wv.delegate = self;
-    wv.frame = self.view.frame;
+//    wv.frame = self.view.frame;
     wv.scalesPageToFit = YES;
     [self.view addSubview:wv];
     NSURL *url = [NSURL URLWithString:@"http://app.lvhs.jp/app"];
@@ -42,6 +46,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)goHome:(id)sender {
+    [self performSegueWithIdentifier:@"goHome" sender:self];
 }
 
 /*

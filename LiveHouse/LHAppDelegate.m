@@ -34,43 +34,11 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-//    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [self initGoogleAnalytics];
+    [self initRepro];
+    [self initParse];
     
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-//    [GAI sharedInstance].dispatchInterval = 20;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker. Replace with your tracking ID.
-//    [[GAI sharedInstance] trackerWithTrackingId:@"UA-55278022-1"];
-    [[GAI sharedInstance] trackerWithTrackingId:LH_GAI_TRACKING_ID];
-    
-    // Repro
-//    [ReproInsight setupWithToken:@"bb0feda5-f142-46ec-b1b9-62387f7bc03b"];
-    [ReproInsight setupWithToken:LH_REPRO_TOKEN];
-    
-    [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
-                  clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
-//    [Parse setApplicationId:@"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k"
-//                  clientKey:@"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi"];
-    
-    // Register for Push Notitications, if running iOS 8
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                        UIUserNotificationTypeBadge |
-                                                        UIUserNotificationTypeSound);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                                 categories:nil];
-        [application registerUserNotificationSettings:settings];
-        [application registerForRemoteNotifications];
-    } else {
-        // Register for Push Notifications before iOS 8
-        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                                         UIRemoteNotificationTypeAlert |
-                                                         UIRemoteNotificationTypeSound)];
-    }
+    [self registerPushNotification:application];
     
     return YES;
 }
@@ -103,7 +71,58 @@ void uncaughtExceptionHandler(NSException *exception) {
 }
 
 #pragma mark -
+#pragma mark Parse
+
+- (void)initParse {
+    [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
+                  clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
+}
+
+#pragma mark -
+#pragma mark Repro
+
+- (void)initRepro {
+    // Repro
+    [ReproInsight setupWithToken:LH_REPRO_TOKEN];
+}
+
+#pragma mark -
+#pragma mark Google Analytics
+
+- (void)initGoogleAnalytics {
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+//    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+//    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:LH_GAI_TRACKING_ID];
+}
+
+#pragma mark -
 #pragma mark Push Notification
+
+- (void)registerPushNotification:(UIApplication *)application {
+    // Register for Push Notitications, if running iOS 8
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                        UIUserNotificationTypeBadge |
+                                                        UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                 categories:nil];
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    } else {
+        // Register for Push Notifications before iOS 8
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                         UIRemoteNotificationTypeAlert |
+                                                         UIRemoteNotificationTypeSound)];
+    }
+}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
