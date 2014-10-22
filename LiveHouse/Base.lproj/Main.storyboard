@@ -52,15 +52,53 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <gestureRecognizers/>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-g9-SlY">
+                                <rect key="frame" x="0.0" y="64" width="160" height="274"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XSc-2k-jdx">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="274"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menu_cell" textLabel="cg7-Uw-fOc" style="IBUITableViewCellStyleDefault" id="Kht-4w-gqy">
+                                                <rect key="frame" x="0.0" y="22" width="160" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kht-4w-gqy" id="atm-mU-xHg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="お知らせ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cg7-Uw-fOc">
+                                                            <rect key="frame" x="15" y="0.0" width="130" height="43"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <gestureRecognizers/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="btnItem" destination="IFL-7Q-X32" id="4IP-uh-IUr"/>
+                        <outlet property="menuView" destination="2eP-g9-SlY" id="ZdV-0s-Zrp"/>
                         <outlet property="navigationBar" destination="12g-bN-4GH" id="mWc-5E-Amb"/>
                         <outlet property="overlay" destination="Jci-M7-aBp" id="LWQ-OM-u6f"/>
+                        <outlet property="tableView" destination="XSc-2k-jdx" id="BTX-W4-ZRb"/>
                         <outlet property="webView" destination="sV7-0P-nrX" id="8iv-Sv-XpN"/>
-                        <segue destination="gZM-Zg-G0Z" kind="modal" identifier="goHome" modalTransitionStyle="crossDissolve" id="fIf-Cs-WFc"/>
+                        <segue destination="TEg-3w-F1a" kind="modal" identifier="goArtist" id="7Cd-Qd-mnR"/>
+                        <segue destination="RHS-tu-t1e" kind="modal" identifier="goInfo" id="R2M-dB-q1H"/>
+                        <segue destination="Fci-23-3u4" kind="modal" identifier="goSetting" id="Wdz-M7-JSD"/>
+                        <segue destination="dfp-Ge-k2X" kind="modal" identifier="goReview" id="E5I-zu-Dwl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-9l-Un9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -70,7 +108,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1297" y="-151"/>
+            <point key="canvasLocation" x="-925" y="555"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="1KE-Wk-vaI">
@@ -229,12 +267,6 @@
                         <outlet property="menuView" destination="78U-4U-Xm6" id="UzY-zT-Ig6"/>
                         <outlet property="overLay" destination="qTs-2Z-hTS" id="Omw-1U-CmR"/>
                         <outlet property="tableView" destination="3Xo-mq-BXj" id="uo2-B5-RrQ"/>
-                        <segue destination="TEg-3w-F1a" kind="modal" identifier="goArtist" modalTransitionStyle="crossDissolve" id="V76-cA-niX"/>
-                        <segue destination="RHS-tu-t1e" kind="modal" identifier="goInfo" modalTransitionStyle="crossDissolve" id="Bnl-P2-B8Q"/>
-                        <segue destination="XSf-SJ-tPm" kind="modal" identifier="goArtistList" modalTransitionStyle="crossDissolve" id="02a-vP-xgg"/>
-                        <segue destination="E8c-Gp-g97" kind="modal" identifier="goPlaylist" modalTransitionStyle="crossDissolve" id="pag-ba-fX7"/>
-                        <segue destination="Fci-23-3u4" kind="modal" identifier="goSetting" modalTransitionStyle="crossDissolve" id="FPC-Gg-VJg"/>
-                        <segue destination="dfp-Ge-k2X" kind="modal" identifier="goReview" modalTransitionStyle="crossDissolve" id="mLP-C5-tbW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Un-oL-cS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -269,7 +301,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-830" y="-151"/>
+            <point key="canvasLocation" x="-925" y="-151"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="g8d-2m-S2h">
@@ -309,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bP-5K-MQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-822" y="570"/>
+            <point key="canvasLocation" x="-1080" y="1340"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="KAG-I6-Ktu">
@@ -349,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Iv-74-8JK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-319" y="1352"/>
+            <point key="canvasLocation" x="-539" y="1340"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="CyH-7p-MZV">
@@ -389,87 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbj-Gy-JCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197" y="1352"/>
-        </scene>
-        <!--Artist List View Controller-->
-        <scene sceneID="utZ-op-JAE">
-            <objects>
-                <viewController id="XSf-SJ-tPm" customClass="LHArtistListViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NgS-HI-fir"/>
-                        <viewControllerLayoutGuide type="bottom" id="TLM-OB-MLQ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="46Z-YB-gxf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="SdZ-X2-95e" userLabel="Background Image">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04I-5c-lmh">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Artist" id="J8r-V2-h2y">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="cCs-0b-VnF">
-                                            <connections>
-                                                <action selector="back:" destination="XSf-SJ-tPm" id="iUN-rb-nMt"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Eg-zL-JW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-319" y="570"/>
-        </scene>
-        <!--Playlist View Controller-->
-        <scene sceneID="EXW-J9-hYg">
-            <objects>
-                <viewController id="E8c-Gp-g97" customClass="LHPlaylistViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Oq-bZ-2iD"/>
-                        <viewControllerLayoutGuide type="bottom" id="rBV-Yw-VEs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GfC-1n-fSF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kcd-Sx-OE8" userLabel="Background Image">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnn-el-Eaz">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Playlist" id="Www-4U-0TB">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="320-7K-RwT">
-                                            <connections>
-                                                <action selector="back:" destination="E8c-Gp-g97" id="vdw-Ze-Ohv"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="518-z8-jwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="197" y="570"/>
+            <point key="canvasLocation" x="-45" y="1340"/>
         </scene>
         <!--Artist View Controller-->
         <scene sceneID="CdA-I4-a4U">
@@ -879,6 +831,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="V76-cA-niX"/>
+        <segue reference="7Cd-Qd-mnR"/>
     </inferredMetricsTieBreakers>
 </document>

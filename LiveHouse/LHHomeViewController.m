@@ -14,11 +14,13 @@
 #import "LHHomeViewController.h"
 #import "LHURLRequest.h"
 
-@interface LHHomeViewController () <UIWebViewDelegate>
+@interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnItem;
 @property (weak, nonatomic) IBOutlet UIImageView *overlay;
+@property (weak, nonatomic) IBOutlet UIView *menuView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)goHome:(id)sender;
 - (IBAction)toggleMenu:(id)sender;
 
@@ -45,6 +47,10 @@
     [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
     _btnItem.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
     [_btnItem setAction:@selector(toggleMenu:)];
+    
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,8 +125,6 @@
                                                                          action:@selector(backWasClicked:)];
             [self.navigationItem setLeftBarButtonItem:backItem animated:YES];
         }
-        NSLog(@"%@", _navigationBar.items);
-        NSLog(@"%@", self.navigationItem.leftBarButtonItems);
     }
     else {
         [self.navigationItem setLeftBarButtonItem:nil animated:YES];
@@ -134,6 +138,61 @@
     }
 }
 
+#pragma mark - TableView
+
+-(NSInteger)tableView:(UITableView *)tableView
+numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+-(UITableViewCell *)tableView:
+(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString *cellIdentifier = @"menu_cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    NSArray *items = @[
+                       @"友達紹介",
+                       @"設定・問い合わせ",
+                       @"レビュー"
+                       ];
+    
+    // セルが作成されていないか?
+    if (!cell) { // yes
+        // セルを作成
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    // セルにテキストを設定
+    // セルの内容はNSArray型の「items」にセットされているものとする
+    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goMenu:)];
+    [cell setTag:indexPath.row];
+    [cell addGestureRecognizer:tapGesture];
+    
+    return cell;
+}
+
+- (void)goMenu:(UITapGestureRecognizer *)sender {
+    if (sender.view.tag == 0) {
+        NSString *sharedText = @"LiveHouseをShareする";
+        NSURL *url = [NSURL URLWithString:@"http://app.lvhs.jp/"];
+        NSArray *activityItems = @[sharedText, url];
+        UIActivity *activity = [[UIActivity alloc] init];
+        NSArray *appActivities = @[activity];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                 applicationActivities:appActivities];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+    else if (sender.view.tag == 1) {
+        [self performSegueWithIdentifier:@"goSetting" sender:self];
+    }
+    else if (sender.view.tag == 2) {
+        [self performSegueWithIdentifier:@"goReview" sender:self];
+    }
+}
 
 - (IBAction)goHome:(id)sender {
     LHConfig *config = [LHConfig sharedInstance];
@@ -143,6 +202,7 @@
 }
 
 - (IBAction)toggleMenu:(id)sender {
+    _menuView.hidden = !_menuView.hidden;
     _overlay.hidden = !_overlay.hidden;
 }
 
