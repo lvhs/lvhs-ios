@@ -17,8 +17,6 @@
 		27130E8219BCB75D00970DA7 /* 01-swankydank.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27130E8119BCB75D00970DA7 /* 01-swankydank.jpg */; };
 		27130E8419BCB77100970DA7 /* 01-wrongcity.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27130E8319BCB77100970DA7 /* 01-wrongcity.jpg */; };
 		27130E8719BCBD4D00970DA7 /* 01-myfirststory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27130E8619BCBD4D00970DA7 /* 01-myfirststory.jpg */; };
-		2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0919B30400002DDEA4 /* 01.aiff */; };
-		2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0A19B30400002DDEA4 /* 02.aiff */; };
 		2718AC1019B31BDC002DDEA4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0F19B31BDC002DDEA4 /* info.png */; };
 		271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 271FAC5C19BE0B5A00138174 /* anotherstory.jpg */; };
 		273194D919E1051200A31748 /* LHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194D819E1051200A31748 /* LHUtils.m */; };
@@ -30,9 +28,6 @@
 		273194F419E1AECA00A31748 /* LHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194F319E1AECA00A31748 /* LHHomeViewController.m */; };
 		27336E1419ED7FC400416A74 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27336E1319ED7FC400416A74 /* Security.framework */; };
 		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
-		273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E219B3EE060000C83E /* LHInfoViewController.m */; };
-		273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E519B3EE180000C83E /* LHArtistListViewController.m */; };
-		273C28E919B3EE240000C83E /* LHPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28E819B3EE240000C83E /* LHPlaylistViewController.m */; };
 		273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EE19B3EE440000C83E /* LHSettingViewController.m */; };
 		273C28F219B3EE510000C83E /* LHReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28F119B3EE510000C83E /* LHReviewViewController.m */; };
 		273C28F419B3F2500000C83E /* music-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28F319B3F2500000C83E /* music-title.png */; };
@@ -47,7 +42,6 @@
 		2786956C19B61E040086137A /* LHCPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956B19B61E040086137A /* LHCPIViewController.m */; };
 		2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786956D19B626250086137A /* MediaPlayer.framework */; };
 		2786957119B62D840086137A /* LHMoviePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786957019B62D840086137A /* LHMoviePlayerView.m */; };
-		2786957319B6870D0086137A /* 01.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2786956519B618250086137A /* 01.mp4 */; };
 		2786957619B68D220086137A /* cpi01.png in Resources */ = {isa = PBXBuildFile; fileRef = 2786957419B68D220086137A /* cpi01.png */; };
 		2786957719B68D220086137A /* cpi02.png in Resources */ = {isa = PBXBuildFile; fileRef = 2786957519B68D220086137A /* cpi02.png */; };
 		2786957919B68DBC0086137A /* cpi-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2786957819B68DBC0086137A /* cpi-title.png */; };
@@ -103,8 +97,6 @@
 		27130E8119BCB75D00970DA7 /* 01-swankydank.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "01-swankydank.jpg"; path = "swankydank/01-swankydank.jpg"; sourceTree = "<group>"; };
 		27130E8319BCB77100970DA7 /* 01-wrongcity.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "01-wrongcity.jpg"; path = "wrongcity/01-wrongcity.jpg"; sourceTree = "<group>"; };
 		27130E8619BCBD4D00970DA7 /* 01-myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-myfirststory.jpg"; sourceTree = "<group>"; };
-		2718AC0919B30400002DDEA4 /* 01.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 01.aiff; sourceTree = "<group>"; };
-		2718AC0A19B30400002DDEA4 /* 02.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = 02.aiff; sourceTree = "<group>"; };
 		2718AC0F19B31BDC002DDEA4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		271FAC5C19BE0B5A00138174 /* anotherstory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = anotherstory.jpg; path = artist/anotherstory.jpg; sourceTree = "<group>"; };
 		273194D819E1051200A31748 /* LHUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHUtils.m; sourceTree = "<group>"; };
@@ -119,12 +111,6 @@
 		27336E1319ED7FC400416A74 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
 		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
-		273C28E119B3EE060000C83E /* LHInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHInfoViewController.h; sourceTree = "<group>"; };
-		273C28E219B3EE060000C83E /* LHInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHInfoViewController.m; sourceTree = "<group>"; };
-		273C28E419B3EE180000C83E /* LHArtistListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistListViewController.h; sourceTree = "<group>"; };
-		273C28E519B3EE180000C83E /* LHArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistListViewController.m; sourceTree = "<group>"; };
-		273C28E719B3EE240000C83E /* LHPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHPlaylistViewController.h; sourceTree = "<group>"; };
-		273C28E819B3EE240000C83E /* LHPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHPlaylistViewController.m; sourceTree = "<group>"; };
 		273C28ED19B3EE440000C83E /* LHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSettingViewController.h; sourceTree = "<group>"; };
 		273C28EE19B3EE440000C83E /* LHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSettingViewController.m; sourceTree = "<group>"; };
 		273C28F019B3EE510000C83E /* LHReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHReviewViewController.h; sourceTree = "<group>"; };
@@ -139,7 +125,6 @@
 		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
 		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
-		2786956519B618250086137A /* 01.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 01.mp4; sourceTree = "<group>"; };
 		2786956719B61DF60086137A /* LHMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMovieViewController.h; sourceTree = "<group>"; };
 		2786956819B61DF60086137A /* LHMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMovieViewController.m; sourceTree = "<group>"; };
 		2786956A19B61E040086137A /* LHCPIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCPIViewController.h; sourceTree = "<group>"; };
@@ -322,15 +307,6 @@
 			name = wrongcity;
 			sourceTree = "<group>";
 		};
-		2718AC0819B303E8002DDEA4 /* music */ = {
-			isa = PBXGroup;
-			children = (
-				2718AC0919B30400002DDEA4 /* 01.aiff */,
-				2718AC0A19B30400002DDEA4 /* 02.aiff */,
-			);
-			path = music;
-			sourceTree = "<group>";
-		};
 		273194E219E1128F00A31748 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,14 +325,6 @@
 				2786957019B62D840086137A /* LHMoviePlayerView.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		2786956419B617EF0086137A /* video */ = {
-			isa = PBXGroup;
-			children = (
-				2786956519B618250086137A /* 01.mp4 */,
-			);
-			path = video;
 			sourceTree = "<group>";
 		};
 		278C1F0619B2D5F1000F9B58 /* Extensions */ = {
@@ -393,12 +361,6 @@
 				278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */,
 				273C28DE19B3E6120000C83E /* LHArtistViewController.h */,
 				273C28DF19B3E6120000C83E /* LHArtistViewController.m */,
-				273C28E119B3EE060000C83E /* LHInfoViewController.h */,
-				273C28E219B3EE060000C83E /* LHInfoViewController.m */,
-				273C28E419B3EE180000C83E /* LHArtistListViewController.h */,
-				273C28E519B3EE180000C83E /* LHArtistListViewController.m */,
-				273C28E719B3EE240000C83E /* LHPlaylistViewController.h */,
-				273C28E819B3EE240000C83E /* LHPlaylistViewController.m */,
 				273C28ED19B3EE440000C83E /* LHSettingViewController.h */,
 				273C28EE19B3EE440000C83E /* LHSettingViewController.m */,
 				273C28F019B3EE510000C83E /* LHReviewViewController.h */,
@@ -428,8 +390,6 @@
 		278C1FAC19B2F8CF000F9B58 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2718AC0819B303E8002DDEA4 /* music */,
-				2786956419B617EF0086137A /* video */,
 				278C1FAD19B2F8F6000F9B58 /* image */,
 			);
 			name = Resources;
@@ -685,8 +645,6 @@
 				271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */,
 				27130E7C19BCB74100970DA7 /* 01-anotherstory.jpg in Resources */,
 				27130E7719BCB71B00970DA7 /* loth.jpg in Resources */,
-				2718AC0C19B30400002DDEA4 /* 02.aiff in Resources */,
-				2718AC0B19B30400002DDEA4 /* 01.aiff in Resources */,
 				2786957619B68D220086137A /* cpi01.png in Resources */,
 				273C28F819B3F3760000C83E /* play-icon.png in Resources */,
 				27130E8219BCB75D00970DA7 /* 01-swankydank.jpg in Resources */,
@@ -698,7 +656,6 @@
 				27EFEF0B19AAB76F002740D1 /* background.png in Resources */,
 				27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */,
 				27130E8019BCB74D00970DA7 /* 02-myfirststory.jpg in Resources */,
-				2786957319B6870D0086137A /* 01.mp4 in Resources */,
 				27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,7 +708,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				273C28E319B3EE060000C83E /* LHInfoViewController.m in Sources */,
 				278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */,
 				2786956C19B61E040086137A /* LHCPIViewController.m in Sources */,
 				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,
@@ -771,8 +727,6 @@
 				273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */,
 				278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */,
 				27FCF2D719F54D560092A733 /* LHURLRequest.m in Sources */,
-				273C28E919B3EE240000C83E /* LHPlaylistViewController.m in Sources */,
-				273C28E619B3EE180000C83E /* LHArtistListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

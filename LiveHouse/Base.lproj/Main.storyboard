@@ -52,8 +52,8 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-g9-SlY">
-                                <rect key="frame" x="0.0" y="64" width="160" height="274"/>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-g9-SlY">
+                                <rect key="frame" x="0.0" y="64" width="160" height="86"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XSc-2k-jdx">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="274"/>
@@ -83,7 +83,6 @@
                                         <sections/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,7 +95,6 @@
                         <outlet property="tableView" destination="XSc-2k-jdx" id="BTX-W4-ZRb"/>
                         <outlet property="webView" destination="sV7-0P-nrX" id="8iv-Sv-XpN"/>
                         <segue destination="TEg-3w-F1a" kind="modal" identifier="goArtist" id="7Cd-Qd-mnR"/>
-                        <segue destination="RHS-tu-t1e" kind="modal" identifier="goInfo" id="R2M-dB-q1H"/>
                         <segue destination="Fci-23-3u4" kind="modal" identifier="goSetting" id="Wdz-M7-JSD"/>
                         <segue destination="dfp-Ge-k2X" kind="modal" identifier="goReview" id="E5I-zu-Dwl"/>
                     </connections>
@@ -303,46 +301,6 @@
             </objects>
             <point key="canvasLocation" x="-925" y="-151"/>
         </scene>
-        <!--Info View Controller-->
-        <scene sceneID="g8d-2m-S2h">
-            <objects>
-                <viewController id="RHS-tu-t1e" customClass="LHInfoViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fkV-E5-yF8"/>
-                        <viewControllerLayoutGuide type="bottom" id="EDV-y2-A6C"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eGc-r7-g59">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="r8M-x3-o4f" userLabel="Background Image">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-gf-Q6J">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Info" id="S3h-Re-vIQ">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="38U-uN-guX">
-                                            <connections>
-                                                <action selector="back:" destination="RHS-tu-t1e" id="ter-es-PdY"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6bP-5K-MQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1080" y="1340"/>
-        </scene>
         <!--Setting View Controller-->
         <scene sceneID="KAG-I6-Ktu">
             <objects>
@@ -366,8 +324,8 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Setting" id="QYN-AJ-9aP">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="lTN-Fy-TGw">
+                                    <navigationItem title="お問い合せ" id="QYN-AJ-9aP">
+                                        <barButtonItem key="leftBarButtonItem" title="閉じる" id="lTN-Fy-TGw">
                                             <connections>
                                                 <action selector="back:" destination="Fci-23-3u4" id="MnW-y8-e7I"/>
                                             </connections>

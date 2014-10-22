@@ -142,7 +142,8 @@
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section {
-    return 3;
+//    return 3;
+    return 2;
 }
 
 -(UITableViewCell *)tableView:
@@ -153,9 +154,9 @@ numberOfRowsInSection:(NSInteger)section {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     NSArray *items = @[
-                       @"友達紹介",
-                       @"設定・問い合わせ",
-                       @"レビュー"
+                       @"シェア",
+                       @"お問い合わせ",
+//                       @"レビュー"
                        ];
     
     // セルが作成されていないか?
@@ -177,7 +178,7 @@ numberOfRowsInSection:(NSInteger)section {
 
 - (void)goMenu:(UITapGestureRecognizer *)sender {
     if (sender.view.tag == 0) {
-        NSString *sharedText = @"LiveHouseをShareする";
+        NSString *sharedText = @"LIVEHOUSEをシェアしよう！";
         NSURL *url = [NSURL URLWithString:@"http://app.lvhs.jp/"];
         NSArray *activityItems = @[sharedText, url];
         UIActivity *activity = [[UIActivity alloc] init];
