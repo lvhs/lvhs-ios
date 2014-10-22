@@ -29,7 +29,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="LIVEHOUSE" id="Yf5-9y-L04">
-                                        <barButtonItem key="leftBarButtonItem" id="IFL-7Q-X32" userLabel="Menu"/>
+                                        <barButtonItem key="leftBarButtonItem" id="IFL-7Q-X32" userLabel="Menu">
+                                            <connections>
+                                                <action selector="toggleMenu:" destination="SHX-z0-uLw" id="TAE-2e-F9f"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -40,11 +44,12 @@
                                     <outletCollection property="gestureRecognizers" destination="0yL-hy-ujL" appends="YES" id="f5D-Yf-9ys"/>
                                 </connections>
                             </imageView>
-                            <webView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" paginationMode="leftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="sV7-0P-nrX">
+                            <webView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" paginationMode="leftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="sV7-0P-nrX">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                             <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jci-M7-aBp" userLabel="Overlay Image">
-                                <rect key="frame" x="0.0" y="64" width="320" height="509"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <gestureRecognizers/>
                             </imageView>
                         </subviews>
@@ -53,6 +58,7 @@
                     <connections>
                         <outlet property="btnItem" destination="IFL-7Q-X32" id="4IP-uh-IUr"/>
                         <outlet property="navigationBar" destination="12g-bN-4GH" id="mWc-5E-Amb"/>
+                        <outlet property="overlay" destination="Jci-M7-aBp" id="LWQ-OM-u6f"/>
                         <outlet property="webView" destination="sV7-0P-nrX" id="8iv-Sv-XpN"/>
                         <segue destination="gZM-Zg-G0Z" kind="modal" identifier="goHome" modalTransitionStyle="crossDissolve" id="fIf-Cs-WFc"/>
                     </connections>
@@ -64,7 +70,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1286" y="-151"/>
+            <point key="canvasLocation" x="-1297" y="-151"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="1KE-Wk-vaI">

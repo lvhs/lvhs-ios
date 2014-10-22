@@ -18,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnItem;
+@property (weak, nonatomic) IBOutlet UIImageView *overlay;
 - (IBAction)goHome:(id)sender;
+- (IBAction)toggleMenu:(id)sender;
 
 @end
 
@@ -31,7 +33,7 @@
     UIWebView *wv = _webView;
     wv.delegate = self;
     wv.scalesPageToFit = YES;
-    [self.view addSubview:wv];
+//    [self.view addSubview:wv];
     LHConfig *config = [LHConfig sharedInstance];
 //    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
     NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
@@ -132,9 +134,6 @@
     }
 }
 
-- (void)toggleMenu:(id)sender {
-    
-}
 
 - (IBAction)goHome:(id)sender {
     LHConfig *config = [LHConfig sharedInstance];
@@ -142,4 +141,9 @@
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [_webView loadRequest:req];
 }
+
+- (IBAction)toggleMenu:(id)sender {
+    _overlay.hidden = !_overlay.hidden;
+}
+
 @end
