@@ -6,15 +6,19 @@
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
+#import <FacebookSDK/FacebookSDK.h>
+#import <FontAwesomeKit/FAKFontAwesome.h>
+//#import <CAR/CARMedia.h>
+
 #import "LHConfig.h"
 #import "LHHomeViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
-#import <CAR/CARMedia.h>
 #import "LHURLRequest.h"
 
 @interface LHHomeViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnItem;
+- (IBAction)goHome:(id)sender;
 
 @end
 
@@ -33,6 +37,12 @@
     NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
+    
+    // メニューアイコン
+    FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
+    [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    _btnItem.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
+    [_btnItem setAction:@selector(toggleMenu:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,9 +86,6 @@
         return NO;
     }
     
-    
-//    if (request)
-    
     return YES;
 }
 
@@ -102,18 +109,20 @@
 
 - (void)updateBackButton {
     if ([self.webView canGoBack]) {
-        if (!_navigationBar.backItem.leftBarButtonItem) {
-            [_navigationBar.backItem setHidesBackButton:YES animated:YES];
+        if (!self.navigationItem.leftBarButtonItem) {
+            [self.navigationItem setHidesBackButton:YES animated:YES];
             UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(backWasClicked:)];
-            [_navigationBar.backItem setLeftBarButtonItem:backItem animated:YES];
+            [self.navigationItem setLeftBarButtonItem:backItem animated:YES];
         }
+        NSLog(@"%@", _navigationBar.items);
+        NSLog(@"%@", self.navigationItem.leftBarButtonItems);
     }
     else {
-        [_navigationBar.backItem setLeftBarButtonItem:nil animated:YES];
-        [_navigationBar.backItem setHidesBackButton:NO animated:YES];
+        [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+        [self.navigationItem setHidesBackButton:NO animated:YES];
     }
 }
 
@@ -123,4 +132,14 @@
     }
 }
 
+- (void)toggleMenu:(id)sender {
+    
+}
+
+- (IBAction)goHome:(id)sender {
+    LHConfig *config = [LHConfig sharedInstance];
+    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+    LHURLRequest *req = [LHURLRequest requestWithURL:url];
+    [_webView loadRequest:req];
+}
 @end

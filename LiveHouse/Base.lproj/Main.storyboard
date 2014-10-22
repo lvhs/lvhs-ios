@@ -27,24 +27,42 @@
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textAttributes>
+                                <items>
+                                    <navigationItem title="LIVEHOUSE" id="Yf5-9y-L04">
+                                        <barButtonItem key="leftBarButtonItem" id="IFL-7Q-X32" userLabel="Menu"/>
+                                    </navigationItem>
+                                </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="psn-WV-J1n" userLabel="Logo">
-                                <rect key="frame" x="40" y="20" width="240" height="38"/>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="psn-WV-J1n" userLabel="Logo">
+                                <rect key="frame" x="100" y="20" width="120" height="38"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0yL-hy-ujL" appends="YES" id="f5D-Yf-9ys"/>
+                                </connections>
                             </imageView>
                             <webView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" paginationMode="leftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="sV7-0P-nrX">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
+                            <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jci-M7-aBp" userLabel="Overlay Image">
+                                <rect key="frame" x="0.0" y="64" width="320" height="509"/>
+                                <gestureRecognizers/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="btnItem" destination="IFL-7Q-X32" id="4IP-uh-IUr"/>
                         <outlet property="navigationBar" destination="12g-bN-4GH" id="mWc-5E-Amb"/>
                         <outlet property="webView" destination="sV7-0P-nrX" id="8iv-Sv-XpN"/>
                         <segue destination="gZM-Zg-G0Z" kind="modal" identifier="goHome" modalTransitionStyle="crossDissolve" id="fIf-Cs-WFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGc-9l-Un9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0yL-hy-ujL" userLabel="Home">
+                    <connections>
+                        <action selector="goHome:" destination="SHX-z0-uLw" id="K6m-JL-JMS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1286" y="-151"/>
         </scene>
@@ -153,6 +171,13 @@
                                         <rect key="frame" x="165" y="378" width="150" height="150"/>
                                         <gestureRecognizers/>
                                     </imageView>
+                                    <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTs-2Z-hTS" userLabel="Overlay Image">
+                                        <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="rRg-Vb-nDk" appends="YES" id="T5l-T0-X8D"/>
+                                        </connections>
+                                    </imageView>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78U-4U-Xm6">
                                         <rect key="frame" x="0.0" y="44" width="160" height="274"/>
                                         <subviews>
@@ -184,13 +209,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTs-2Z-hTS" userLabel="Overlay Image">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="504"/>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="rRg-Vb-nDk" appends="YES" id="T5l-T0-X8D"/>
-                                        </connections>
-                                    </imageView>
                                 </subviews>
                                 <gestureRecognizers/>
                             </scrollView>
