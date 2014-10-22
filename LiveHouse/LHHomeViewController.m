@@ -6,11 +6,15 @@
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
+#import "LHConfig.h"
 #import "LHHomeViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import <CAR/CARMedia.h>
+#import "LHURLRequest.h"
 
 @interface LHHomeViewController () <UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-- (IBAction)goHome:(id)sender;
 
 @end
 
@@ -20,36 +24,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goHome:)];
     UIWebView *wv = _webView;
-    [wv addGestureRecognizer:tapGesture];
     wv.delegate = self;
-//    wv.frame = self.view.frame;
     wv.scalesPageToFit = YES;
     [self.view addSubview:wv];
-    NSURL *url = [NSURL URLWithString:@"http://app.lvhs.jp/app"];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    LHConfig *config = [LHConfig sharedInstance];
+//    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
+    LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
-
-}
-
-// ページ読込開始時にインジケータをくるくるさせる
--(void)webViewDidStartLoad:(UIWebView*)webView{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-}
-
-// ページ読込完了時にインジケータを非表示にする
--(void)webViewDidFinishLoad:(UIWebView*)webView{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)goHome:(id)sender {
-    [self performSegueWithIdentifier:@"goHome" sender:self];
 }
 
 /*
@@ -61,5 +49,78 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)loginWithFacebook {
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.center = self.view.center;
+    [self.view addSubview:loginView];
+}
+
+#pragma mark - WebView
+
+-(void)webViewDidStartLoad:(UIWebView*)webView{
+    // ページ読込開始時にインジケータをくるくるさせる
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [self updateBackButton];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    // リンクがクリックされたとき
+    if (navigationType == UIWebViewNavigationTypeLinkClicked ||
+        navigationType == UIWebViewNavigationTypeOther) {
+        [self updateBackButton];
+    }
+    if ([request.URL.scheme isEqualToString:@"turbolinks"]) {
+        [self updateBackButton];
+        return NO;
+    }
+    
+    
+//    if (request)
+    
+    return YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView*)webView{
+    // ページ読込完了時にインジケータを非表示にする
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self updateBackButton];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"Network Error : %@", error);
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"ネットワークにつながりません"
+                                                 message:@""
+                                                delegate:self
+                                       cancelButtonTitle:nil
+                                       otherButtonTitles:@"OK", nil];
+    
+    av.alertViewStyle = UIAlertViewStyleDefault;
+    [av show];
+}
+
+- (void)updateBackButton {
+    if ([self.webView canGoBack]) {
+        if (!_navigationBar.backItem.leftBarButtonItem) {
+            [_navigationBar.backItem setHidesBackButton:YES animated:YES];
+            UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(backWasClicked:)];
+            [_navigationBar.backItem setLeftBarButtonItem:backItem animated:YES];
+        }
+    }
+    else {
+        [_navigationBar.backItem setLeftBarButtonItem:nil animated:YES];
+        [_navigationBar.backItem setHidesBackButton:NO animated:YES];
+    }
+}
+
+- (void)backWasClicked:(id)sender {
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+    }
+}
 
 @end

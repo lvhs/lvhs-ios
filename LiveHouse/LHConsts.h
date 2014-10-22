@@ -29,6 +29,10 @@
 // Repro
 #define LH_REPRO_TOKEN (@"bb0feda5-f142-46ec-b1b9-62387f7bc03b")
 
+// CA Reward
+#define LH_CA_REWARD_API_KEY (@"4245437727b92542")
+#define LH_CA_REWARD_MEDIA_ID (@"3893")
+
 ////////////////
 //開発用
 //リリース時以外はbasic認証付きでapiアクセス
@@ -53,6 +57,7 @@
 #define IS_PORTRAIT (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation))
 #define ORIENTAION ([UIApplication sharedApplication].statusBarOrientation)
 #define IS_IOS7_LATER (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+#define LOG(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
 
 // color
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]

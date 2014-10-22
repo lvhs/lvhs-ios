@@ -13,6 +13,7 @@
 
 #import "GAI.h"
 #import <Repro/ReproInsight.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"CRASH: %@", exception);
@@ -28,14 +29,14 @@ void uncaughtExceptionHandler(NSException *exception) {
     // Override point for customization after application launch.
     
     //AFで通信中は自動的にインジケータ回す
-//    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     [self initGoogleAnalytics];
-    [self initRepro];
+//    [self initRepro];
     [self initParse];
     
     [self registerPushNotification:application];
@@ -134,6 +135,18 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
+}
+
+
+#pragma mark -
+#pragma mark Facebook
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
 }
 
 @end

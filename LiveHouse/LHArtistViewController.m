@@ -9,6 +9,7 @@
 #import "LHArtistViewController.h"
 #import "UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks.h"
+#import <CAR/CARMedia.h>
 
 @interface LHArtistViewController () {
     NSInteger artistId;
@@ -151,7 +152,15 @@
                 otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
-                                 [self performSegueWithIdentifier:@"goCPI" sender:self];
+//                                 [self performSegueWithIdentifier:@"goCPI" sender:self];
+                                 CARMediaViewController *vc = [[CARMediaViewController alloc] initWithTitle:@"タイトル" buttonTitle:@"戻る" tintColor:nil];
+                                 vc.publicAppKey = @"";
+                                 vc.apiKey = @"4245437727b92542";
+                                 vc.mId = @"3893";
+                                 vc.userId = @"AAA";
+                                 vc.fromId = @"test";
+                                 [vc loadURLString:@"http://ajmp.jp/index.php"];
+                                 [self presentViewController:vc animated:YES completion:nil];
                              } else if (buttonIndex == 1) {
                                  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
                                                                               message:@"I promise I won’t steal your password"

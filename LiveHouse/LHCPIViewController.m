@@ -7,6 +7,7 @@
 //
 
 #import "LHCPIViewController.h"
+#import <CAR/CARMedia.h>
 
 @interface LHCPIViewController ()
 - (IBAction)back:(id)sender;
@@ -53,7 +54,15 @@
 }
 
 - (IBAction)goCPIDetail:(id)sender {
-    [self performSegueWithIdentifier:@"goCPIDetail" sender:self];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    CARMediaViewController *vc = [[CARMediaViewController alloc] initWithTitle:@"タイトル" buttonTitle:@"戻る" tintColor:nil];
+    vc.publicAppKey = @"";
+    vc.apiKey = @"4245437727b92542";
+    vc.mId = @"3893";
+    vc.userId = @"00001";
+    vc.fromId = @"test";
+    [vc loadURLString:@"http://ajmp.jp/index.php"];
+    [self presentViewController:vc animated:YES completion:nil];
+//    [self performSegueWithIdentifier:@"goCPIDetail" sender:self];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

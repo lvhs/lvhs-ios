@@ -31,6 +31,9 @@ pod "Repro" # https://repro.io/
 # https://github.com/azu/LupinusHTTP
 # pod "LupinusHTTP"
 
+# https://github.com/thegreatloser/DebugView
+# pod 'DebugView', '~> 0.0'
+
 post_install do | installer |
   require 'fileutils'
   FileUtils.cp_r(
