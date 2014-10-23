@@ -9,6 +9,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 //#import <CAR/CARMedia.h>
+#import "UIActionSheet+Blocks.h"
+#import "UIAlertView+Blocks.h"
 
 #import "LHConfig.h"
 #import "LHHomeViewController.h"
@@ -91,6 +93,49 @@
     }
     if ([request.URL.scheme isEqualToString:@"turbolinks"]) {
         [self updateBackButton];
+        return NO;
+    }
+    else if ([request.URL.scheme isEqualToString:@"player"]) {
+        [UIActionSheet showInView:self.view
+                        withTitle:@"CPI"
+                cancelButtonTitle:@"キャンセル"
+           destructiveButtonTitle:nil
+                otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
+                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                             if (buttonIndex == 0) {
+                                 [self performSegueWithIdentifier:@"goCPI" sender:self];
+                             } else if (buttonIndex == 1) {
+                                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
+                                                                              message:@"I promise I won’t steal your password"
+                                                                             delegate:self
+                                                                    cancelButtonTitle:@"Cancel"
+                                                                    otherButtonTitles:@"OK", nil];
+                                 
+                                 av.alertViewStyle = UIAlertViewStyleSecureTextInput;
+                                 
+                                 av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                     if (buttonIndex == alertView.firstOtherButtonIndex) {
+                                         NSLog(@"Password: %@", [[alertView textFieldAtIndex:0] text]);
+                                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                         [defaults setBool:YES forKey:@"purchased"];
+                                         [defaults synchronize];
+                                     } else if (buttonIndex == alertView.cancelButtonIndex) {
+                                         NSLog(@"Cancelled.");
+                                     }
+                                 };
+                                 
+                                 av.shouldEnableFirstOtherButtonBlock = ^BOOL(UIAlertView *alertView) {
+                                     return ([[[alertView textFieldAtIndex:0] text] length] > 0);
+                                 };
+                                 
+                                 [av show];
+                             }
+
+                         }];
+        return NO;
+    }
+    else if (![request.URL.host containsString:@"lvhs.jp"]) {
+        [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
     }
     
