@@ -51,6 +51,7 @@ PODS:
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9)
+  - MKStoreKit (4.99)
   - mockingbird-toolbox (0.9.7):
     - mockingbird-toolbox/Assert
     - mockingbird-toolbox/BatteryMonitor
@@ -186,6 +187,7 @@ DEPENDENCIES:
   - HexColors
   - MagicalRecord
   - MBProgressHUD
+  - MKStoreKit
   - mockingbird-toolbox
   - MTStatusBarOverlay
   - Realm
@@ -207,6 +209,7 @@ SPEC CHECKSUMS:
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  MKStoreKit: b3974582d36f1410eb4d1174728f45909a367b86
   mockingbird-toolbox: d73d0f853d1cd4281acedea17284af30c1e08511
   MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
   Realm: 01c074b534be68b55ba4228a3b16cf41da7af14d
@@ -219,4 +222,4 @@ SPEC CHECKSUMS:
   UITextFieldWithLimit: 73fc6d57d64b0e7913c6190199d9864bb9f52969
   XCDYouTubeKit: 65d5f5b9fe4e731327ab61ecc253b8e70e5d5a4d
 
-COCOAPODS: 0.34.1
+COCOAPODS: 0.34.2

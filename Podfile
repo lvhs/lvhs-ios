@@ -19,6 +19,7 @@ pod 'CocoaLumberjack'
 pod 'SSZipArchive'
 pod 'Realm'
 pod 'XCDYouTubeKit'
+pod 'MKStoreKit'
 
 # UI/UX
 pod "Repro" # https://repro.io/

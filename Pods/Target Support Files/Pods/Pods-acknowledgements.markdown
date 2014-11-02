@@ -93,6 +93,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+## MKStoreKit
+
+MKStoreKit uses MIT Licensing And so all of my source code can
+                           be used royalty-free into your app. Just make sure that you don’t
+                           remove the copyright notice from the source code if you make your
+                           app open source and in the about page.
+
 ## MTStatusBarOverlay
 
 Copyright (c) 2009-2010, Matthias Tretter

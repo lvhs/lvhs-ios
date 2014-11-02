@@ -38,6 +38,7 @@
 		273C28FF19B3FEA70000C83E /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 273C28FE19B3FEA70000C83E /* play-button.png */; };
 		273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273C290019B3FF7A0000C83E /* AVFoundation.framework */; };
 		273C290519B3FFF20000C83E /* LHAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C290419B3FFF20000C83E /* LHAudioPlayer.m */; };
+		2783FEAE1A0677A700FAD223 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2783FEAD1A0677A700FAD223 /* StoreKit.framework */; };
 		2786956919B61DF60086137A /* LHMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956819B61DF60086137A /* LHMovieViewController.m */; };
 		2786956C19B61E040086137A /* LHCPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956B19B61E040086137A /* LHCPIViewController.m */; };
 		2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786956D19B626250086137A /* MediaPlayer.framework */; };
@@ -125,6 +126,7 @@
 		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
 		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
+		2783FEAD1A0677A700FAD223 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2786956719B61DF60086137A /* LHMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMovieViewController.h; sourceTree = "<group>"; };
 		2786956819B61DF60086137A /* LHMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMovieViewController.m; sourceTree = "<group>"; };
 		2786956A19B61E040086137A /* LHCPIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCPIViewController.h; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2783FEAE1A0677A700FAD223 /* StoreKit.framework in Frameworks */,
 				2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */,
 				27336E1419ED7FC400416A74 /* Security.framework in Frameworks */,
 				27CE2D1919DA2D980015D47F /* SystemConfiguration.framework in Frameworks */,
@@ -482,6 +485,7 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2783FEAD1A0677A700FAD223 /* StoreKit.framework */,
 				27336E1319ED7FC400416A74 /* Security.framework */,
 				2793C62419ECBA160082AB1C /* CAR.framework */,
 				273194ED19E1164C00A31748 /* FacebookSDK.framework */,
@@ -853,8 +857,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",
@@ -883,8 +887,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
+#import <StoreKit/StoreKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 //#import <CAR/CARMedia.h>
@@ -16,7 +17,8 @@
 #import "LHHomeViewController.h"
 #import "LHURLRequest.h"
 
-@interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate,
+SKPaymentTransactionObserver>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnItem;
@@ -53,6 +55,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
+    [self checkInAppPurchaseIsAvaiable];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,6 +99,13 @@
         return NO;
     }
     else if ([request.URL.scheme isEqualToString:@"player"]) {
+        if ([request.URL.host isEqualToString:@"music"]) {
+            [self performSegueWithIdentifier:@"goPlayer" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"goMovie" sender:self];
+        }
+    }
+    else if ([request.URL.scheme isEqualToString:@"purchase"]) {
         [UIActionSheet showInView:self.view
                         withTitle:@"CPI"
                 cancelButtonTitle:@"キャンセル"
@@ -105,30 +115,31 @@
                              if (buttonIndex == 0) {
                                  [self performSegueWithIdentifier:@"goCPI" sender:self];
                              } else if (buttonIndex == 1) {
-                                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
-                                                                              message:@"I promise I won’t steal your password"
-                                                                             delegate:self
-                                                                    cancelButtonTitle:@"Cancel"
-                                                                    otherButtonTitles:@"OK", nil];
-                                 
-                                 av.alertViewStyle = UIAlertViewStyleSecureTextInput;
-                                 
-                                 av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                     if (buttonIndex == alertView.firstOtherButtonIndex) {
-                                         NSLog(@"Password: %@", [[alertView textFieldAtIndex:0] text]);
-                                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                         [defaults setBool:YES forKey:@"purchased"];
-                                         [defaults synchronize];
-                                     } else if (buttonIndex == alertView.cancelButtonIndex) {
-                                         NSLog(@"Cancelled.");
-                                     }
-                                 };
-                                 
-                                 av.shouldEnableFirstOtherButtonBlock = ^BOOL(UIAlertView *alertView) {
-                                     return ([[[alertView textFieldAtIndex:0] text] length] > 0);
-                                 };
-                                 
-                                 [av show];
+                                 [self getInAppPurchaseItems];
+//                                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
+//                                                                              message:@"I promise I won’t steal your password"
+//                                                                             delegate:self
+//                                                                    cancelButtonTitle:@"Cancel"
+//                                                                    otherButtonTitles:@"OK", nil];
+//                                 
+//                                 av.alertViewStyle = UIAlertViewStyleSecureTextInput;
+//                                 
+//                                 av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+//                                     if (buttonIndex == alertView.firstOtherButtonIndex) {
+//                                         NSLog(@"Password: %@", [[alertView textFieldAtIndex:0] text]);
+//                                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                                         [defaults setBool:YES forKey:@"purchased"];
+//                                         [defaults synchronize];
+//                                     } else if (buttonIndex == alertView.cancelButtonIndex) {
+//                                         NSLog(@"Cancelled.");
+//                                     }
+//                                 };
+//                                 
+//                                 av.shouldEnableFirstOtherButtonBlock = ^BOOL(UIAlertView *alertView) {
+//                                     return ([[[alertView textFieldAtIndex:0] text] length] > 0);
+//                                 };
+//                                 
+//                                 [av show];
                              }
 
                          }];
@@ -149,15 +160,15 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"Network Error : %@", error);
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"ネットワークにつながりません"
-                                                 message:@""
-                                                delegate:self
-                                       cancelButtonTitle:nil
-                                       otherButtonTitles:@"OK", nil];
-    
-    av.alertViewStyle = UIAlertViewStyleDefault;
-    [av show];
+//    NSLog(@"Network Error : %@", error);
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"ネットワークにつながりません"
+//                                                 message:@""
+//                                                delegate:self
+//                                       cancelButtonTitle:nil
+//                                       otherButtonTitles:@"OK", nil];
+//    
+//    av.alertViewStyle = UIAlertViewStyleDefault;
+//    [av show];
 }
 
 - (void)updateBackButton {
@@ -250,6 +261,90 @@ numberOfRowsInSection:(NSInteger)section {
 - (IBAction)toggleMenu:(id)sender {
     _menuView.hidden = !_menuView.hidden;
     _overlay.hidden = !_overlay.hidden;
+}
+
+#pragma mark - In App Purchase
+
+- (void)checkInAppPurchaseIsAvaiable {
+    if (![SKPaymentQueue canMakePayments]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                        message:@"アプリ内課金が制限されています。"
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+}
+
+- (void)getInAppPurchaseItems {
+    NSSet *set = [NSSet setWithObjects:@"jp.lvhs.livehouse.ticket100", nil];
+    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
+    productsRequest.delegate = self;
+    [productsRequest start];
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    // 無効なアイテムがないかチェック
+    if ([response.invalidProductIdentifiers count] > 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                        message:@"アイテムIDが不正です。"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    // 購入処理開始
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    for (SKProduct *product in response.products) {
+        SKPayment *payment = [SKPayment paymentWithProduct:product];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    for (SKPaymentTransaction *transaction in transactions) {
+        if (transaction.transactionState == SKPaymentTransactionStatePurchasing) {
+            // 購入処理中
+            /*
+             * 基本何もしなくてよい。処理中であることがわかるようにインジケータをだすなど。
+             */
+        } else if (transaction.transactionState == SKPaymentTransactionStatePurchased) {
+            // 購入処理成功
+            /*
+             * ここでレシートの確認やアイテムの付与を行う。
+             */
+            [queue finishTransaction:transaction];
+        } else if (transaction.transactionState == SKPaymentTransactionStateFailed) {
+            // 購入処理エラー。ユーザが購入処理をキャンセルした場合もここにくる
+            [queue finishTransaction:transaction];
+            // エラーが発生したことをユーザに知らせる
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                            message:[transaction.error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+        } else {
+            // リストア処理完了
+            /*
+             * アイテムの再付与を行う
+             */
+            [queue finishTransaction:transaction];
+        }
+    }		
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
+{
+    // リストアの失敗
+}
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    // 全てのリストア処理が終了
 }
 
 @end
