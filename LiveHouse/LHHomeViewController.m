@@ -278,7 +278,7 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 - (void)getInAppPurchaseItems {
-    NSSet *set = [NSSet setWithObjects:@"jp.lvhs.livehouse.ticket100", nil];
+    NSSet *set = [NSSet setWithObjects:@"jp.lvhs.livehouse.ticket1", nil];
     SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
     productsRequest.delegate = self;
     [productsRequest start];

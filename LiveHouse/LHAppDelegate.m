@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 
 #import "GAI.h"
-#import <Repro/ReproInsight.h>
+#import <Repro/Repro.h>
 #import <FacebookSDK/FacebookSDK.h>
 
 void uncaughtExceptionHandler(NSException *exception) {
@@ -84,7 +84,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)initRepro {
     // Repro
-    [ReproInsight setupWithToken:LH_REPRO_TOKEN];
+//    [ReproInsight setupWithToken:LH_REPRO_TOKEN];
 }
 
 #pragma mark -

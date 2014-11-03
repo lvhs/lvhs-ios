@@ -56,33 +56,27 @@
 
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 0
-
-// CocoaLumberjack/CLI
-#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_CLI
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_CLI 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_CLI 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_CLI 0
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack 9
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 2
 
 // CocoaLumberjack/Core
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Core
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 0
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 9
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 2
 
 // CocoaLumberjack/Extensions
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Extensions
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 0
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 9
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 2
 
 // CrittercismSDK
 #define COCOAPODS_POD_AVAILABLE_CrittercismSDK
-#define COCOAPODS_VERSION_MAJOR_CrittercismSDK 4
-#define COCOAPODS_VERSION_MINOR_CrittercismSDK 3
-#define COCOAPODS_VERSION_PATCH_CrittercismSDK 7
+#define COCOAPODS_VERSION_MAJOR_CrittercismSDK 5
+#define COCOAPODS_VERSION_MINOR_CrittercismSDK 0
+#define COCOAPODS_VERSION_PATCH_CrittercismSDK 4
 
 // FontAwesomeKit
 #define COCOAPODS_POD_AVAILABLE_FontAwesomeKit
@@ -159,20 +153,20 @@
 // Realm
 #define COCOAPODS_POD_AVAILABLE_Realm
 #define COCOAPODS_VERSION_MAJOR_Realm 0
-#define COCOAPODS_VERSION_MINOR_Realm 85
-#define COCOAPODS_VERSION_PATCH_Realm 0
+#define COCOAPODS_VERSION_MINOR_Realm 87
+#define COCOAPODS_VERSION_PATCH_Realm 1
 
 // Realm/Headers
 #define COCOAPODS_POD_AVAILABLE_Realm_Headers
 #define COCOAPODS_VERSION_MAJOR_Realm_Headers 0
-#define COCOAPODS_VERSION_MINOR_Realm_Headers 85
-#define COCOAPODS_VERSION_PATCH_Realm_Headers 0
+#define COCOAPODS_VERSION_MINOR_Realm_Headers 87
+#define COCOAPODS_VERSION_PATCH_Realm_Headers 1
 
 // Repro
 #define COCOAPODS_POD_AVAILABLE_Repro
 #define COCOAPODS_VERSION_MAJOR_Repro 0
-#define COCOAPODS_VERSION_MINOR_Repro 2
-#define COCOAPODS_VERSION_PATCH_Repro 8
+#define COCOAPODS_VERSION_MINOR_Repro 3
+#define COCOAPODS_VERSION_PATCH_Repro 4
 
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
@@ -197,6 +191,12 @@
 #define COCOAPODS_VERSION_MAJOR_SVProgressHUD 1
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 0
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
+
+// TTTAttributedLabel
+#define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
+#define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
+#define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 10
+#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 1
 
 // UIActionSheet+Blocks
 #define COCOAPODS_POD_AVAILABLE_UIActionSheet_Blocks

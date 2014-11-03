@@ -19,6 +19,8 @@
 #define LH_RESOURCE_BASE_URL ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_RESOURCE_BASE_URL])
 #define LH_COOKIE_DOMAIN ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_COOKIE_DOMAIN])
 
+#define LH_TERM_AGREEMENT_KEY (@"agree")
+
 // Parse
 #define LH_PARSE_APPLICATION_ID ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_PARSE_APPLICATION_KEY])
 #define LH_PARSE_CLIENT_ID ([[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY])

@@ -39,6 +39,10 @@
 		273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273C290019B3FF7A0000C83E /* AVFoundation.framework */; };
 		273C290519B3FFF20000C83E /* LHAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C290419B3FFF20000C83E /* LHAudioPlayer.m */; };
 		2783FEAE1A0677A700FAD223 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2783FEAD1A0677A700FAD223 /* StoreKit.framework */; };
+		2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FEB01A072A5900FAD223 /* LHTermsViewController.m */; };
+		2783FEB31A07333000FAD223 /* terms_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB21A07333000FAD223 /* terms_bg.png */; };
+		2783FEB71A0738DC00FAD223 /* icon-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB51A0738DC00FAD223 /* icon-empty.png */; };
+		2783FEBA1A07392A00FAD223 /* icon-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB91A07392A00FAD223 /* icon-selected.png */; };
 		2786956919B61DF60086137A /* LHMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956819B61DF60086137A /* LHMovieViewController.m */; };
 		2786956C19B61E040086137A /* LHCPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2786956B19B61E040086137A /* LHCPIViewController.m */; };
 		2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786956D19B626250086137A /* MediaPlayer.framework */; };
@@ -127,6 +131,11 @@
 		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
 		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
 		2783FEAD1A0677A700FAD223 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		2783FEAF1A072A5900FAD223 /* LHTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTermsViewController.h; sourceTree = "<group>"; };
+		2783FEB01A072A5900FAD223 /* LHTermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHTermsViewController.m; sourceTree = "<group>"; };
+		2783FEB21A07333000FAD223 /* terms_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terms_bg.png; sourceTree = "<group>"; };
+		2783FEB51A0738DC00FAD223 /* icon-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-empty.png"; sourceTree = "<group>"; };
+		2783FEB91A07392A00FAD223 /* icon-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-selected.png"; sourceTree = "<group>"; };
 		2786956719B61DF60086137A /* LHMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMovieViewController.h; sourceTree = "<group>"; };
 		2786956819B61DF60086137A /* LHMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMovieViewController.m; sourceTree = "<group>"; };
 		2786956A19B61E040086137A /* LHCPIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHCPIViewController.h; sourceTree = "<group>"; };
@@ -330,6 +339,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		2783FEB41A0738C300FAD223 /* terms */ = {
+			isa = PBXGroup;
+			children = (
+				2783FEB51A0738DC00FAD223 /* icon-empty.png */,
+				2783FEB91A07392A00FAD223 /* icon-selected.png */,
+				2783FEB21A07333000FAD223 /* terms_bg.png */,
+			);
+			name = terms;
+			sourceTree = "<group>";
+		};
 		278C1F0619B2D5F1000F9B58 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +397,8 @@
 				2786957B19B68FF60086137A /* LHCPIDetailViewController.m */,
 				273194F219E1AECA00A31748 /* LHHomeViewController.h */,
 				273194F319E1AECA00A31748 /* LHHomeViewController.m */,
+				2783FEAF1A072A5900FAD223 /* LHTermsViewController.h */,
+				2783FEB01A072A5900FAD223 /* LHTermsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -401,6 +422,7 @@
 		278C1FAD19B2F8F6000F9B58 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				2783FEB41A0738C300FAD223 /* terms */,
 				27130E6E19BCB6CC00970DA7 /* jacket */,
 				27130E6D19BCB6C700970DA7 /* common */,
 				27130E6B19BCB6A400970DA7 /* artist */,
@@ -645,6 +667,7 @@
 				2718AC1019B31BDC002DDEA4 /* info.png in Resources */,
 				27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */,
 				27130E7A19BCB71B00970DA7 /* wrongcity.jpg in Resources */,
+				2783FEB71A0738DC00FAD223 /* icon-empty.png in Resources */,
 				27EFEEEE19AAA725002740D1 /* Images.xcassets in Resources */,
 				271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */,
 				27130E7C19BCB74100970DA7 /* 01-anotherstory.jpg in Resources */,
@@ -658,9 +681,11 @@
 				273C28F419B3F2500000C83E /* music-title.png in Resources */,
 				27130E7919BCB71B00970DA7 /* swankydank.jpg in Resources */,
 				27EFEF0B19AAB76F002740D1 /* background.png in Resources */,
+				2783FEB31A07333000FAD223 /* terms_bg.png in Resources */,
 				27EFEEE019AAA725002740D1 /* InfoPlist.strings in Resources */,
 				27130E8019BCB74D00970DA7 /* 02-myfirststory.jpg in Resources */,
 				27EFEEE919AAA725002740D1 /* Main.storyboard in Resources */,
+				2783FEBA1A07392A00FAD223 /* icon-selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */,
 				278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */,
 				2786956C19B61E040086137A /* LHCPIViewController.m in Sources */,
 				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,

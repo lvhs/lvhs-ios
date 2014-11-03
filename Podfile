@@ -20,6 +20,7 @@ pod 'SSZipArchive'
 pod 'Realm'
 pod 'XCDYouTubeKit'
 pod 'MKStoreKit'
+pod 'TTTAttributedLabel'
 
 # UI/UX
 pod "Repro" # https://repro.io/

@@ -1,10 +1,113 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SHX-z0-uLw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="juS-Wr-wsc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
+        <!--Terms View Controller-->
+        <scene sceneID="BkX-kI-kzw">
+            <objects>
+                <viewController id="juS-Wr-wsc" userLabel="Terms View Controller" customClass="LHTermsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2n0-VS-FuM"/>
+                        <viewControllerLayoutGuide type="bottom" id="DeL-Yi-tJo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vui-ZW-41a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="9Ob-9l-q7x">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbU-fH-Dgf" userLabel="Terms View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay.png" translatesAutoresizingMaskIntoConstraints="NO" id="U5f-cW-exv" userLabel="Overlay">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    </imageView>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="terms_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZZt-kn-3Ka">
+                                        <rect key="frame" x="40" y="118" width="240" height="333"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20歳以上です。 未成年の場合は親権者の 同意を得ています。" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbX-59-pET">
+                                        <rect key="frame" x="110" y="320" width="162" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to LIVEHOUSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeU-je-QAZ">
+                                        <rect key="frame" x="63" y="146" width="194" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="下記の事項に同意して 今すぐLIVEHOUSEを始めましょう！" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP6-TD-Sh1">
+                                        <rect key="frame" x="40" y="175" width="240" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFA-Hy-PN1">
+                                        <rect key="frame" x="49" y="401" width="223" height="41"/>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="agreeAndStart:" destination="juS-Wr-wsc" eventType="touchUpInside" id="zc1-Oz-WL7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCE-JW-oGe">
+                                        <rect key="frame" x="110" y="256" width="127" height="28"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="利用規約に同意する。">
+                                                <attributes>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="12" name="HiraKakuProN-W3"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tia-l8-cG4">
+                                        <rect key="frame" x="77" y="259" width="22" height="22"/>
+                                        <state key="normal" image="icon-empty.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="icon-selected.png"/>
+                                        <connections>
+                                            <action selector="toggleAgreement:" destination="juS-Wr-wsc" eventType="touchUpInside" id="Pld-DA-ea7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooh-nZ-LMd">
+                                        <rect key="frame" x="77" y="331" width="22" height="22"/>
+                                        <state key="normal" image="icon-empty.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="icon-selected.png"/>
+                                        <connections>
+                                            <action selector="toggleAgreement:" destination="juS-Wr-wsc" eventType="touchUpInside" id="K51-Pi-s3s"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="agree1" destination="Tia-l8-cG4" id="G7k-T0-gqg"/>
+                        <outlet property="agree2" destination="ooh-nZ-LMd" id="Hbm-Fb-NLj"/>
+                        <outlet property="termsLink" destination="lCE-JW-oGe" id="OQT-3z-Ax3"/>
+                        <outlet property="termsView" destination="jbU-fH-Dgf" id="2Tb-Xe-Wnl"/>
+                        <segue destination="SHX-z0-uLw" kind="modal" identifier="start" modalTransitionStyle="crossDissolve" id="xwM-GI-23U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKs-u6-0db" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1392" y="-151"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="YDj-Iq-GEJ">
             <objects>
@@ -427,16 +530,23 @@
     <resources>
         <image name="01-myfirststory.jpg" width="1280" height="1264"/>
         <image name="Logo" width="228" height="90"/>
+        <image name="Splash" width="640" height="1136"/>
         <image name="background.png" width="640" height="1136"/>
         <image name="cpi-title.png" width="580" height="120"/>
         <image name="cpi01.png" width="580" height="162"/>
         <image name="cpi02.png" width="580" height="159"/>
+        <image name="icon-empty.png" width="38" height="38"/>
+        <image name="icon-selected.png" width="44" height="42"/>
         <image name="overlay.png" width="640" height="1136"/>
         <image name="play-button.png" width="42" height="46"/>
+        <image name="terms_bg.png" width="542" height="653"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="xwM-GI-23U"/>
+    </inferredMetricsTieBreakers>
 </document>
