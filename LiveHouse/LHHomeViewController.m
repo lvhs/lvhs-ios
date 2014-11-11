@@ -21,6 +21,9 @@
 @interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate,
 SKPaymentTransactionObserver> {
     NSString *itemId;
+    UIBarButtonItem *backBtn;
+    UIBarButtonItem *reloadBtn;
+    UIBarButtonItem *prevBtn;
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -39,31 +42,8 @@ SKPaymentTransactionObserver> {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // initialize webview
-    UIWebView *wv = _webView;
-    wv.delegate = self;
-    wv.scalesPageToFit = YES;
-    LHConfig *config = [LHConfig sharedInstance];
-    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
-    LHURLRequest *req = [LHURLRequest requestWithURL:url];
-    [wv loadRequest:req];
-    
-    // メニューアイコン
-    FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
-    [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-    _btnItem.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
-    [_btnItem setAction:@selector(toggleMenu:)];
-    
-    UIBarButtonItem *btnItem2 = [[UIBarButtonItem alloc] init];
-    FAKFontAwesome *menuIcon2 = [FAKFontAwesome barsIconWithSize:16];
-    [menuIcon2 addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
-    btnItem2.image = [menuIcon2 imageWithSize:CGSizeMake(15, 15)];
-    [btnItem2 setAction:@selector(toggleMenu:)];
-    
-    _navigationBar.topItem.leftBarButtonItems = @[_btnItem, btnItem2];
-    NSLog(@"%@", _navigationBar.items);
-    NSLog(@"%@", _navigationBar.topItem);
-    NSLog(@"%@", _navigationBar.backItem);
+    [self initWebView];
+    [self initHeaderIcons];
     
     // menu
     _tableView.delegate = self;
@@ -94,6 +74,17 @@ SKPaymentTransactionObserver> {
 }
 
 #pragma mark - WebView
+
+- (void) initWebView {
+    // initialize webview
+    UIWebView *wv = _webView;
+    wv.delegate = self;
+    wv.scalesPageToFit = YES;
+    LHConfig *config = [LHConfig sharedInstance];
+    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+    LHURLRequest *req = [LHURLRequest requestWithURL:url];
+    [wv loadRequest:req];
+}
 
 -(void)webViewDidStartLoad:(UIWebView*)webView{
     // ページ読込開始時にインジケータをくるくるさせる
@@ -167,19 +158,28 @@ SKPaymentTransactionObserver> {
 }
 
 - (void)updateBackButton {
+    NSLog(@"updateBackButton:%d", [self.webView canGoBack]);
     if ([self.webView canGoBack]) {
-        if (!self.navigationItem.leftBarButtonItem) {
-            [self.navigationItem setHidesBackButton:YES animated:YES];
-            UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                                          style:UIBarButtonItemStylePlain
-                                                                         target:self
-                                                                         action:@selector(backWasClicked:)];
-            [self.navigationItem setLeftBarButtonItem:backItem animated:YES];
-        }
+//        if (!self.navigationItem.leftBarButtonItem) {
+//            [self.navigationItem setHidesBackButton:YES animated:YES];
+//            UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+//                                                                          style:UIBarButtonItemStylePlain
+//                                                                         target:self
+//                                                                         action:@selector(backWasClicked:)];
+//            [self.navigationItem setLeftBarButtonItem:backItem animated:YES];
+//        }
+        
+        _navigationBar.topItem.leftBarButtonItems = @[backBtn, _btnItem];
+    } else {
+        _navigationBar.topItem.leftBarButtonItems = @[ _btnItem];
+    }
+    if ([self.webView canGoForward]) {
+        _navigationBar.topItem.rightBarButtonItems = @[prevBtn, reloadBtn];
     }
     else {
-        [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-        [self.navigationItem setHidesBackButton:NO animated:YES];
+        _navigationBar.topItem.rightBarButtonItems = @[reloadBtn];
+//        [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+//        [self.navigationItem setHidesBackButton:NO animated:YES];
     }
 }
 
@@ -187,6 +187,16 @@ SKPaymentTransactionObserver> {
     if ([self.webView canGoBack]) {
         [self.webView goBack];
     }
+}
+
+- (void)prevWasClicked:(id)sender {
+    if ([self.webView canGoForward]) {
+        [self.webView goForward];
+    }
+}
+
+- (void)reloadWasClicked:(id)sender {
+    [self.webView reload];
 }
 
 #pragma mark - TableView
@@ -364,6 +374,37 @@ numberOfRowsInSection:(NSInteger)section {
         [queryStringDictionary setObject:value forKey:key];
     }
     return queryStringDictionary;
+}
+
+#pragma mark - UI
+
+- (void) initHeaderIcons {
+    // メニューアイコン
+    FAKFontAwesome *menuIcon = [FAKFontAwesome barsIconWithSize:16];
+    [menuIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    _btnItem.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
+    [_btnItem setAction:@selector(toggleMenu:)];
+    
+    backBtn = [[UIBarButtonItem alloc] init];
+    FAKFontAwesome *backIcon = [FAKFontAwesome chevronLeftIconWithSize:16];
+    [backIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    backBtn.image = [backIcon imageWithSize:CGSizeMake(15, 15)];
+    [backBtn setAction:@selector(backWasClicked:)];
+    
+    reloadBtn = [[UIBarButtonItem alloc] init];
+    FAKFontAwesome *reloadIcon = [FAKFontAwesome repeatIconWithSize:16];
+    [reloadIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    reloadBtn.image = [reloadIcon imageWithSize:CGSizeMake(15, 15)];
+    [reloadBtn setAction:@selector(reloadWasClicked:)];
+    
+    prevBtn = [[UIBarButtonItem alloc] init];
+    FAKFontAwesome *prevIcon = [FAKFontAwesome chevronRightIconWithSize:16];
+    [prevIcon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    prevBtn.image = [prevIcon imageWithSize:CGSizeMake(15, 15)];
+    [prevBtn setAction:@selector(prevWasClicked:)];
+    
+    _navigationBar.topItem.leftBarButtonItems = @[_btnItem];
+    _navigationBar.topItem.rightBarButtonItems = @[reloadBtn];
 }
 
 @end
