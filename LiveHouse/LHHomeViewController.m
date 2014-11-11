@@ -7,6 +7,7 @@
 //
 
 #import <StoreKit/StoreKit.h>
+#import <AFNetworking.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 //#import <CAR/CARMedia.h>
@@ -18,7 +19,10 @@
 #import "LHURLRequest.h"
 
 @interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate,
-SKPaymentTransactionObserver>
+SKPaymentTransactionObserver> {
+    NSString *itemId;
+}
+
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnItem;
@@ -34,15 +38,13 @@ SKPaymentTransactionObserver>
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    // initialize webview
     UIWebView *wv = _webView;
     wv.delegate = self;
     wv.scalesPageToFit = YES;
-//    [self.view addSubview:wv];
     LHConfig *config = [LHConfig sharedInstance];
-//    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
-    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
+    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
     
@@ -52,6 +54,18 @@ SKPaymentTransactionObserver>
     _btnItem.image = [menuIcon imageWithSize:CGSizeMake(15, 15)];
     [_btnItem setAction:@selector(toggleMenu:)];
     
+    UIBarButtonItem *btnItem2 = [[UIBarButtonItem alloc] init];
+    FAKFontAwesome *menuIcon2 = [FAKFontAwesome barsIconWithSize:16];
+    [menuIcon2 addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    btnItem2.image = [menuIcon2 imageWithSize:CGSizeMake(15, 15)];
+    [btnItem2 setAction:@selector(toggleMenu:)];
+    
+    _navigationBar.topItem.leftBarButtonItems = @[_btnItem, btnItem2];
+    NSLog(@"%@", _navigationBar.items);
+    NSLog(@"%@", _navigationBar.topItem);
+    NSLog(@"%@", _navigationBar.backItem);
+    
+    // menu
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
@@ -99,6 +113,11 @@ SKPaymentTransactionObserver>
         return NO;
     }
     else if ([request.URL.scheme isEqualToString:@"player"]) {
+        NSLog(@"url: %@", request.URL.parameterString);
+        NSDictionary *params = [self parseUrlParams:request.URL.parameterString];
+        itemId = [params valueForKey:@"id"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:itemId forKey:@"itemId"];
         if ([request.URL.host isEqualToString:@"music"]) {
             [self performSegueWithIdentifier:@"goPlayer" sender:self];
         } else {
@@ -106,42 +125,18 @@ SKPaymentTransactionObserver>
         }
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
+        NSLog(@"url: %@", request.URL.parameterString);
+        NSDictionary *params = [self parseUrlParams:request.URL.parameterString];
+        itemId = [params valueForKey:@"id"];
         [UIActionSheet showInView:self.view
-                        withTitle:@"CPI"
+                        withTitle:@"この楽曲を購入しますか？"
                 cancelButtonTitle:@"キャンセル"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"アプリDLでGET", @"課金でGET"]
+                otherButtonTitles:@[@"購入する"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
-                                 [self performSegueWithIdentifier:@"goCPI" sender:self];
-                             } else if (buttonIndex == 1) {
                                  [self getInAppPurchaseItems];
-//                                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sign in to my awesome service"
-//                                                                              message:@"I promise I won’t steal your password"
-//                                                                             delegate:self
-//                                                                    cancelButtonTitle:@"Cancel"
-//                                                                    otherButtonTitles:@"OK", nil];
-//                                 
-//                                 av.alertViewStyle = UIAlertViewStyleSecureTextInput;
-//                                 
-//                                 av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-//                                     if (buttonIndex == alertView.firstOtherButtonIndex) {
-//                                         NSLog(@"Password: %@", [[alertView textFieldAtIndex:0] text]);
-//                                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//                                         [defaults setBool:YES forKey:@"purchased"];
-//                                         [defaults synchronize];
-//                                     } else if (buttonIndex == alertView.cancelButtonIndex) {
-//                                         NSLog(@"Cancelled.");
-//                                     }
-//                                 };
-//                                 
-//                                 av.shouldEnableFirstOtherButtonBlock = ^BOOL(UIAlertView *alertView) {
-//                                     return ([[[alertView textFieldAtIndex:0] text] length] > 0);
-//                                 };
-//                                 
-//                                 [av show];
                              }
-
                          }];
         return NO;
     }
@@ -316,6 +311,14 @@ numberOfRowsInSection:(NSInteger)section {
             /*
              * ここでレシートの確認やアイテムの付与を行う。
              */
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            NSDictionary *parameters = @{@"id": itemId};
+            [manager POST:@"http://app.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"JSON: %@", responseObject);
+                [queue finishTransaction:transaction];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
             [queue finishTransaction:transaction];
         } else if (transaction.transactionState == SKPaymentTransactionStateFailed) {
             // 購入処理エラー。ユーザが購入処理をキャンセルした場合もここにくる
@@ -345,6 +348,22 @@ numberOfRowsInSection:(NSInteger)section {
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
     // 全てのリストア処理が終了
+}
+
+#pragma mark - Util
+
+- (NSMutableDictionary *)parseUrlParams:(NSString*)url {
+    NSMutableDictionary *queryStringDictionary = [[NSMutableDictionary alloc] init];
+    NSArray *urlComponents = [url componentsSeparatedByString:@"&"];
+    for (NSString *keyValuePair in urlComponents)
+    {
+        NSArray *pairComponents = [keyValuePair componentsSeparatedByString:@"="];
+        NSString *key = [pairComponents objectAtIndex:0];
+        NSString *value = [pairComponents objectAtIndex:1];
+        
+        [queryStringDictionary setObject:value forKey:key];
+    }
+    return queryStringDictionary;
 }
 
 @end

@@ -51,7 +51,9 @@
     _termsView.hidden = NO;
     NSMutableAttributedString * str = [[NSMutableAttributedString alloc] initWithString:@"利用規約に同意する。"];
     [str addAttributes:@{
-                         NSLinkAttributeName: @"http://app.lvhs.jp/terms",
+//                         NSLinkAttributeName: @"http://app.lvhs.jp/terms",
+                         NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),
+                         NSUnderlineColorAttributeName: [UIColor whiteColor],
                          NSForegroundColorAttributeName: [UIColor whiteColor],
                          NSURLLabelColorKey: [UIColor whiteColor]
                          } range:NSMakeRange(0, 4)];

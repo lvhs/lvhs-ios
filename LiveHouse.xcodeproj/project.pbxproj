@@ -19,6 +19,8 @@
 		27130E8719BCBD4D00970DA7 /* 01-myfirststory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27130E8619BCBD4D00970DA7 /* 01-myfirststory.jpg */; };
 		2718AC1019B31BDC002DDEA4 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 2718AC0F19B31BDC002DDEA4 /* info.png */; };
 		271FAC5D19BE0B5A00138174 /* anotherstory.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 271FAC5C19BE0B5A00138174 /* anotherstory.jpg */; };
+		272145821A11DD4E008CDF21 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272145801A11DD4E008CDF21 /* Crashlytics.framework */; };
+		272145831A11DD4E008CDF21 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272145811A11DD4E008CDF21 /* Fabric.framework */; };
 		273194D919E1051200A31748 /* LHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194D819E1051200A31748 /* LHUtils.m */; };
 		273194E719E1128F00A31748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E419E1128F00A31748 /* Parse.framework */; };
 		273194E819E1128F00A31748 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E519E1128F00A31748 /* ParseFacebookUtils.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -104,6 +106,8 @@
 		27130E8619BCBD4D00970DA7 /* 01-myfirststory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-myfirststory.jpg"; sourceTree = "<group>"; };
 		2718AC0F19B31BDC002DDEA4 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		271FAC5C19BE0B5A00138174 /* anotherstory.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = anotherstory.jpg; path = artist/anotherstory.jpg; sourceTree = "<group>"; };
+		272145801A11DD4E008CDF21 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		272145811A11DD4E008CDF21 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		273194D819E1051200A31748 /* LHUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHUtils.m; sourceTree = "<group>"; };
 		273194DA19E1053900A31748 /* LHUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHUtils.h; sourceTree = "<group>"; };
 		273194E419E1128F00A31748 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */,
 				27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */,
 				273194E819E1128F00A31748 /* ParseFacebookUtils.framework in Frameworks */,
+				272145821A11DD4E008CDF21 /* Crashlytics.framework in Frameworks */,
 				27CE2D1519DA2CF50015D47F /* libGoogleAnalyticsServices.a in Frameworks */,
 				27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */,
 				2793C62519ECBA160082AB1C /* CAR.framework in Frameworks */,
@@ -229,6 +234,7 @@
 				278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */,
 				27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */,
 				2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */,
+				272145831A11DD4E008CDF21 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +513,8 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				272145801A11DD4E008CDF21 /* Crashlytics.framework */,
+				272145811A11DD4E008CDF21 /* Fabric.framework */,
 				2783FEAD1A0677A700FAD223 /* StoreKit.framework */,
 				27336E1319ED7FC400416A74 /* Security.framework */,
 				2793C62419ECBA160082AB1C /* CAR.framework */,
@@ -588,6 +596,7 @@
 				27EFEECF19AAA725002740D1 /* Frameworks */,
 				27EFEED019AAA725002740D1 /* Resources */,
 				FB86A517D2814B45AD506D79 /* Copy Pods Resources */,
+				2721457F1A11DCCB008CDF21 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -700,6 +709,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2721457F1A11DCCB008CDF21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 96d718aba1492c8fac8c30ff4e19ccdeea414a63 4ed02573b4a53234b629fa5351f13be40b261c05bc72dd2e79290a1e87d0f754";
+		};
 		B74C45C0B6554DF3A6F61E25 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -883,8 +905,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",
@@ -901,7 +923,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c7d691fe-cca3-45d7-8d3b-cce06fffbb6c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -913,8 +935,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",
@@ -930,7 +952,7 @@
 					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
 				);
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

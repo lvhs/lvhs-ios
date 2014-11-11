@@ -8,6 +8,8 @@
 
 #import "LHConsts.h"
 #import "LHAppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import <AFNetworkActivityIndicatorManager.h>
 #import <Parse/Parse.h>
 
@@ -40,6 +42,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self initParse];
     
     [self registerPushNotification:application];
+    
+    [Fabric with:@[CrashlyticsKit]];
     
     return YES;
 }

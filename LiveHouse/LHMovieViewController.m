@@ -45,21 +45,22 @@
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger artistId = [defaults integerForKey:@"artistId"];
+//    NSInteger artistId = [defaults integerForKey:@"artistId"];
+    NSString *itemId = [defaults stringForKey:@"itemId"];
     
-    if (artistId == 1) {
+    if ([itemId isEqualToString:@"21"]) {
         XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"6-XjbdSAkOI"];
         [videoPlayerViewController presentInView:_screen];
         [videoPlayerViewController.moviePlayer play];
         return;
     }
-    else if (artistId == 2) {
+    else if ([itemId isEqualToString:@"41"]) {
         XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"v6kwUZQN7mU"];
         [videoPlayerViewController presentInView:_screen];
         [videoPlayerViewController.moviePlayer play];
         return;
     }
-    else if (artistId == 3) {
+    else if ([itemId isEqualToString:@"31"]) {
         XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"0Hv9_0uMnoo"];
         [videoPlayerViewController presentInView:_screen];
         [videoPlayerViewController.moviePlayer play];
