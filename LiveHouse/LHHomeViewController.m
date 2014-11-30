@@ -10,6 +10,7 @@
 #import <AFNetworking.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
+#import <XCDYouTubeKit/XCDYouTubeKit.h>
 //#import <CAR/CARMedia.h>
 #import "UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks.h"
@@ -110,11 +111,21 @@ SKPaymentTransactionObserver> {
         itemId = [params valueForKey:@"id"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
-        if ([request.URL.host isEqualToString:@"music"]) {
-            [self performSegueWithIdentifier:@"goPlayer" sender:self];
-        } else {
-            [self performSegueWithIdentifier:@"goMovie" sender:self];
+        
+        if (itemId == nil || [itemId isEqualToString:@""]) {
+            itemId = @"EdeVaT-zZt4";
         }
+        
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:itemId];
+        NSLog(@"-- %@", itemId);
+        [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+        return NO;
+        
+//        if ([request.URL.host isEqualToString:@"music"]) {
+//            [self performSegueWithIdentifier:@"goPlayer" sender:self];
+//        } else {
+//            [self performSegueWithIdentifier:@"goMovie" sender:self];
+//        }
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
         NSLog(@"url: %@", request.URL.query);
@@ -325,6 +336,7 @@ numberOfRowsInSection:(NSInteger)section {
             NSDictionary *parameters = @{@"id": itemId};
             [manager POST:@"http://dev.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
+                [_webView reload];
 //                [queue finishTransaction:transaction];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error: %@", error);

@@ -173,7 +173,7 @@ PODS:
   - UIActionSheet+Blocks (0.8.1)
   - UIAlertView+Blocks (0.8.1)
   - UITextFieldWithLimit (0.1.1)
-  - XCDYouTubeKit (2.0.2)
+  - XCDYouTubeKit (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking
@@ -219,6 +219,6 @@ SPEC CHECKSUMS:
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   UITextFieldWithLimit: 73fc6d57d64b0e7913c6190199d9864bb9f52969
-  XCDYouTubeKit: 65d5f5b9fe4e731327ab61ecc253b8e70e5d5a4d
+  XCDYouTubeKit: 840728453f0a22f54e4488ebeb8ee955a30c274c
 
 COCOAPODS: 0.35.0.rc1

@@ -220,7 +220,7 @@
 #define COCOAPODS_POD_AVAILABLE_XCDYouTubeKit
 #define COCOAPODS_VERSION_MAJOR_XCDYouTubeKit 2
 #define COCOAPODS_VERSION_MINOR_XCDYouTubeKit 0
-#define COCOAPODS_VERSION_PATCH_XCDYouTubeKit 2
+#define COCOAPODS_VERSION_PATCH_XCDYouTubeKit 3
 
 // mockingbird-toolbox
 #define COCOAPODS_POD_AVAILABLE_mockingbird_toolbox

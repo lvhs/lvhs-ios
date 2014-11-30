@@ -123,13 +123,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="dx9-Qw-YN6" userLabel="Background Image">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12g-bN-4GH">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12g-bN-4GH">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="LIVEHOUSE" id="Yf5-9y-L04">
                                         <barButtonItem key="leftBarButtonItem" id="IFL-7Q-X32" userLabel="Menu">
@@ -140,13 +137,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="psn-WV-J1n" userLabel="Logo">
-                                <rect key="frame" x="100" y="20" width="120" height="38"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0yL-hy-ujL" appends="YES" id="f5D-Yf-9ys"/>
-                                </connections>
-                            </imageView>
                             <webView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" paginationMode="leftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="sV7-0P-nrX">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -529,7 +519,6 @@
     </scenes>
     <resources>
         <image name="01-myfirststory.jpg" width="1280" height="1264"/>
-        <image name="Logo" width="228" height="90"/>
         <image name="Splash" width="640" height="1136"/>
         <image name="background.png" width="640" height="1136"/>
         <image name="cpi-title.png" width="580" height="120"/>
