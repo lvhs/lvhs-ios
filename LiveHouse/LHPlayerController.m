@@ -7,6 +7,7 @@
 //
 
 #import "LHPlayerController.h"
+#import <XCDYouTubeKit/XCDYouTubeKit.h>
 
 @interface LHPlayerController ()
 - (IBAction)back:(id)sender;
@@ -28,8 +29,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.audioPlayer = [[LHAudioPlayer alloc] init];
-    [self setupAudioPlayer:@"01"];
+//    self.audioPlayer = [[LHAudioPlayer alloc] init];
+//    [self setupAudioPlayer:@"01"];
+    XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"pRG7FJobkv4"];
+    [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+
+    return;
 }
 
 - (void)didReceiveMemoryWarning

@@ -36,6 +36,12 @@ pod "Repro" # https://repro.io/
 # https://github.com/thegreatloser/DebugView
 # pod 'DebugView', '~> 0.0'
 
+# https://github.com/ryanmaxwell/RMUniversalAlert
+# pod 'RMUniversalAlert'
+
+# http://qiita.com/IamAtmosphere/items/e0b4f7b3a70f02a15139
+# pod 'MSAlertController'
+
 post_install do | installer |
   require 'fileutils'
   FileUtils.cp_r(

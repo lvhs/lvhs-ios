@@ -81,7 +81,8 @@ SKPaymentTransactionObserver> {
     wv.delegate = self;
     wv.scalesPageToFit = YES;
     LHConfig *config = [LHConfig sharedInstance];
-    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+    //NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
 }
@@ -104,8 +105,8 @@ SKPaymentTransactionObserver> {
         return NO;
     }
     else if ([request.URL.scheme isEqualToString:@"player"]) {
-        NSLog(@"url: %@", request.URL.parameterString);
-        NSDictionary *params = [self parseUrlParams:request.URL.parameterString];
+        NSLog(@"url: %@", request.URL.query);
+        NSDictionary *params = [self parseUrlParams:request.URL.query];
         itemId = [params valueForKey:@"id"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
@@ -116,8 +117,8 @@ SKPaymentTransactionObserver> {
         }
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
-        NSLog(@"url: %@", request.URL.parameterString);
-        NSDictionary *params = [self parseUrlParams:request.URL.parameterString];
+        NSLog(@"url: %@", request.URL.query);
+        NSDictionary *params = [self parseUrlParams:request.URL.query];
         itemId = [params valueForKey:@"id"];
         [UIActionSheet showInView:self.view
                         withTitle:@"この楽曲を購入しますか？"
@@ -158,7 +159,6 @@ SKPaymentTransactionObserver> {
 }
 
 - (void)updateBackButton {
-    NSLog(@"updateBackButton:%d", [self.webView canGoBack]);
     if ([self.webView canGoBack]) {
 //        if (!self.navigationItem.leftBarButtonItem) {
 //            [self.navigationItem setHidesBackButton:YES animated:YES];
@@ -240,7 +240,7 @@ numberOfRowsInSection:(NSInteger)section {
 - (void)goMenu:(UITapGestureRecognizer *)sender {
     if (sender.view.tag == 0) {
         NSString *sharedText = @"LIVEHOUSEをシェアしよう！";
-        NSURL *url = [NSURL URLWithString:@"http://app.lvhs.jp/"];
+        NSURL *url = [NSURL URLWithString:@"http://lvhs.jp/"];
         NSArray *activityItems = @[sharedText, url];
         UIActivity *activity = [[UIActivity alloc] init];
         NSArray *appActivities = @[activity];
@@ -323,9 +323,9 @@ numberOfRowsInSection:(NSInteger)section {
              */
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             NSDictionary *parameters = @{@"id": itemId};
-            [manager POST:@"http://app.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [manager POST:@"http://dev.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
-                [queue finishTransaction:transaction];
+//                [queue finishTransaction:transaction];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
             }];

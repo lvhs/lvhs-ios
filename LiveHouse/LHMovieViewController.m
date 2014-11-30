@@ -66,6 +66,14 @@
         [videoPlayerViewController.moviePlayer play];
         return;
     }
+    else {
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"pRG7FJobkv4"];
+        [videoPlayerViewController presentInView:_screen];
+        [videoPlayerViewController.moviePlayer play];
+
+        return;
+        
+    }
     
     // Do any additional setup after loading the view.
     NSString *path = [[NSBundle mainBundle] pathForResource:@"01" ofType:@"mp4"];

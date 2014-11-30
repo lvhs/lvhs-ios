@@ -924,6 +924,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = livehouse;
 				PROVISIONING_PROFILE = "c7d691fe-cca3-45d7-8d3b-cce06fffbb6c";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -953,6 +954,7 @@
 				);
 				PRODUCT_NAME = livehouse;
 				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
