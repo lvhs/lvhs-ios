@@ -48,6 +48,7 @@ install_resource()
                     install_resource "FontAwesomeKit/FontAwesomeKit/foundation-icons.ttf"
                     install_resource "FontAwesomeKit/FontAwesomeKit/ionicons.ttf"
                     install_resource "FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf"
+                    install_resource "Repro/Repro.embeddedframework/Resources/ReproSDKResources.bundle"
                     install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
           
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

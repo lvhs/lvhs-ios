@@ -1,23 +1,23 @@
 PODS:
-  - AFNetworking (2.4.1):
-    - AFNetworking/NSURLConnection (= 2.4.1)
-    - AFNetworking/NSURLSession (= 2.4.1)
-    - AFNetworking/Reachability (= 2.4.1)
-    - AFNetworking/Security (= 2.4.1)
-    - AFNetworking/Serialization (= 2.4.1)
-    - AFNetworking/UIKit (= 2.4.1)
-  - AFNetworking/NSURLConnection (2.4.1):
+  - AFNetworking (2.5.0):
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
+  - AFNetworking/NSURLConnection (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.4.1):
+  - AFNetworking/NSURLSession (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.4.1)
-  - AFNetworking/Security (2.4.1)
-  - AFNetworking/Serialization (2.4.1)
-  - AFNetworking/UIKit (2.4.1):
+  - AFNetworking/Reachability (2.5.0)
+  - AFNetworking/Security (2.5.0)
+  - AFNetworking/Serialization (2.5.0)
+  - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Base64 (1.0.1)
@@ -26,7 +26,7 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
-  - CrittercismSDK (5.0.4)
+  - CrittercismSDK (5.0.7)
   - FontAwesomeKit (2.1.8):
     - FontAwesomeKit/Core (= 2.1.8)
     - FontAwesomeKit/FontAwesome (= 2.1.8)
@@ -160,16 +160,16 @@ PODS:
   - mockingbird-toolbox/ThreadsafeCache (0.9.7):
     - mockingbird-toolbox/Common
   - MTStatusBarOverlay (0.9.1)
-  - Realm (0.87.1):
-    - Realm/Headers (= 0.87.1)
-  - Realm/Headers (0.87.1)
-  - Repro (0.3.4)
+  - Realm (0.87.4):
+    - Realm/Headers (= 0.87.4)
+  - Realm/Headers (0.87.4)
+  - Repro (0.3.6)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SSZipArchive (0.3.2)
   - SVProgressHUD (1.0)
-  - TTTAttributedLabel (1.10.1)
+  - TTTAttributedLabel (1.11.0)
   - UIActionSheet+Blocks (0.8.1)
   - UIAlertView+Blocks (0.8.1)
   - UITextFieldWithLimit (0.1.1)
@@ -199,10 +199,10 @@ DEPENDENCIES:
   - XCDYouTubeKit
 
 SPEC CHECKSUMS:
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   Base64: c6d74f31f150543b246a07e180ba813c88e59311
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
-  CrittercismSDK: fa07680e01cd963ef23519f6a3dc2bf5ddb9b5bd
+  CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
   FontAwesomeKit: a2edea3111dab107b4cc43b85881b404eb063385
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
@@ -210,12 +210,12 @@ SPEC CHECKSUMS:
   MKStoreKit: b3974582d36f1410eb4d1174728f45909a367b86
   mockingbird-toolbox: d73d0f853d1cd4281acedea17284af30c1e08511
   MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
-  Realm: d2a10a60bbbd66c64ae8d839a378b88c68cf79bb
-  Repro: 69386787c03768b2ce65be48e392add4c98e9d4e
+  Realm: 17d0d9c94b38d15223fa3e806ead0e0562765e46
+  Repro: ec53d8bd8da4d9ec9b596a68727ec2d5919fb73b
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SSZipArchive: 11299a4e89821bd4085b12f25edaa85853e0051c
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
+  TTTAttributedLabel: e63baa4d3b8798ea259f5d9f55720002b4bbbd66
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   UITextFieldWithLimit: 73fc6d57d64b0e7913c6190199d9864bb9f52969
