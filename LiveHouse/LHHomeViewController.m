@@ -82,8 +82,8 @@ SKPaymentTransactionObserver> {
     wv.delegate = self;
     wv.scalesPageToFit = YES;
     LHConfig *config = [LHConfig sharedInstance];
-    //NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
-    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
+    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+//    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
 }
@@ -106,18 +106,21 @@ SKPaymentTransactionObserver> {
         return NO;
     }
     else if ([request.URL.scheme isEqualToString:@"player"]) {
-        NSLog(@"url: %@", request.URL.query);
+        
         NSDictionary *params = [self parseUrlParams:request.URL.query];
-        itemId = [params valueForKey:@"id"];
+        itemId = [params valueForKey:@"iid"];
+        NSString *youtubeId = [params valueForKey:@"yid"];
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
         
-        if (itemId == nil || [itemId isEqualToString:@""]) {
-            itemId = @"EdeVaT-zZt4";
+        if (youtubeId == nil || [youtubeId isEqualToString:@""]) {
+            youtubeId = @"6-XjbdSAkOI";
         }
         
-        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:itemId];
-        NSLog(@"-- %@", itemId);
+        NSLog(@"iid:%@, yid:%@",itemId, youtubeId);
+        
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
         [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
         return NO;
         
@@ -128,9 +131,8 @@ SKPaymentTransactionObserver> {
 //        }
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
-        NSLog(@"url: %@", request.URL.query);
         NSDictionary *params = [self parseUrlParams:request.URL.query];
-        itemId = [params valueForKey:@"id"];
+        itemId = [params valueForKey:@"iid"];
         [UIActionSheet showInView:self.view
                         withTitle:@"この楽曲を購入しますか？"
                 cancelButtonTitle:@"キャンセル"
@@ -261,7 +263,6 @@ numberOfRowsInSection:(NSInteger)section {
     }
     else if (sender.view.tag == 1) {
 //        [self performSegueWithIdentifier:@"goSetting" sender:self];
-        NSLog(@"mailto");
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@lvhs.jp"]];
     }
     else if (sender.view.tag == 2) {
@@ -296,7 +297,7 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 - (void)getInAppPurchaseItems {
-    NSSet *set = [NSSet setWithObjects:@"jp.lvhs.livehouse.ticket1", nil];
+    NSSet *set = [NSSet setWithObjects:@"jp.lvhs.livehouse.t1", nil];
     SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
     productsRequest.delegate = self;
     [productsRequest start];
@@ -336,9 +337,8 @@ numberOfRowsInSection:(NSInteger)section {
              */
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             NSDictionary *parameters = @{@"id": itemId};
-            [manager POST:@"http://dev.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [manager POST:@"http://app.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
-                [_webView reload];
 //                [queue finishTransaction:transaction];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
@@ -361,7 +361,8 @@ numberOfRowsInSection:(NSInteger)section {
              */
             [queue finishTransaction:transaction];
         }
-    }		
+    }
+    [_webView reload];
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error

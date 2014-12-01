@@ -70,9 +70,7 @@
         XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:@"pRG7FJobkv4"];
         [videoPlayerViewController presentInView:_screen];
         [videoPlayerViewController.moviePlayer play];
-
         return;
-        
     }
     
     // Do any additional setup after loading the view.
