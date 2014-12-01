@@ -49,6 +49,10 @@ post_install do | installer |
     'LiveHouse/Settings.bundle/Acknowledgements.plist',
     :remove_destination => true
   )
+
+  installer.project.build_configurations.each do |config|
+    config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+  end
 end
 
 # vim: ft=ruby :

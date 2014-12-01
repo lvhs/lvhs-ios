@@ -260,7 +260,9 @@ numberOfRowsInSection:(NSInteger)section {
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     else if (sender.view.tag == 1) {
-        [self performSegueWithIdentifier:@"goSetting" sender:self];
+//        [self performSegueWithIdentifier:@"goSetting" sender:self];
+        NSLog(@"mailto");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@lvhs.jp"]];
     }
     else if (sender.view.tag == 2) {
         [self performSegueWithIdentifier:@"goReview" sender:self];
