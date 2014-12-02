@@ -800,7 +800,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "a57cdce6-6a53-4ebb-85e9-1dbb768f5240";
+				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -831,7 +831,7 @@
 					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
 				);
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "a57cdce6-6a53-4ebb-85e9-1dbb768f5240";
+				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
