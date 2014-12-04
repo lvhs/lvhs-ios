@@ -55,12 +55,13 @@
 
 - (IBAction)goCPIDetail:(id)sender {
     CARMediaViewController *vc = [[CARMediaViewController alloc] initWithTitle:@"タイトル" buttonTitle:@"戻る" tintColor:nil];
-    vc.publicAppKey = @"";
-    vc.apiKey = @"4245437727b92542";
-    vc.mId = @"3893";
+    vc.publicAppKey = @"ncIdX3la";
+    vc.apiKey = @"26254487d9a595ee";
+    vc.mId = @"5006";
     vc.userId = @"00001";
     vc.fromId = @"test";
-    [vc loadURLString:@"http://ajmp.jp/index.php"];
+    NSString *url = [NSString stringWithFormat:@"http://car.mobadme.jp/spg/spnew/%@/%@/index.php", @"807", vc.mId];
+    [vc loadURLString:url];
     [self presentViewController:vc animated:YES completion:nil];
 //    [self performSegueWithIdentifier:@"goCPIDetail" sender:self];
 //    [self dismissViewControllerAnimated:YES completion:nil];

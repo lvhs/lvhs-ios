@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
+#import <CAR/CARMedia.h>
 //#import <CAR/CARMedia.h>
 #import "UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks.h"
@@ -156,6 +157,9 @@ SKPaymentTransactionObserver> {
                                  NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app/car/list"];
                                  LHURLRequest *req = [LHURLRequest requestWithURL:url];
                                  [_webView loadRequest:req];
+                             }
+                             else if (buttonIndex == 1) {
+                                 [self showCARWall];
                              }
                          }];
         return NO;
@@ -441,5 +445,16 @@ numberOfRowsInSection:(NSInteger)section {
     return [string stringByRemovingPercentEncoding];
 }
 
+- (void) showCARWall {
+    CARMediaViewController *vc = [[CARMediaViewController alloc] initWithTitle:@"タイトル" buttonTitle:@"戻る" tintColor:nil];
+    vc.publicAppKey = @"ncIdX3la";
+    vc.apiKey = @"26254487d9a595ee";
+    vc.mId = @"5006";
+    vc.userId = @"test001";
+    vc.fromId = @"test001";
+//    NSString *url = [NSString stringWithFormat:@"http://car.mobadme.jp/spg/spnew/%@/%@/index.php", @"807", vc.mId];
+    [vc loadURLString:@"http://car.mobadme.jp/spg/spnew/807/5006/index.php"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 @end
