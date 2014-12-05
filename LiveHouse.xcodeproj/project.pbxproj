@@ -24,7 +24,6 @@
 		273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28FC19B3FCE40000C83E /* LHPlayerController.m */; };
 		273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273C290019B3FF7A0000C83E /* AVFoundation.framework */; };
 		273C290519B3FFF20000C83E /* LHAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C290419B3FFF20000C83E /* LHAudioPlayer.m */; };
-		2783FEAE1A0677A700FAD223 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2783FEAD1A0677A700FAD223 /* StoreKit.framework */; };
 		2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FEB01A072A5900FAD223 /* LHTermsViewController.m */; };
 		2783FEB31A07333000FAD223 /* terms_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB21A07333000FAD223 /* terms_bg.png */; };
 		2783FEB71A0738DC00FAD223 /* icon-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB51A0738DC00FAD223 /* icon-empty.png */; };
@@ -99,7 +98,6 @@
 		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
 		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
-		2783FEAD1A0677A700FAD223 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2783FEAF1A072A5900FAD223 /* LHTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTermsViewController.h; sourceTree = "<group>"; };
 		2783FEB01A072A5900FAD223 /* LHTermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHTermsViewController.m; sourceTree = "<group>"; };
 		2783FEB21A07333000FAD223 /* terms_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terms_bg.png; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2783FEAE1A0677A700FAD223 /* StoreKit.framework in Frameworks */,
 				2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */,
 				27336E1419ED7FC400416A74 /* Security.framework in Frameworks */,
 				27CE2D1919DA2D980015D47F /* SystemConfiguration.framework in Frameworks */,
@@ -410,7 +407,6 @@
 			children = (
 				272145801A11DD4E008CDF21 /* Crashlytics.framework */,
 				272145811A11DD4E008CDF21 /* Fabric.framework */,
-				2783FEAD1A0677A700FAD223 /* StoreKit.framework */,
 				27336E1319ED7FC400416A74 /* Security.framework */,
 				2793C62419ECBA160082AB1C /* CAR.framework */,
 				273194ED19E1164C00A31748 /* FacebookSDK.framework */,
@@ -532,6 +528,11 @@
 				TargetAttributes = {
 					27EFEED119AAA725002740D1 = {
 						DevelopmentTeam = B7N22X49QP;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					27EFEEF219AAA725002740D1 = {
 						TestTargetID = 27EFEED119AAA725002740D1;
@@ -782,8 +783,40 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: jp.lvhs.livehouse.free";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: jp.lvhs.livehouse.free";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/Parse",
+					/Users/uehara.masayuki/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = livehouse;
+				PROVISIONING_PROFILE = "88ba28a1-f322-4e52-a6c8-f367af74b5e9";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		27EFEF0619AAA725002740D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FCCACB725E826461851D222 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: jp.lvhs.livehouse.free";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: jp.lvhs.livehouse.free";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",
@@ -800,38 +833,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
-				TARGETED_DEVICE_FAMILY = 1;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		27EFEF0619AAA725002740D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FCCACB725E826461851D222 /* Pods.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kentaro Suzuki (B7N22X49QP)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendors/Parse",
-					/Users/uehara.masayuki/Documents/FacebookSDK,
-					"$(PROJECT_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
-				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
-				);
-				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
+				PROVISIONING_PROFILE = "88ba28a1-f322-4e52-a6c8-f367af74b5e9";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

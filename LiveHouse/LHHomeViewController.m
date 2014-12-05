@@ -81,9 +81,9 @@ SKPaymentTransactionObserver> {
     UIWebView *wv = _webView;
     wv.delegate = self;
     wv.scalesPageToFit = YES;
-    LHConfig *config = [LHConfig sharedInstance];
-    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
-//    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
+//    LHConfig *config = [LHConfig sharedInstance];
+//    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
+    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
 }
@@ -133,14 +133,29 @@ SKPaymentTransactionObserver> {
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
         NSDictionary *params = [self parseUrlParams:request.URL.query];
         itemId = [params valueForKey:@"iid"];
+        NSString *iap = [params valueForKey:@"iap"];
+        NSString *reward = [params valueForKey:@"reward"];
+        NSString *title = [params valueForKey:@"title"];
+        NSMutableArray *buttons = [[NSMutableArray alloc] init];
+        if (title == nil) {
+            title = @"この楽曲を購入しますか？";
+        }
+        if (iap != nil) {
+            [buttons addObject:[self decodeString:iap]];
+        }
+        if (reward != nil) {
+            [buttons addObject:[self decodeString:reward]];
+        }
         [UIActionSheet showInView:self.view
-                        withTitle:@"この楽曲を購入しますか？"
+                        withTitle:title
                 cancelButtonTitle:@"キャンセル"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"購入する"]
+                otherButtonTitles:buttons
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
-                                 [self getInAppPurchaseItems];
+                                 NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app/car/list"];
+                                 LHURLRequest *req = [LHURLRequest requestWithURL:url];
+                                 [_webView loadRequest:req];
                              }
                          }];
         return NO;
@@ -421,5 +436,10 @@ numberOfRowsInSection:(NSInteger)section {
     _navigationBar.topItem.leftBarButtonItems = @[_btnItem];
     _navigationBar.topItem.rightBarButtonItems = @[reloadBtn];
 }
+
+- (NSString *) decodeString:(NSString *)string {
+    return [string stringByRemovingPercentEncoding];
+}
+
 
 @end
