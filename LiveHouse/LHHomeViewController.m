@@ -82,9 +82,8 @@ SKPaymentTransactionObserver> {
     UIWebView *wv = _webView;
     wv.delegate = self;
     wv.scalesPageToFit = YES;
-//    LHConfig *config = [LHConfig sharedInstance];
-//    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
-    NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app"];
+    LHConfig *config = [LHConfig sharedInstance];
+    NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
 }
@@ -154,7 +153,7 @@ SKPaymentTransactionObserver> {
                 otherButtonTitles:buttons
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
-                                 NSURL *url = [NSURL URLWithString:@"http://dev.lvhs.jp/app/car/list"];
+                                 NSURL *url = [NSURL URLWithString:@"http://api.lvhs.jp/app/car/list"];
                                  LHURLRequest *req = [LHURLRequest requestWithURL:url];
                                  [_webView loadRequest:req];
                              }
