@@ -450,9 +450,10 @@ numberOfRowsInSection:(NSInteger)section {
     vc.publicAppKey = @"ncIdX3la";
     vc.apiKey = @"26254487d9a595ee";
     vc.mId = @"5006";
-    vc.userId = @"test001";
-    vc.fromId = @"test001";
+    vc.userId = @"test003";
+    vc.fromId = @"test004";
 //    NSString *url = [NSString stringWithFormat:@"http://car.mobadme.jp/spg/spnew/%@/%@/index.php", @"807", vc.mId];
+//    vc.debug = true;
     [vc loadURLString:@"http://car.mobadme.jp/spg/spnew/807/5006/index.php"];
     [self presentViewController:vc animated:YES completion:nil];
 }
