@@ -24,6 +24,7 @@
 		273C28FD19B3FCE40000C83E /* LHPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28FC19B3FCE40000C83E /* LHPlayerController.m */; };
 		273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273C290019B3FF7A0000C83E /* AVFoundation.framework */; };
 		273C290519B3FFF20000C83E /* LHAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C290419B3FFF20000C83E /* LHAudioPlayer.m */; };
+		27774A181A791B4300FF0FC2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27774A171A791B4300FF0FC2 /* StoreKit.framework */; };
 		2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FEB01A072A5900FAD223 /* LHTermsViewController.m */; };
 		2783FEB31A07333000FAD223 /* terms_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB21A07333000FAD223 /* terms_bg.png */; };
 		2783FEB71A0738DC00FAD223 /* icon-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB51A0738DC00FAD223 /* icon-empty.png */; };
@@ -98,6 +99,7 @@
 		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		273C290319B3FFF20000C83E /* LHAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHAudioPlayer.h; sourceTree = "<group>"; };
 		273C290419B3FFF20000C83E /* LHAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHAudioPlayer.m; sourceTree = "<group>"; };
+		27774A171A791B4300FF0FC2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2783FEAF1A072A5900FAD223 /* LHTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTermsViewController.h; sourceTree = "<group>"; };
 		2783FEB01A072A5900FAD223 /* LHTermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHTermsViewController.m; sourceTree = "<group>"; };
 		2783FEB21A07333000FAD223 /* terms_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terms_bg.png; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */,
 				2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */,
 				272145831A11DD4E008CDF21 /* Fabric.framework in Frameworks */,
+				27774A181A791B4300FF0FC2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +408,7 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27774A171A791B4300FF0FC2 /* StoreKit.framework */,
 				272145801A11DD4E008CDF21 /* Crashlytics.framework */,
 				272145811A11DD4E008CDF21 /* Fabric.framework */,
 				27336E1319ED7FC400416A74 /* Security.framework */,
@@ -530,7 +534,7 @@
 						DevelopmentTeam = B7N22X49QP;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -801,7 +805,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
+				PROVISIONING_PROFILE = "e9c88d28-01b8-41d0-86cb-26153d4afe02";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -833,7 +837,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = livehouse;
-				PROVISIONING_PROFILE = "ed55bfe9-2afb-4e99-8bfe-4a8242233085";
+				PROVISIONING_PROFILE = "e9c88d28-01b8-41d0-86cb-26153d4afe02";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
