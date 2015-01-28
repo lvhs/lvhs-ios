@@ -131,34 +131,26 @@ SKPaymentTransactionObserver> {
 //        }
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
+
         NSDictionary *params = [self parseUrlParams:request.URL.query];
+
         itemId = [params valueForKey:@"iid"];
-        NSString *iap = [params valueForKey:@"iap"];
-        NSString *reward = [params valueForKey:@"reward"];
         NSString *title = [params valueForKey:@"title"];
-        NSMutableArray *buttons = [[NSMutableArray alloc] init];
+
         if (title == nil) {
-            title = @"この楽曲を購入しますか？";
+            title = @"この動画を購入しますか？";
         }
-        if (iap != nil) {
-            [buttons addObject:[self decodeString:iap]];
-        }
-        if (reward != nil) {
-            [buttons addObject:[self decodeString:reward]];
-        }
+
         [UIActionSheet showInView:self.view
                         withTitle:title
                 cancelButtonTitle:@"キャンセル"
            destructiveButtonTitle:nil
-                otherButtonTitles:buttons
+                otherButtonTitles:@[@"購入する"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
                                  NSURL *url = [NSURL URLWithString:@"http://api.lvhs.jp/app/car/list"];
                                  LHURLRequest *req = [LHURLRequest requestWithURL:url];
                                  [_webView loadRequest:req];
-                             }
-                             else if (buttonIndex == 1) {
-                                 [self showCARWall];
                              }
                          }];
         return NO;

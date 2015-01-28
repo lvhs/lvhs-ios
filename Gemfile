@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 ruby '2.2.0'
 
-gem "cocoapods"
+gem "cocoapods", '0.36.0.beta.2' 
 
 # gem 'shenzhen'
