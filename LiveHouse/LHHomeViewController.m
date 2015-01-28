@@ -346,6 +346,7 @@ numberOfRowsInSection:(NSInteger)section {
 
             [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
+                [_webView reload];
 //                [queue finishTransaction:transaction];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
