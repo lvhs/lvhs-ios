@@ -1,2 +1,6 @@
-gem 'shenzhen'
-gem 'ultrahook'
+source "https://rubygems.org"
+ruby '2.2.0'
+
+gem "cocoapods"
+
+# gem 'shenzhen'
