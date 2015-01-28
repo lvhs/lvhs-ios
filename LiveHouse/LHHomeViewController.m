@@ -22,7 +22,6 @@
 
 @interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate,
 SKPaymentTransactionObserver> {
-    NSString *itemId;
     UIBarButtonItem *backBtn;
     UIBarButtonItem *reloadBtn;
     UIBarButtonItem *prevBtn;
@@ -108,38 +107,30 @@ SKPaymentTransactionObserver> {
     else if ([request.URL.scheme isEqualToString:@"player"]) {
         
         NSDictionary *params = [self parseUrlParams:request.URL.query];
-        itemId = [params valueForKey:@"iid"];
+        NSString *itemId    = [params valueForKey:@"iid"];
         NSString *youtubeId = [params valueForKey:@"yid"];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
         
-        if (youtubeId == nil || [youtubeId isEqualToString:@""]) {
-            youtubeId = @"6-XjbdSAkOI";
-        }
-        
-        NSLog(@"iid:%@, yid:%@",itemId, youtubeId);
-        
         XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
         [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
         return NO;
-        
-//        if ([request.URL.host isEqualToString:@"music"]) {
-//            [self performSegueWithIdentifier:@"goPlayer" sender:self];
-//        } else {
-//            [self performSegueWithIdentifier:@"goMovie" sender:self];
-//        }
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
-
         NSDictionary *params = [self parseUrlParams:request.URL.query];
 
-        itemId = [params valueForKey:@"iid"];
-        NSString *title = [params valueForKey:@"title"];
+        NSString *productId = [params valueForKey:@"pid"];
+        NSString *itemId    = [params valueForKey:@"iid"];
+        NSString *title     = [params valueForKey:@"title"];
 
         if (title == nil) {
             title = @"この動画を購入しますか？";
         }
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:itemId forKey:@"itemId"];
+        [defaults setValue:productId forKey:@"productId"];
 
         [UIActionSheet showInView:self.view
                         withTitle:title
@@ -148,9 +139,7 @@ SKPaymentTransactionObserver> {
                 otherButtonTitles:@[@"購入する"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0) {
-                                 NSURL *url = [NSURL URLWithString:@"http://api.lvhs.jp/app/car/list"];
-                                 LHURLRequest *req = [LHURLRequest requestWithURL:url];
-                                 [_webView loadRequest:req];
+                                 [self getInAppPurchaseItems:productId];
                              }
                          }];
         return NO;
@@ -306,8 +295,8 @@ numberOfRowsInSection:(NSInteger)section {
     }
 }
 
-- (void)getInAppPurchaseItems {
-    NSSet *set = [NSSet setWithObjects:@"jp.lvhs.livehouse.t1", nil];
+- (void)getInAppPurchaseItems:(NSString*) productId {
+    NSSet *set = [NSSet setWithObjects:productId, nil];
     SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
     productsRequest.delegate = self;
     [productsRequest start];
@@ -346,8 +335,16 @@ numberOfRowsInSection:(NSInteger)section {
              * ここでレシートの確認やアイテムの付与を行う。
              */
             AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-            NSDictionary *parameters = @{@"id": itemId};
-            [manager POST:@"http://app.lvhs.jp/app/purchase" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSDictionary *parameters = @{
+                    @"iid": [defaults valueForKey:@"itemId"],
+                    @"pid": [defaults valueForKey:@"productId"]
+            };
+            LHConfig *config = [LHConfig sharedInstance];
+            NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+            url = [url stringByAppendingString:@"/purchase"];
+
+            [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"JSON: %@", responseObject);
 //                [queue finishTransaction:transaction];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
