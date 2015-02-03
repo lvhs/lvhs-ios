@@ -136,6 +136,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Realm
 
+TABLE OF CONTENTS
+
+1. Apache License version 2.0
+2. Realm Components
+3. Export Compliance
+
+-------------------------------------------------------------------------------
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -380,6 +388,24 @@ For the Realm Core (TightDB) component
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
 
+EXPORT COMPLIANCE
+
+You understand that the Software may contain cryptographic functions that may be
+subject to export restrictions, and you represent and warrant that you are not
+located in a country that is subject to United States export restriction or embargo,
+including Cuba, Iran, North Korea, Sudan, or Syria, and that you are not on the
+Department of Commerce list of Denied Persons, Unverified Parties, or affiliated
+with a Restricted Entity.
+
+You agree to comply with all export, re-export and import restrictions and
+regulations of the Department of Commerce or other agency or authority of the
+United States or other applicable countries. You also agree not to transfer, or
+authorize the transfer of, directly or indirectly, the Software to any prohibited
+country, including Cuba, Iran, North Korea, Sudan, or Syria, or to any person or
+organization on or affiliated with the Department of Commerce lists of Denied
+Persons, Unverified Parties or Restricted Entities, or otherwise in violation of any
+such restrictions or regulations.
+
 
 ## Repro
 
@@ -435,7 +461,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## SVProgressHUD
 
-Copyright (c) 2011 Sam Vermette
+Copyright (c) 2011-2014 Sam Vermette
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -458,8 +484,8 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-A different license may apply to other ressources included in this package, 
-including Joseph Wain's Glyphish Icons. Please consult their 
+A different license may apply to other resources included in this package, 
+including Freepik Icons. Please consult their 
 respective headers for the terms of their individual licenses.
 
 ## TTTAttributedLabel

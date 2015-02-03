@@ -27,20 +27,20 @@ PODS:
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
   - CrittercismSDK (5.0.7)
-  - FontAwesomeKit (2.1.8):
-    - FontAwesomeKit/Core (= 2.1.8)
-    - FontAwesomeKit/FontAwesome (= 2.1.8)
-    - FontAwesomeKit/FoundationIcons (= 2.1.8)
-    - FontAwesomeKit/IonIcons (= 2.1.8)
-    - FontAwesomeKit/Zocial (= 2.1.8)
-  - FontAwesomeKit/Core (2.1.8)
-  - FontAwesomeKit/FontAwesome (2.1.8):
+  - FontAwesomeKit (2.2.0):
+    - FontAwesomeKit/Core (= 2.2.0)
+    - FontAwesomeKit/FontAwesome (= 2.2.0)
+    - FontAwesomeKit/FoundationIcons (= 2.2.0)
+    - FontAwesomeKit/IonIcons (= 2.2.0)
+    - FontAwesomeKit/Zocial (= 2.2.0)
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/FoundationIcons (2.1.8):
+  - FontAwesomeKit/FoundationIcons (2.2.0):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/IonIcons (2.1.8):
+  - FontAwesomeKit/IonIcons (2.2.0):
     - FontAwesomeKit/Core
-  - FontAwesomeKit/Zocial (2.1.8):
+  - FontAwesomeKit/Zocial (2.2.0):
     - FontAwesomeKit/Core
   - HexColors (2.2.1)
   - MagicalRecord (2.2):
@@ -160,16 +160,16 @@ PODS:
   - mockingbird-toolbox/ThreadsafeCache (0.9.7):
     - mockingbird-toolbox/Common
   - MTStatusBarOverlay (0.9.1)
-  - Realm (0.87.4):
-    - Realm/Headers (= 0.87.4)
-  - Realm/Headers (0.87.4)
-  - Repro (0.3.6)
+  - Realm (0.90.4):
+    - Realm/Headers (= 0.90.4)
+  - Realm/Headers (0.90.4)
+  - Repro (0.4.2)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SSZipArchive (0.3.2)
-  - SVProgressHUD (1.0)
-  - TTTAttributedLabel (1.11.0)
+  - SVProgressHUD (1.1.2)
+  - TTTAttributedLabel (1.13.1)
   - UIActionSheet+Blocks (0.8.1)
   - UIAlertView+Blocks (0.8.1)
   - UITextFieldWithLimit (0.1.1)
@@ -203,22 +203,22 @@ SPEC CHECKSUMS:
   Base64: c6d74f31f150543b246a07e180ba813c88e59311
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   CrittercismSDK: 1f1a91c7a51ca8044e675765bde5d2aa97295b1d
-  FontAwesomeKit: a2edea3111dab107b4cc43b85881b404eb063385
+  FontAwesomeKit: 61f0b4f12f1b11b7489bc7d1507a8692547f3857
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MKStoreKit: b3974582d36f1410eb4d1174728f45909a367b86
   mockingbird-toolbox: d73d0f853d1cd4281acedea17284af30c1e08511
   MTStatusBarOverlay: f1fef7143ed3e9ce3d2c6ee3f297079e5cab905f
-  Realm: 17d0d9c94b38d15223fa3e806ead0e0562765e46
-  Repro: ec53d8bd8da4d9ec9b596a68727ec2d5919fb73b
+  Realm: 43ec5595f51849fabccd2213cfad90bc4ff9a3c0
+  Repro: 3aad30c1f194ffad71c71c9fe50270bb0b3692e5
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SSZipArchive: 11299a4e89821bd4085b12f25edaa85853e0051c
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  TTTAttributedLabel: e63baa4d3b8798ea259f5d9f55720002b4bbbd66
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  TTTAttributedLabel: 71843ac4178e1ebd6b0950b54325146726a124ae
   UIActionSheet+Blocks: c8b9c02f3d08964e8f7a4202f004a639c15eab80
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   UITextFieldWithLimit: 73fc6d57d64b0e7913c6190199d9864bb9f52969
   XCDYouTubeKit: 840728453f0a22f54e4488ebeb8ee955a30c274c
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.2
