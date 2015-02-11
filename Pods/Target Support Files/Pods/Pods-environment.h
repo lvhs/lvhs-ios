@@ -222,6 +222,12 @@
 #define COCOAPODS_VERSION_MINOR_XCDYouTubeKit 0
 #define COCOAPODS_VERSION_PATCH_XCDYouTubeKit 3
 
+// YTVimeoExtractor
+#define COCOAPODS_POD_AVAILABLE_YTVimeoExtractor
+#define COCOAPODS_VERSION_MAJOR_YTVimeoExtractor 0
+#define COCOAPODS_VERSION_MINOR_YTVimeoExtractor 1
+#define COCOAPODS_VERSION_PATCH_YTVimeoExtractor 0
+
 // mockingbird-toolbox
 #define COCOAPODS_POD_AVAILABLE_mockingbird_toolbox
 #define COCOAPODS_VERSION_MAJOR_mockingbird_toolbox 0

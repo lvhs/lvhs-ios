@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
+#import <YTVimeoExtractor/YTVimeoExtractor.h>
 #import <CAR/CARMedia.h>
 //#import <CAR/CARMedia.h>
 #import "UIActionSheet+Blocks.h"
@@ -35,6 +36,7 @@ SKPaymentTransactionObserver> {
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)goHome:(id)sender;
 - (IBAction)toggleMenu:(id)sender;
+@property MPMoviePlayerViewController *playerViewController;
 
 @end
 
@@ -113,8 +115,23 @@ SKPaymentTransactionObserver> {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
         
-        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
-        [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+//        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
+//        [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+        
+        [YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
+                                       quality:YTVimeoVideoQualityMedium
+                             completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+                                 if (error) {
+                                     // handle error
+                                     NSLog(@"Video URL: %@", [videoURL absoluteString]);
+                                 } else {
+                                     // run player
+                                     self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                                     [self.playerViewController.moviePlayer prepareToPlay];
+                                     [self presentViewController:self.playerViewController animated:YES completion:nil];
+                                 }
+                             }];
+        
         return NO;
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
