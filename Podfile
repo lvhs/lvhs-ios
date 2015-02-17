@@ -8,7 +8,7 @@ pod 'MBProgressHUD'
 pod 'UIAlertView+Blocks'
 pod 'UIActionSheet+Blocks'
 pod 'SDWebImage'
-#pod 'MBPhotoBrowser'
+# pod 'MBPhotoBrowser'
 pod 'FontAwesomeKit'
 pod 'mockingbird-toolbox'
 pod 'HexColors'
@@ -26,7 +26,7 @@ pod 'MKStoreKit'
 pod 'TTTAttributedLabel'
 
 # UI/UX
-pod "Repro" # https://repro.io/
+pod 'Repro' # https://repro.io/
 
 # replacement for UITableViewController & UICollectionViewController
 # pod "SlackTextViewController" https://github.com/slackhq/SlackTextViewController
@@ -45,12 +45,12 @@ pod "Repro" # https://repro.io/
 # http://qiita.com/IamAtmosphere/items/e0b4f7b3a70f02a15139
 # pod 'MSAlertController'
 
-post_install do | installer |
+post_install do |installer|
   require 'fileutils'
   FileUtils.cp_r(
     'Pods/Target Support Files/Pods/Pods-acknowledgements.plist',
     'LiveHouse/Settings.bundle/Acknowledgements.plist',
-    :remove_destination => true
+    remove_destination: true
   )
 
   installer.project.build_configurations.each do |config|
