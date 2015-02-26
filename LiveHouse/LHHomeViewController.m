@@ -111,27 +111,33 @@ SKPaymentTransactionObserver> {
         NSDictionary *params = [self parseUrlParams:request.URL.query];
         NSString *itemId    = [params valueForKey:@"iid"];
         NSString *youtubeId = [params valueForKey:@"yid"];
+        NSString *vimeoId   = [params valueForKey:@"vid"];
+        
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
         
-        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
-        [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
-        
-//        [YTVimeoExtractor fetchVideoURLFromURL:@"https://vimeo.com/119453209"
-//                                       quality:YTVimeoVideoQualityMedium
-//                                       referer:@"http://lvhs.jp"
-//                             completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
-//                                 if (error) {
-//                                     // handle error
-//                                     NSLog(@"Video URL: %@", [videoURL absoluteString]);
-//                                 } else {
-//                                     // run player
-//                                     self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-//                                     [self.playerViewController.moviePlayer prepareToPlay];
-//                                     [self presentViewController:self.playerViewController animated:YES completion:nil];
-//                                 }
-//                             }];
+        if (youtubeId != nil) {
+            XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
+            [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+                
+        } else {
+            NSString *vimeoUrl = [NSString stringWithFormat:@"https://vimeo.com/%@", vimeoId];
+            [YTVimeoExtractor fetchVideoURLFromURL:vimeoUrl
+                                           quality:YTVimeoVideoQualityMedium
+                                           referer:@"http://lvhs.jp"
+                                 completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+                                     if (error) {
+                                         // handle error
+                                         NSLog(@"Video URL: %@", [videoURL absoluteString]);
+                                     } else {
+                                         // run player
+                                         self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                                         [self.playerViewController.moviePlayer prepareToPlay];
+                                         [self presentViewController:self.playerViewController animated:YES completion:nil];
+                                     }
+                                 }];
+        }
         
         return NO;
     }
@@ -154,9 +160,9 @@ SKPaymentTransactionObserver> {
                         withTitle:title
                 cancelButtonTitle:@"キャンセル"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"購入する"]
+                otherButtonTitles:@[@"購入する", @"既に購入済みの方はコチラ"]
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                             if (buttonIndex == 0) {
+                             if (buttonIndex == 0 || buttonIndex == 1) {
                                  [self getInAppPurchaseItems:productId];
                              }
                          }];
@@ -233,7 +239,6 @@ SKPaymentTransactionObserver> {
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section {
-//    return 3;
     return 2;
 }
 
@@ -246,8 +251,7 @@ numberOfRowsInSection:(NSInteger)section {
     
     NSArray *items = @[
                        @"シェア",
-                       @"お問い合わせ",
-//                       @"レビュー"
+                       @"お問い合わせ"
                        ];
     
     // セルが作成されていないか?
@@ -282,9 +286,6 @@ numberOfRowsInSection:(NSInteger)section {
 //        [self performSegueWithIdentifier:@"goSetting" sender:self];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@lvhs.jp"]];
     }
-    else if (sender.view.tag == 2) {
-        [self performSegueWithIdentifier:@"goReview" sender:self];
-    }
 }
 
 - (IBAction)goHome:(id)sender {
@@ -314,6 +315,7 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 - (void)getInAppPurchaseItems:(NSString*) productId {
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     NSSet *set = [NSSet setWithObjects:productId, nil];
     SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
     productsRequest.delegate = self;
@@ -321,8 +323,13 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    if (response == nil) return;
+    
     // 無効なアイテムがないかチェック
     if ([response.invalidProductIdentifiers count] > 0) {
+        for (NSString *identifier in response.invalidProductIdentifiers) {
+            NSLog(@"invalid product identifier: %@", identifier);
+        }
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
                                                         message:@"アイテムIDが不正です。"
                                                        delegate:nil
@@ -333,7 +340,6 @@ numberOfRowsInSection:(NSInteger)section {
     }
     
     // 購入処理開始
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     for (SKProduct *product in response.products) {
         SKPayment *payment = [SKPayment paymentWithProduct:product];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
@@ -352,27 +358,14 @@ numberOfRowsInSection:(NSInteger)section {
             /*
              * ここでレシートの確認やアイテムの付与を行う。
              */
-            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSDictionary *parameters = @{
-                    @"iid": [defaults valueForKey:@"itemId"],
-                    @"pid": [defaults valueForKey:@"productId"]
-            };
-            LHConfig *config = [LHConfig sharedInstance];
-            NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
-            url = [url stringByAppendingString:@"/purchase"];
-
-            [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"JSON: %@", responseObject);
-                [_webView reload];
-//                [queue finishTransaction:transaction];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-            }];
+            
+            [self updatePaymentInfo];
+            
             [queue finishTransaction:transaction];
         } else if (transaction.transactionState == SKPaymentTransactionStateFailed) {
             // 購入処理エラー。ユーザが購入処理をキャンセルした場合もここにくる
             [queue finishTransaction:transaction];
+            
             // エラーが発生したことをユーザに知らせる
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
                                                             message:[transaction.error localizedDescription]
@@ -385,20 +378,57 @@ numberOfRowsInSection:(NSInteger)section {
             /*
              * アイテムの再付与を行う
              */
+            [self updatePaymentInfo];
+            
             [queue finishTransaction:transaction];
         }
     }
     [_webView reload];
 }
 
+- (void)updatePaymentInfo {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *parameters = @{
+            @"iid": [defaults valueForKey:@"itemId"],
+            @"pid": [defaults valueForKey:@"productId"]
+    };
+    LHConfig *config = [LHConfig sharedInstance];
+    NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+    url = [url stringByAppendingString:@"/purchase"];
+
+    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        [_webView reload];
+//                [queue finishTransaction:transaction];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+}
+
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
 {
     // リストアの失敗
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                    message:@"購入済み動画の復元に失敗しました"
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
+    return;
 }
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
     // 全てのリストア処理が終了
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"確認"
+                                                    message:@"購入済み動画を復元しました"
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
+    return;
 }
 
 #pragma mark - Util

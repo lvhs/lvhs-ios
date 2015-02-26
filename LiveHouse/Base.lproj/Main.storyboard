@@ -153,11 +153,11 @@
                                 <gestureRecognizers/>
                             </imageView>
                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" id="2eP-g9-SlY">
-                                <rect key="frame" x="0.0" y="64" width="160" height="86"/>
+                                <rect key="frame" x="0.0" y="64" width="120" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XSc-2k-jdx">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="274"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="274"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
