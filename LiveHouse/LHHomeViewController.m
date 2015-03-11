@@ -144,12 +144,17 @@ SKPaymentTransactionObserver> {
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
         NSDictionary *params = [self parseUrlParams:request.URL.query];
 
-        NSString *productId = [params valueForKey:@"pid"];
-        NSString *itemId    = [params valueForKey:@"iid"];
-        NSString *title     = [params valueForKey:@"title"];
+        NSString *productId  = [params valueForKey:@"pid"];
+        NSString *itemId     = [params valueForKey:@"iid"];
+        NSString *title      = [params valueForKey:@"title"];
+        NSString *rewardFlag = [params valueForKey:@"rwd"];
+        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[@"購入する", @"既に購入済みの方はコチラ"]];
 
         if (title == nil) {
             title = @"この動画を購入しますか？";
+        }
+        if (rewardFlag != nil) {
+            [buttons addObject:@"アプリをDLしてGET"];
         }
 
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -160,10 +165,18 @@ SKPaymentTransactionObserver> {
                         withTitle:title
                 cancelButtonTitle:@"キャンセル"
            destructiveButtonTitle:nil
-                otherButtonTitles:@[@"購入する", @"既に購入済みの方はコチラ"]
+                otherButtonTitles:buttons
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                              if (buttonIndex == 0 || buttonIndex == 1) {
                                  [self getInAppPurchaseItems:productId];
+                             }
+                             if (buttonIndex == 2) {
+                                 LHConfig *config = [LHConfig sharedInstance];
+                                 NSString* urlStr = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+                                 urlStr = [urlStr stringByAppendingString:@"/car/list"];
+                                 NSURL *url = [NSURL URLWithString:urlStr];
+                                 LHURLRequest *req = [LHURLRequest requestWithURL:url];
+                                 [_webView loadRequest:req];
                              }
                          }];
         return NO;
