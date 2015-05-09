@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 Software License Agreement (BSD License)
 
-Copyright (c) 2010, Deusty, LLC
+Copyright (c) 2010-2015, Deusty, LLC
 All rights reserved.
 
 Redistribution and use of this software in source and binary forms,
@@ -73,7 +73,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## MBProgressHUD
 
-Copyright (c) 2013 Matej Bukovinski
+Copyright (c) 2009-2015 Matej Bukovinski
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -353,9 +353,9 @@ This software contains components with separate copyright and license terms.
 Your use of these components is subject to the terms and conditions of the
 following licenses.
 
-For the Realm Core (TightDB) component
+For the Realm Core component
 
-  Realm Core (TightDB) Binary License
+  Realm Core Binary License
 
   Copyright (c) 2011-2014 Realm Inc All rights reserved
 
@@ -409,7 +409,7 @@ such restrictions or regulations.
 
 ## Repro
 
-(c) 2014 Repro Inc.
+(c) 2015 Repro Inc.
 
 ## SDWebImage
 

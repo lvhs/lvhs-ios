@@ -7,15 +7,15 @@
 //
 
 #import <StoreKit/StoreKit.h>
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import <YTVimeoExtractor/YTVimeoExtractor.h>
 #import <CAR/CARMedia.h>
 //#import <CAR/CARMedia.h>
-#import "UIActionSheet+Blocks.h"
-#import "UIAlertView+Blocks.h"
+#import "UIActionSheet+Blocks/UIActionSheet+Blocks.h"
+#import "UIAlertView+Blocks/UIAlertView+Blocks.h"
 
 #import "LHConfig.h"
 #import "LHHomeViewController.h"
@@ -147,14 +147,23 @@ SKPaymentTransactionObserver> {
         NSString *productId  = [params valueForKey:@"pid"];
         NSString *itemId     = [params valueForKey:@"iid"];
         NSString *title      = [params valueForKey:@"title"];
+        NSString *btitle      = [params valueForKey:@"btitle"];
+        NSString *rtitle      = [params valueForKey:@"rtitle"];
         NSString *rewardFlag = [params valueForKey:@"rwd"];
-        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[@"購入する", @"既に購入済みの方はコチラ"]];
+        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[btitle != nil ? [self decodeString:btitle] : @"購入する", @"既に購入済みの方はコチラ"]];
 
         if (title == nil) {
             title = @"この動画を購入しますか？";
+        } else {
+            title = [self decodeString:title];
         }
+        
         if (rewardFlag != nil) {
-            [buttons addObject:@"アプリをDLしてGET"];
+            if (rtitle != nil) {
+                [buttons addObject:[self decodeString:rtitle]];
+            } else {
+                [buttons addObject:@"アプリをDLしてGET"];
+            }
         }
 
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

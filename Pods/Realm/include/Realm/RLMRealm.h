@@ -100,9 +100,11 @@
  but otherwise they behave like normal persisted Realms.
 
  Encrypted Realms currently cannot be opened while lldb is attached to the
- process since lldb cannot forward mach exceptions to the process being
- debugged. Attempting to open an encrypted Realm with lldb attached will result
- in an EXC_BAD_ACCESS.
+ process since lldb often hangs in this situation. See issue #1625 for
+ further discussion. Attempting to open an encrypted Realm with lldb attached
+ will result in an EXC_BAD_ACCESS. Running your application with
+ REALM_DISABLE_ENCRYPTION=YES set in your environment will result in Realm
+ treating requests to open an encrypted Realm as requesting an unencrypted Realm.
 
  @param path        Path to the file you want the data saved in.
  @param key         64-byte key to use to encrypt the data.
@@ -122,12 +124,12 @@
  Set the encryption key to use when opening Realms at a certain path.
 
  This can be used as an alternative to explicitly passing the key to
- `encryptedRealmWithPath:key:readOnly:error:` each time a Realm instance is
+ `realmWithPath:key:readOnly:error:` each time a Realm instance is
  needed. The encryption key will be used any time a Realm is opened with
  `realmWithPath:` or `defaultRealm`.
 
  If you do not want Realm to hold on to your encryption keys any longer than
- needed, then use `encryptedRealmWithPath:key:readOnly:error:` rather than this
+ needed, then use `realmWithPath:encryptionKey:readOnly:error:` rather than this
  method.
 
  @param key     64-byte encryption key to use, or `nil` to unset.
@@ -168,6 +170,16 @@
  The RLMSchema used by this RLMRealm.
  */
 @property (nonatomic, readonly) RLMSchema *schema;
+
+/**
+ Indicates if this Realm is currently in a write transaction.
+
+ @warning Wrapping mutating operations in a write transaction if this property returns `NO`
+          may cause a large number of write transactions to be created, which could negatively
+          impact Realm's performance. Always prefer performing multiple mutations in a single
+          transaction when possible.
+ */
+@property (nonatomic, readonly) BOOL inWriteTransaction;
 
 /**---------------------------------------------------------------------------------------
  *  @name Default Realm Path
@@ -431,7 +443,7 @@ typedef void(^RLMNotificationBlock)(NSString *notification, RLMRealm *realm);
  inserted. Otherwise, the existing object is updated with any changed values.
 
  As with `addObject:`, the object cannot already be persisted in a different
- Realm. Use `-[RLMObject createOrUpdateInRealm:withObject:]` to copy values to
+ Realm. Use `-[RLMObject createOrUpdateInRealm:withValue:]` to copy values to
  a different Realm.
 
  @param object  Object to be added or updated.

@@ -55,7 +55,6 @@
 }
 
 - (IBAction)toggleMenu:(id)sender {
-    NSLog(@"toggled!");
     _menuView.hidden = !_menuView.hidden;
     _overLay.hidden = !_overLay.hidden;
 }
@@ -107,7 +106,6 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 //-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    NSLog(@"prepareForSegue");
 //    if([[segue identifier] isEqualToString:@"goArtist"]){
 //        [segue destinationViewController];
 //    }
@@ -125,8 +123,6 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 - (void)goMenu:(UITapGestureRecognizer *)sender {
-    NSLog(@"goMenu");
-    NSLog(@"%ld", sender.view.tag);
     if (sender.view.tag == 0) {
         [self performSegueWithIdentifier:@"goInfo" sender:self];
     }
@@ -137,7 +133,7 @@ numberOfRowsInSection:(NSInteger)section {
         [self performSegueWithIdentifier:@"goPlaylist" sender:self];
     }
     else if (sender.view.tag == 3) {
-        NSString *sharedText = @"LiveHouseをShareする";
+        NSString *sharedText = @"LIVEHOUSEをシェアする";
         NSURL *url = [NSURL URLWithString:@"http://lvhs.jp"];
         NSArray *activityItems = @[sharedText, url];
         UIActivity *activity = [[UIActivity alloc] init];
