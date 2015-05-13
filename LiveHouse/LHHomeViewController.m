@@ -179,7 +179,7 @@ SKPaymentTransactionObserver> {
                              if (buttonIndex == 0 || buttonIndex == 1) {
                                  [self getInAppPurchaseItems:productId];
                              }
-                             if (buttonIndex == 2) {
+                             if (buttonIndex == 2 && rewardFlag != nil) {
                                  LHConfig *config = [LHConfig sharedInstance];
                                  NSString* urlStr = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
                                  urlStr = [urlStr stringByAppendingString:@"/car/list"];

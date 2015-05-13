@@ -39,7 +39,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     [self initGoogleAnalytics];
 //    [self initRepro];
-    [self initParse];
+    [self initParse:application];
     
     [self registerPushNotification:application];
     
@@ -78,9 +78,17 @@ void uncaughtExceptionHandler(NSException *exception) {
 #pragma mark -
 #pragma mark Parse
 
-- (void)initParse {
+- (void)initParse:(UIApplication *)application {
     [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
                   clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
+    // Register for Push Notitications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
 }
 
 #pragma mark -
@@ -133,14 +141,12 @@ void uncaughtExceptionHandler(NSException *exception) {
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[ @"global" ];
     [currentInstallation saveInBackground];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
 }
-
 
 #pragma mark -
 #pragma mark Facebook

@@ -17,6 +17,10 @@
 		273194EC19E1155100A31748 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194EB19E1155100A31748 /* Accounts.framework */; };
 		273194EE19E1164C00A31748 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194ED19E1164C00A31748 /* FacebookSDK.framework */; };
 		273194F419E1AECA00A31748 /* LHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194F319E1AECA00A31748 /* LHHomeViewController.m */; };
+		2732E6081B03B5010063A297 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2732E6071B03B5010063A297 /* CFNetwork.framework */; };
+		2732E60A1B03B5150063A297 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2732E6091B03B5150063A297 /* CoreLocation.framework */; };
+		2732E60C1B03B5220063A297 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2732E60B1B03B5220063A297 /* MobileCoreServices.framework */; };
+		2732E60E1B03B52A0063A297 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2732E60D1B03B52A0063A297 /* QuartzCore.framework */; };
 		27336E1419ED7FC400416A74 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27336E1319ED7FC400416A74 /* Security.framework */; };
 		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
 		273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EE19B3EE440000C83E /* LHSettingViewController.m */; };
@@ -80,6 +84,10 @@
 		273194ED19E1164C00A31748 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		273194F219E1AECA00A31748 /* LHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHHomeViewController.h; sourceTree = "<group>"; };
 		273194F319E1AECA00A31748 /* LHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHHomeViewController.m; sourceTree = "<group>"; };
+		2732E6071B03B5010063A297 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2732E6091B03B5150063A297 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2732E60B1B03B5220063A297 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2732E60D1B03B52A0063A297 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		27336E1319ED7FC400416A74 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
 		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
@@ -154,6 +162,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2732E60E1B03B52A0063A297 /* QuartzCore.framework in Frameworks */,
+				2732E60C1B03B5220063A297 /* MobileCoreServices.framework in Frameworks */,
+				2732E60A1B03B5150063A297 /* CoreLocation.framework in Frameworks */,
+				2732E6081B03B5010063A297 /* CFNetwork.framework in Frameworks */,
 				2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */,
 				27336E1419ED7FC400416A74 /* Security.framework in Frameworks */,
 				27CE2D1919DA2D980015D47F /* SystemConfiguration.framework in Frameworks */,
@@ -373,6 +385,10 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2732E60D1B03B52A0063A297 /* QuartzCore.framework */,
+				2732E60B1B03B5220063A297 /* MobileCoreServices.framework */,
+				2732E6091B03B5150063A297 /* CoreLocation.framework */,
+				2732E6071B03B5010063A297 /* CFNetwork.framework */,
 				27774A171A791B4300FF0FC2 /* StoreKit.framework */,
 				272145801A11DD4E008CDF21 /* Crashlytics.framework */,
 				272145811A11DD4E008CDF21 /* Fabric.framework */,
