@@ -151,6 +151,9 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4LV-P6-BxS" appends="YES" id="AIf-SI-l3l"/>
+                                </connections>
                             </imageView>
                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" id="2eP-g9-SlY">
                                 <rect key="frame" x="0.0" y="64" width="135" height="129"/>
@@ -202,6 +205,11 @@
                 <tapGestureRecognizer id="0yL-hy-ujL" userLabel="Home">
                     <connections>
                         <action selector="goHome:" destination="SHX-z0-uLw" id="K6m-JL-JMS"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="4LV-P6-BxS" userLabel="CloseMenu">
+                    <connections>
+                        <action selector="toggleMenu:" destination="SHX-z0-uLw" id="uXT-jx-u8m"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

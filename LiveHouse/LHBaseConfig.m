@@ -147,7 +147,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    int selectedIndex = [self.names indexOfObject:self.config.selectedName];
+    NSUInteger selectedIndex = [self.names indexOfObject:self.config.selectedName];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
 }
@@ -182,6 +182,7 @@
 {
     cell.backgroundColor = [UIColor clearColor];
 }
+
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSString* name = [self.names objectAtIndex:indexPath.row];

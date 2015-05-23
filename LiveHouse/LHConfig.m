@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 LIVEHOUSE inc. All rights reserved.
 //
 
+#import "LHConsts.h"
 #import "LHConfig.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "MF_Base64Additions.h"
 
 @implementation LHConfig
 
@@ -19,8 +22,8 @@
     return [[LHBaseConfigItem alloc]
             initWithName:LH_ENV_PRO
             withDict:@{
-                LH_CONFIG_KEY_API_BASE_URL:          @"http://dev.lvhs.jp/api",
-                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://dev.lvhs.jp/app",
+                LH_CONFIG_KEY_API_BASE_URL:          @"http://app.lvhs.jp/api",
+                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://app.lvhs.jp/app",
                 LH_CONFIG_KEY_RESOURCE_BASE_URL:     @"http://static.lvhs.jp",
                 LH_CONFIG_KEY_COOKIE_DOMAIN:         @".lvhs.jp",
                 
@@ -32,7 +35,6 @@
 //開発中接続先
 #ifdef DEV
 - (NSDictionary*)devConfingDict {
-    
     return @{
         LH_ENV_PRO : [self productionConfig],
         
@@ -112,7 +114,7 @@
         NSString* host = [url host];
         NSRange range = [host rangeOfString:@"mjwdev"];
         if (range.location == NSNotFound) {
-            DDLogError(@"Invalid host: %@", url);
+            NSLog(@"Invalid host: %@", url);
             return;
         }
         
@@ -125,7 +127,7 @@
             }
         }
         if (subdomain == nil) {
-            DDLogError(@"Invalid host: %@", url);
+            NSLog(@"Invalid host: %@", url);
             return;
         }
         realm = [NSString stringWithFormat:@"enter uname/passwd(%@)", subdomain];
@@ -150,9 +152,11 @@
 + (BOOL)isProduction {
     return [[LHConfig sharedInstance].selectedName isEqualToString:LH_ENV_PRO];
 }
+
 + (BOOL)isDevelopment {
     return [[LHConfig sharedInstance].selectedName isEqualToString:LH_ENV_DEV];
 }
+
 #endif
 
 @end

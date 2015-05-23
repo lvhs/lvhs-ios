@@ -24,7 +24,6 @@
 		2783FEB71A0738DC00FAD223 /* icon-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB51A0738DC00FAD223 /* icon-empty.png */; };
 		2783FEBA1A07392A00FAD223 /* icon-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2783FEB91A07392A00FAD223 /* icon-selected.png */; };
 		2786956E19B626250086137A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2786956D19B626250086137A /* MediaPlayer.framework */; };
-		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
 		278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C1FB219B3006C000F9B58 /* AudioToolbox.framework */; };
@@ -93,8 +92,6 @@
 		2783FEB51A0738DC00FAD223 /* icon-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-empty.png"; sourceTree = "<group>"; };
 		2783FEB91A07392A00FAD223 /* icon-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-selected.png"; sourceTree = "<group>"; };
 		2786956D19B626250086137A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LHColor.h"; sourceTree = "<group>"; };
-		278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LHColor.m"; sourceTree = "<group>"; };
 		278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHBaseConfig.h; sourceTree = "<group>"; };
 		278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHBaseConfig.m; sourceTree = "<group>"; };
 		278C1F1519B2E1EE000F9B58 /* LHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHConfig.h; sourceTree = "<group>"; };
@@ -260,8 +257,6 @@
 		278C1F0619B2D5F1000F9B58 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				278C1F0D19B2D7B3000F9B58 /* UIColor+LHColor.h */,
-				278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */,
 				27FCF2D219F547610092A733 /* UIApplication+UIID.h */,
 				27FCF2D319F5478F0092A733 /* UIApplication+UIID.m */,
 				27EB6A251B10B464006256F3 /* NSString+Util.h */,
@@ -651,7 +646,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */,
-				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
 				273194F419E1AECA00A31748 /* LHHomeViewController.m in Sources */,
 				27EB6A271B10B464006256F3 /* NSString+Util.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
@@ -799,6 +793,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"DEV=1",
+				);
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
