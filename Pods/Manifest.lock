@@ -176,7 +176,6 @@ PODS:
   - UIActionSheet+Blocks (0.9)
   - UIAlertView+Blocks (0.9)
   - UITextFieldWithLimit (0.1.1)
-  - XCDYouTubeKit (2.1.3)
   - YTVimeoExtractor (0.1.0)
 
 DEPENDENCIES:
@@ -200,7 +199,6 @@ DEPENDENCIES:
   - UIActionSheet+Blocks
   - UIAlertView+Blocks
   - UITextFieldWithLimit
-  - XCDYouTubeKit
   - YTVimeoExtractor
 
 SPEC CHECKSUMS:
@@ -224,7 +222,6 @@ SPEC CHECKSUMS:
   UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
   UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
   UITextFieldWithLimit: 7b292ab1fe30fb03fa2f9b595be2c414f93cdb6d
-  XCDYouTubeKit: ca3120218413fdd141567ca98b5418df309b1ced
   YTVimeoExtractor: 4d133a68951cc50c920111a22c6e104f0ff71fd0
 
 COCOAPODS: 0.37.1

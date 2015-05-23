@@ -39,11 +39,8 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     [self initGoogleAnalytics];
 //    [self initRepro];
-    [self initParse:application];
-    
-    [self registerPushNotification:application];
-    
     [Fabric with:@[CrashlyticsKit]];
+    [self initParse:application];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
@@ -68,29 +65,19 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
     [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark -
-#pragma mark Parse
-
-- (void)initParse:(UIApplication *)application {
-    [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
-                  clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
-    // Register for Push Notitications
-    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
-                                                    UIUserNotificationTypeBadge |
-                                                    UIUserNotificationTypeSound);
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
-                                                                             categories:nil];
-    [application registerUserNotificationSettings:settings];
-    [application registerForRemoteNotifications];
 }
 
 #pragma mark -
@@ -105,23 +92,16 @@ void uncaughtExceptionHandler(NSException *exception) {
 #pragma mark Google Analytics
 
 - (void)initGoogleAnalytics {
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-//    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-//    [GAI sharedInstance].dispatchInterval = 20;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker. Replace with your tracking ID.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
     [[GAI sharedInstance] trackerWithTrackingId:LH_GAI_TRACKING_ID];
 }
 
 #pragma mark -
-#pragma mark Push Notification
+#pragma mark Parse
 
-- (void)registerPushNotification:(UIApplication *)application {
+- (void)initParse:(UIApplication *)application {
+    [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
+                  clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
     // Register for Push Notifications, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |

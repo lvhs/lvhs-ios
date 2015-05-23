@@ -19,7 +19,6 @@ pod 'CocoaLumberjack'
 pod 'SSZipArchive'
 pod 'Realm'
 
-pod 'XCDYouTubeKit'
 pod 'YTVimeoExtractor'
 
 pod 'MKStoreKit'

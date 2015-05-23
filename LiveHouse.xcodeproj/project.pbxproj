@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C1A4FFCCE439EA49FEF2B /* libPods.a */; };
-		273194D919E1051200A31748 /* LHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 273194D819E1051200A31748 /* LHUtils.m */; };
 		273194E719E1128F00A31748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E419E1128F00A31748 /* Parse.framework */; };
 		273194EA19E1153B00A31748 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E919E1153B00A31748 /* Social.framework */; };
 		273194EC19E1155100A31748 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194EB19E1155100A31748 /* Accounts.framework */; };
@@ -18,8 +17,6 @@
 		2732E60C1B03B5220063A297 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2732E60B1B03B5220063A297 /* MobileCoreServices.framework */; };
 		2732E60E1B03B52A0063A297 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2732E60D1B03B52A0063A297 /* QuartzCore.framework */; };
 		27336E1419ED7FC400416A74 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27336E1319ED7FC400416A74 /* Security.framework */; };
-		273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28DF19B3E6120000C83E /* LHArtistViewController.m */; };
-		273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273C28EE19B3EE440000C83E /* LHSettingViewController.m */; };
 		273C290119B3FF7A0000C83E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273C290019B3FF7A0000C83E /* AVFoundation.framework */; };
 		27774A181A791B4300FF0FC2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27774A171A791B4300FF0FC2 /* StoreKit.framework */; };
 		2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FEB01A072A5900FAD223 /* LHTermsViewController.m */; };
@@ -30,7 +27,6 @@
 		278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */; };
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
-		278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */; };
 		278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C1FB219B3006C000F9B58 /* AudioToolbox.framework */; };
 		27A11B4C19D83ED700B6A277 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27A11B4B19D83ED700B6A277 /* Settings.bundle */; };
 		27CE2D1519DA2CF50015D47F /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CE2D1419DA2CF50015D47F /* libGoogleAnalyticsServices.a */; };
@@ -41,6 +37,7 @@
 		27EB6A1E1B10391B006256F3 /* CAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB6A1D1B10391B006256F3 /* CAR.framework */; };
 		27EB6A211B103925006256F3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB6A201B103925006256F3 /* Crashlytics.framework */; };
 		27EB6A241B103933006256F3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB6A231B103933006256F3 /* Fabric.framework */; };
+		27EB6A271B10B464006256F3 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB6A261B10B464006256F3 /* NSString+Util.m */; };
 		27EC849419B1E2FB00DA13B1 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EC849319B1E2FB00DA13B1 /* overlay.png */; };
 		27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED519AAA725002740D1 /* Foundation.framework */; };
 		27EFEED819AAA725002740D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EFEED719AAA725002740D1 /* CoreGraphics.framework */; };
@@ -78,8 +75,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		273194D819E1051200A31748 /* LHUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHUtils.m; sourceTree = "<group>"; };
-		273194DA19E1053900A31748 /* LHUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHUtils.h; sourceTree = "<group>"; };
 		273194E419E1128F00A31748 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		273194E919E1153B00A31748 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		273194EB19E1155100A31748 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -90,10 +85,6 @@
 		2732E60B1B03B5220063A297 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2732E60D1B03B52A0063A297 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		27336E1319ED7FC400416A74 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		273C28DE19B3E6120000C83E /* LHArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHArtistViewController.h; sourceTree = "<group>"; };
-		273C28DF19B3E6120000C83E /* LHArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHArtistViewController.m; sourceTree = "<group>"; };
-		273C28ED19B3EE440000C83E /* LHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHSettingViewController.h; sourceTree = "<group>"; };
-		273C28EE19B3EE440000C83E /* LHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSettingViewController.m; sourceTree = "<group>"; };
 		273C290019B3FF7A0000C83E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		27774A171A791B4300FF0FC2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2783FEAF1A072A5900FAD223 /* LHTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTermsViewController.h; sourceTree = "<group>"; };
@@ -109,8 +100,6 @@
 		278C1F1519B2E1EE000F9B58 /* LHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHConfig.h; sourceTree = "<group>"; };
 		278C1F1619B2E1EE000F9B58 /* LHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHConfig.m; sourceTree = "<group>"; };
 		278C1F1819B2E3C4000F9B58 /* LHConsts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHConsts.h; sourceTree = "<group>"; };
-		278C1FAE19B2FCB1000F9B58 /* LHRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHRootViewController.h; sourceTree = "<group>"; };
-		278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHRootViewController.m; sourceTree = "<group>"; };
 		278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LiveHouse.entitlements; sourceTree = "<group>"; };
 		278C1FB219B3006C000F9B58 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		27A11B4B19D83ED700B6A277 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -132,6 +121,8 @@
 		27EB6A1D1B10391B006256F3 /* CAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CAR.framework; sourceTree = "<group>"; };
 		27EB6A201B103925006256F3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		27EB6A231B103933006256F3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		27EB6A251B10B464006256F3 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		27EB6A261B10B464006256F3 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		27EC849319B1E2FB00DA13B1 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overlay.png; path = common/overlay.png; sourceTree = "<group>"; };
 		27EFEED219AAA725002740D1 /* LIVEHOUSE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIVEHOUSE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EFEED519AAA725002740D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -273,6 +264,8 @@
 				278C1F0E19B2D7B3000F9B58 /* UIColor+LHColor.m */,
 				27FCF2D219F547610092A733 /* UIApplication+UIID.h */,
 				27FCF2D319F5478F0092A733 /* UIApplication+UIID.m */,
+				27EB6A251B10B464006256F3 /* NSString+Util.h */,
+				27EB6A261B10B464006256F3 /* NSString+Util.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -280,8 +273,6 @@
 		278C1F1019B2DE62000F9B58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				273194DA19E1053900A31748 /* LHUtils.h */,
-				273194D819E1051200A31748 /* LHUtils.m */,
 				278C1F1219B2DFBE000F9B58 /* LHBaseConfig.h */,
 				278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */,
 				278C1F1519B2E1EE000F9B58 /* LHConfig.h */,
@@ -296,12 +287,6 @@
 		278C1FAA19B2F11D000F9B58 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				278C1FAE19B2FCB1000F9B58 /* LHRootViewController.h */,
-				278C1FAF19B2FCB1000F9B58 /* LHRootViewController.m */,
-				273C28DE19B3E6120000C83E /* LHArtistViewController.h */,
-				273C28DF19B3E6120000C83E /* LHArtistViewController.m */,
-				273C28ED19B3EE440000C83E /* LHSettingViewController.h */,
-				273C28EE19B3EE440000C83E /* LHSettingViewController.m */,
 				273194F219E1AECA00A31748 /* LHHomeViewController.h */,
 				273194F319E1AECA00A31748 /* LHHomeViewController.m */,
 				2783FEAF1A072A5900FAD223 /* LHTermsViewController.h */,
@@ -666,12 +651,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2783FEB11A072A5900FAD223 /* LHTermsViewController.m in Sources */,
-				278C1FB019B2FCB1000F9B58 /* LHRootViewController.m in Sources */,
-				273C28E019B3E6120000C83E /* LHArtistViewController.m in Sources */,
 				278C1F0F19B2D7B3000F9B58 /* UIColor+LHColor.m in Sources */,
 				273194F419E1AECA00A31748 /* LHHomeViewController.m in Sources */,
-				273C28EF19B3EE440000C83E /* LHSettingViewController.m in Sources */,
-				273194D919E1051200A31748 /* LHUtils.m in Sources */,
+				27EB6A271B10B464006256F3 /* NSString+Util.m in Sources */,
 				27EFEEE619AAA725002740D1 /* LHAppDelegate.m in Sources */,
 				27FCF2D419F5478F0092A733 /* UIApplication+UIID.m in Sources */,
 				27EFEEE219AAA725002740D1 /* main.m in Sources */,

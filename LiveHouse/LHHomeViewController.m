@@ -10,12 +10,11 @@
 #import <AFNetworking/AFNetworking.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
-#import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import <YTVimeoExtractor/YTVimeoExtractor.h>
 #import <CAR/CARMedia.h>
-//#import <CAR/CARMedia.h>
 #import "UIActionSheet+Blocks/UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks/UIAlertView+Blocks.h"
+#import "NSString+Util.h"
 
 #import "LHConfig.h"
 #import "LHHomeViewController.h"
@@ -70,12 +69,6 @@ SKPaymentTransactionObserver> {
 }
 */
 
-//- (void)loginWithFacebook {
-//    FBLoginView *loginView = [[FBLoginView alloc] init];
-//    loginView.center = self.view.center;
-//    [self.view addSubview:loginView];
-//}
-
 #pragma mark - WebView
 
 - (void) initWebView {
@@ -128,34 +121,27 @@ SKPaymentTransactionObserver> {
         
         NSDictionary *params = [self parseUrlParams:request.URL.query];
         NSString *itemId    = [params valueForKey:@"iid"];
-        NSString *youtubeId = [params valueForKey:@"yid"];
         NSString *vimeoId   = [params valueForKey:@"vid"];
         
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
         
-        if (youtubeId != nil) {
-            XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:youtubeId];
-            [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
-                
-        } else {
-            NSString *vimeoUrl = [NSString stringWithFormat:@"https://vimeo.com/%@", vimeoId];
-            [YTVimeoExtractor fetchVideoURLFromURL:vimeoUrl
-                                           quality:YTVimeoVideoQualityMedium
-                                           referer:@"http://lvhs.jp"
-                                 completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
-                                     if (error) {
-                                         // handle error
-                                         NSLog(@"Video URL: %@", [videoURL absoluteString]);
-                                     } else {
-                                         // run player
-                                         self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-                                         [self.playerViewController.moviePlayer prepareToPlay];
-                                         [self presentViewController:self.playerViewController animated:YES completion:nil];
-                                     }
-                                 }];
-        }
+        NSString *vimeoUrl = [NSString stringWithFormat:@"https://vimeo.com/%@", vimeoId];
+        [YTVimeoExtractor fetchVideoURLFromURL:vimeoUrl
+                                       quality:YTVimeoVideoQualityMedium
+                                       referer:@"http://lvhs.jp"
+                             completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+                                 if (error) {
+                                     // handle error
+                                     NSLog(@"Video URL: %@", [videoURL absoluteString]);
+                                 } else {
+                                     // run player
+                                     self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                                     [self.playerViewController.moviePlayer prepareToPlay];
+                                     [self presentViewController:self.playerViewController animated:YES completion:nil];
+                                 }
+                             }];
         
         return NO;
     }
@@ -168,17 +154,17 @@ SKPaymentTransactionObserver> {
         NSString *btitle      = [params valueForKey:@"btitle"];
         NSString *rtitle      = [params valueForKey:@"rtitle"];
         NSString *rewardFlag = [params valueForKey:@"rwd"];
-        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[btitle != nil ? [self decodeString:btitle] : @"購入する"]];
+        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[btitle != nil ? [btitle decodeString] : @"購入する"]];
 
         if (title == nil) {
             title = @"この動画を購入しますか？";
         } else {
-            title = [self decodeString:title];
+            title = [title decodeString];
         }
         
         if (rewardFlag != nil) {
             if (rtitle != nil) {
-                [buttons addObject:[self decodeString:rtitle]];
+                [buttons addObject:[rtitle decodeString]];
             } else {
                 [buttons addObject:@"アプリをDLしてGET"];
             }
@@ -569,23 +555,6 @@ numberOfRowsInSection:(NSInteger)section {
     
     _navigationBar.topItem.leftBarButtonItems = @[_btnItem];
     _navigationBar.topItem.rightBarButtonItems = @[reloadBtn];
-}
-
-- (NSString *) decodeString:(NSString *)string {
-    return [string stringByRemovingPercentEncoding];
-}
-
-- (void) showCARWall {
-    CARMediaViewController *vc = [[CARMediaViewController alloc] initWithTitle:@"タイトル" buttonTitle:@"戻る" tintColor:nil];
-    vc.publicAppKey = @"ncIdX3la";
-    vc.apiKey = @"26254487d9a595ee";
-    vc.mId = @"5006";
-    vc.userId = @"test003";
-    vc.fromId = @"test004";
-//    NSString *url = [NSString stringWithFormat:@"http://car.mobadme.jp/spg/spnew/%@/%@/index.php", @"807", vc.mId];
-//    vc.debug = true;
-    [vc loadURLString:@"http://car.mobadme.jp/spg/spnew/807/5006/index.php"];
-    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end
