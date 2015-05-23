@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.2'
 
-gem 'cocoapods', '0.36.0.beta.2'
+gem 'cocoapods'
 gem 'fastlane'
 
 # gem 'shenzhen'
