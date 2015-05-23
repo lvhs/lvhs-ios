@@ -8,7 +8,7 @@
 
 #import <StoreKit/StoreKit.h>
 #import <AFNetworking/AFNetworking.h>
-#import <FacebookSDK/FacebookSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 #import <YTVimeoExtractor/YTVimeoExtractor.h>
@@ -51,8 +51,8 @@ SKPaymentTransactionObserver> {
     // menu
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    
-    [self checkInAppPurchaseIsAvaiable];
+
+    [self checkInAppPurchaseIsAvailable];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,11 +70,11 @@ SKPaymentTransactionObserver> {
 }
 */
 
-- (void)loginWithFacebook {
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    loginView.center = self.view.center;
-    [self.view addSubview:loginView];
-}
+//- (void)loginWithFacebook {
+//    FBLoginView *loginView = [[FBLoginView alloc] init];
+//    loginView.center = self.view.center;
+//    [self.view addSubview:loginView];
+//}
 
 #pragma mark - WebView
 
@@ -87,6 +87,24 @@ SKPaymentTransactionObserver> {
     NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSString *logUrl = @"http://dev.lvhs.jp";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:@"deviceToken"];
+    NSString *newStr = [[[[data description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+       stringByReplacingOccurrencesOfString: @">" withString: @""]
+      stringByReplacingOccurrencesOfString: @" " withString: @""];
+    NSLog(@"deviceToken from data: %@", newStr);
+    if (newStr == nil) {
+        newStr = @"";
+    }
+    [manager GET:logUrl parameters:@{@"deviceToken": newStr} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 -(void)webViewDidStartLoad:(UIWebView*)webView{
@@ -150,7 +168,7 @@ SKPaymentTransactionObserver> {
         NSString *btitle      = [params valueForKey:@"btitle"];
         NSString *rtitle      = [params valueForKey:@"rtitle"];
         NSString *rewardFlag = [params valueForKey:@"rwd"];
-        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[btitle != nil ? [self decodeString:btitle] : @"購入する", @"既に購入済みの方はコチラ"]];
+        NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[btitle != nil ? [self decodeString:btitle] : @"購入する"]];
 
         if (title == nil) {
             title = @"この動画を購入しますか？";
@@ -176,10 +194,10 @@ SKPaymentTransactionObserver> {
            destructiveButtonTitle:nil
                 otherButtonTitles:buttons
                          tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                             if (buttonIndex == 0 || buttonIndex == 1) {
+                             if (buttonIndex == 0) {
                                  [self getInAppPurchaseItems:productId];
                              }
-                             if (buttonIndex == 2 && rewardFlag != nil) {
+                             if (buttonIndex == 1 && rewardFlag != nil) {
                                  LHConfig *config = [LHConfig sharedInstance];
                                  NSString* urlStr = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
                                  urlStr = [urlStr stringByAppendingString:@"/car/list"];
@@ -261,7 +279,7 @@ SKPaymentTransactionObserver> {
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 -(UITableViewCell *)tableView:
@@ -273,7 +291,8 @@ numberOfRowsInSection:(NSInteger)section {
     
     NSArray *items = @[
                        @"シェア",
-                       @"お問い合わせ"
+                       @"お問い合わせ",
+                       @"購入履歴の復元"
                        ];
     
     // セルが作成されていないか?
@@ -305,8 +324,10 @@ numberOfRowsInSection:(NSInteger)section {
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     else if (sender.view.tag == 1) {
-//        [self performSegueWithIdentifier:@"goSetting" sender:self];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@lvhs.jp"]];
+    }
+    else if (sender.view.tag == 2) {
+        [self restoreInAppPurchaseItems];
     }
 }
 
@@ -324,7 +345,7 @@ numberOfRowsInSection:(NSInteger)section {
 
 #pragma mark - In App Purchase
 
-- (void)checkInAppPurchaseIsAvaiable {
+- (void)checkInAppPurchaseIsAvailable {
     if (![SKPaymentQueue canMakePayments]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
                                                         message:@"アプリ内課金が制限されています。"
@@ -336,6 +357,11 @@ numberOfRowsInSection:(NSInteger)section {
     }
 }
 
+- (void)restoreInAppPurchaseItems {
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
 - (void)getInAppPurchaseItems:(NSString*) productId {
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     NSSet *set = [NSSet setWithObjects:productId, nil];
@@ -345,6 +371,7 @@ numberOfRowsInSection:(NSInteger)section {
 }
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    NSLog(@"%@", response);
     if (response == nil) return;
     
     // 無効なアイテムがないかチェック
@@ -395,17 +422,60 @@ numberOfRowsInSection:(NSInteger)section {
                                                   cancelButtonTitle:nil
                                                   otherButtonTitles:@"OK", nil];
             [alert show];
+        } else if (transaction.transactionState == SKPaymentTransactionStateRestored) {
+            
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            manager.responseSerializer = [AFJSONResponseSerializer serializer];
+            LHConfig *config = [LHConfig sharedInstance];
+            NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+            url = [url stringByAppendingString:@"/products"];
+
+            [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSMutableArray *productIDsToRestore = responseObject;
+                if ([productIDsToRestore containsObject:transaction.transactionIdentifier]) {
+                    [self updatePaymentInfo:transaction.transactionIdentifier];
+                    [queue finishTransaction:transaction];
+                } else {
+                    [queue finishTransaction:transaction];
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                // エラーが発生したことをユーザに知らせる
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                                message:[transaction.error localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+                [alert show];
+                [queue finishTransaction:transaction];
+            }];
         } else {
             // リストア処理完了
             /*
              * アイテムの再付与を行う
              */
             [self updatePaymentInfo];
-            
             [queue finishTransaction:transaction];
         }
     }
     [_webView reload];
+}
+
+- (void)updatePaymentInfo:(NSString *) productId {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{
+            @"pid": productId
+    };
+    LHConfig *config = [LHConfig sharedInstance];
+    NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+    url = [url stringByAppendingString:@"/purchase"];
+
+    [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        [_webView reload];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
 }
 
 - (void)updatePaymentInfo {
@@ -443,6 +513,7 @@ numberOfRowsInSection:(NSInteger)section {
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
 {
+    NSLog(@"ok finished");
     // 全てのリストア処理が終了
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"確認"
                                                     message:@"購入済み動画を復元しました"

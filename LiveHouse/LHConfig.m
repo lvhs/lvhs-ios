@@ -19,8 +19,8 @@
     return [[LHBaseConfigItem alloc]
             initWithName:LH_ENV_PRO
             withDict:@{
-                LH_CONFIG_KEY_API_BASE_URL:          @"http://app.lvhs.jp/api",
-                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://app.lvhs.jp/app",
+                LH_CONFIG_KEY_API_BASE_URL:          @"http://dev.lvhs.jp/api",
+                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://dev.lvhs.jp/app",
                 LH_CONFIG_KEY_RESOURCE_BASE_URL:     @"http://static.lvhs.jp",
                 LH_CONFIG_KEY_COOKIE_DOMAIN:         @".lvhs.jp",
                 
