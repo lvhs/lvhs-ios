@@ -13,7 +13,7 @@
 
 #ifdef DEV
 /////////開発時のデフォルトの接続先///////////
-#define LH_ENV_DEV_DEFAULT LH_ENV_DEV
+#define LH_ENV_DEV_DEFAULT LH_ENV_PRO
 //////////////////////////////////////////
 
 #define LH_ENV_DEV (@"dev")

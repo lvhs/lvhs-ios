@@ -16,9 +16,12 @@
 #import "UIAlertView+Blocks/UIAlertView+Blocks.h"
 #import "NSString+Util.h"
 
+#import "LHAppDelegate.h"
 #import "LHConfig.h"
 #import "LHHomeViewController.h"
 #import "LHURLRequest.h"
+#import "UIApplication+UIID.h"
+
 
 @interface LHHomeViewController () <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, SKProductsRequestDelegate,
 SKPaymentTransactionObserver> {
@@ -33,6 +36,8 @@ SKPaymentTransactionObserver> {
 @property (weak, nonatomic) IBOutlet UIImageView *overlay;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) NSString* urlQueue;
+
 - (IBAction)goHome:(id)sender;
 - (IBAction)toggleMenu:(id)sender;
 @property MPMoviePlayerViewController *playerViewController;
@@ -41,16 +46,24 @@ SKPaymentTransactionObserver> {
 
 @implementation LHHomeViewController
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self checkPushNotification];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self checkPushNotification];
     [self initWebView];
     [self initHeaderIcons];
     
     // menu
     _tableView.delegate = self;
     _tableView.dataSource = self;
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotificationWithUrl:) name:@"receiveNotificationWithUrl" object:nil];
+    
     [self checkInAppPurchaseIsAvailable];
 }
 
@@ -60,16 +73,60 @@ SKPaymentTransactionObserver> {
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - WebView
+
+- (void) checkPushNotification {
+    LHAppDelegate* appDelegate = [LHAppDelegate sharedInstance];
+    if (appDelegate.launchingRomoteNotificationOptions) {
+        //プッシュ通知タップからのアプリ起動
+        [self processPushNotification:appDelegate.launchingRomoteNotificationOptions];
+        appDelegate.launchingRomoteNotificationOptions = nil;
+    }
+}
+
+- (void) processPushNotification:(NSDictionary*)userInfo {
+    NSString* type = userInfo[@"type"];
+    if ([type isEqual:@"url"]) {
+        self.urlQueue = userInfo[@"url"];
+    }
+}
+
+- (void) loadWebViewWithUrl:(NSString *)url {
+    NSURL *urlObj = [NSURL URLWithString:url];
+    LHURLRequest *req = [LHURLRequest requestWithURL:urlObj];
+    [_webView loadRequest:req];
+}
+
+- (void) receiveNotificationWithUrl:(NSNotification *) notification {
+    NSDictionary* userInfo = [notification userInfo];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:userInfo[@"aps"][@"alert"]
+                                                 message:@""
+                                                delegate:self
+                                       cancelButtonTitle:nil
+                                       otherButtonTitles:@"OK", nil];
+    
+    av.alertViewStyle = UIAlertViewStyleDefault;
+    av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [self loadWebViewWithUrl:userInfo[@"url"]];
+    };
+    [av show];
+}
+
+- (void) processUrlQueue {
+    if (self.urlQueue) {
+        [self loadWebViewWithUrl:self.urlQueue];
+        self.urlQueue = nil;
+    }
+}
 
 - (void) initWebView {
     // initialize webview
@@ -80,24 +137,6 @@ SKPaymentTransactionObserver> {
     NSURL *url = [NSURL URLWithString:[config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL]];
     LHURLRequest *req = [LHURLRequest requestWithURL:url];
     [wv loadRequest:req];
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    NSString *logUrl = @"http://dev.lvhs.jp";
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [defaults objectForKey:@"deviceToken"];
-    NSString *newStr = [[[[data description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
-       stringByReplacingOccurrencesOfString: @">" withString: @""]
-      stringByReplacingOccurrencesOfString: @" " withString: @""];
-    NSLog(@"deviceToken from data: %@", newStr);
-    if (newStr == nil) {
-        newStr = @"";
-    }
-    [manager GET:logUrl parameters:@{@"deviceToken": newStr} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
 }
 
 -(void)webViewDidStartLoad:(UIWebView*)webView{
@@ -147,7 +186,7 @@ SKPaymentTransactionObserver> {
     }
     else if ([request.URL.scheme isEqualToString:@"purchase"]) {
         NSDictionary *params = [self parseUrlParams:request.URL.query];
-
+        
         NSString *productId  = [params valueForKey:@"pid"];
         NSString *itemId     = [params valueForKey:@"iid"];
         NSString *title      = [params valueForKey:@"title"];
@@ -155,7 +194,7 @@ SKPaymentTransactionObserver> {
         NSString *rtitle      = [params valueForKey:@"rtitle"];
         NSString *rewardFlag = [params valueForKey:@"rwd"];
         NSMutableArray *buttons = [NSMutableArray arrayWithArray:@[btitle != nil ? [btitle decodeString] : @"購入する"]];
-
+        
         if (title == nil) {
             title = @"この動画を購入しますか？";
         } else {
@@ -169,11 +208,11 @@ SKPaymentTransactionObserver> {
                 [buttons addObject:@"アプリをDLしてGET"];
             }
         }
-
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:itemId forKey:@"itemId"];
         [defaults setValue:productId forKey:@"productId"];
-
+        
         [UIActionSheet showInView:self.view
                         withTitle:title
                 cancelButtonTitle:@"キャンセル"
@@ -206,30 +245,31 @@ SKPaymentTransactionObserver> {
     // ページ読込完了時にインジケータを非表示にする
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self updateBackButton];
+    [self processUrlQueue];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-//    NSLog(@"Network Error : %@", error);
-//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"ネットワークにつながりません"
-//                                                 message:@""
-//                                                delegate:self
-//                                       cancelButtonTitle:nil
-//                                       otherButtonTitles:@"OK", nil];
-//    
-//    av.alertViewStyle = UIAlertViewStyleDefault;
-//    [av show];
+    NSLog(@"Network Error : %@", error);
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"通信エラーが発生しました。\nもう一度電波の良い所で試して下さい。"
+                                                 message:@""
+                                                delegate:self
+                                       cancelButtonTitle:nil
+                                       otherButtonTitles:@"OK", nil];
+    
+    av.alertViewStyle = UIAlertViewStyleDefault;
+    [av show];
 }
 
 - (void)updateBackButton {
     if ([self.webView canGoBack]) {
-//        if (!self.navigationItem.leftBarButtonItem) {
-//            [self.navigationItem setHidesBackButton:YES animated:YES];
-//            UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-//                                                                          style:UIBarButtonItemStylePlain
-//                                                                         target:self
-//                                                                         action:@selector(backWasClicked:)];
-//            [self.navigationItem setLeftBarButtonItem:backItem animated:YES];
-//        }
+        //        if (!self.navigationItem.leftBarButtonItem) {
+        //            [self.navigationItem setHidesBackButton:YES animated:YES];
+        //            UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+        //                                                                          style:UIBarButtonItemStylePlain
+        //                                                                         target:self
+        //                                                                         action:@selector(backWasClicked:)];
+        //            [self.navigationItem setLeftBarButtonItem:backItem animated:YES];
+        //        }
         
         _navigationBar.topItem.leftBarButtonItems = @[backBtn, _btnItem];
     } else {
@@ -240,8 +280,8 @@ SKPaymentTransactionObserver> {
     }
     else {
         _navigationBar.topItem.rightBarButtonItems = @[reloadBtn];
-//        [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-//        [self.navigationItem setHidesBackButton:NO animated:YES];
+        //        [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+        //        [self.navigationItem setHidesBackButton:NO animated:YES];
     }
 }
 
@@ -310,7 +350,7 @@ numberOfRowsInSection:(NSInteger)section {
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     else if (sender.view.tag == 1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@lvhs.jp"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self generateSupportMailLink]]];
     }
     else if (sender.view.tag == 2) {
         [self restoreInAppPurchaseItems];
@@ -415,7 +455,7 @@ numberOfRowsInSection:(NSInteger)section {
             LHConfig *config = [LHConfig sharedInstance];
             NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
             url = [url stringByAppendingString:@"/products"];
-
+            
             [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSMutableArray *productIDsToRestore = responseObject;
                 if ([productIDsToRestore containsObject:transaction.transactionIdentifier]) {
@@ -449,12 +489,12 @@ numberOfRowsInSection:(NSInteger)section {
 - (void)updatePaymentInfo:(NSString *) productId {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{
-            @"pid": productId
-    };
+                                 @"pid": productId
+                                 };
     LHConfig *config = [LHConfig sharedInstance];
     NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
     url = [url stringByAppendingString:@"/purchase"];
-
+    
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         [_webView reload];
@@ -468,17 +508,17 @@ numberOfRowsInSection:(NSInteger)section {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *parameters = @{
-            @"iid": [defaults valueForKey:@"itemId"],
-            @"pid": [defaults valueForKey:@"productId"]
-    };
+                                 @"iid": [defaults valueForKey:@"itemId"],
+                                 @"pid": [defaults valueForKey:@"productId"]
+                                 };
     LHConfig *config = [LHConfig sharedInstance];
     NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
     url = [url stringByAppendingString:@"/purchase"];
-
+    
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         [_webView reload];
-//                [queue finishTransaction:transaction];
+        //                [queue finishTransaction:transaction];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -555,6 +595,26 @@ numberOfRowsInSection:(NSInteger)section {
     
     _navigationBar.topItem.leftBarButtonItems = @[_btnItem];
     _navigationBar.topItem.rightBarButtonItems = @[reloadBtn];
+}
+
+- (NSString* ) generateSupportMailLink {
+    NSString* subject = @"[LIVEHOUSE] 問い合わせ";
+    NSString* body = [[NSString alloc]
+                      initWithFormat:@"\n"
+                                      "\n"
+                                      "\n"
+                                      "\n"
+                                      "---\n"
+                                      "端末: %@\n"
+                                      "OSバージョン: %@\n"
+                                      "ID: %@\n",
+                      [UIDevice currentDevice].model,
+                      [UIDevice currentDevice].systemVersion,
+                      [[UIApplication sharedApplication] uniqueInstallationIdentifier]
+                      ];
+    NSString* encodedSubject = [subject stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+    NSString* encodedBody = [body stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+    return [[NSString alloc] initWithFormat:@"mailto:support@lvhs.jp?subject=%@&body=%@", encodedSubject, encodedBody];
 }
 
 @end

@@ -11,5 +11,8 @@
 @interface LHAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) NSDictionary* launchingRomoteNotificationOptions;
+
++ (instancetype)sharedInstance;
 
 @end

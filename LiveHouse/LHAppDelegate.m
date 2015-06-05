@@ -13,6 +13,8 @@
 #import <AFNetworkActivityIndicatorManager.h>
 #import <Parse/Parse.h>
 
+#import "UIAlertView+Blocks/UIAlertView+Blocks.h"
+#import "LHHomeViewController.h"
 #import "GAI.h"
 #import <Repro/Repro.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -41,6 +43,13 @@ void uncaughtExceptionHandler(NSException *exception) {
 //    [self initRepro];
     [Fabric with:@[CrashlyticsKit]];
     [self initParse:application];
+
+    //通知タップからの起動
+    NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (userInfo) {
+        NSLog(@"didFinishLaunchingWithOptions: %@", userInfo);
+        self.launchingRomoteNotificationOptions = userInfo;
+    }
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
@@ -100,8 +109,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 #pragma mark Parse
 
 - (void)initParse:(UIApplication *)application {
-    [Parse setApplicationId:LH_CONFIG_KEY_PARSE_APPLICATION_KEY
-                  clientKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY];
+    LHConfig* config = [LHConfig sharedInstance];
+    [Parse setApplicationId:[config objectForKey:LH_CONFIG_KEY_PARSE_APPLICATION_KEY]
+                  clientKey:[config objectForKey:LH_CONFIG_KEY_PARSE_CLIENT_KEY]];
     // Register for Push Notifications, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
@@ -117,12 +127,15 @@ void uncaughtExceptionHandler(NSException *exception) {
                                                          UIRemoteNotificationTypeAlert |
                                                          UIRemoteNotificationTypeSound)];
     }
+    [PFPush subscribeToChannelInBackground:@"global"];
+}
+
+//デバイストークン取得失敗
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"fail to recieve device token: %@", error);
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:deviceToken forKey:@"deviceToken"];
-    NSLog(@"%@", deviceToken);
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
@@ -130,6 +143,11 @@ void uncaughtExceptionHandler(NSException *exception) {
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	NSString* type = userInfo[@"type"];
+	if ([type isEqual:@"url"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"receiveNotificationWithUrl" object:nil userInfo:userInfo];
+        return;
+	}
     [PFPush handlePush:userInfo];
 }
 
@@ -144,6 +162,10 @@ void uncaughtExceptionHandler(NSException *exception) {
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+}
+
++ (instancetype)sharedInstance {
+    return [UIApplication sharedApplication].delegate;
 }
 
 @end

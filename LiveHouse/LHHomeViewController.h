@@ -10,4 +10,6 @@
 
 @interface LHHomeViewController : UIViewController
 
+- (void) loadWebViewWithUrl:(NSString *) url;
+
 @end

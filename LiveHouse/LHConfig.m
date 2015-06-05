@@ -45,6 +45,9 @@
                           LH_CONFIG_KEY_WEB_BASE_URL: @"http://dev.lvhs.jp/app",
                           LH_CONFIG_KEY_RESOURCE_BASE_URL: @"http://dev.lvhs.jp",
                           LH_CONFIG_KEY_COOKIE_DOMAIN: @".dev.lvhs.jp",
+                          
+                          LH_CONFIG_KEY_PARSE_APPLICATION_KEY: @"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k",
+                          LH_CONFIG_KEY_PARSE_CLIENT_KEY:      @"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi",
                       }]
     };
 }
