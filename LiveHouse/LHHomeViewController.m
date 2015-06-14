@@ -37,6 +37,7 @@ SKPaymentTransactionObserver> {
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSString* urlQueue;
+@property (nonatomic) NSArray* menuRows;
 
 - (IBAction)goHome:(id)sender;
 - (IBAction)toggleMenu:(id)sender;
@@ -53,7 +54,7 @@ SKPaymentTransactionObserver> {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self initMenu];
     [self checkPushNotification];
     [self initWebView];
     [self initHeaderIcons];
@@ -101,6 +102,7 @@ SKPaymentTransactionObserver> {
 }
 
 - (void) loadWebViewWithUrl:(NSString *)url {
+    NSLog(@"loadWebViewWithUrl: %@", url);
     NSURL *urlObj = [NSURL URLWithString:url];
     LHURLRequest *req = [LHURLRequest requestWithURL:urlObj];
     [_webView loadRequest:req];
@@ -249,15 +251,17 @@ SKPaymentTransactionObserver> {
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"Network Error : %@", error);
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"通信エラーが発生しました。\nもう一度電波の良い所で試して下さい。"
-                                                 message:@""
-                                                delegate:self
-                                       cancelButtonTitle:nil
-                                       otherButtonTitles:@"OK", nil];
-    
-    av.alertViewStyle = UIAlertViewStyleDefault;
-    [av show];
+    if ([error code] != NSURLErrorCancelled) {
+        NSLog(@"Network Error : %@", error);
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"通信エラーが発生しました。\nもう一度電波の良い所で試して下さい。"
+                                                     message:@""
+                                                    delegate:self
+                                           cancelButtonTitle:nil
+                                           otherButtonTitles:@"OK", nil];
+        
+        av.alertViewStyle = UIAlertViewStyleDefault;
+        [av show];
+    }
 }
 
 - (void)updateBackButton {
@@ -303,9 +307,45 @@ SKPaymentTransactionObserver> {
 
 #pragma mark - TableView
 
--(NSInteger)tableView:(UITableView *)tableView
-numberOfRowsInSection:(NSInteger)section {
-    return 3;
+- (void) initMenu {
+     _menuRows = @[@{
+                      @"title": @"シェア",
+                      @"type": @"share"
+                  },
+                  @{
+                      @"title": @"お問い合わせ",
+                      @"type": @"support"
+                  },
+                  @{
+                      @"title": @"購入履歴の復元",
+                      @"type": @"restore"
+                  }];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    LHConfig *config = [LHConfig sharedInstance];
+    NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+    url = [url stringByAppendingString:@"/menu.json"];
+    
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"menu json: %@", responseObject);
+        @try {
+            _menuRows = responseObject;
+            [_tableView reloadData];
+            CGFloat height = _tableView.contentSize.height;
+            CGRect frame = _tableView.frame;
+            frame.size.height = height;
+            _tableView.frame = frame;
+        }
+        @catch (NSException *e) {
+            NSLog(@"error creating menu: %@", e);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _menuRows.count;
 }
 
 -(UITableViewCell *)tableView:
@@ -315,11 +355,6 @@ numberOfRowsInSection:(NSInteger)section {
     NSString *cellIdentifier = @"menu_cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    NSArray *items = @[
-                       @"シェア",
-                       @"お問い合わせ",
-                       @"購入履歴の復元"
-                       ];
     
     // セルが作成されていないか?
     if (!cell) { // yes
@@ -329,7 +364,7 @@ numberOfRowsInSection:(NSInteger)section {
     
     // セルにテキストを設定
     // セルの内容はNSArray型の「items」にセットされているものとする
-    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[_menuRows objectAtIndex:indexPath.row] objectForKey:@"title"];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(goMenu:)];
     [cell setTag:indexPath.row];
@@ -338,8 +373,15 @@ numberOfRowsInSection:(NSInteger)section {
     return cell;
 }
 
+- (void) adjustMenuHeight {
+    
+}
+
 - (void)goMenu:(UITapGestureRecognizer *)sender {
-    if (sender.view.tag == 0) {
+    NSInteger idx = sender.view.tag;
+    NSDictionary* menu = [_menuRows objectAtIndex:idx];
+    NSString* type = [menu objectForKey:@"type"];
+    if ([type compare:@"share"] == NSOrderedSame) {
         NSString *sharedText = @"LIVEHOUSEをシェアしよう！";
         NSURL *url = [NSURL URLWithString:@"http://lvhs.jp/"];
         NSArray *activityItems = @[sharedText, url];
@@ -349,11 +391,16 @@ numberOfRowsInSection:(NSInteger)section {
                                                                                  applicationActivities:appActivities];
         [self presentViewController:activityVC animated:YES completion:nil];
     }
-    else if (sender.view.tag == 1) {
+    else if ([type compare:@"support"] == NSOrderedSame) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[self generateSupportMailLink]]];
     }
-    else if (sender.view.tag == 2) {
+    else if ([type compare:@"restore"] == NSOrderedSame) {
         [self restoreInAppPurchaseItems];
+    }
+    else if ([type compare:@"url"] == NSOrderedSame) {
+        NSLog(@"show menu using url: %@", [menu objectForKey:@"data"]);
+        [self loadWebViewWithUrl:[menu objectForKey:@"data"]];
+        [self toggleMenu:nil];
     }
 }
 

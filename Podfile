@@ -44,6 +44,13 @@ pod 'Repro' # https://repro.io/
 # http://qiita.com/IamAtmosphere/items/e0b4f7b3a70f02a15139
 # pod 'MSAlertController'
 
+# swift
+
+# AutoLayout
+# https://github.com/kzms/Crew
+
+
+
 post_install do |installer|
   require 'fileutils'
   FileUtils.cp_r(

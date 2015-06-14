@@ -156,16 +156,16 @@
                                 </connections>
                             </imageView>
                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" id="2eP-g9-SlY">
-                                <rect key="frame" x="0.0" y="64" width="135" height="129"/>
+                                <rect key="frame" x="0.0" y="64" width="135" height="453"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XSc-2k-jdx">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="274"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="132"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="menu_cell" textLabel="cg7-Uw-fOc" style="IBUITableViewCellStyleDefault" id="Kht-4w-gqy">
-                                                <rect key="frame" x="0.0" y="22" width="180" height="44"/>
+                                                <rect key="frame" x="0.0" y="22" width="135" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kht-4w-gqy" id="atm-mU-xHg">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="43"/>
@@ -188,6 +188,7 @@
                                         <sections/>
                                     </tableView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
