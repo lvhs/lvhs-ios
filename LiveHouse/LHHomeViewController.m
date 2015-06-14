@@ -59,6 +59,12 @@ SKPaymentTransactionObserver> {
     [self initWebView];
     [self initHeaderIcons];
     
+    [self updatePaymentInfo:false];
+    [self updatePaymentInfo:true];
+    
+    [self updatePaymentInfo:@"31" restore:false];
+    [self updatePaymentInfo:@"31" restore:true];
+    
     // menu
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -481,7 +487,7 @@ SKPaymentTransactionObserver> {
              * ここでレシートの確認やアイテムの付与を行う。
              */
             
-            [self updatePaymentInfo];
+            [self updatePaymentInfo:false];
             
             [queue finishTransaction:transaction];
         } else if (transaction.transactionState == SKPaymentTransactionStateFailed) {
@@ -506,7 +512,7 @@ SKPaymentTransactionObserver> {
             [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSMutableArray *productIDsToRestore = responseObject;
                 if ([productIDsToRestore containsObject:transaction.transactionIdentifier]) {
-                    [self updatePaymentInfo:transaction.transactionIdentifier];
+                    [self updatePaymentInfo:transaction.transactionIdentifier restore:true];
                     [queue finishTransaction:transaction];
                 } else {
                     [queue finishTransaction:transaction];
@@ -526,21 +532,26 @@ SKPaymentTransactionObserver> {
             /*
              * アイテムの再付与を行う
              */
-            [self updatePaymentInfo];
+            [self updatePaymentInfo:true];
             [queue finishTransaction:transaction];
         }
     }
     [_webView reload];
 }
 
-- (void)updatePaymentInfo:(NSString *) productId {
+- (void)updatePaymentInfo:(NSString *) productId restore:(BOOL) restore {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{
                                  @"pid": productId
-                                 };
+                                 }];
+    if (restore) {
+        [parameters setValue:[NSNumber numberWithBool:restore] forKey:@"restore"];
+    }
     LHConfig *config = [LHConfig sharedInstance];
     NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
     url = [url stringByAppendingString:@"/purchase"];
+    
+    NSLog(@"updatePaymentInfo with productId: %@", parameters);
     
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
@@ -551,16 +562,21 @@ SKPaymentTransactionObserver> {
     
 }
 
-- (void)updatePaymentInfo {
+- (void)updatePaymentInfo:(BOOL) restore {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *parameters = @{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{
                                  @"iid": [defaults valueForKey:@"itemId"],
                                  @"pid": [defaults valueForKey:@"productId"]
-                                 };
+                                 }];
+    if (restore) {
+        [parameters setValue:[NSNumber numberWithBool:restore] forKey:@"restore"];
+    }
     LHConfig *config = [LHConfig sharedInstance];
     NSString* url = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
     url = [url stringByAppendingString:@"/purchase"];
+    
+    NSLog(@"updatePaymentInfo: %@", parameters);
     
     [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
