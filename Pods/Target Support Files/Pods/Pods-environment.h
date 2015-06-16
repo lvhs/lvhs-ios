@@ -54,42 +54,6 @@
 #define COCOAPODS_VERSION_MINOR_Base64 0
 #define COCOAPODS_VERSION_PATCH_Base64 1
 
-// BlocksKit
-#define COCOAPODS_POD_AVAILABLE_BlocksKit
-#define COCOAPODS_VERSION_MAJOR_BlocksKit 2
-#define COCOAPODS_VERSION_MINOR_BlocksKit 2
-#define COCOAPODS_VERSION_PATCH_BlocksKit 5
-
-// BlocksKit/All
-#define COCOAPODS_POD_AVAILABLE_BlocksKit_All
-#define COCOAPODS_VERSION_MAJOR_BlocksKit_All 2
-#define COCOAPODS_VERSION_MINOR_BlocksKit_All 2
-#define COCOAPODS_VERSION_PATCH_BlocksKit_All 5
-
-// BlocksKit/Core
-#define COCOAPODS_POD_AVAILABLE_BlocksKit_Core
-#define COCOAPODS_VERSION_MAJOR_BlocksKit_Core 2
-#define COCOAPODS_VERSION_MINOR_BlocksKit_Core 2
-#define COCOAPODS_VERSION_PATCH_BlocksKit_Core 5
-
-// BlocksKit/DynamicDelegate
-#define COCOAPODS_POD_AVAILABLE_BlocksKit_DynamicDelegate
-#define COCOAPODS_VERSION_MAJOR_BlocksKit_DynamicDelegate 2
-#define COCOAPODS_VERSION_MINOR_BlocksKit_DynamicDelegate 2
-#define COCOAPODS_VERSION_PATCH_BlocksKit_DynamicDelegate 5
-
-// BlocksKit/MessageUI
-#define COCOAPODS_POD_AVAILABLE_BlocksKit_MessageUI
-#define COCOAPODS_VERSION_MAJOR_BlocksKit_MessageUI 2
-#define COCOAPODS_VERSION_MINOR_BlocksKit_MessageUI 2
-#define COCOAPODS_VERSION_PATCH_BlocksKit_MessageUI 5
-
-// BlocksKit/UIKit
-#define COCOAPODS_POD_AVAILABLE_BlocksKit_UIKit
-#define COCOAPODS_VERSION_MAJOR_BlocksKit_UIKit 2
-#define COCOAPODS_VERSION_MINOR_BlocksKit_UIKit 2
-#define COCOAPODS_VERSION_PATCH_BlocksKit_UIKit 5
-
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
 #define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 2
@@ -183,26 +147,20 @@
 // MagicalRecord
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord
 #define COCOAPODS_VERSION_MAJOR_MagicalRecord 2
-#define COCOAPODS_VERSION_MINOR_MagicalRecord 2
+#define COCOAPODS_VERSION_MINOR_MagicalRecord 3
 #define COCOAPODS_VERSION_PATCH_MagicalRecord 0
-
-// MagicalRecord/Core
-#define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
-#define COCOAPODS_VERSION_MAJOR_MagicalRecord_Core 2
-#define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
-#define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
 
 // Realm
 #define COCOAPODS_POD_AVAILABLE_Realm
 #define COCOAPODS_VERSION_MAJOR_Realm 0
-#define COCOAPODS_VERSION_MINOR_Realm 92
-#define COCOAPODS_VERSION_PATCH_Realm 3
+#define COCOAPODS_VERSION_MINOR_Realm 93
+#define COCOAPODS_VERSION_PATCH_Realm 2
 
 // Realm/Headers
 #define COCOAPODS_POD_AVAILABLE_Realm_Headers
 #define COCOAPODS_VERSION_MAJOR_Realm_Headers 0
-#define COCOAPODS_VERSION_MINOR_Realm_Headers 92
-#define COCOAPODS_VERSION_PATCH_Realm_Headers 3
+#define COCOAPODS_VERSION_MINOR_Realm_Headers 93
+#define COCOAPODS_VERSION_PATCH_Realm_Headers 2
 
 // Repro
 #define COCOAPODS_POD_AVAILABLE_Repro
@@ -244,13 +202,19 @@
 #define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel
 #define COCOAPODS_VERSION_MAJOR_TTTAttributedLabel 1
 #define COCOAPODS_VERSION_MINOR_TTTAttributedLabel 13
-#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 3
+#define COCOAPODS_VERSION_PATCH_TTTAttributedLabel 4
 
 // UIActionSheet+Blocks
 #define COCOAPODS_POD_AVAILABLE_UIActionSheet_Blocks
 #define COCOAPODS_VERSION_MAJOR_UIActionSheet_Blocks 0
 #define COCOAPODS_VERSION_MINOR_UIActionSheet_Blocks 9
 #define COCOAPODS_VERSION_PATCH_UIActionSheet_Blocks 0
+
+// UIAlertController+Blocks
+#define COCOAPODS_POD_AVAILABLE_UIAlertController_Blocks
+#define COCOAPODS_VERSION_MAJOR_UIAlertController_Blocks 0
+#define COCOAPODS_VERSION_MINOR_UIAlertController_Blocks 9
+#define COCOAPODS_VERSION_PATCH_UIAlertController_Blocks 0
 
 // UIAlertView+Blocks
 #define COCOAPODS_POD_AVAILABLE_UIAlertView_Blocks

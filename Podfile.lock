@@ -21,21 +21,6 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Base64 (1.0.1)
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
   - CocoaLumberjack (2.0.0):
     - CocoaLumberjack/Default (= 2.0.0)
     - CocoaLumberjack/Extensions (= 2.0.0)
@@ -61,9 +46,7 @@ PODS:
   - FontAwesomeKit/Zocial (2.2.0):
     - FontAwesomeKit/Core
   - HexColors (2.2.1)
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
+  - MagicalRecord (2.3.0)
   - MBProgressHUD (0.9.1)
   - MKStoreKit (4.99)
   - mockingbird-toolbox (0.9.7):
@@ -178,20 +161,21 @@ PODS:
   - mockingbird-toolbox/ThreadsafeCache (0.9.7):
     - mockingbird-toolbox/Common
   - MTStatusBarOverlay (0.9.1)
-  - Realm (0.92.3):
-    - Realm/Headers (= 0.92.3)
-  - Realm/Headers (0.92.3)
+  - Realm (0.93.2):
+    - Realm/Headers (= 0.93.2)
+  - Realm/Headers (0.93.2)
   - Repro (0.9.7)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
   - SRGVersionUpdater (0.0.3):
     - AFNetworking
-    - BlocksKit
+    - UIAlertView+Blocks
   - SSZipArchive (0.3.2)
   - SVProgressHUD (1.1.3)
-  - TTTAttributedLabel (1.13.3)
+  - TTTAttributedLabel (1.13.4)
   - UIActionSheet+Blocks (0.9)
+  - UIAlertController+Blocks (0.9)
   - UIAlertView+Blocks (0.9)
   - UITextFieldWithLimit (0.1.1)
   - YTVimeoExtractor (0.1.0)
@@ -211,36 +195,46 @@ DEPENDENCIES:
   - Realm
   - Repro
   - SDWebImage
-  - SRGVersionUpdater
+  - SRGVersionUpdater (from `https://github.com/munky69rock/SRGVersionUpdater.git`)
   - SSZipArchive
   - SVProgressHUD
   - TTTAttributedLabel
   - UIActionSheet+Blocks
+  - UIAlertController+Blocks
   - UIAlertView+Blocks
   - UITextFieldWithLimit
   - YTVimeoExtractor
 
+EXTERNAL SOURCES:
+  SRGVersionUpdater:
+    :git: https://github.com/munky69rock/SRGVersionUpdater.git
+
+CHECKOUT OPTIONS:
+  SRGVersionUpdater:
+    :commit: 4a8652ad0fc01919febefb49480395086fcef918
+    :git: https://github.com/munky69rock/SRGVersionUpdater.git
+
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Base64: 4924bf3ca6fa559a5161ef717291bd450eb7bd1a
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
   CrittercismSDK: b22f9541803c2babb1c8996862b097dc47ec7105
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
-  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MKStoreKit: 748617e5f87ad1e0d3f075155047945248eccefc
   mockingbird-toolbox: e882529a41c34d789eb9344d43124728d198fc30
   MTStatusBarOverlay: 258a1ee369f4dc4b94107d02cfd7f6b1317c421b
-  Realm: bf604805d5e897850da488260f93889f510924b3
+  Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   Repro: c6175b45be8113aadd02556fc0b4a991ba5fcba8
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  SRGVersionUpdater: 1bedb9dc90c2f6d7c27573dee5469ccdafd3087b
+  SRGVersionUpdater: 31525277a78f439f7345bb2d7b26d99375ddcdc6
   SSZipArchive: 11801759495fa4efb7512ef652eb0042d68305d7
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
-  TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
+  UIAlertController+Blocks: b48c673ff60726da468b32ab21bbc7683512d45b
   UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
   UITextFieldWithLimit: 7b292ab1fe30fb03fa2f9b595be2c414f93cdb6d
   YTVimeoExtractor: 4d133a68951cc50c920111a22c6e104f0ff71fd0

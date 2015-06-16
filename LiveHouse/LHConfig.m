@@ -48,7 +48,18 @@
                           
                           LH_CONFIG_KEY_PARSE_APPLICATION_KEY: @"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k",
                           LH_CONFIG_KEY_PARSE_CLIENT_KEY:      @"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi",
-                      }]
+                      }],
+        LH_ENV_STG : [[LHBaseConfigItem alloc]
+                initWithName:LH_ENV_STG
+                    withDict:@{
+                            LH_CONFIG_KEY_API_BASE_URL: @"http://stage.lvhs.jp/api",
+                            LH_CONFIG_KEY_WEB_BASE_URL: @"http://stage.lvhs.jp/app",
+                            LH_CONFIG_KEY_RESOURCE_BASE_URL: @"http://stage.lvhs.jp",
+                            LH_CONFIG_KEY_COOKIE_DOMAIN: @".stage.lvhs.jp",
+
+                            LH_CONFIG_KEY_PARSE_APPLICATION_KEY: @"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k",
+                            LH_CONFIG_KEY_PARSE_CLIENT_KEY:      @"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi",
+                    }]
     };
 }
 #endif

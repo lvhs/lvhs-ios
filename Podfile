@@ -7,6 +7,7 @@ pod 'SVProgressHUD'
 pod 'MBProgressHUD'
 pod 'UIAlertView+Blocks'
 pod 'UIActionSheet+Blocks'
+pod 'UIAlertController+Blocks'
 pod 'SDWebImage'
 # pod 'MBPhotoBrowser'
 pod 'FontAwesomeKit'
@@ -28,7 +29,7 @@ pod 'TTTAttributedLabel'
 pod 'Repro' # https://repro.io/
 
 # versioning
-pod 'SRGVersionUpdater'
+pod 'SRGVersionUpdater', git: 'https://github.com/munky69rock/SRGVersionUpdater.git'
 
 # replacement for UITableViewController & UICollectionViewController
 # pod "SlackTextViewController" https://github.com/slackhq/SlackTextViewController

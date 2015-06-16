@@ -13,8 +13,6 @@
 #import <AFNetworkActivityIndicatorManager.h>
 #import <Parse/Parse.h>
 
-#import "UIAlertView+Blocks/UIAlertView+Blocks.h"
-#import "LHHomeViewController.h"
 #import "GAI.h"
 #import <Repro/Repro.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>

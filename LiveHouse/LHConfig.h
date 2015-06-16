@@ -17,6 +17,7 @@
 //////////////////////////////////////////
 
 #define LH_ENV_DEV (@"dev")
+#define LH_ENV_STG (@"stage")
 #endif
 
 #define LH_CONFIG_KEY_COOKIE_DOMAIN (@"cookie.domain")

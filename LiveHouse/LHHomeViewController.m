@@ -12,8 +12,9 @@
 #import <FontAwesomeKit/FAKFontAwesome.h>
 #import <YTVimeoExtractor/YTVimeoExtractor.h>
 #import <CAR/CARMedia.h>
-#import "UIActionSheet+Blocks/UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks/UIAlertView+Blocks.h"
+#import "UIActionSheet+Blocks/UIActionSheet+Blocks.h"
+#import "UIAlertController+Blocks/UIAlertController+Blocks.h"
 #import "NSString+Util.h"
 
 #import "LHAppDelegate.h"
@@ -38,6 +39,7 @@ SKPaymentTransactionObserver> {
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSString* urlQueue;
 @property (nonatomic) NSArray* menuRows;
+@property (strong, nonatomic) SKProductsRequest *productsRequest;
 
 - (IBAction)goHome:(id)sender;
 - (IBAction)toggleMenu:(id)sender;
@@ -102,7 +104,6 @@ SKPaymentTransactionObserver> {
 }
 
 - (void) loadWebViewWithUrl:(NSString *)url {
-    NSLog(@"loadWebViewWithUrl: %@", url);
     NSURL *urlObj = [NSURL URLWithString:url];
     LHURLRequest *req = [LHURLRequest requestWithURL:urlObj];
     [_webView loadRequest:req];
@@ -215,24 +216,39 @@ SKPaymentTransactionObserver> {
         [defaults setValue:itemId forKey:@"itemId"];
         [defaults setValue:productId forKey:@"productId"];
         
-        [UIActionSheet showInView:self.view
-                        withTitle:title
-                cancelButtonTitle:@"キャンセル"
-           destructiveButtonTitle:nil
-                otherButtonTitles:buttons
-                         tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-                             if (buttonIndex == 0) {
-                                 [self getInAppPurchaseItems:productId];
-                             }
-                             if (buttonIndex == 1 && rewardFlag != nil) {
-                                 LHConfig *config = [LHConfig sharedInstance];
-                                 NSString* urlStr = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
-                                 urlStr = [urlStr stringByAppendingString:@"/car/list"];
-                                 NSURL *url = [NSURL URLWithString:urlStr];
-                                 LHURLRequest *req = [LHURLRequest requestWithURL:url];
-                                 [_webView loadRequest:req];
-                             }
-                         }];
+        void(^handlePurchaseBlock)(NSInteger, NSInteger) = ^(NSInteger buttonIndex, NSInteger firstIndex){
+            if (buttonIndex == firstIndex) {
+                [self getInAppPurchaseItems:productId];
+            }
+            else if (buttonIndex == (firstIndex + 1) && rewardFlag != nil) {
+                LHConfig *config = [LHConfig sharedInstance];
+                NSString* urlStr = [config objectForKey:LH_CONFIG_KEY_WEB_BASE_URL];
+                urlStr = [urlStr stringByAppendingString:@"/car/list"];
+                NSURL *url = [NSURL URLWithString:urlStr];
+                LHURLRequest *req = [LHURLRequest requestWithURL:url];
+                [_webView loadRequest:req];
+            }
+        };
+        
+        if ([UIAlertController class]) {
+            [UIAlertController showAlertInViewController:self
+                                               withTitle:title
+                                                 message:nil
+                                       cancelButtonTitle:@"キャンセル"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:buttons
+                                                tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex){
+                                                    handlePurchaseBlock(buttonIndex, 2);
+                                                }];
+        } else {
+            [UIAlertView showWithTitle:title
+                               message:nil
+                     cancelButtonTitle:@"キャンセル"
+                     otherButtonTitles:buttons
+                              tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex){
+                                  handlePurchaseBlock(buttonIndex, 1);
+                              }];
+        }
         return NO;
     }
     else if ([request.URL.host rangeOfString:@"lvhs.jp"].location == NSNotFound) {
@@ -327,7 +343,6 @@ SKPaymentTransactionObserver> {
     url = [url stringByAppendingString:@"/menu.json"];
     
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"menu json: %@", responseObject);
         @try {
             _menuRows = responseObject;
             [_tableView reloadData];
@@ -398,7 +413,6 @@ SKPaymentTransactionObserver> {
         [self restoreInAppPurchaseItems];
     }
     else if ([type compare:@"url"] == NSOrderedSame) {
-        NSLog(@"show menu using url: %@", [menu objectForKey:@"data"]);
         [self loadWebViewWithUrl:[menu objectForKey:@"data"]];
         [self toggleMenu:nil];
     }
@@ -438,13 +452,21 @@ SKPaymentTransactionObserver> {
 - (void)getInAppPurchaseItems:(NSString*) productId {
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     NSSet *set = [NSSet setWithObjects:productId, nil];
-    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
-    productsRequest.delegate = self;
-    [productsRequest start];
+    _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
+    _productsRequest.delegate = self;
+    [_productsRequest start];
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
 }
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    NSLog(@"%@", response);
     if (response == nil) return;
     
     // 無効なアイテムがないかチェック
