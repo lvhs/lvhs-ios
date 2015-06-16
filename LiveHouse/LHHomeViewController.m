@@ -59,12 +59,6 @@ SKPaymentTransactionObserver> {
     [self initWebView];
     [self initHeaderIcons];
     
-    [self updatePaymentInfo:false];
-    [self updatePaymentInfo:true];
-    
-    [self updatePaymentInfo:@"31" restore:false];
-    [self updatePaymentInfo:@"31" restore:true];
-    
     // menu
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -241,7 +235,7 @@ SKPaymentTransactionObserver> {
                          }];
         return NO;
     }
-    else if (![request.URL.host containsString:@"lvhs.jp"]) {
+    else if ([request.URL.host rangeOfString:@"lvhs.jp"].location == NSNotFound) {
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
     }
