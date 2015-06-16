@@ -27,6 +27,9 @@ pod 'TTTAttributedLabel'
 # UI/UX
 pod 'Repro' # https://repro.io/
 
+# versioning
+pod 'SRGVersionUpdater'
+
 # replacement for UITableViewController & UICollectionViewController
 # pod "SlackTextViewController" https://github.com/slackhq/SlackTextViewController
 

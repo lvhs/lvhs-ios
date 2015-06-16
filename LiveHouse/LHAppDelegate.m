@@ -19,6 +19,8 @@
 #import <Repro/Repro.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
+#import "SRGVersionUpdater.h"
+
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"CRASH: %@", exception);
     NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
@@ -31,6 +33,10 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    SRGVersionUpdater *versionUpdater = [SRGVersionUpdater new];
+    versionUpdater.endPointUrl = [[[LHConfig sharedInstance] objectForKey:LH_CONFIG_KEY_WEB_BASE_URL] stringByAppendingString:@"/version.json"];
+    [versionUpdater executeVersionCheck];
     
     //AFで通信中は自動的にインジケータ回す
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;

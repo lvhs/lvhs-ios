@@ -21,6 +21,21 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Base64 (1.0.1)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - CocoaLumberjack (2.0.0):
     - CocoaLumberjack/Default (= 2.0.0)
     - CocoaLumberjack/Extensions (= 2.0.0)
@@ -170,6 +185,9 @@ PODS:
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
+  - SRGVersionUpdater (0.0.3):
+    - AFNetworking
+    - BlocksKit
   - SSZipArchive (0.3.2)
   - SVProgressHUD (1.1.3)
   - TTTAttributedLabel (1.13.3)
@@ -193,6 +211,7 @@ DEPENDENCIES:
   - Realm
   - Repro
   - SDWebImage
+  - SRGVersionUpdater
   - SSZipArchive
   - SVProgressHUD
   - TTTAttributedLabel
@@ -204,8 +223,9 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Base64: 4924bf3ca6fa559a5161ef717291bd450eb7bd1a
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
-  CrittercismSDK: a8f09d8f1d9fea3bc0714a954a079062c5c9d914
+  CrittercismSDK: b22f9541803c2babb1c8996862b097dc47ec7105
   FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
@@ -216,6 +236,7 @@ SPEC CHECKSUMS:
   Realm: bf604805d5e897850da488260f93889f510924b3
   Repro: c6175b45be8113aadd02556fc0b4a991ba5fcba8
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SRGVersionUpdater: 1bedb9dc90c2f6d7c27573dee5469ccdafd3087b
   SSZipArchive: 11801759495fa4efb7512ef652eb0042d68305d7
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
@@ -224,4 +245,4 @@ SPEC CHECKSUMS:
   UITextFieldWithLimit: 7b292ab1fe30fb03fa2f9b595be2c414f93cdb6d
   YTVimeoExtractor: 4d133a68951cc50c920111a22c6e104f0ff71fd0
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2

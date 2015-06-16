@@ -63,6 +63,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "FontAwesomeKit/FontAwesomeKit/ionicons.ttf"
   install_resource "FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf"
   install_resource "Repro/Repro.embeddedframework/Resources/ReproSDKResources.bundle"
+  install_resource "SRGVersionUpdater/SRGVersionUpdater.bundle"
   install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -71,6 +72,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "FontAwesomeKit/FontAwesomeKit/ionicons.ttf"
   install_resource "FontAwesomeKit/FontAwesomeKit/zocial-regular-webfont.ttf"
   install_resource "Repro/Repro.embeddedframework/Resources/ReproSDKResources.bundle"
+  install_resource "SRGVersionUpdater/SRGVersionUpdater.bundle"
   install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 fi
 
