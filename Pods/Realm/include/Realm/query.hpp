@@ -39,6 +39,7 @@
 #include <realm/table_ref.hpp>
 #include <realm/binary_data.hpp>
 #include <realm/datetime.hpp>
+#include <realm/handover_defs.hpp>
 
 namespace realm {
 
@@ -52,27 +53,28 @@ class ConstTableView;
 class Array;
 class Expression;
 class SequentialGetterBase;
+class Group;
 
 class Query {
 public:
-    Query(const Table& table, RowIndexes* tv = nullptr);
+    Query(const Table& table, TableViewBase* tv = nullptr);
+    Query(const Table& table, std::unique_ptr<TableViewBase>);
     Query(const Table& table, const LinkViewRef& lv);
     Query();
     Query(const Query& copy); // FIXME: Try to remove this
     struct TCopyExpressionTag {};
     Query(const Query& copy, const TCopyExpressionTag&);
-    ~Query() REALM_NOEXCEPT;
-    void move_assign(Query& query);
+    Query(Expression*);
+    virtual ~Query() noexcept;
 
     Query& operator = (const Query& source);
 
-    Query& expression(Expression* compare, bool auto_delete = false);
-    Expression* get_expression();
-
-    // Find links that point to a specific target row 
-
-    // Find links that point to a specific target row 
+    // Find links that point to a specific target row
     Query& links_to(size_t column_ndx, size_t target_row);
+
+    // Conditions: null
+    Query& equal(size_t column_ndx, null);
+    Query& not_equal(size_t column_ndx, null);
 
     // Conditions: int64_t
     Query& equal(size_t column_ndx, int64_t value);
@@ -147,7 +149,6 @@ public:
     Query& between_datetime(size_t column_ndx, DateTime from, DateTime to) { return between(column_ndx, int64_t(from.get_datetime()), int64_t(to.get_datetime())); }
 
     // Conditions: strings
-
     Query& equal(size_t column_ndx, StringData value, bool case_sensitive=true);
     Query& not_equal(size_t column_ndx, StringData value, bool case_sensitive=true);
     Query& begins_with(size_t column_ndx, StringData value, bool case_sensitive=true);
@@ -247,44 +248,64 @@ public:
 
     std::string validate();
 
-    mutable bool do_delete;
-
 protected:
-    Query(Table& table, RowIndexes* tv = nullptr);
-//    Query(const Table& table); // FIXME: This constructor should not exist. We need a ConstQuery class.
-    void Create();
+    Query(Table& table, TableViewBase* tv = nullptr);
+    void create();
 
-    void   Init(const Table& table) const;
+    void   init(const Table& table) const;
     bool   is_initialized() const;
-    size_t FindInternal(size_t start = 0, size_t end=size_t(-1)) const;
+    size_t find_internal(size_t start = 0, size_t end=size_t(-1)) const;
     size_t peek_tableview(size_t tv_index) const;
-    void   UpdatePointers(ParentNode* p, ParentNode** newnode);
-    void HandlePendingNot();
+    void   update_pointers(ParentNode* p, ParentNode** newnode);
+    void handle_pending_not();
+    void set_table(TableRef tr);
 
     static bool  comp(const std::pair<size_t, size_t>& a, const std::pair<size_t, size_t>& b);
 
 public:
-    TableRef m_table;
-    std::vector<ParentNode*> first;
-    std::vector<ParentNode**> update;
-    std::vector<ParentNode**> update_override;
-    std::vector<ParentNode**> subtables;
-    std::vector<ParentNode*> all_nodes;
-    
-    RowIndexes* m_view;
-    std::vector<bool> pending_not;
+    typedef Query_Handover_patch Handover_patch;
 
+    virtual std::unique_ptr<Query> clone_for_handover(std::unique_ptr<Handover_patch>& patch,
+                                                      ConstSourcePayload mode) const
+    {
+        patch.reset(new Handover_patch);
+        std::unique_ptr<Query> retval(new Query(*this, *patch, mode));
+        return retval;
+    }
+
+    virtual std::unique_ptr<Query> clone_for_handover(std::unique_ptr<Handover_patch>& patch, 
+                                                      MutableSourcePayload mode)
+    {
+        patch.reset(new Handover_patch);
+        std::unique_ptr<Query> retval(new Query(*this, *patch, mode));
+        return retval;
+    }
+
+    virtual void apply_and_consume_patch(std::unique_ptr<Handover_patch>& patch, Group& group)
+    {
+        apply_patch(*patch, group);
+        patch.reset();
+    }
+
+    void apply_patch(Handover_patch& patch, Group& group);
+    Query(const Query& source, Handover_patch& patch, ConstSourcePayload mode);
+    Query(Query& source, Handover_patch& patch, MutableSourcePayload mode);
 private:
-    template <class TColumnType> Query& equal(size_t column_ndx1, size_t column_ndx2);
-    template <class TColumnType> Query& less(size_t column_ndx1, size_t column_ndx2);
-    template <class TColumnType> Query& less_equal(size_t column_ndx1, size_t column_ndx2);
-    template <class TColumnType> Query& greater(size_t column_ndx1, size_t column_ndx2);
-    template <class TColumnType> Query& greater_equal(size_t column_ndx1, size_t column_ndx2);
-    template <class TColumnType> Query& not_equal(size_t column_ndx1, size_t column_ndx2);
+    void copy_nodes(const Query& source);
+    void fetch_descriptor();
 
-    template <typename T, class N> Query& add_condition(size_t column_ndx, T value);
+    void add_expression_node(Expression*);
 
-    template<typename T> double average(size_t column_ndx, size_t* resultcount = 0, size_t start = 0,
+    template <class ColumnType> Query& equal(size_t column_ndx1, size_t column_ndx2);
+    template <class ColumnType> Query& less(size_t column_ndx1, size_t column_ndx2);
+    template <class ColumnType> Query& less_equal(size_t column_ndx1, size_t column_ndx2);
+    template <class ColumnType> Query& greater(size_t column_ndx1, size_t column_ndx2);
+    template <class ColumnType> Query& greater_equal(size_t column_ndx1, size_t column_ndx2);
+    template <class ColumnType> Query& not_equal(size_t column_ndx1, size_t column_ndx2);
+
+    template <typename TConditionFunction, class T> Query& add_condition(size_t column_ndx, T value);
+
+    template<typename T, bool Nullable> double average(size_t column_ndx, size_t* resultcount = 0, size_t start = 0,
                                         size_t end=size_t(-1), size_t limit = size_t(-1)) const;
 
     template <Action action, typename T, typename R, class ColClass>
@@ -292,22 +313,45 @@ private:
                     size_t column_ndx, size_t* resultcount, size_t start, size_t end, size_t limit, 
                     size_t* return_ndx = nullptr) const;
 
-    void aggregate_internal(Action TAction, DataType TSourceColumn,
+    void aggregate_internal(Action TAction, DataType TSourceColumn, bool nullable,
                             ParentNode* pn, QueryStateBase* st, 
                             size_t start, size_t end, SequentialGetterBase* source_column) const;
 
     void find_all(TableViewBase& tv, size_t start = 0, size_t end=size_t(-1), size_t limit = size_t(-1)) const;
-    void delete_nodes() REALM_NOEXCEPT;
+    void delete_nodes() noexcept;
+
+    bool supports_export_for_handover() { return m_view == 0; };
+
+    friend class Table;
+    friend class TableViewBase;
 
     std::string error_code;
 
-    friend class Table;
-    template <typename T> friend class BasicTable;
-    friend class XQueryAccessorInt;
-    friend class XQueryAccessorString;
-    friend class TableViewBase;
+    std::vector<ParentNode*> first;
+    std::vector<ParentNode**> update;
+    std::vector<ParentNode**> update_override;
+    std::vector<ParentNode**> subtables;
+    std::vector<ParentNode*> all_nodes;
 
-    LinkViewRef m_source_link_view;
+    std::vector<bool> pending_not;
+
+    // Used to access schema while building query:
+    std::vector<size_t> m_subtable_path;
+
+    ConstDescriptorRef m_current_descriptor;
+    TableRef m_table;
+
+    // points to the base class of the restricting view. If the restricting
+    // view is a link view, m_source_link_view is non-zero. If it is a table view,
+    // m_source_table_view is non-zero.
+    RowIndexes* m_view;
+
+    // At most one of these can be non-zero, and if so the non-zero one indicates the restricting view.
+    LinkViewRef m_source_link_view; // link views are refcounted and shared.
+    TableViewBase* m_source_table_view; // table views are not refcounted, and not owned by the query.
+    bool m_owns_source_table_view; // <--- except when indicated here
+
+    mutable bool do_delete;
 };
 
 // Implementation:

@@ -15,6 +15,12 @@
     LHURLRequest *req = [super initWithURL:url];
     UIApplication *application = [UIApplication sharedApplication];
     [req addValue:[application uniqueInstallationIdentifier] forHTTPHeaderField:@"X-UIID"];
+#ifdef PRO
+    [req addValue:@"PRO" forHTTPHeaderField:@"X-APP-TYPE"];
+#endif
+#ifdef DEV
+    [req addValue:@"DEV" forHTTPHeaderField:@"X-APP-TYPE"];
+#endif
     [req addValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forHTTPHeaderField:@"X-BUNDLE-VERSION"];
     return req;
 }

@@ -18,6 +18,7 @@
 
 #define LH_ENV_DEV (@"dev")
 #define LH_ENV_STG (@"stage")
+#define LH_ENV_LCL (@"local")
 #endif
 
 #define LH_CONFIG_KEY_COOKIE_DOMAIN (@"cookie.domain")
@@ -37,6 +38,7 @@
 + (void)setupBasicAuth;
 + (BOOL)isProduction;
 + (BOOL)isDevelopment;
++ (BOOL)isStaging;
 #endif
 
 @end

@@ -22,8 +22,8 @@
     return [[LHBaseConfigItem alloc]
             initWithName:LH_ENV_PRO
             withDict:@{
-                LH_CONFIG_KEY_API_BASE_URL:          @"http://app.lvhs.jp/api",
-                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://app.lvhs.jp/app",
+                LH_CONFIG_KEY_API_BASE_URL:          @"http://dev.lvhs.jp/api",
+                LH_CONFIG_KEY_WEB_BASE_URL:          @"http://dev.lvhs.jp/app",
                 LH_CONFIG_KEY_RESOURCE_BASE_URL:     @"http://static.lvhs.jp",
                 LH_CONFIG_KEY_COOKIE_DOMAIN:         @".lvhs.jp",
                 
@@ -34,7 +34,7 @@
 
 //開発中接続先
 #ifdef DEV
-- (NSDictionary*)devConfingDict {
+- (NSDictionary*)devConfigDict {
     return @{
         LH_ENV_PRO : [self productionConfig],
         
@@ -59,7 +59,19 @@
 
                             LH_CONFIG_KEY_PARSE_APPLICATION_KEY: @"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k",
                             LH_CONFIG_KEY_PARSE_CLIENT_KEY:      @"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi",
+                    }],
+        LH_ENV_LCL : [[LHBaseConfigItem alloc]
+                initWithName:LH_ENV_STG
+                    withDict:@{
+                            LH_CONFIG_KEY_API_BASE_URL: @"http://localhost:3000/api",
+                            LH_CONFIG_KEY_WEB_BASE_URL: @"http://localhost:3000/app",
+                            LH_CONFIG_KEY_RESOURCE_BASE_URL: @"http://localhost:3000",
+                            LH_CONFIG_KEY_COOKIE_DOMAIN: @".localhost",
+
+                            LH_CONFIG_KEY_PARSE_APPLICATION_KEY: @"ERw21W839WcCmKIpvaRKKg0NKuz5VLMQK5K7cR7k",
+                            LH_CONFIG_KEY_PARSE_CLIENT_KEY:      @"XuwWIp8VfGXXxBWil89AZNxCJ8YtsEHP5e4Mgyxi",
                     }]
+        
     };
 }
 #endif
@@ -72,11 +84,11 @@
 #ifdef DEV
         NSMutableArray* ary = [NSMutableArray array];
         
-        NSDictionary* dict = [self devConfingDict];
+        NSDictionary* dict = [self devConfigDict];
         [ary addObject:dict[LH_ENV_DEV_DEFAULT]]; //先頭がデフォルトの接続先
         
         for (id key in [dict keyEnumerator]) {
-            if ([key isEqualToString:LH_ENV_DEV_DEFAULT] == NO) {
+            if (![key isEqualToString:LH_ENV_DEV_DEFAULT]) {
                 [ary addObject:dict[key]];
             }
         }
@@ -93,7 +105,7 @@
 #ifdef DEV
 + (void)setupBasicAuth {
     //開発サーバー接続時はbasic認証付きでhttpアクセス
-    if ([LHConfig isProduction] == NO) {
+    if (![LHConfig isProduction]) {
         [self _setupBasicAuthCredential];
         [self _setupBasicAuthSDWebImage];
     }
@@ -169,6 +181,10 @@
 
 + (BOOL)isDevelopment {
     return [[LHConfig sharedInstance].selectedName isEqualToString:LH_ENV_DEV];
+}
+
++ (BOOL) isStaging {
+    return [[LHConfig sharedInstance].selectedName isEqualToString:LH_ENV_STG];
 }
 
 #endif

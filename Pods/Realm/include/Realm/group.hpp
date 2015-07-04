@@ -21,12 +21,15 @@
 #ifndef REALM_GROUP_HPP
 #define REALM_GROUP_HPP
 
+#include <functional>
 #include <string>
 #include <vector>
 #include <map>
+#include <stdexcept>
 
 #include <realm/util/features.h>
 #include <realm/exceptions.hpp>
+#include <realm/impl/input_stream.hpp>
 #include <realm/impl/output_stream.hpp>
 #include <realm/table.hpp>
 #include <realm/table_basic_fwd.hpp>
@@ -96,9 +99,12 @@ public:
     /// is_attached(). Calling any other method (except the
     /// destructor) while in the unattached state has undefined
     /// behavior.
-    Group(unattached_tag) REALM_NOEXCEPT;
+    Group(unattached_tag) noexcept;
 
-    ~Group() REALM_NOEXCEPT override;
+    // FIXME: Implement a proper copy constructor (fairly trivial).
+    Group(const Group&) = delete;
+
+    ~Group() noexcept override;
 
     /// Attach this Group instance to the specified database file.
     ///
@@ -216,11 +222,11 @@ public:
     /// attached to a file with a call to open(). Calling any method
     /// other than open(), and is_attached() on an unattached instance
     /// results in undefined behavior.
-    bool is_attached() const REALM_NOEXCEPT;
+    bool is_attached() const noexcept;
 
     /// Returns true if, and only if the number of tables in this
     /// group is zero.
-    bool is_empty() const REALM_NOEXCEPT;
+    bool is_empty() const noexcept;
 
     /// Returns the number of tables in this group.
     std::size_t size() const;
@@ -306,8 +312,8 @@ public:
 
     static const std::size_t max_table_name_length = 63;
 
-    bool has_table(StringData name) const REALM_NOEXCEPT;
-    std::size_t find_table(StringData name) const REALM_NOEXCEPT;
+    bool has_table(StringData name) const noexcept;
+    std::size_t find_table(StringData name) const noexcept;
     StringData get_table_name(std::size_t table_ndx) const;
 
     TableRef get_table(std::size_t index);
@@ -381,6 +387,74 @@ public:
     /// this is not the case when working with proper transactions.
     void commit();
 
+    //@{
+    /// Some operations on Tables in a Group can cause indirect changes to other
+    /// fields, including in other Tables in the same Group. Specifically,
+    /// removing a row will set any links to that row to null, and if it had the
+    /// last strong links to other rows, will remove those rows. When this
+    /// happens, The cascade notification handler will be called with a
+    /// CascadeNotification containing information about what indirect changes
+    /// will occur, before any changes are made.
+    ///
+    /// has_cascade_notification_handler() returns true if and only if there is
+    /// currently a non-null notification handler registered.
+    ///
+    /// set_cascade_notification_handler() replaces the current handler (if any)
+    /// with the passed in handler. Pass in nullptr to remove the current handler
+    /// without registering a new one.
+    ///
+    /// CascadeNotification contains a vector of rows which will be removed and
+    /// a vector of links which will be set to null (or removed, for entries in
+    /// LinkLists).
+    struct CascadeNotification {
+        struct row {
+            /// Non-zero iff the removal of this row is ordered
+            /// (Table::remove()), as opposed to ordered
+            /// (Table::move_last_over()). Implicit removals are always
+            /// unordered.
+            ///
+            /// This flag does not take part in comparisons (operator==() and
+            /// operator<()).
+            size_t is_ordered_removal : 1;
+
+            /// Index within group of a group-level table.
+            size_t table_ndx : std::numeric_limits<size_t>::digits - 1;
+
+            /// Row index which will be removed.
+            size_t row_ndx;
+
+            row(): is_ordered_removal(0) {}
+
+            bool operator==(const row&) const noexcept;
+            bool operator!=(const row&) const noexcept;
+
+            /// Trivial lexicographic order
+            bool operator<(const row&) const noexcept;
+        };
+
+        struct link {
+            const Table* origin_table; ///< A group-level table.
+            std::size_t origin_col_ndx; ///< Link column being nullified.
+            std::size_t origin_row_ndx; ///< Row in column being nullified.
+            /// The target row index which is being removed. Mostly relevant for
+            /// LinkList (to know which entries are being removed), but also
+            /// valid for Link.
+            std::size_t old_target_row_ndx;
+        };
+
+        /// A sorted list of rows which will be removed by the current operation.
+        std::vector<row> rows;
+
+        /// An unordered list of links which will be nullified by the current
+        /// operation.
+        std::vector<link> links;
+    };
+
+    bool has_cascade_notification_handler() const noexcept;
+    void set_cascade_notification_handler(std::function<void (const CascadeNotification&)> new_handler) noexcept;
+
+    //@}
+
     // Conversion
     template<class S> void to_json(S& out, size_t link_depth = 0,
         std::map<std::string, std::string>* renames = nullptr) const;
@@ -396,7 +470,7 @@ public:
     bool operator!=(const Group& g) const { return !(*this == g); }
 
 #ifdef REALM_DEBUG
-    void Verify() const; // Uncapitalized 'verify' cannot be used due to conflict with macro in Obj-C
+    void verify() const;
     void print() const;
     void print_free() const;
     MemStats stats();
@@ -405,46 +479,66 @@ public:
     void to_dot() const; // To std::cerr (for GDB)
     void to_dot(const char* file_path) const;
 #else
-    void Verify() const {}
+    void verify() const {}
 #endif
 
 private:
     SlabAlloc m_alloc;
 
-    // Underlying node structure. The third slot in m_top is the "logical file
-    // size" and it is always present. The 7th slot is the "database version"
-    // (a.k.a. the "transaction number") and is present only when
-    // m_free_versions is present.
+    /// `m_top` is the root node of the Realm, and has the following layout:
+    ///
+    /// <pre>
+    ///
+    ///   slot  value
+    ///   -----------------------
+    ///   1st   m_table_names
+    ///   2nd   m_tables
+    ///   3rd   Logical file size
+    ///   4th   GroupWriter::m_free_positions (optional)
+    ///   5th   GroupWriter::m_free_lengths   (optional)
+    ///   6th   GroupWriter::m_free_versions  (optional)
+    ///   7th   Transaction number / version  (optional)
+    ///
+    /// </pre>
+    ///
+    /// The first tree entries are mandatory. In files created by
+    /// Group::write(), none of the optional entries are present. In files
+    /// updated by Group::commit(), the 4th and 5th entry is present. In files
+    /// updated by way of a transaction (SharedGroup::commit()), the 4th, 5th,
+    /// 6th, and 7th entry is present.
     Array m_top;
-    ArrayInteger m_tables;         // 2nd slot in m_top
-    ArrayString m_table_names;     // 1st slot in m_top
-    ArrayInteger m_free_positions; // 4th slot in m_top (optional)
-    ArrayInteger m_free_lengths;   // 5th slot in m_top (optional)
-    ArrayInteger m_free_versions;  // 6th slot in m_top (optional)
+    ArrayInteger m_tables;
+    ArrayString m_table_names;
 
     typedef std::vector<Table*> table_accessors;
     mutable table_accessors m_table_accessors;
+
     const bool m_is_shared;
-    bool m_is_attached;
+
+    std::function<void (const CascadeNotification&)> m_notify_handler;
 
     struct shared_tag {};
-    Group(shared_tag) REALM_NOEXCEPT;
+    Group(shared_tag) noexcept;
 
-    // FIXME: Implement a proper copy constructor (fairly trivial).
-    Group(const Group&); // Disable copying
+    void init_array_parents() noexcept;
 
-    void init_array_parents() REALM_NOEXCEPT;
-    void detach() REALM_NOEXCEPT;
-    void detach_but_retain_data() REALM_NOEXCEPT;
-    void complete_detach() REALM_NOEXCEPT;
+    /// If `top_ref` is not zero, attach this group accessor to the specified
+    /// underlying node structure. If `top_ref` is zero, create a new node
+    /// structure that represents an empty group, and attach this group accessor
+    /// to it. It is an error to call this function on an already attached group
+    /// accessor.
+    void attach(ref_type top_ref);
 
-    /// Add free-space versioning nodes, if they do not already exist. Othewise,
-    /// set the version to zero on all free space chunks. This must be done
-    /// whenever the lock file is created or reinitialized.
-    void reset_free_space_versions();
+    /// Detach this group accessor from the underlying node structure. If this
+    /// group accessors is already in the detached state, this function does
+    /// nothing (idempotency).
+    void detach() noexcept;
 
-    void reattach_from_retained_data();
-    bool may_reattach_if_same_version() const REALM_NOEXCEPT;
+    void attach_shared(ref_type new_top_ref, size_t new_file_size);
+
+    void reset_free_space_tracking();
+
+    void remap_and_update_refs(ref_type new_top_ref, size_t new_file_size);
 
     /// Recursively update refs stored in all cached array
     /// accessors. This includes cached array accessors in any
@@ -453,38 +547,27 @@ private:
     /// that exists across Group::commit() will remain valid. This
     /// function is not appropriate for use in conjunction with
     /// commits via shared group.
-    void update_refs(ref_type top_ref, std::size_t old_baseline) REALM_NOEXCEPT;
-
-    /// Reinitialize group for a new read or write transaction.
-    void init_for_transact(ref_type new_top_ref, std::size_t new_file_size);
+    void update_refs(ref_type top_ref, std::size_t old_baseline) noexcept;
 
     // Overriding method in ArrayParent
     void update_child_ref(std::size_t, ref_type) override;
 
     // Overriding method in ArrayParent
-    ref_type get_child_ref(std::size_t) const REALM_NOEXCEPT override;
+    ref_type get_child_ref(std::size_t) const noexcept override;
 
     // Overriding method in Table::Parent
-    StringData get_child_name(std::size_t) const REALM_NOEXCEPT override;
+    StringData get_child_name(std::size_t) const noexcept override;
 
     // Overriding method in Table::Parent
-    void child_accessor_destroyed(Table*) REALM_NOEXCEPT override;
+    void child_accessor_destroyed(Table*) noexcept override;
 
     // Overriding method in Table::Parent
-    Group* get_parent_group() REALM_NOEXCEPT override;
+    Group* get_parent_group() noexcept override;
 
     class TableWriter;
     class DefaultTableWriter;
 
     static void write(std::ostream&, TableWriter&, bool, uint_fast64_t = 0);
-
-    /// Create a new underlying node structure and attach this
-    /// accessor instance to it
-    void create(bool add_free_versions);
-
-    /// Attach this accessor instance to a preexisting underlying node
-    /// structure.
-    void init_from_ref(ref_type top_ref) REALM_NOEXCEPT;
 
     typedef void (*DescSetter)(Table&);
     typedef bool (*DescMatcher)(const Spec&);
@@ -501,29 +584,34 @@ private:
     std::size_t create_table(StringData name); // Returns index of new table
     Table* create_table_accessor(std::size_t table_ndx);
 
-    void detach_table_accessors() REALM_NOEXCEPT;
+    void detach_table_accessors() noexcept; // Idempotent
 
-    void mark_all_table_accessors() REALM_NOEXCEPT;
+    void mark_all_table_accessors() noexcept;
 
-    void write(const std::string& file, const char* encryption_key, 
+    void write(const std::string& file, const char* encryption_key,
                uint_fast64_t version_number) const;
     void write(std::ostream&, bool pad, uint_fast64_t version_numer) const;
 
-#ifdef REALM_ENABLE_REPLICATION
-    Replication* get_replication() const REALM_NOEXCEPT;
-    void set_replication(Replication*) REALM_NOEXCEPT;
+    Replication* get_replication() const noexcept;
+    void set_replication(Replication*) noexcept;
     class TransactAdvancer;
-    class TransactReverser;
     void advance_transact(ref_type new_top_ref, std::size_t new_file_size,
-                          const BinaryData* logs_begin, const BinaryData* logs_end);
-    void reverse_transact(ref_type new_top_ref, const BinaryData& log);
+                          _impl::NoCopyInputStream&);
     void refresh_dirty_accessors();
-#endif
+
+    int get_file_format() const noexcept;
+    void set_file_format(int) noexcept;
+    int get_committed_file_format() const noexcept;
+
+    /// Must be called from within a write transaction
+    void upgrade_file_format();
 
 #ifdef REALM_DEBUG
     std::pair<ref_type, std::size_t>
     get_to_dot_parent(std::size_t ndx_in_parent) const override;
 #endif
+
+    void send_cascade_notification(const CascadeNotification& notification) const;
 
     friend class Table;
     friend class GroupWriter;
@@ -543,138 +631,159 @@ private:
 
 inline Group::Group():
     m_alloc(), // Throws
-    m_top(m_alloc), m_tables(m_alloc), m_table_names(m_alloc), m_free_positions(m_alloc),
-    m_free_lengths(m_alloc), m_free_versions(m_alloc), m_is_shared(false), m_is_attached(false)
+    m_top(m_alloc),
+    m_tables(m_alloc),
+    m_table_names(m_alloc),
+    m_is_shared(false)
 {
     init_array_parents();
     m_alloc.attach_empty(); // Throws
-    bool add_free_versions = false;
-    create(add_free_versions); // Throws
+    ref_type top_ref = 0; // Instantiate a new empty group
+    attach(top_ref); // Throws
 }
 
 inline Group::Group(const std::string& file, const char* key, OpenMode mode):
     m_alloc(), // Throws
-    m_top(m_alloc), m_tables(m_alloc), m_table_names(m_alloc), m_free_positions(m_alloc),
-    m_free_lengths(m_alloc), m_free_versions(m_alloc), m_is_shared(false), m_is_attached(false)
+    m_top(m_alloc),
+    m_tables(m_alloc),
+    m_table_names(m_alloc),
+    m_is_shared(false)
 {
     init_array_parents();
+
     open(file, key, mode); // Throws
 }
 
 inline Group::Group(BinaryData buffer, bool take_ownership):
     m_alloc(), // Throws
-    m_top(m_alloc), m_tables(m_alloc), m_table_names(m_alloc), m_free_positions(m_alloc),
-    m_free_lengths(m_alloc), m_free_versions(m_alloc), m_is_shared(false), m_is_attached(false)
+    m_top(m_alloc),
+    m_tables(m_alloc),
+    m_table_names(m_alloc),
+    m_is_shared(false)
 {
     init_array_parents();
     open(buffer, take_ownership); // Throws
 }
 
-inline Group::Group(unattached_tag) REALM_NOEXCEPT:
+inline Group::Group(unattached_tag) noexcept:
     m_alloc(), // Throws
-    m_top(m_alloc), m_tables(m_alloc), m_table_names(m_alloc), m_free_positions(m_alloc),
-    m_free_lengths(m_alloc), m_free_versions(m_alloc), m_is_shared(false), m_is_attached(false)
+    m_top(m_alloc),
+    m_tables(m_alloc),
+    m_table_names(m_alloc),
+    m_is_shared(false)
 {
     init_array_parents();
 }
 
-inline Group* Group::get_parent_group() REALM_NOEXCEPT
+inline Group* Group::get_parent_group() noexcept
 {
     return this;
 }
 
-inline Group::Group(shared_tag) REALM_NOEXCEPT:
+inline Group::Group(shared_tag) noexcept:
     m_alloc(), // Throws
-    m_top(m_alloc), m_tables(m_alloc), m_table_names(m_alloc), m_free_positions(m_alloc),
-    m_free_lengths(m_alloc), m_free_versions(m_alloc), m_is_shared(true), m_is_attached(false)
+    m_top(m_alloc),
+    m_tables(m_alloc),
+    m_table_names(m_alloc),
+    m_is_shared(true)
 {
     init_array_parents();
 }
 
-inline bool Group::is_attached() const REALM_NOEXCEPT
+inline bool Group::is_attached() const noexcept
 {
-    return m_is_attached;
+    return m_top.is_attached();
 }
 
-inline bool Group::is_empty() const REALM_NOEXCEPT
+inline bool Group::is_empty() const noexcept
 {
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    REALM_ASSERT(m_table_names.is_attached());
     return m_table_names.is_empty();
 }
 
 inline std::size_t Group::size() const
 {
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    REALM_ASSERT(m_table_names.is_attached());
     return m_table_names.size();
 }
 
 inline StringData Group::get_table_name(std::size_t table_ndx) const
 {
-    REALM_ASSERT(is_attached());
-    if (table_ndx >= m_table_names.size())
+    if (table_ndx >= size())
         throw LogicError(LogicError::table_index_out_of_range);
     return m_table_names.get(table_ndx);
 }
 
-inline bool Group::has_table(StringData name) const REALM_NOEXCEPT
+inline bool Group::has_table(StringData name) const noexcept
 {
-    REALM_ASSERT(is_attached());
-    std::size_t ndx = m_table_names.find_first(name);
+    size_t ndx = find_table(name);
     return ndx != not_found;
 }
 
-inline std::size_t Group::find_table(StringData name) const REALM_NOEXCEPT
+inline std::size_t Group::find_table(StringData name) const noexcept
 {
-    REALM_ASSERT(is_attached());
-    std::size_t ndx = m_table_names.find_first(name);
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    REALM_ASSERT(m_table_names.is_attached());
+    size_t ndx = m_table_names.find_first(name);
     return ndx;
 }
 
 inline TableRef Group::get_table(std::size_t table_ndx)
 {
-    REALM_ASSERT(is_attached());
-    DescMatcher desc_matcher = 0; // Do not check descriptor
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    DescMatcher desc_matcher = nullptr; // Do not check descriptor
     Table* table = do_get_table(table_ndx, desc_matcher); // Throws
     return TableRef(table);
 }
 
 inline ConstTableRef Group::get_table(std::size_t table_ndx) const
 {
-    REALM_ASSERT(is_attached());
-    DescMatcher desc_matcher = 0; // Do not check descriptor
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    DescMatcher desc_matcher = nullptr; // Do not check descriptor
     const Table* table = do_get_table(table_ndx, desc_matcher); // Throws
     return ConstTableRef(table);
 }
 
 inline TableRef Group::get_table(StringData name)
 {
-    REALM_ASSERT(is_attached());
-    DescMatcher desc_matcher = 0; // Do not check descriptor
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    DescMatcher desc_matcher = nullptr; // Do not check descriptor
     Table* table = do_get_table(name, desc_matcher); // Throws
     return TableRef(table);
 }
 
 inline ConstTableRef Group::get_table(StringData name) const
 {
-    REALM_ASSERT(is_attached());
-    DescMatcher desc_matcher = 0; // Do not check descriptor
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    DescMatcher desc_matcher = nullptr; // Do not check descriptor
     const Table* table = do_get_table(name, desc_matcher); // Throws
     return ConstTableRef(table);
 }
 
 inline TableRef Group::add_table(StringData name, bool require_unique_name)
 {
-    REALM_ASSERT(is_attached());
-    DescSetter desc_setter = 0; // Do not add any columns
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    DescSetter desc_setter = nullptr; // Do not add any columns
     Table* table = do_add_table(name, desc_setter, require_unique_name); // Throws
     return TableRef(table);
 }
 
 inline TableRef Group::get_or_add_table(StringData name, bool* was_added)
 {
-    REALM_ASSERT(is_attached());
-    DescMatcher desc_matcher = 0; // Do not check descriptor
-    DescSetter desc_setter = 0; // Do not add any columns
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
+    DescMatcher desc_matcher = nullptr; // Do not check descriptor
+    DescSetter desc_setter = nullptr; // Do not add any columns
     Table* table = do_get_or_add_table(name, desc_matcher, desc_setter, was_added); // Throws
     return TableRef(table);
 }
@@ -682,7 +791,8 @@ inline TableRef Group::get_or_add_table(StringData name, bool* was_added)
 template<class T> inline BasicTableRef<T> Group::get_table(std::size_t table_ndx)
 {
     REALM_STATIC_ASSERT(IsBasicTable<T>::value, "Invalid table type");
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
     DescMatcher desc_matcher = &T::matches_dynamic_type;
     Table* table = do_get_table(table_ndx, desc_matcher); // Throws
     return BasicTableRef<T>(static_cast<T*>(table));
@@ -691,7 +801,8 @@ template<class T> inline BasicTableRef<T> Group::get_table(std::size_t table_ndx
 template<class T> inline BasicTableRef<const T> Group::get_table(std::size_t table_ndx) const
 {
     REALM_STATIC_ASSERT(IsBasicTable<T>::value, "Invalid table type");
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
     DescMatcher desc_matcher = &T::matches_dynamic_type;
     const Table* table = do_get_table(table_ndx, desc_matcher); // Throws
     return BasicTableRef<const T>(static_cast<const T*>(table));
@@ -700,7 +811,8 @@ template<class T> inline BasicTableRef<const T> Group::get_table(std::size_t tab
 template<class T> inline BasicTableRef<T> Group::get_table(StringData name)
 {
     REALM_STATIC_ASSERT(IsBasicTable<T>::value, "Invalid table type");
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
     DescMatcher desc_matcher = &T::matches_dynamic_type;
     Table* table = do_get_table(name, desc_matcher); // Throws
     return BasicTableRef<T>(static_cast<T*>(table));
@@ -709,7 +821,8 @@ template<class T> inline BasicTableRef<T> Group::get_table(StringData name)
 template<class T> inline BasicTableRef<const T> Group::get_table(StringData name) const
 {
     REALM_STATIC_ASSERT(IsBasicTable<T>::value, "Invalid table type");
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
     DescMatcher desc_matcher = &T::matches_dynamic_type;
     const Table* table = do_get_table(name, desc_matcher); // Throws
     return BasicTableRef<const T>(static_cast<const T*>(table));
@@ -719,7 +832,8 @@ template<class T>
 inline BasicTableRef<T> Group::add_table(StringData name, bool require_unique_name)
 {
     REALM_STATIC_ASSERT(IsBasicTable<T>::value, "Invalid table type");
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
     DescSetter desc_setter = &T::set_dynamic_type;
     Table* table = do_add_table(name, desc_setter, require_unique_name); // Throws
     return BasicTableRef<T>(static_cast<T*>(table));
@@ -728,7 +842,8 @@ inline BasicTableRef<T> Group::add_table(StringData name, bool require_unique_na
 template<class T> inline BasicTableRef<T> Group::get_or_add_table(StringData name, bool* was_added)
 {
     REALM_STATIC_ASSERT(IsBasicTable<T>::value, "Invalid table type");
-    REALM_ASSERT(is_attached());
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
     DescMatcher desc_matcher = &T::matches_dynamic_type;
     DescSetter desc_setter = &T::set_dynamic_type;
     Table* table = do_get_or_add_table(name, desc_matcher, desc_setter, was_added); // Throws
@@ -739,10 +854,8 @@ template<class S>
 void Group::to_json(S& out, std::size_t link_depth,
                     std::map<std::string, std::string>* renames) const
 {
-    if (!is_attached()) {
-        out << "{}";
-        return;
-    }
+    if (!is_attached())
+        throw LogicError(LogicError::detached_accessor);
 
     std::map<std::string, std::string> renames2;
     renames = renames ? renames : &renames2;
@@ -767,20 +880,10 @@ void Group::to_json(S& out, std::size_t link_depth,
     out << "}";
 }
 
-inline void Group::init_array_parents() REALM_NOEXCEPT
+inline void Group::init_array_parents() noexcept
 {
     m_table_names.set_parent(&m_top, 0);
     m_tables.set_parent(&m_top, 1);
-    // Third slot is "logical file size"
-    m_free_positions.set_parent(&m_top, 3);
-    m_free_lengths.set_parent(&m_top, 4);
-    m_free_versions.set_parent(&m_top, 5);
-    // Seventh slot is "database version" (a.k.a. transaction number)
-}
-
-inline bool Group::may_reattach_if_same_version() const REALM_NOEXCEPT
-{
-    return m_top.is_attached();
 }
 
 inline void Group::update_child_ref(std::size_t child_ndx, ref_type new_ref)
@@ -788,26 +891,42 @@ inline void Group::update_child_ref(std::size_t child_ndx, ref_type new_ref)
     m_tables.set(child_ndx, new_ref);
 }
 
-inline ref_type Group::get_child_ref(std::size_t child_ndx) const REALM_NOEXCEPT
+inline ref_type Group::get_child_ref(std::size_t child_ndx) const noexcept
 {
     return m_tables.get_as_ref(child_ndx);
 }
 
-inline StringData Group::get_child_name(std::size_t child_ndx) const REALM_NOEXCEPT
+inline StringData Group::get_child_name(std::size_t child_ndx) const noexcept
 {
     return m_table_names.get(child_ndx);
 }
 
-inline void Group::child_accessor_destroyed(Table*) REALM_NOEXCEPT
+inline void Group::child_accessor_destroyed(Table*) noexcept
 {
     // Ignore
+}
+
+inline bool Group::has_cascade_notification_handler() const noexcept
+{
+    return !!m_notify_handler;
+}
+
+inline void Group::set_cascade_notification_handler(std::function<void (const CascadeNotification&)> new_handler) noexcept
+{
+    m_notify_handler = std::move(new_handler);
+}
+
+inline void Group::send_cascade_notification(const CascadeNotification& notification) const
+{
+    if (m_notify_handler)
+        m_notify_handler(notification);
 }
 
 class Group::TableWriter {
 public:
     virtual std::size_t write_names(_impl::OutputStream&) = 0;
     virtual std::size_t write_tables(_impl::OutputStream&) = 0;
-    virtual ~TableWriter() REALM_NOEXCEPT {}
+    virtual ~TableWriter() noexcept {}
 };
 
 inline const Table* Group::do_get_table(size_t table_ndx, DescMatcher desc_matcher) const
@@ -820,19 +939,20 @@ inline const Table* Group::do_get_table(StringData name, DescMatcher desc_matche
     return const_cast<Group*>(this)->do_get_table(name, desc_matcher); // Throws
 }
 
-#ifdef REALM_ENABLE_REPLICATION
+inline void Group::reset_free_space_tracking()
+{
+    m_alloc.reset_free_space_tracking(); // Throws
+}
 
-inline Replication* Group::get_replication() const REALM_NOEXCEPT
+inline Replication* Group::get_replication() const noexcept
 {
     return m_alloc.get_replication();
 }
 
-inline void Group::set_replication(Replication* repl) REALM_NOEXCEPT
+inline void Group::set_replication(Replication* repl) noexcept
 {
     m_alloc.set_replication(repl);
 }
-
-#endif // REALM_ENABLE_REPLICATION
 
 // The purpose of this class is to give internal access to some, but
 // not all of the non-public parts of the Group class.
@@ -882,19 +1002,90 @@ public:
         return *table;
     }
 
-#ifdef REALM_ENABLE_REPLICATION
-    static Replication* get_replication(const Group& group) REALM_NOEXCEPT
+    static void send_cascade_notification(const Group& group, const Group::CascadeNotification& notification)
+    {
+        group.send_cascade_notification(notification);
+    }
+
+    static Replication* get_replication(const Group& group) noexcept
     {
         return group.get_replication();
     }
 
-    static void set_replication(Group& group, Replication* repl) REALM_NOEXCEPT
+    static void set_replication(Group& group, Replication* repl) noexcept
     {
         group.set_replication(repl);
     }
-#endif // REALM_ENABLE_REPLICATION
+
+    static void detach(Group& group) noexcept
+    {
+        group.detach();
+    }
+
+    static void attach_shared(Group& group, ref_type new_top_ref, size_t new_file_size)
+    {
+        group.attach_shared(new_top_ref, new_file_size); // Throws
+    }
+
+    static void reset_free_space_tracking(Group& group)
+    {
+        group.reset_free_space_tracking(); // Throws
+    }
+
+    static void remap_and_update_refs(Group& group, ref_type new_top_ref, size_t new_file_size)
+    {
+        group.remap_and_update_refs(new_top_ref, new_file_size); // Throws
+    }
+
+    static void advance_transact(Group& group, ref_type new_top_ref, size_t new_file_size,
+                                 _impl::NoCopyInputStream& in)
+    {
+        group.advance_transact(new_top_ref, new_file_size, in); // Throws
+    }
 };
 
+
+struct CascadeState: Group::CascadeNotification {
+    /// If non-null, then no recursion will be performed for rows of that
+    /// table. The effect is then exactly as if all the rows of that table were
+    /// added to \a state.rows initially, and then removed again after the
+    /// explicit invocations of Table::cascade_break_backlinks_to() (one for
+    /// each initiating row). This is used by Table::clear() to avoid
+    /// reentrance.
+    ///
+    /// Must never be set concurrently with stop_on_link_list_column.
+    Table* stop_on_table = nullptr;
+
+    /// If non-null, then Table::cascade_break_backlinks_to() will skip the
+    /// removal of reciprocal backlinks for the link list at
+    /// stop_on_link_list_row_ndx in this column, and no recursion will happen
+    /// on its behalf. This is used by LinkView::clear() to avoid reentrance.
+    ///
+    /// Must never be set concurrently with stop_on_table.
+    LinkListColumn* stop_on_link_list_column = nullptr;
+
+    /// Is ignored if stop_on_link_list_column is null.
+    std::size_t stop_on_link_list_row_ndx = 0;
+
+    /// If false, the links field is not needed, so any work done just for that
+    /// can be skipped.
+    bool track_link_nullifications = false;
+};
+
+inline bool Group::CascadeNotification::row::operator==(const row& r) const noexcept
+{
+    return table_ndx == r.table_ndx && row_ndx == r.row_ndx;
+}
+
+inline bool Group::CascadeNotification::row::operator!=(const row& r) const noexcept
+{
+    return !(*this == r);
+}
+
+inline bool Group::CascadeNotification::row::operator<(const row& r) const noexcept
+{
+    return table_ndx < r.table_ndx || (table_ndx == r.table_ndx && row_ndx < r.row_ndx);
+}
 
 } // namespace realm
 

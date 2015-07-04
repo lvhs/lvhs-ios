@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <cstdlib> // size_t
 #include <algorithm>
+#include <cstdio>
 
 #ifdef _MSC_VER
 #  include <win32/types.h>
@@ -121,13 +122,39 @@ void checksum_init(checksum_t* t);
 // popcount
 int fast_popcount32(int32_t x);
 int fast_popcount64(int64_t x);
+uint64_t fastrand(uint64_t max = 0xffffffffffffffffULL);
 
-
+// log2 - returns -1 if x==0, otherwise log2(x)
+inline int log2(std::size_t x) {
+    if (x == 0)
+        return -1;
+#if defined(__GNUC__)
+#   ifdef REALM_PTR_64
+    return 63 - __builtin_clzll(x); // returns int
+#   else
+    return 31 - __builtin_clz(x); // returns int
+#   endif
+#elif defined(_WIN32)
+    unsigned long index = 0;
+#   ifdef REALM_PTR_64
+    unsigned char c = _BitScanReverse64(&index, x); // outputs unsigned long
+#   else
+    unsigned char c = _BitScanReverse(&index, x); // outputs unsigned long
+#   endif
+    return static_cast<int>(index);
+#else // not __GNUC__ and not _WIN32
+    int r = 0;
+    while (x >>= 1) {
+        r++;
+    }
+    return r;
+#endif
+}
 
 // Implementation:
 
 // Safe cast from 64 to 32 bits on 32 bit architecture. Differs from to_ref() by not testing alignment and REF-bitflag.
-inline std::size_t to_size_t(int_fast64_t v) REALM_NOEXCEPT
+inline std::size_t to_size_t(int_fast64_t v) noexcept
 {
     REALM_ASSERT_DEBUG(!util::int_cast_has_overflow<std::size_t>(v));
     return std::size_t(v);
@@ -135,7 +162,7 @@ inline std::size_t to_size_t(int_fast64_t v) REALM_NOEXCEPT
 
 
 template<typename ReturnType, typename OriginalType>
-ReturnType type_punning(OriginalType variable) REALM_NOEXCEPT
+ReturnType type_punning(OriginalType variable) noexcept
 {
     union Both {
         OriginalType in;
@@ -167,7 +194,7 @@ bool safe_equal(InputIterator1 first1, InputIterator1 last1, InputIterator2 firs
 {
 #if defined(_MSC_VER) && defined(_DEBUG)
 
-    // Windows has a special check in debug mode against passing null
+    // Windows has a special check in debug mode against passing realm::null()
     // pointer to std::equal(). It's uncertain if this is allowed by the C++ standard. For details, see
     // http://stackoverflow.com/questions/19120779/is-char-p-0-stdequalp-p-p-well-defined-according-to-the-c-standard.
     // Below check 'first1==last1' is to prevent failure in debug mode.
@@ -185,6 +212,15 @@ private:
     T m_value;
 };
 
+// PlacementDelete is intended for use with std::unique_ptr when it holds an object allocated with
+// placement new. It simply calls the object's destructor without freeing the memory.
+struct PlacementDelete {
+    template <class T>
+    void operator()(T* v) const
+    {
+        v->~T();
+    }
+};
 
 } // namespace realm
 

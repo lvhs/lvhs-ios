@@ -20,7 +20,8 @@ pod 'CocoaLumberjack'
 pod 'SSZipArchive'
 pod 'Realm'
 
-pod 'YTVimeoExtractor'
+#pod 'YTVimeoExtractor'
+pod 'YTVimeoExtractor', git: 'https://github.com/lilfaf/YTVimeoExtractor.git', branch: 'hotfix/vimeoapi'
 
 pod 'MKStoreKit'
 pod 'TTTAttributedLabel'
@@ -53,8 +54,6 @@ pod 'SRGVersionUpdater', git: 'https://github.com/munky69rock/SRGVersionUpdater.
 # AutoLayout
 # https://github.com/kzms/Crew
 
-
-
 post_install do |installer|
   require 'fileutils'
   FileUtils.cp_r(
@@ -63,7 +62,7 @@ post_install do |installer|
     remove_destination: true
   )
 
-  installer.project.build_configurations.each do |config|
+  installer.pods_project.build_configurations.each do |config|
     config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
   end
 end

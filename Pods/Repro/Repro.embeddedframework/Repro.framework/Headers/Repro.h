@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, RPRLogLevel) {
 
 // Session (Initialization)
 + (void)setup:(NSString *)token;
-+ (NSString *)token;
 
 // Recording
 + (void)startRecording;
@@ -48,13 +47,24 @@ typedef NS_ENUM(NSInteger, RPRLogLevel) {
 // Crash reporting
 + (void)enableCrashReporting;
 
-// Survey
-+ (void)survey:(NSError**)error;
-
 // Usability Testing
 + (void)enableUsabilityTesting;
 
 // Log
 + (void)setLogLevel:(RPRLogLevel)level;
+
+// Push Notification
++ (void)setPushDeviceToken:(NSData *)pushDeviceToken;
++ (void)setPushDeviceTokenString:(NSString *)pushDeviceToken;
+
+// In App Message
++ (void)disableInAppMessageOnActive;
++ (void)showInAppMessage;
+
+// Integrations
++ (void)integrateRtoaster:(NSString *)accountID;
+
+// Deprecated
++ (void)survey:(NSError**)error __attribute__ ((deprecated));
 
 @end

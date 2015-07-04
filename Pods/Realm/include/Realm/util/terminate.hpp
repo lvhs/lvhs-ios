@@ -20,28 +20,34 @@
 #ifndef REALM_UTIL_TERMINATE_HPP
 #define REALM_UTIL_TERMINATE_HPP
 
-#include <sstream>
 #include <cstdlib>
-#include <string>
-#include <stdint.h>
+#include <sstream>
+
 #include <realm/util/features.h>
+#include <realm/version.hpp>
 
 #define REALM_TERMINATE(msg) realm::util::terminate((msg), __FILE__, __LINE__)
 
 namespace realm {
 namespace util {
-REALM_NORETURN void terminate_internal(std::stringstream&) REALM_NOEXCEPT;
+REALM_NORETURN void terminate_internal(std::stringstream&) noexcept;
 
-REALM_NORETURN inline void terminate(const char* message, const char* file, long line) REALM_NOEXCEPT {
-    std::stringstream ss;
-    ss << file << ":" << line << ": " << message << "\n";
-    terminate_internal(ss);
-}
+REALM_NORETURN void terminate(const char* message, const char* file, long line) noexcept;
 
-template <typename T1, typename T2>
-REALM_NORETURN void terminate(const char* message, const char* file, long line, T1 info1, T2 info2) REALM_NOEXCEPT {
+template<class T, class... Ts>
+REALM_NORETURN void terminate(const char* message, const char* file, long line,
+                              T first_info, Ts... other_infos) noexcept
+{
     std::stringstream ss;
-    ss << file << ":" << line << ": " << message << " [" << info1 << ", " << info2 << "]\n";
+    using variadics_unpacker = int[];
+
+    static_assert(sizeof...(other_infos) == 1 || sizeof...(other_infos) == 3 || sizeof...(other_infos) == 5,
+                  "Called realm::util::terminate() with wrong number of arguments");
+
+    ss << file << ':' << line << ": " REALM_VER_CHUNK " " << message << " [" << first_info;
+    (void) variadics_unpacker { 0, (ss << ", " << other_infos, void(), 0)... };
+    ss << "]" << '\n';
+
     terminate_internal(ss);
 }
 

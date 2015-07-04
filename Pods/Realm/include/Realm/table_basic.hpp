@@ -39,7 +39,6 @@ namespace _impl {
 
 template<class Type, int col_idx> struct AddCol;
 template<class Type, int col_idx> struct CmpColType;
-template<class Type, int col_idx> struct InsertIntoCol;
 template<class Type, int col_idx> struct AssignIntoCol;
 
 } // namespace _impl
@@ -93,13 +92,13 @@ public:
 
     BasicTable(const BasicTable& t, Allocator& alloc = Allocator::get_default()): Table(t, alloc) {}
 
-    ~BasicTable() REALM_NOEXCEPT {}
+    ~BasicTable() noexcept {}
 
     static Ref create(Allocator& = Allocator::get_default());
 
     Ref copy(Allocator& = Allocator::get_default()) const;
 
-    static int get_column_count() REALM_NOEXCEPT
+    static int get_column_count() noexcept
     {
         return util::TypeCount<typename Spec::Columns>::value;
     }
@@ -122,8 +121,8 @@ private:
     typedef typename Spec::template ColNames<ConstCol, const BasicTable*> ConstColsAccessor;
 
 public:
-    ColsAccessor column() REALM_NOEXCEPT { return ColsAccessor(this); }
-    ConstColsAccessor column() const REALM_NOEXCEPT { return ConstColsAccessor(this); }
+    ColsAccessor column() noexcept { return ColsAccessor(this); }
+    ConstColsAccessor column() const noexcept { return ConstColsAccessor(this); }
 
 private:
     template<int col_idx> struct Field {
@@ -142,22 +141,22 @@ public:
     typedef typename Spec::template ColNames<Field, FieldInit> RowAccessor;
     typedef typename Spec::template ColNames<ConstField, ConstFieldInit> ConstRowAccessor;
 
-    RowAccessor operator[](std::size_t row_idx) REALM_NOEXCEPT
+    RowAccessor operator[](std::size_t row_idx) noexcept
     {
         return RowAccessor(std::make_pair(this, row_idx));
     }
 
-    ConstRowAccessor operator[](std::size_t row_idx) const REALM_NOEXCEPT
+    ConstRowAccessor operator[](std::size_t row_idx) const noexcept
     {
         return ConstRowAccessor(std::make_pair(this, row_idx));
     }
 
-    RowAccessor front() REALM_NOEXCEPT
+    RowAccessor front() noexcept
     {
         return RowAccessor(std::make_pair(this, 0));
     }
 
-    ConstRowAccessor front() const REALM_NOEXCEPT
+    ConstRowAccessor front() const noexcept
     {
         return ConstRowAccessor(std::make_pair(this, 0));
     }
@@ -168,12 +167,12 @@ public:
     /// to the end. Thus, <tt>table.back(rel_idx)</tt> is the same as
     /// <tt>table[table.size() + rel_idx]</tt>.
     ///
-    RowAccessor back(int rel_idx = -1) REALM_NOEXCEPT
+    RowAccessor back(int rel_idx = -1) noexcept
     {
         return RowAccessor(std::make_pair(this, size()+rel_idx));
     }
 
-    ConstRowAccessor back(int rel_idx = -1) const REALM_NOEXCEPT
+    ConstRowAccessor back(int rel_idx = -1) const noexcept
     {
         return ConstRowAccessor(std::make_pair(this, size()+rel_idx));
     }
@@ -182,22 +181,16 @@ public:
 
     template<class L> void add(const util::Tuple<L>& tuple)
     {
-        using namespace realm::util;
-        REALM_STATIC_ASSERT(TypeCount<L>::value == TypeCount<Columns>::value,
-                              "Wrong number of tuple elements");
-        ForEachType<Columns, _impl::InsertIntoCol>::exec(static_cast<Table*>(this), size(), tuple);
-        insert_done();
+        std::size_t i = size();
+        insert(i, tuple);
     }
 
     void insert(std::size_t i) { insert_empty_row(i); }
 
     template<class L> void insert(std::size_t i, const util::Tuple<L>& tuple)
     {
-        using namespace realm::util;
-        REALM_STATIC_ASSERT(TypeCount<L>::value == TypeCount<Columns>::value,
-                              "Wrong number of tuple elements");
-        ForEachType<Columns, _impl::InsertIntoCol>::exec(static_cast<Table*>(this), i, tuple);
-        insert_done();
+        insert(i);
+        set(i, tuple);
     }
 
     template<class L> void set(std::size_t i, const util::Tuple<L>& tuple)
@@ -251,16 +244,16 @@ public:
     /// where it is desirable to be able to cast to a table type with
     /// different column names. Similar changes are needed in the Java
     /// and Objective-C language bindings.
-    template<class T> friend bool is_a(const Table&) REALM_NOEXCEPT;
+    template<class T> friend bool is_a(const Table&) noexcept;
 
     //@{
     /// These functions return null if the specified table is not
     /// compatible with the specified table type.
-    template<class T> friend BasicTableRef<T> checked_cast(TableRef) REALM_NOEXCEPT;
-    template<class T> friend BasicTableRef<const T> checked_cast(ConstTableRef) REALM_NOEXCEPT;
+    template<class T> friend BasicTableRef<T> checked_cast(TableRef) noexcept;
+    template<class T> friend BasicTableRef<const T> checked_cast(ConstTableRef) noexcept;
     //@}
 
-    using Table::Verify;
+    using Table::verify;
 
 #ifdef REALM_DEBUG
     using Table::print;
@@ -274,8 +267,8 @@ private:
     };
 
     // These are intende to be used only by accessor classes
-    Table* get_impl() REALM_NOEXCEPT { return this; }
-    const Table* get_impl() const REALM_NOEXCEPT { return this; }
+    Table* get_impl() noexcept { return this; }
+    const Table* get_impl() const noexcept { return this; }
 
     template<class Subtab> Subtab* get_subtable_ptr(std::size_t col_idx, std::size_t row_idx)
     {
@@ -297,7 +290,7 @@ private:
         ForEachType<typename Spec::Columns, _impl::AddCol>::exec(&*desc, dyn_col_names); // Throws
     }
 
-    static bool matches_dynamic_type(const realm::Spec& spec) REALM_NOEXCEPT
+    static bool matches_dynamic_type(const realm::Spec& spec) noexcept
     {
         using namespace realm::util;
         const int num_cols = util::TypeCount<typename Spec::Columns>::value;
@@ -325,7 +318,6 @@ private:
     friend class BasicTableView<const BasicTable>;
 
     template<class, int> friend struct _impl::CmpColType;
-    template<class, int> friend struct _impl::InsertIntoCol;
     template<class, int, class, bool> friend class _impl::FieldAccessor;
     template<class, int, class> friend class _impl::MixedFieldAccessorBase;
     template<class, int, class> friend class _impl::ColumnAccessorBase;
@@ -344,15 +336,13 @@ template<class Spec> class BasicTable<Spec>::Query:
         public Spec::template ColNames<QueryCol, Query*> {
 public:
     Query(const Query& q): Spec::template ColNames<QueryCol, Query*>(this), m_impl(q.m_impl) {}
-    ~Query() REALM_NOEXCEPT {}
+    virtual ~Query() noexcept {}
 
     Query& group() { m_impl.group(); return *this; }
 
     Query& end_group() { m_impl.end_group(); return *this; }
 
     Query& end_subtable() { m_impl.end_subtable(); return *this; }
-
-    Query& expression(Expression* exp) { m_impl.expression(exp); return *this; }
 
     Query& Or() { m_impl.Or(); return *this; }
 
@@ -397,10 +387,51 @@ protected:
     Query(const BasicTable<Spec>& table, TableViewBase* tv):
         Spec::template ColNames<QueryCol, Query*>(this), m_impl(table, tv) {}
 
+    typedef Query_Handover_patch Handover_patch;
+    Query(const Query& source, Handover_patch& patch, ConstSourcePayload mode) : 
+        Spec::template ColNames<QueryCol, Query*>(this), 
+        m_impl(source.m_impl, patch, mode)
+    {
+    }
+
+    Query(Query& source, Handover_patch& patch, MutableSourcePayload mode) : 
+        Spec::template ColNames<QueryCol, Query*>(this), 
+        m_impl(source.m_impl, patch, mode)
+    {
+    }
+
+    void apply_patch(Handover_patch& patch, Group& group)
+    {
+        m_impl.apply_patch(patch, group);
+    }
+
+    virtual std::unique_ptr<Query> 
+    clone_for_handover(std::unique_ptr<Handover_patch>& patch, ConstSourcePayload mode) const
+    {
+        patch.reset(new Handover_patch);
+        std::unique_ptr<Query> retval( new Query(*this, *patch, mode));
+        return retval;
+    }
+
+    virtual std::unique_ptr<Query> 
+    clone_for_handover(std::unique_ptr<Handover_patch>& patch, MutableSourcePayload mode)
+    {
+        patch.reset(new Handover_patch);
+        std::unique_ptr<Query> retval( new Query(*this, *patch, mode));
+        return retval;
+    }
+
+    virtual void apply_and_consume_patch(std::unique_ptr<Handover_patch>& patch, Group& group)
+    {
+        apply_patch(*patch, group);
+        patch.reset();
+    }
+
 private:
     realm::Query m_impl;
 
     friend class BasicTable;
+    friend class SharedGroup;
     template<class, int, class> friend class _impl::QueryColumnBase;
     template<class, int, class> friend class _impl::QueryColumn;
 };
@@ -493,89 +524,6 @@ template<class Subtab, int col_idx> struct CmpColType<SpecBase::Subtable<Subtab>
 };
 
 
-
-// InsertIntoCol specialization for integers
-template<int col_idx> struct InsertIntoCol<int64_t, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_int(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for float
-template<int col_idx> struct InsertIntoCol<float, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_float(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for double
-template<int col_idx> struct InsertIntoCol<double, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_double(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for booleans
-template<int col_idx> struct InsertIntoCol<bool, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_bool(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for strings
-template<int col_idx> struct InsertIntoCol<StringData, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_string(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for enumerations
-template<class E, int col_idx> struct InsertIntoCol<SpecBase::Enum<E>, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_enum(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for dates
-template<int col_idx> struct InsertIntoCol<DateTime, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_datetime(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for binary data
-template<int col_idx> struct InsertIntoCol<BinaryData, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_binary(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-// InsertIntoCol specialization for subtables
-template<class T, int col_idx> struct InsertIntoCol<SpecBase::Subtable<T>, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        static_cast<const T*>(util::at<col_idx>(tuple))->insert_into(t, col_idx, row_idx);
-    }
-};
-
-// InsertIntoCol specialization for mixed type
-template<int col_idx> struct InsertIntoCol<Mixed, col_idx> {
-    template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
-    {
-        t->insert_mixed(col_idx, row_idx, util::at<col_idx>(tuple));
-    }
-};
-
-
-
 // AssignIntoCol specialization for integers
 template<int col_idx> struct AssignIntoCol<int64_t, col_idx> {
     template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
@@ -644,10 +592,9 @@ template<int col_idx> struct AssignIntoCol<BinaryData, col_idx> {
 template<class T, int col_idx> struct AssignIntoCol<SpecBase::Subtable<T>, col_idx> {
     template<class L> static void exec(Table* t, std::size_t row_idx, util::Tuple<L> tuple)
     {
-        t->clear_subtable(col_idx, row_idx);
-        // FIXME: Implement table copy when specified!
-        REALM_ASSERT(!static_cast<const T*>(util::at<col_idx>(tuple)));
-        static_cast<void>(tuple);
+        // FIXME: unsafe reinterpret_cast to private base class
+        auto subtable = reinterpret_cast<const Table*>(static_cast<const T*>(util::at<col_idx>(tuple)));
+        t->set_subtable(col_idx, row_idx, subtable);
     }
 };
 
@@ -678,14 +625,14 @@ inline typename BasicTable<Spec>::Ref BasicTable<Spec>::copy(Allocator& alloc) c
 }
 
 
-template<class T> inline bool is_a(const Table& t) REALM_NOEXCEPT
+template<class T> inline bool is_a(const Table& t) noexcept
 {
     typedef _impl::TableFriend tf;
     return T::matches_dynamic_type(tf::get_spec(t));
 }
 
 
-template<class T> inline BasicTableRef<T> checked_cast(TableRef t) REALM_NOEXCEPT
+template<class T> inline BasicTableRef<T> checked_cast(TableRef t) noexcept
 {
     if (!is_a<T>(*t))
         return BasicTableRef<T>(); // Null
@@ -693,7 +640,7 @@ template<class T> inline BasicTableRef<T> checked_cast(TableRef t) REALM_NOEXCEP
 }
 
 
-template<class T> inline BasicTableRef<const T> checked_cast(ConstTableRef t) REALM_NOEXCEPT
+template<class T> inline BasicTableRef<const T> checked_cast(ConstTableRef t) noexcept
 {
     if (!is_a<T>(*t))
         return BasicTableRef<const T>(); // Null

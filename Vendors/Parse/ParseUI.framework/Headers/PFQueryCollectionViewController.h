@@ -23,8 +23,9 @@
 
 #import <ParseUI/ParseUIConstants.h>
 
-PFUI_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
+@class BFTask;
 @class PFCollectionViewCell;
 @class PFObject;
 @class PFQuery;
@@ -49,7 +50,7 @@ PFUI_ASSUME_NONNULL_BEGIN
 /*!
  @abstract The class name of the <PFObject> this collection will use as a datasource.
  */
-@property (PFUI_NULLABLE_PROPERTY nonatomic, copy) IBInspectable NSString *parseClassName;
+@property (nullable, nonatomic, copy) IBInspectable NSString *parseClassName;
 
 /*!
  @abstract Whether the collection should use the default loading view. Default - `YES`.
@@ -57,7 +58,7 @@ PFUI_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) IBInspectable BOOL loadingViewEnabled;
 
 /*!
- @abstract Whether the collection should use the built-in pull-to-refresh feature. Defualt - `YES`.
+ @abstract Whether the collection should use the built-in pull-to-refresh feature. Default - `YES`.
  */
 @property (nonatomic, assign) IBInspectable BOOL pullToRefreshEnabled;
 
@@ -88,7 +89,7 @@ PFUI_ASSUME_NONNULL_BEGIN
 
  @returns An initialized `PFQueryCollectionViewController` object or `nil` if the object couldn't be created.
  */
-- (instancetype)initWithClassName:(PFUI_NULLABLE NSString *)className;
+- (instancetype)initWithClassName:(nullable NSString *)className;
 
 /*!
  @abstract Initializes a view controller with a class name of <PFObject> that will be associated with this collection.
@@ -99,7 +100,7 @@ PFUI_ASSUME_NONNULL_BEGIN
  @returns An initialized `PFQueryCollectionViewController` object or `nil` if the object couldn't be created.
  */
 - (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout
-                                   className:(PFUI_NULLABLE NSString *)className NS_DESIGNATED_INITIALIZER;
+                                   className:(nullable NSString *)className NS_DESIGNATED_INITIALIZER;
 
 ///--------------------------------------
 /// @name Responding to Events
@@ -116,7 +117,7 @@ PFUI_ASSUME_NONNULL_BEGIN
  call [super objectsDidLoad:] in your implementation.
  @param error The Parse error from running the PFQuery, if there was any.
  */
-- (void)objectsDidLoad:(PFUI_NULLABLE NSError *)error NS_REQUIRES_SUPER;
+- (void)objectsDidLoad:(nullable NSError *)error NS_REQUIRES_SUPER;
 
 ///--------------------------------------
 /// @name Accessing Results
@@ -137,7 +138,17 @@ PFUI_ASSUME_NONNULL_BEGIN
 
  @returns The object at the specified indexPath.
  */
-- (PFUI_NULLABLE PFObject *)objectAtIndexPath:(PFUI_NULLABLE NSIndexPath *)indexPath;
+- (nullable PFObject *)objectAtIndexPath:(nullable NSIndexPath *)indexPath;
+
+/*!
+ @abstract Removes an object at the specified index path, animated.
+ */
+- (void)removeObjectAtIndexPath:(nullable NSIndexPath *)indexPath;
+
+/*!
+ @abstract Removes all objects at the specified index paths, animated.
+ */
+- (void)removeObjectsAtIndexPaths:(nullable NSArray *)indexes;
 
 ///--------------------------------------
 /// @name Loading Data
@@ -145,8 +156,10 @@ PFUI_ASSUME_NONNULL_BEGIN
 
 /*!
  @abstract Clears the collection view and loads the first page of objects.
+
+ @returns An awaitable task that completes when the reload succeeds
  */
-- (void)loadObjects;
+- (BFTask *)loadObjects;
 
 /*!
  @abstract Loads the objects of the <parseClassName> at the specified page and appends it to the
@@ -154,8 +167,10 @@ PFUI_ASSUME_NONNULL_BEGIN
 
  @param page  The page of objects to load.
  @param clear Whether to clear the collection view after receiving the objects.
+
+ @returns An awaitable task that completes when the reload succeeds
  */
-- (void)loadObjects:(NSInteger)page clear:(BOOL)clear;
+- (BFTask *)loadObjects:(NSInteger)page clear:(BOOL)clear;
 
 /*!
  @abstract Loads the next page of objects, appends to table, and refreshes.
@@ -193,9 +208,9 @@ PFUI_ASSUME_NONNULL_BEGIN
 
  @returns The cell that represents this object.
  */
-- (PFUI_NULLABLE PFCollectionViewCell *)collectionView:(UICollectionView *)collectionView
+- (nullable PFCollectionViewCell *)collectionView:(UICollectionView *)collectionView
                                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
-                                                object:(PFUI_NULLABLE PFObject *)object;
+                                                object:(nullable PFObject *)object;
 
 /*!
  @discussion Override this method to customize the view that allows the user to load the
@@ -205,8 +220,8 @@ PFUI_ASSUME_NONNULL_BEGIN
 
  @returns The view that allows the user to paginate.
  */
-- (PFUI_NULLABLE UICollectionReusableView *)collectionViewReusableViewForNextPageAction:(UICollectionView *)collectionView;
+- (nullable UICollectionReusableView *)collectionViewReusableViewForNextPageAction:(UICollectionView *)collectionView;
 
 @end
 
-PFUI_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

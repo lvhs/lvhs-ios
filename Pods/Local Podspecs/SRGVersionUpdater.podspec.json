@@ -1,7 +1,7 @@
 {
   "name": "SRGVersionUpdater",
   "version": "0.0.3",
-  "summary": "SRGVersionUpdater inform users about new app version release, and can force users update app to version. ",
+  "summary": "SRGVersionUpdater inform users about new app version release, and can force users update app to version.",
   "homepage": "https://github.com/kazu0620/SRGVersionUpdater",
   "license": "MIT",
   "authors": {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 402C1A4FFCCE439EA49FEF2B /* libPods.a */; };
 		273194E719E1128F00A31748 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E419E1128F00A31748 /* Parse.framework */; };
 		273194EA19E1153B00A31748 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194E919E1153B00A31748 /* Social.framework */; };
 		273194EC19E1155100A31748 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273194EB19E1155100A31748 /* Accounts.framework */; };
@@ -27,13 +26,13 @@
 		278C1F1419B2DFBE000F9B58 /* LHBaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1319B2DFBE000F9B58 /* LHBaseConfig.m */; };
 		278C1F1719B2E1EE000F9B58 /* LHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C1F1619B2E1EE000F9B58 /* LHConfig.m */; };
 		278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278C1FB219B3006C000F9B58 /* AudioToolbox.framework */; };
+		279822B11B88B5830011ECBB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 279822B01B88B5830011ECBB /* libPods.a */; };
 		27A11B4C19D83ED700B6A277 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27A11B4B19D83ED700B6A277 /* Settings.bundle */; };
 		27CE2D1519DA2CF50015D47F /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CE2D1419DA2CF50015D47F /* libGoogleAnalyticsServices.a */; };
 		27CE2D1719DA2D460015D47F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CE2D1619DA2D460015D47F /* CoreData.framework */; };
 		27CE2D1919DA2D980015D47F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CE2D1819DA2D980015D47F /* SystemConfiguration.framework */; };
 		27CE2D1B19DA2DCE0015D47F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CE2D1A19DA2DCE0015D47F /* libz.dylib */; };
 		27CE2D1D19DA2E120015D47F /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CE2D1C19DA2E120015D47F /* libsqlite3.0.dylib */; };
-		27EB6A1E1B10391B006256F3 /* CAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB6A1D1B10391B006256F3 /* CAR.framework */; };
 		27EB6A211B103925006256F3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB6A201B103925006256F3 /* Crashlytics.framework */; };
 		27EB6A241B103933006256F3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EB6A231B103933006256F3 /* Fabric.framework */; };
 		27EB6A271B10B464006256F3 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB6A261B10B464006256F3 /* NSString+Util.m */; };
@@ -52,7 +51,6 @@
 		27EFEEFF19AAA725002740D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEEFD19AAA725002740D1 /* InfoPlist.strings */; };
 		27EFEF0119AAA725002740D1 /* LiveHouseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFEF0019AAA725002740D1 /* LiveHouseTests.m */; };
 		27EFEF0B19AAB76F002740D1 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFEF0A19AAB76F002740D1 /* background.png */; };
-		27FC095C1B06099A00B8AD66 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FC095B1B06099A00B8AD66 /* ParseCrashReporting.framework */; };
 		27FC095E1B0609B700B8AD66 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FC095D1B0609B700B8AD66 /* ParseFacebookUtilsV4.framework */; };
 		27FC09601B0609BE00B8AD66 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FC095F1B0609BE00B8AD66 /* ParseUI.framework */; };
 		27FC09621B060A1A00B8AD66 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FC09611B060A1A00B8AD66 /* Bolts.framework */; };
@@ -99,6 +97,8 @@
 		278C1F1819B2E3C4000F9B58 /* LHConsts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHConsts.h; sourceTree = "<group>"; };
 		278C1FB119B3006C000F9B58 /* LiveHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LiveHouse.entitlements; sourceTree = "<group>"; };
 		278C1FB219B3006C000F9B58 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		279822AE1B88B4C40011ECBB /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		279822B01B88B5830011ECBB /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		27A11B4B19D83ED700B6A277 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		27CE2D0919DA2CF50015D47F /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		27CE2D0A19DA2CF50015D47F /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -160,13 +160,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				279822B11B88B5830011ECBB /* libPods.a in Frameworks */,
 				27FC09641B060B1000B8AD66 /* libstdc++.6.0.9.dylib in Frameworks */,
 				27FC09661B060CC900B8AD66 /* FBSDKCoreKit.framework in Frameworks */,
 				273194EC19E1155100A31748 /* Accounts.framework in Frameworks */,
 				273194EA19E1153B00A31748 /* Social.framework in Frameworks */,
 				27FC095E1B0609B700B8AD66 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				2732E60E1B03B52A0063A297 /* QuartzCore.framework in Frameworks */,
-				27EB6A1E1B10391B006256F3 /* CAR.framework in Frameworks */,
 				2732E60C1B03B5220063A297 /* MobileCoreServices.framework in Frameworks */,
 				2732E60A1B03B5150063A297 /* CoreLocation.framework in Frameworks */,
 				2732E6081B03B5010063A297 /* CFNetwork.framework in Frameworks */,
@@ -183,11 +183,9 @@
 				27CE2D1519DA2CF50015D47F /* libGoogleAnalyticsServices.a in Frameworks */,
 				27FC09601B0609BE00B8AD66 /* ParseUI.framework in Frameworks */,
 				27EFEEDA19AAA725002740D1 /* UIKit.framework in Frameworks */,
-				27FC095C1B06099A00B8AD66 /* ParseCrashReporting.framework in Frameworks */,
 				273194E719E1128F00A31748 /* Parse.framework in Frameworks */,
 				278C1FB319B3006C000F9B58 /* AudioToolbox.framework in Frameworks */,
 				27EFEED619AAA725002740D1 /* Foundation.framework in Frameworks */,
-				2187477DA49441EFAB9A78F7 /* libPods.a in Frameworks */,
 				27FC096A1B060FED00B8AD66 /* FBSDKLoginKit.framework in Frameworks */,
 				27774A181A791B4300FF0FC2 /* StoreKit.framework in Frameworks */,
 				27EB6A241B103933006256F3 /* Fabric.framework in Frameworks */,
@@ -410,6 +408,8 @@
 		27EFEED419AAA725002740D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				279822B01B88B5830011ECBB /* libPods.a */,
+				279822AE1B88B4C40011ECBB /* libPods.a */,
 				27FC09691B060FED00B8AD66 /* FBSDKLoginKit.framework */,
 				27FC09651B060CC900B8AD66 /* FBSDKCoreKit.framework */,
 				27FC09631B060B1000B8AD66 /* libstdc++.6.0.9.dylib */,
@@ -497,6 +497,7 @@
 				27EFEED019AAA725002740D1 /* Resources */,
 				FB86A517D2814B45AD506D79 /* Copy Pods Resources */,
 				2721457F1A11DCCB008CDF21 /* ShellScript */,
+				3BA5B9209FE96EDD8AD1ADDB /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -608,6 +609,21 @@
 			shellPath = /bin/sh;
 			shellScript = "./Vendors/Fabric/Fabric.framework/run 96d718aba1492c8fac8c30ff4e19ccdeea414a63 4ed02573b4a53234b629fa5351f13be40b261c05bc72dd2e79290a1e87d0f754";
 		};
+		3BA5B9209FE96EDD8AD1ADDB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B74C45C0B6554DF3A6F61E25 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -703,6 +719,199 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		27A4FC091B889CA9009CF6D8 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Staging;
+		};
+		27A4FC0A1B889CA9009CF6D8 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C391842A18644386229EA2D3 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_DISPLAY_NAME_PREFIX = "";
+				BUNDLE_IDENTIFIER_SUFFIX = .stage;
+				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/Parse",
+					/Users/uehara.masayuki/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Vendors/Crashlytics",
+					"$(PROJECT_DIR)/Vendors/Fabric",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"STAGE=1",
+				);
+				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = LIVEHOUSE;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Staging;
+		};
+		27A4FC0B1B889CA9009CF6D8 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LiveHouseTests/LiveHouseTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LIVEHOUSE.app/LIVEHOUSE";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Staging;
+		};
+		27A4FC0C1B889D1D009CF6D8 /* Pro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Pro;
+		};
+		27A4FC0D1B889D1D009CF6D8 /* Pro */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FCCACB725E826461851D222 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-pro";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_DISPLAY_NAME_PREFIX = PRO;
+				BUNDLE_IDENTIFIER_SUFFIX = .pro;
+				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/Parse",
+					/Users/uehara.masayuki/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Vendors/Crashlytics",
+					"$(PROJECT_DIR)/Vendors/Fabric",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"PRO=1",
+					"DEV=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = LIVEHOUSE;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Pro;
+		};
+		27A4FC0E1B889D1D009CF6D8 /* Pro */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				INFOPLIST_FILE = "LiveHouseTests/LiveHouseTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LIVEHOUSE.app/LIVEHOUSE";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Pro;
+		};
 		27EFEF0219AAA725002740D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -777,17 +986,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C391842A18644386229EA2D3 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_DISPLAY_NAME_PREFIX = "";
+				BUNDLE_IDENTIFIER_SUFFIX = .dev;
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",
 					/Users/uehara.masayuki/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendors/CAR",
 					"$(PROJECT_DIR)/Vendors/Crashlytics",
 					"$(PROJECT_DIR)/Vendors/Fabric",
 				);
@@ -795,18 +1005,18 @@
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
-					"COCOAPODS=1",
 					"DEV=1",
 				);
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = LIVEHOUSE;
-				PROVISIONING_PROFILE = "c5817874-c7f1-4574-89c6-412f0ef04eed";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -818,29 +1028,32 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				BUNDLE_DISPLAY_NAME_PREFIX = "";
+				BUNDLE_IDENTIFIER_SUFFIX = "";
 				CODE_SIGN_ENTITLEMENTS = LiveHouse/LiveHouse.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kentaro Suzuki (R25TVQT4H7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/Parse",
 					/Users/uehara.masayuki/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Vendors/CAR",
 					"$(PROJECT_DIR)/Vendors/Crashlytics",
 					"$(PROJECT_DIR)/Vendors/Fabric",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "LiveHouse/LiveHouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendors/GoogleAnalytics/lib",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = LIVEHOUSE;
-				PROVISIONING_PROFILE = "c5817874-c7f1-4574-89c6-412f0ef04eed";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -849,7 +1062,6 @@
 		27EFEF0819AAA725002740D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LiveHouse.app/LiveHouse";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -863,7 +1075,7 @@
 				);
 				INFOPLIST_FILE = "LiveHouseTests/LiveHouseTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LIVEHOUSE.app/LIVEHOUSE";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -871,7 +1083,6 @@
 		27EFEF0919AAA725002740D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LiveHouse.app/LiveHouse";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -881,7 +1092,7 @@
 				GCC_PREFIX_HEADER = "LiveHouse/LiveHouse-Prefix.pch";
 				INFOPLIST_FILE = "LiveHouseTests/LiveHouseTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LIVEHOUSE.app/LIVEHOUSE";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -893,7 +1104,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27EFEF0219AAA725002740D1 /* Debug */,
+				27A4FC091B889CA9009CF6D8 /* Staging */,
 				27EFEF0319AAA725002740D1 /* Release */,
+				27A4FC0C1B889D1D009CF6D8 /* Pro */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -902,7 +1115,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27EFEF0519AAA725002740D1 /* Debug */,
+				27A4FC0A1B889CA9009CF6D8 /* Staging */,
 				27EFEF0619AAA725002740D1 /* Release */,
+				27A4FC0D1B889D1D009CF6D8 /* Pro */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -911,7 +1126,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27EFEF0819AAA725002740D1 /* Debug */,
+				27A4FC0B1B889CA9009CF6D8 /* Staging */,
 				27EFEF0919AAA725002740D1 /* Release */,
+				27A4FC0E1B889D1D009CF6D8 /* Pro */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

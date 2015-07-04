@@ -20,6 +20,9 @@
 #ifndef REALM_UTIL_FEATURES_H
 #define REALM_UTIL_FEATURES_H
 
+#ifdef _MSC_VER
+#pragma warning(disable:4800) // Visual Studio int->bool performance warnings
+#endif
 
 #ifdef REALM_HAVE_CONFIG
 #  include <realm/util/config.h>
@@ -34,8 +37,6 @@
 #    define REALM_INSTALL_LIBEXECDIR  REALM_INSTALL_EXEC_PREFIX "/libexec"
 #  endif
 #endif
-
-
 
 /* The maximum number of elements in a B+-tree node. Applies to inner nodes and
  * to leaves. The minimum allowable value is 2.
@@ -81,14 +82,6 @@
 #endif
 #if _MSC_VER >= 1800
 #  define REALM_HAVE_AT_LEAST_MSVC_12_2013 1
-#endif
-
-
-/* Support for C++11 <type_traits>. */
-#if REALM_HAVE_CXX11 && REALM_HAVE_AT_LEAST_GCC(4, 3) || \
-    REALM_HAVE_CXX11 && _LIBCPP_VERSION >= 1001 || \
-    REALM_HAVE_AT_LEAST_MSVC_10_2010
-#  define REALM_HAVE_CXX11_TYPE_TRAITS 1
 #endif
 
 
@@ -151,46 +144,6 @@
 #endif
 
 
-/* Support for the C++11 'constexpr' keyword.
- *
- * NOTE: Not yet fully supported in MSVC++ 12 (2013). */
-#if REALM_HAVE_CXX11 && REALM_HAVE_AT_LEAST_GCC(4, 6) || \
-    REALM_HAVE_CLANG_FEATURE(cxx_constexpr)
-#  define REALM_HAVE_CXX11_CONSTEXPR 1
-#endif
-#if REALM_HAVE_CXX11_CONSTEXPR
-#  define REALM_CONSTEXPR constexpr
-#else
-#  define REALM_CONSTEXPR
-#endif
-
-
-/* Support for the C++11 'noexcept' specifier.
- *
- * NOTE: Not yet fully supported in MSVC++ 12 (2013). */
-#if REALM_HAVE_CXX11 && REALM_HAVE_AT_LEAST_GCC(4, 6) || \
-    REALM_HAVE_CLANG_FEATURE(cxx_noexcept)
-#  define REALM_HAVE_CXX11_NOEXCEPT 1
-#endif
-#if REALM_HAVE_CXX11_NOEXCEPT
-#  define REALM_NOEXCEPT noexcept
-#elif defined REALM_DEBUG
-#  define REALM_NOEXCEPT throw()
-#else
-#  define REALM_NOEXCEPT
-#endif
-#if REALM_HAVE_CXX11_NOEXCEPT
-#  define REALM_NOEXCEPT_IF(cond) noexcept (cond)
-#else
-#  define REALM_NOEXCEPT_IF(cond)
-#endif
-#if REALM_HAVE_CXX11_NOEXCEPT
-#  define REALM_NOEXCEPT_OR_NOTHROW noexcept
-#else
-#  define REALM_NOEXCEPT_OR_NOTHROW throw ()
-#endif
-
-
 /* The way to specify that a function never returns.
  *
  * NOTE: C++11 generalized attributes are not yet fully supported in
@@ -226,27 +179,33 @@
 
 
 #if defined(__GNUC__) || defined(__HP_aCC)
-    #define REALM_FORCEINLINE inline __attribute__((always_inline))
+#  define REALM_FORCEINLINE inline __attribute__((always_inline))
 #elif defined(_MSC_VER)
-    #define REALM_FORCEINLINE __forceinline
+#  define REALM_FORCEINLINE __forceinline
 #else
-    #define REALM_FORCEINLINE inline
+#  define REALM_FORCEINLINE inline
 #endif
 
 
 #if defined(__GNUC__) || defined(__HP_aCC)
-    #define REALM_NOINLINE  __attribute__((noinline))
+#  define REALM_NOINLINE  __attribute__((noinline))
 #elif defined(_MSC_VER)
-    #define REALM_NOINLINE __declspec(noinline)
+#  define REALM_NOINLINE __declspec(noinline)
 #else
-    #define REALM_NOINLINE
+#  define REALM_NOINLINE
+#endif
+
+
+/* Thread specific data (only for POD types) */
+#if defined __clang__
+#  define REALM_THREAD_LOCAL __thread
+#else
+#  define REALM_THREAD_LOCAL thread_local
 #endif
 
 
 #if defined ANDROID
 #  define REALM_ANDROID 1
-/* std::is_integral doesn't work on some Android platforms for whatever reason */
-#  undef REALM_HAVE_CXX11_TYPE_TRAITS
 #endif
 
 
@@ -257,16 +216,32 @@
 /* Device (iPhone or iPad) or simulator. */
 #    define REALM_IOS 1
 #  endif
+#  if TARGET_OS_WATCH == 1
+/* Device (Apple Watch) or simulator. */
+#    define REALM_WATCHOS 1
+/* The necessary signal handling / mach exception APIs are all unavailable */
+#    undef REALM_ENABLE_ENCRYPTION
+#  endif
+#  if TARGET_OS_TV
+/* Device (Apple TV) or simulator. */
+#    define REALM_TVOS 1
+/* The necessary signal handling / mach exception APIs are all unavailable */
+#    undef REALM_ENABLE_ENCRYPTION
+#  endif
 #endif
 
 
-#if REALM_ANDROID || REALM_IOS
+#if REALM_ANDROID || REALM_IOS || REALM_WATCHOS
 #  define REALM_MOBILE 1
 #endif
 
 
 #if defined(REALM_DEBUG) && !defined(REALM_COOKIE_CHECK)
 #  define REALM_COOKIE_CHECK
+#endif
+
+#if !REALM_IOS && !REALM_WATCHOS && !REALM_TVOS && !defined(_WIN32)
+#  define REALM_ASYNC_DAEMON
 #endif
 
 

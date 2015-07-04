@@ -11,11 +11,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FontAwesomeKit/FAKFontAwesome.h>
 #import <YTVimeoExtractor/YTVimeoExtractor.h>
-#import <CAR/CARMedia.h>
 #import "UIAlertView+Blocks/UIAlertView+Blocks.h"
 #import "UIActionSheet+Blocks/UIActionSheet+Blocks.h"
 #import "UIAlertController+Blocks/UIAlertController+Blocks.h"
 #import "NSString+Util.h"
+@import MediaPlayer;
 
 #import "LHAppDelegate.h"
 #import "LHConfig.h"
@@ -176,12 +176,15 @@ SKPaymentTransactionObserver> {
                              completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
                                  if (error) {
                                      // handle error
+                                     NSLog(@"error: %@", error);
                                      NSLog(@"Video URL: %@", [videoURL absoluteString]);
                                  } else {
                                      // run player
-                                     self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-                                     [self.playerViewController.moviePlayer prepareToPlay];
-                                     [self presentViewController:self.playerViewController animated:YES completion:nil];
+                                     dispatch_async (dispatch_get_main_queue(), ^{
+                                         self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                                         [self.playerViewController.moviePlayer prepareToPlay];
+                                         [self presentViewController:self.playerViewController animated:YES completion:nil];
+                                     });
                                  }
                              }];
         
@@ -684,9 +687,11 @@ SKPaymentTransactionObserver> {
                                       "\n"
                                       "\n"
                                       "---\n"
+                                      "Appバージョン: %@\n"
                                       "端末: %@\n"
                                       "OSバージョン: %@\n"
                                       "ID: %@\n",
+                      [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
                       [UIDevice currentDevice].model,
                       [UIDevice currentDevice].systemVersion,
                       [[UIApplication sharedApplication] uniqueInstallationIdentifier]
@@ -694,6 +699,13 @@ SKPaymentTransactionObserver> {
     NSString* encodedSubject = [subject stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
     NSString* encodedBody = [body stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
     return [[NSString alloc] initWithFormat:@"mailto:support@lvhs.jp?subject=%@&body=%@", encodedSubject, encodedBody];
+}
+
+- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    if ( self.presentedViewController) {
+        [super dismissViewControllerAnimated:flag completion:completion];
+    }
 }
 
 @end
