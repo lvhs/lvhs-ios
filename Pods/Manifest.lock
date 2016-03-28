@@ -161,9 +161,6 @@ PODS:
   - mockingbird-toolbox/ThreadsafeCache (0.9.7):
     - mockingbird-toolbox/Common
   - MTStatusBarOverlay (0.9.1)
-  - Realm (0.96.2):
-    - Realm/Headers (= 0.96.2)
-  - Realm/Headers (0.96.2)
   - Repro (1.3.23)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
@@ -178,7 +175,7 @@ PODS:
   - UIAlertController+Blocks (0.9)
   - UIAlertView+Blocks (0.9)
   - UITextFieldWithLimit (0.1.1)
-  - YTVimeoExtractor (0.2.0)
+  - YTVimeoExtractor (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -192,7 +189,6 @@ DEPENDENCIES:
   - MKStoreKit
   - mockingbird-toolbox
   - MTStatusBarOverlay
-  - Realm
   - Repro
   - SDWebImage
   - SRGVersionUpdater (from `https://github.com/munky69rock/SRGVersionUpdater.git`)
@@ -203,23 +199,16 @@ DEPENDENCIES:
   - UIAlertController+Blocks
   - UIAlertView+Blocks
   - UITextFieldWithLimit
-  - YTVimeoExtractor (from `https://github.com/lilfaf/YTVimeoExtractor.git`, branch
-    `hotfix/vimeoapi`)
+  - YTVimeoExtractor
 
 EXTERNAL SOURCES:
   SRGVersionUpdater:
     :git: https://github.com/munky69rock/SRGVersionUpdater.git
-  YTVimeoExtractor:
-    :branch: hotfix/vimeoapi
-    :git: https://github.com/lilfaf/YTVimeoExtractor.git
 
 CHECKOUT OPTIONS:
   SRGVersionUpdater:
     :commit: 4a8652ad0fc01919febefb49480395086fcef918
     :git: https://github.com/munky69rock/SRGVersionUpdater.git
-  YTVimeoExtractor:
-    :commit: 712082f0bbbdb6de1bf9b319d1a2000a28e6008d
-    :git: https://github.com/lilfaf/YTVimeoExtractor.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -233,7 +222,6 @@ SPEC CHECKSUMS:
   MKStoreKit: 748617e5f87ad1e0d3f075155047945248eccefc
   mockingbird-toolbox: e882529a41c34d789eb9344d43124728d198fc30
   MTStatusBarOverlay: 258a1ee369f4dc4b94107d02cfd7f6b1317c421b
-  Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
   Repro: 8ed222fafdd741039dcb884f7edaaeca2b3a48ad
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SRGVersionUpdater: b6f16cdfc09e00afd7128a379f4983132d446150
@@ -244,6 +232,6 @@ SPEC CHECKSUMS:
   UIAlertController+Blocks: b48c673ff60726da468b32ab21bbc7683512d45b
   UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
   UITextFieldWithLimit: 7b292ab1fe30fb03fa2f9b595be2c414f93cdb6d
-  YTVimeoExtractor: 3d953d7a3841e0020c0feb91347fe75f9e4d3777
+  YTVimeoExtractor: fa329a7cc99fc3d0b4e1fa6fd9d1d5eab1835c7d
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.37.1

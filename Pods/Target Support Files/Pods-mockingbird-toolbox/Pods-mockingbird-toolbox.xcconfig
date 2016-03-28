@@ -1,0 +1,1 @@
+PODS_MOCKINGBIRD_TOOLBOX_OTHER_LDFLAGS = -framework "CoreTelephony" -framework "Security"

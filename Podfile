@@ -18,10 +18,9 @@ pod 'CrittercismSDK'
 pod 'MTStatusBarOverlay'
 pod 'CocoaLumberjack'
 pod 'SSZipArchive'
-pod 'Realm'
+#pod 'Realm'
 
-#pod 'YTVimeoExtractor'
-pod 'YTVimeoExtractor', git: 'https://github.com/lilfaf/YTVimeoExtractor.git', branch: 'hotfix/vimeoapi'
+pod 'YTVimeoExtractor'
 
 pod 'MKStoreKit'
 pod 'TTTAttributedLabel'
@@ -62,9 +61,9 @@ post_install do |installer|
     remove_destination: true
   )
 
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
-  end
+  #installer.pods_project.build_configurations.each do |config|
+  #  config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+  #end
 end
 
 # vim: ft=ruby :

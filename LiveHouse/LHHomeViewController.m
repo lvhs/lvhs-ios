@@ -170,22 +170,29 @@ SKPaymentTransactionObserver> {
         [defaults setValue:itemId forKey:@"itemId"];
         
         NSString *vimeoUrl = [NSString stringWithFormat:@"https://vimeo.com/%@", vimeoId];
-        [YTVimeoExtractor fetchVideoURLFromURL:vimeoUrl
-                                       quality:YTVimeoVideoQualityMedium
-                                       referer:@"http://lvhs.jp"
-                             completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
-                                 if (error) {
-                                     // handle error
-                                     NSLog(@"error: %@", error);
-                                     NSLog(@"Video URL: %@", [videoURL absoluteString]);
-                                 } else {
-                                     // run player
-                                     dispatch_async (dispatch_get_main_queue(), ^{
-                                         self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-                                         [self.playerViewController.moviePlayer prepareToPlay];
-                                         [self presentViewController:self.playerViewController animated:YES completion:nil];
-                                     });
-                                 }
+        [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:vimeoUrl
+                                                      withReferer:@"http://lvhs.jp"
+                                                completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+                                                    if (video) {
+                                                        
+                                                        NSDictionary *streamURLs = video.streamURLs;
+                                                        //Will get the highest available quality.
+                                                        NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+                                                        
+                                                        NSURL *movieURL = [NSURL URLWithString:url];
+                                                        MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:movieURL];
+                                                        
+                                                        [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+                                                    }else{
+                                                        
+                                                        UIAlertView *alertView = [[UIAlertView alloc]init];
+                                                        alertView.title = error.localizedDescription;
+                                                        alertView.message = error.localizedFailureReason;
+                                                        [alertView addButtonWithTitle:@"OK"];
+                                                        alertView.delegate = self;
+                                                        [alertView show];
+                                                        
+                                                    }
                              }];
         
         return NO;
