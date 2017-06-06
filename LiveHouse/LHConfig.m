@@ -114,7 +114,8 @@
 + (void)_setupBasicAuthSDWebImage {
     //for 画像リソース取得時
     NSString* basicAuthCredentials = [NSString stringWithFormat:@"%@:%@", LH_API_BASIC_AUTH_USERNAME, LH_API_BASIC_AUTH_PASSWORD];
-    NSString* authValue = [NSString stringWithFormat:@"Basic %@", [basicAuthCredentials base64String]];
+    NSString* authValue = [[basicAuthCredentials dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+//    NSString* authValue = [NSString stringWithFormat:@"Basic %@", [basicAuthCredentials base64String]];
     [[SDWebImageManager sharedManager].imageDownloader setValue:authValue forHTTPHeaderField:@"Authorization"];
 }
 
